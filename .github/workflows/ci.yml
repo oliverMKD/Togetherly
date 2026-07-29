@@ -1,0 +1,92 @@
+name: CI
+
+# pull_request (never pull_request_target) — GitHub's own built-in behavior already denies
+# repository secrets and uses a read-only GITHUB_TOKEN for PRs opened from forks. This workflow
+# never references a secret at all (see the "Configuration" note below), so there is nothing a
+# fork PR could exfiltrate even if that protection didn't exist.
+on:
+  pull_request:
+    branches: [main]
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+concurrency:
+  group: ci-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+jobs:
+  verify:
+    name: Verify (Linux)
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+
+      # gradle-daemon-jvm.properties pins the Gradle daemon itself to Zulu 21; individual
+      # subprojects request jvmToolchain(17) for compilation. Installing both here means Gradle's
+      # own toolchain detection finds both locally instead of downloading one from foojay mid-build.
+      - name: Set up JDK
+        uses: actions/setup-java@03ad4de0992f5dab5e18fcb136590ce7c4a0ac95 # v5.6.0
+        with:
+          distribution: zulu
+          java-version: |
+            21
+            17
+
+      - name: Validate Gradle wrapper
+        uses: gradle/actions/wrapper-validation@3f131e8634966bd73d06cc69884922b02e6faf92 # v6.2.0
+
+      - name: Set up Gradle
+        uses: gradle/actions/setup-gradle@3f131e8634966bd73d06cc69884922b02e6faf92 # v6.2.0
+
+      # No ktlint/detekt/Spotless is configured in this project (verified — see docs/architecture.md)
+      # — there is no formatting-check or additional-static-analysis task to run beyond Android
+      # Lint below. Not invented here; see Step 14.6 for future build-validation work.
+
+      # The only static-analysis tool currently configured.
+      - name: Static analysis (Android Lint)
+        run: ./gradlew :androidApp:lintDebug --stacktrace --no-daemon
+
+      # Runs on the JVM (no device/emulator needed). Also exercises QuestCatalogueValidator against
+      # the real bundled catalogue — there is no separate "catalogue validation" Gradle task; this
+      # is the existing, reliable coverage for it (see ContentErrorDiagnosticsTest,
+      # DefaultQuestCatalogueLoaderTest).
+      - name: Unit tests (common + Android)
+        run: ./gradlew :shared:testAndroidHostTest --stacktrace --no-daemon
+
+      - name: Compile common metadata
+        run: ./gradlew :shared:compileCommonMainKotlinMetadata --stacktrace --no-daemon
+
+      - name: Build Android debug variant
+        run: ./gradlew :androidApp:assembleDebug --stacktrace --no-daemon
+
+      # Configuration note: RevenueCat/PostHog/Sentry all fall back to their documented no-op/free
+      # mode when unconfigured (see docs/configuration.md) — local.properties never exists in CI,
+      # so every key resolves to an empty string and every provider compiles and builds safely with
+      # no repository secret of any kind. Nothing here needs — or is granted — write access or a
+      # secret.
+
+      - name: Upload unit test report
+        if: failure()
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
+        with:
+          name: unit-test-report
+          path: |
+            shared/build/reports/tests
+            shared/build/test-results
+          retention-days: 5
+          if-no-files-found: ignore
+
+      - name: Upload Android Lint report
+        if: always()
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
+        with:
+          name: android-lint-report
+          path: androidApp/build/reports/lint-results-debug.html
+          retention-days: 5
+          if-no-files-found: ignore
