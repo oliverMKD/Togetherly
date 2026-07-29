@@ -7,7 +7,7 @@ What runs on every pull request, why it's shaped this way, and what's intentiona
 | Workflow | File | Trigger | Purpose |
 |---|---|---|---|
 | CI | `.github/workflows/ci.yml` | `pull_request`/`push` to `main`, manual | Android Lint, common+Android unit tests, common metadata compile, Android debug assemble — on `ubuntu-latest`. |
-| Apple CI | `.github/workflows/apple-ci.yml` | `pull_request`/`push` to `main` (path-filtered to `shared/`, `iosApp/`, Gradle config), manual | Compiles the shared module's Apple targets, links the iOS simulator framework, compiles and runs `iosSimulatorArm64Test`, and compiles the iOS host app (no code signing) — on a pinned `macos-15-arm64` runner. |
+| Apple CI | `.github/workflows/apple-ci.yml` | `pull_request`/`push` to `main`, manual | A cheap `gate` job (`ubuntu-latest`) always runs first and `git diff`s the change against `shared/`, `iosApp/`, Gradle config; the expensive `verify-apple` job (compiles the shared module's Apple targets, links the iOS simulator framework, compiles and runs `iosSimulatorArm64Test`, compiles the iOS host app with no code signing, on a pinned `macos-15-arm64` runner) only runs when that gate says something Apple-relevant changed — see `docs/continuous-integration.md` for why this is a gate job rather than a workflow-level path filter. |
 | Dependency Review | `.github/workflows/dependency-review.yml` | `pull_request` to `main` | Diffs the dependency graph and fails the PR on a new high-or-critical severity vulnerability; moderate/low findings surface in the job summary but don't block. |
 
 CodeQL is **not** a workflow file in this repository — it runs via GitHub's managed
