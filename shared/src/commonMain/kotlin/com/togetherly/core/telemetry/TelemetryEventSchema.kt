@@ -29,7 +29,7 @@ internal object TelemetryEventRegistry {
         TelemetryPropertyNames.AVAILABLE_PACKAGE_TYPES,
     )
 
-    val schemas: Map<String, TelemetryEventSchema> = listOf(
+    private val registered: List<TelemetryEventSchema> = listOf(
         // Onboarding
         TelemetryEventSchema(OnboardingStepViewed.EVENT_NAME, setOf(TelemetryPropertyNames.ONBOARDING_STEP)),
         TelemetryEventSchema(OnboardingCompleted.EVENT_NAME, emptySet()),
@@ -104,5 +104,19 @@ internal object TelemetryEventRegistry {
 
         // Debug
         TelemetryEventSchema(DebugTestEvent.EVENT_NAME, emptySet()),
-    ).associateBy { it.eventName }
+    )
+
+    /**
+     * Built with an explicit duplicate check rather than a plain `associateBy` — that would
+     * silently keep only the last of two schemas sharing an [TelemetryEventSchema.eventName],
+     * quietly dropping the other's property allowlist. Failing fast here means a copy-pasted
+     * [TelemetryEventSchema.EVENT_NAME] mistake crashes the moment this object is first touched,
+     * not "the second registration's properties are inexplicably rejected."
+     */
+    val schemas: Map<String, TelemetryEventSchema> = registered
+        .also { list ->
+            val duplicates = list.groupBy { it.eventName }.filterValues { it.size > 1 }.keys
+            require(duplicates.isEmpty()) { "Duplicate TelemetryEventSchema.eventName(s): $duplicates" }
+        }
+        .associateBy { it.eventName }
 }
