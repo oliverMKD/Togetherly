@@ -1,5 +1,10 @@
 # Togetherly
 
+[![CI](https://github.com/oliverMKD/Togetherly/actions/workflows/ci.yml/badge.svg)](https://github.com/oliverMKD/Togetherly/actions/workflows/ci.yml)
+[![Apple CI](https://github.com/oliverMKD/Togetherly/actions/workflows/apple-ci.yml/badge.svg)](https://github.com/oliverMKD/Togetherly/actions/workflows/apple-ci.yml)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+[![Kotlin Multiplatform](https://img.shields.io/badge/Kotlin-Multiplatform-7F52FF?logo=kotlin&logoColor=white)](https://kotlinlang.org/docs/multiplatform.html)
+
 Togetherly helps families put the phone down and spend meaningful time together through small
 cooperative quests.
 
