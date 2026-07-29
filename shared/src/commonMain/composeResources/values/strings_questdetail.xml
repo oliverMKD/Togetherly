@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    Quest Detail copy.
+-->
+<resources>
+    <string name="questdetail_back_content_description">Back</string>
+    <string name="questdetail_start_action">Start quest</string>
+    <string name="questdetail_materials_title">What you\'ll need</string>
+    <string name="questdetail_instructions_title">Instructions</string>
+    <string name="questdetail_hints_title">Hints</string>
+    <string name="questdetail_safety_title">Safety note</string>
+    <string name="questdetail_saved_content_description">Saved. Tap to remove from saved quests.</string>
+    <string name="questdetail_unsaved_content_description">Not saved. Tap to save this quest.</string>
+
+    <string name="questdetail_conflict_title">Another quest is still in progress</string>
+    <string name="questdetail_conflict_body">Starting this quest will replace the unfinished session.</string>
+    <string name="questdetail_conflict_replace_action">Replace and start this quest</string>
+    <string name="questdetail_conflict_cancel_action">Cancel</string>
+
+    <string name="questdetail_locked_title">This quest is part of Family Plus.</string>
+    <string name="questdetail_locked_body">Unlock the full activity and more ways to spend meaningful time together.</string>
+    <string name="questdetail_unlock_action">Unlock with Family Plus</string>
+    <string name="questdetail_premium_badge">Family Plus</string>
+    <string name="questdetail_age_suitability_title">Best for</string>
+    <string name="questdetail_pack_label">Part of %1$s</string>
+</resources>

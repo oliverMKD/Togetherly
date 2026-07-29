@@ -1,0 +1,69 @@
+*.iml
+.kotlin
+.gradle
+# Claude Code local permission settings — contains this machine's own local absolute paths and
+# username, not anything meant to travel with the repository.
+.claude/
+**/build/
+xcuserdata
+!src/**/build/
+local.properties
+RevenueCat.local.xcconfig
+PostHog.local.xcconfig
+Sentry.local.xcconfig
+.idea
+.DS_Store
+captures
+.externalNativeBuild
+.cxx
+*.xcodeproj/*
+!*.xcodeproj/project.pbxproj
+!*.xcodeproj/xcshareddata/
+!*.xcodeproj/project.xcworkspace/
+!*.xcworkspace/contents.xcworkspacedata
+**/xcshareddata/WorkspaceSettings.xcsettings
+node_modules/
+
+# Local configuration (defensive — this project currently configures RevenueCat/PostHog/Sentry via
+# local.properties and the *.local.xcconfig files above, never .env or per-service .properties
+# files, but these guard against one being added later without a matching .gitignore update)
+*.local.properties
+.env
+.env.*
+!.env.example
+revenuecat.properties
+posthog.properties
+sentry.properties
+telemetry.properties
+secrets.properties
+keystore.properties
+
+# Android signing (no release signing config exists yet — these guard the keystore/passwords once one does)
+*.jks
+*.keystore
+
+# Apple signing
+*.p8
+*.p12
+*.mobileprovision
+
+# Xcode (xcuserdata above already covers *.xcuserstate/*.xcscheme by directory; these are explicit
+# defense-in-depth, plus DerivedData which is never inside xcuserdata)
+DerivedData/
+*.xcuserstate
+
+# Private application data (memory photos/voice/notes are stored in each platform's private
+# filesystem at runtime, never in this repository — these guard against an accidental local/debug
+# artifact landing in the working tree)
+*.db
+*.sqlite
+*.sqlite3
+private-media/
+debug-data/
+crash-dumps/
+
+# Distribution artifacts
+*.apk
+*.aab
+*.ipa
+*.xcarchive

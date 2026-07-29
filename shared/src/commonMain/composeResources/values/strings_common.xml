@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    Cross-feature copy shared by more than one part of the app — currently just the generic error
+    message every AppErrorMapper.kt branch resolves to. Feature-specific copy belongs in that
+    feature's own resource file, not here.
+-->
+<resources>
+    <string name="error_generic_message">Something went wrong. Please try again.</string>
+</resources>

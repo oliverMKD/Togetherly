@@ -1,0 +1,38 @@
+# Copy this file to "local.properties" (already gitignored) and fill in your own values.
+# Never commit the real local.properties file or a real API key.
+
+# Location of the Android SDK. Android Studio usually writes this automatically.
+sdk.dir=/path/to/Android/sdk
+
+# RevenueCat Android PUBLIC SDK key (Project settings > API keys > Public app-specific key in the
+# RevenueCat dashboard). This is a public, client-safe key by RevenueCat's own design, but it still
+# must not be committed or hardcoded — see docs/revenuecat-setup.md.
+#
+# Leave this blank to run Togetherly in free mode with RevenueCat disabled. A debug build fails
+# loudly on launch if this is blank (see RevenueCatConfigurator); a release build silently falls
+# back to free mode instead.
+revenueCat.androidApiKey=
+
+# PostHog Cloud EU project token (Project settings > "Project API Key" in the PostHog dashboard —
+# NOT a personal/private API key; that key must never be placed in this app). This is a public,
+# client-safe token by PostHog's own design, but it still must not be committed or hardcoded —
+# see docs/analytics-setup.md.
+#
+# Leave both blank to run Togetherly with analytics fully disabled (falls back to no-op analytics
+# — the app remains fully usable either way). A debug build logs a clear warning if the token is
+# blank; a release build silently falls back the same way.
+posthog.projectKey=
+# Leave blank to default to PostHog Cloud EU (https://eu.i.posthog.com).
+posthog.host=
+
+# Sentry DSN (Project settings > Client Keys (DSN) in the Sentry dashboard). A DSN is client
+# configuration, not a secret — it only tells the SDK where to send events — but it still must not
+# be committed or hardcoded, since it identifies your own Sentry project. NEVER place a Sentry
+# auth token (used for source-map/dSYM upload) here or anywhere in this app; that is private
+# CI/server configuration — see docs/sentry-setup.md.
+#
+# Leave blank to run Togetherly with crash/diagnostics reporting fully disabled (falls back to
+# no-op diagnostics — the app remains fully usable either way, matching the PostHog fallback
+# above). A debug build logs a clear warning if this is blank; a release build silently falls back
+# the same way.
+sentry.dsn=

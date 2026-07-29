@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    Family Plus management screen copy (reachable from the Family tab).
+-->
+<resources>
+    <string name="familyplus_free_title">Family Plus</string>
+    <string name="familyplus_free_body">Unlock unlimited daily rerolls, premium quest packs, and more.</string>
+    <string name="familyplus_view_plans_action">View plans</string>
+
+    <string name="familyplus_active_title">Family Plus is active</string>
+    <string name="familyplus_manage_subscription_action">Manage subscription</string>
+    <string name="familyplus_customer_center_unavailable">Subscription management isn\'t available right now. Please try again later.</string>
+    <string name="familyplus_provider_unavailable_notice">We couldn\'t check your subscription status. Some options may be unavailable until this is resolved.</string>
+
+    <string name="familyplus_renews_on">Renews on %1$s</string>
+    <string name="familyplus_ends_on">Ends on %1$s</string>
+    <string name="familyplus_lifetime_member">You have lifetime access to Family Plus</string>
+
+    <string name="familyplus_restore_action">Restore purchases</string>
+</resources>

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    Copy shared by every Family Plus purchase surface (the paywall, the management screen, and any
+    future reroll/quest/pack gate) — never a raw RevenueCat exception message, product identifier,
+    or stack trace (see PurchaseErrorMapper.kt's own KDoc).
+-->
+<resources>
+    <string name="purchase_error_product_unavailable">This plan isn\'t available right now.</string>
+    <string name="purchase_error_store_unavailable">The store isn\'t available right now. Please try again later.</string>
+    <string name="purchase_error_network_problem">Check your connection and try again.</string>
+    <string name="purchase_error_configuration_problem">We couldn\'t load the plans right now. Please try again later.</string>
+    <string name="purchase_error_not_allowed">Purchases aren\'t allowed on this device right now.</string>
+    <string name="purchase_error_already_owned">You already own this plan.</string>
+    <string name="purchase_error_unknown">Your purchase couldn\'t be completed. Please try again.</string>
+
+    <string name="purchase_cancelled_message">No worries — you can try again anytime.</string>
+    <string name="purchase_pending_message">Your purchase is pending approval. We\'ll unlock Family Plus as soon as it\'s confirmed.</string>
+    <string name="purchase_success_message">Family Plus is ready. Enjoy more ways to connect.</string>
+    <string name="restore_no_purchases_found_message">We didn\'t find any previous purchases to restore.</string>
+    <string name="restore_succeeded_message">Family Plus restored.</string>
+</resources>

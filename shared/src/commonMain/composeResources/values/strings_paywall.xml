@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    Family Plus paywall copy. Never claims a feature this app doesn't actually have (no cloud
+    backup, no cross-device sync, no unlimited family members, no shared online accounts) — see
+    FamilyPlusPaywallScreen.kt's own KDoc.
+-->
+<resources>
+    <string name="paywall_close_content_description">Close</string>
+    <string name="paywall_title">More ways to grow together</string>
+    <string name="paywall_benefit_rerolls">Unlimited daily rerolls</string>
+    <string name="paywall_benefit_quest_packs">Premium quest packs</string>
+    <string name="paywall_benefit_moods">More activities for every mood</string>
+    <string name="paywall_benefit_support">Support future Togetherly content</string>
+    <string name="paywall_recommended_label">Recommended</string>
+    <string name="paywall_purchase_action">Get Family Plus</string>
+    <string name="paywall_restore_action">Restore purchases</string>
+    <string name="paywall_privacy_policy_action">Privacy Policy</string>
+    <string name="paywall_terms_of_use_action">Terms of Use</string>
+    <string name="paywall_already_premium_title">You\'re all set</string>
+    <string name="paywall_already_premium_continue_action">Continue</string>
+
+    <string name="paywall_intro_premium_reroll">You\'ve used today\'s free reroll. Family Plus gives you unlimited rerolls.</string>
+    <string name="paywall_intro_premium_quest">This is a Family Plus quest.</string>
+    <string name="paywall_intro_premium_pack">This pack is part of Family Plus.</string>
+</resources>

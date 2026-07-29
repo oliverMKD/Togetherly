@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="memory_screen_title">Add a memory</string>
+    <string name="memory_neutral_quest_title">Your quest</string>
+    <string name="memory_back_content_description">Back</string>
+
+    <string name="memory_reactions_heading">How did it feel?</string>
+    <string name="memory_reaction_happy">Happy</string>
+    <string name="memory_reaction_silly">Silly</string>
+    <string name="memory_reaction_loved_it">Loved it</string>
+    <string name="memory_reaction_calm">Calm</string>
+    <string name="memory_reaction_surprised">Surprised</string>
+
+    <string name="memory_note_heading">What should you remember about today?</string>
+    <string name="memory_note_placeholder">Write a note (optional)</string>
+
+    <string name="memory_photo_heading">Photo</string>
+    <string name="memory_photo_add_action">Add photo</string>
+    <string name="memory_photo_replace_action">Replace</string>
+    <string name="memory_photo_remove_action">Remove</string>
+    <string name="memory_photo_thumbnail_description">Your added photo</string>
+    <string name="memory_photo_privacy_note">Only the photo you choose is imported into Togetherly.</string>
+    <string name="memory_photo_importing">Importing photo…</string>
+
+    <string name="memory_voice_heading">Voice note</string>
+    <string name="memory_voice_record_action">Record</string>
+    <string name="memory_voice_stop_action">Stop</string>
+    <string name="memory_voice_cancel_action">Cancel</string>
+    <string name="memory_voice_play_action">Play</string>
+    <string name="memory_voice_pause_action">Pause</string>
+    <string name="memory_voice_remove_action">Remove</string>
+    <string name="memory_voice_rerecord_action">Re-record</string>
+    <string name="memory_voice_recording_label">Recording %1$s</string>
+    <string name="memory_voice_max_duration_note">Up to 60 seconds</string>
+    <string name="memory_voice_permission_denied">Microphone access was declined. You can try again.</string>
+    <string name="memory_voice_permission_permanently_denied">Microphone access is off for Togetherly. Turn it on in Settings to record a voice note.</string>
+    <string name="memory_voice_open_settings_action">Open Settings</string>
+
+    <string name="memory_privacy_reassurance">Stored privately with Togetherly on this device.</string>
+
+    <string name="memory_save_action">Save memory</string>
+    <string name="memory_skip_action">Skip for now</string>
+    <string name="memory_saving_label">Saving your memory…</string>
+
+    <string name="memory_discard_title">Discard this memory?</string>
+    <string name="memory_discard_body">Your note, reactions, photo, and voice note for this quest will be lost. The completed quest itself stays saved.</string>
+    <string name="memory_discard_confirm_action">Discard</string>
+    <string name="memory_discard_cancel_action">Keep editing</string>
+</resources>

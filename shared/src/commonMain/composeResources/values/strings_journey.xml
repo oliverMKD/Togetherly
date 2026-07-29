@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    Journey timeline and constellation copy.
+-->
+<resources>
+    <string name="journey_top_bar_title">Journey</string>
+
+    <string name="journey_empty_title">Your family journey starts here.</string>
+    <string name="journey_empty_body">Complete your first quest and it will become a star.</string>
+    <string name="journey_empty_action">Go to Today</string>
+
+    <string name="journey_missing_quest_title">Family adventure</string>
+
+    <string name="journey_photo_content_description">Photo from this memory</string>
+    <string name="journey_voice_play_action">Play voice note</string>
+    <string name="journey_voice_pause_action">Pause voice note</string>
+    <string name="journey_voice_playback_error">This voice note couldn\'t play right now.</string>
+
+    <string name="journey_delete_content_description">Delete this memory</string>
+    <string name="journey_delete_dialog_title">Delete this memory?</string>
+    <string name="journey_delete_dialog_body">This removes the quest, its note, and any photo or voice memory. This can\'t be undone.</string>
+    <string name="journey_delete_confirm_action">Delete</string>
+    <string name="journey_delete_cancel_action">Cancel</string>
+
+    <string name="journey_summary_total_completions">%1$d quests completed together</string>
+    <string name="journey_constellation_content_description">A constellation of %1$d stars, one for every quest your family has completed.</string>
+
+    <string name="journey_milestone_first_star">Your first star!</string>
+    <string name="journey_milestone_three_stars">Three stars in your sky.</string>
+    <string name="journey_milestone_seven_stars">Seven stars and counting.</string>
+    <string name="journey_milestone_fourteen_stars">Fourteen stars together.</string>
+    <string name="journey_milestone_thirty_stars">Thirty stars — what a journey.</string>
+</resources>

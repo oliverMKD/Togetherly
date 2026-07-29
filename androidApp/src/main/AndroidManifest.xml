@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- Normal (not dangerous) permission — Quest Mode's restrained timer-finished/completion haptics (Step 9.5). -->
+    <uses-permission android:name="android.permission.VIBRATE" />
+
+    <!-- Dangerous permission — requested at runtime only when the user taps Record (Step 10.3), never at startup/onboarding. -->
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+
+    <!-- Dangerous permission (API 33+ only) — requested at runtime only after a parent explicitly enables reminders (Step 13.4), never at startup/onboarding. -->
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
+
+    <!-- Normal permission — lets ReminderBootReceiver reschedule reminders after a device reboot, since AlarmManager alarms don't survive one. -->
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+
+    <application
+        android:name=".TogetherlyApplication"
+        android:allowBackup="true"
+        android:fullBackupContent="@xml/backup_rules"
+        android:dataExtractionRules="@xml/data_extraction_rules"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@android:style/Theme.Material.Light.NoActionBar">
+        <activity
+            android:exported="true"
+            android:name=".MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <!-- Step 13.4: local daily reminders. Neither receiver is exported — only the system (AlarmManager/BOOT_COMPLETED) ever targets them. -->
+        <receiver
+            android:name="com.togetherly.core.notification.ReminderNotificationReceiver"
+            android:exported="false" />
+        <receiver
+            android:name="com.togetherly.core.notification.ReminderBootReceiver"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+            </intent-filter>
+        </receiver>
+    </application>
+
+</manifest>

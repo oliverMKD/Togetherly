@@ -1,0 +1,9 @@
+// Copy this file to "RevenueCat.local.xcconfig" in this same directory (already gitignored) and
+// fill in your own value. Never commit the real file or a real API key.
+//
+// RevenueCat iOS PUBLIC SDK key (Project settings > API keys > Public app-specific key in the
+// RevenueCat dashboard). This is a public, client-safe key by RevenueCat's own design, but it
+// still must not be committed or hardcoded — see docs/revenuecat-setup.md.
+//
+// Leave this blank/absent to run Togetherly in free mode with RevenueCat disabled.
+REVENUECAT_API_KEY=test_TaSbmBhjAwOvNYyGyutdYybguRa

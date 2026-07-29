@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    Android 12+ (API 31+) backup/transfer rules — the successor to backup_rules.xml's
+    full-backup-content on this SDK range. Excludes <filesDir>/media from both cloud backup and
+    device-to-device transfer, for the same reason backup_rules.xml excludes it: private photo/
+    voice memories (Step 10.2/10.3) must not leave the device via any platform backup path.
+-->
+<data-extraction-rules>
+    <cloud-backup>
+        <exclude domain="file" path="media/" />
+    </cloud-backup>
+    <device-transfer>
+        <exclude domain="file" path="media/" />
+    </device-transfer>
+</data-extraction-rules>

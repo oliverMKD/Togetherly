@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    Completion celebration copy.
+-->
+<resources>
+    <string name="completion_title">You made a memory</string>
+    <string name="completion_body">Another little family adventure is complete.</string>
+    <string name="completion_neutral_quest_title">A family quest</string>
+    <string name="completion_add_memory_action">Add a memory</string>
+    <string name="completion_continue_action">Continue</string>
+    <string name="completion_close_action">Close</string>
+</resources>

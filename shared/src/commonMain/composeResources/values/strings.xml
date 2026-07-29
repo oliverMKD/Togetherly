@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    Design-system-owned strings only — the small vocabulary of accessibility and micro-copy text
+    that belongs to a component itself (a loading announcement, a generic retry action, a step
+    counter) rather than to any one feature. Feature/onboarding copy is always passed into
+    components as a parameter and never belongs in this file.
+-->
+<resources>
+    <string name="ds_component_loading">Loading</string>
+    <string name="ds_component_retry">Retry</string>
+    <string name="ds_component_dismiss">Dismiss</string>
+    <string name="ds_component_step_progress_description">Step %1$d of %2$d</string>
+    <string name="ds_component_character_limit">%1$d/%2$d</string>
+    <string name="ds_parental_gate_title">For parents</string>
+    <string name="ds_parental_gate_body">This opens a purchase screen. Press and hold the button below for a few seconds to continue.</string>
+    <string name="ds_parental_gate_hold_content_description">Press and hold to continue</string>
+</resources>

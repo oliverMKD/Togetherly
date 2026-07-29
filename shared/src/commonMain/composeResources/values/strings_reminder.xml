@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    Step 13.4 — local daily reminders: the Reminder screen and the scheduled notification's own
+    copy. Day/time labels are reused from strings_onboarding.xml (onboarding_day_*) — see
+    OnboardingLabels.kt's DayOfWeek.label(), already public and reused across features.
+-->
+<resources>
+    <string name="reminder_title">Reminders</string>
+    <string name="reminder_explanation">A gentle reminder to make time together.</string>
+    <string name="reminder_enable_toggle">Remind us</string>
+    <string name="reminder_days_label">Which days?</string>
+    <string name="reminder_time_label">What time?</string>
+    <string name="reminder_choose_time">Choose a time</string>
+    <string name="reminder_time_selected">%1$s</string>
+    <string name="reminder_error_days_required">Choose at least one day.</string>
+
+    <string name="reminder_permission_status_label">Notification permission</string>
+    <string name="reminder_permission_granted">Allowed</string>
+    <string name="reminder_permission_denied">Not allowed</string>
+    <string name="reminder_permission_not_determined">Not yet requested</string>
+    <string name="reminder_permission_not_required">Allowed</string>
+    <string name="reminder_open_settings_action">Open settings</string>
+    <string name="reminder_permission_denied_explanation">Reminders are turned on, but Togetherly can\'t show notifications until you allow them in Settings.</string>
+
+    <string name="reminder_save_action">Save</string>
+    <string name="reminder_missing_profile_error">We couldn\'t find your family profile.</string>
+    <string name="reminder_updated_message">Reminder updated</string>
+
+    <string name="reminder_notification_channel_name">Family reminders</string>
+    <string name="reminder_notification_title">A little time together?</string>
+    <string name="reminder_notification_body">Your Togetherly quest is ready whenever your family is.</string>
+</resources>

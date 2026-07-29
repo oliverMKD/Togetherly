@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    Pre-Android-12 (API 23-30) Auto Backup rules. Without this file, android:allowBackup="true"
+    backs up the *entire* app-private filesDir by default — including <filesDir>/media, where
+    Step 10.2/10.3's private photo/voice memories are stored. That would silently contradict the
+    in-app privacy copy ("Stored privately with Togetherly on this device.") by copying a family's
+    private memories to the user's Google account. Excluding it here is what makes that copy true.
+-->
+<full-backup-content>
+    <exclude domain="file" path="media/" />
+</full-backup-content>

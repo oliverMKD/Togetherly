@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    Memory settings (Step 13.5) — reached from the Family tab root. family_discard_dialog_* is
+    shared with the other Family editor screens (see strings_family.xml's own comment).
+-->
+<resources>
+    <string name="memory_settings_title">Memory settings</string>
+    <string name="memory_settings_explanation">Choose what your family can add to a memory after a quest. Turning something off only affects new memories.</string>
+    <string name="memory_settings_photos_title">Photo memories</string>
+    <string name="memory_settings_voice_title">Voice memories</string>
+    <string name="memory_settings_text_notes_title">Text notes</string>
+    <string name="memory_settings_prompt_title">Ask to add a memory after each quest</string>
+    <string name="memory_settings_on">On</string>
+    <string name="memory_settings_off">Off</string>
+    <string name="memory_settings_preserved_explanation">Turning photos, voice, or notes off never deletes anything you\'ve already saved.</string>
+    <string name="memory_settings_manage_memories_action">Manage memories</string>
+    <string name="memory_settings_save_action">Save</string>
+    <string name="memory_settings_missing_profile_error">We couldn\'t find your family profile.</string>
+    <string name="memory_settings_updated_message">Memory settings updated</string>
+</resources>

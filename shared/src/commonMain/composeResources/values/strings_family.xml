@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    Family tab root (Step 13.2), Family Profile editor, and Quest Preferences (Step 13.3) copy.
+    Family-name label/placeholder and the "at least one required" errors are deliberately NOT
+    duplicated here — they're reused verbatim from strings_onboarding.xml
+    (onboarding_family_name_label/_placeholder, onboarding_error_age_bands_required,
+    onboarding_error_durations_required). family_discard_dialog_* is shared by both editor screens
+    — its copy is deliberately generic ("your changes"), not "family profile" specific.
+-->
+<resources>
+    <string name="family_title">Our family</string>
+
+    <string name="family_profile_name_fallback">Our family</string>
+    <string name="family_profile_summary_context_label">Prefers %1$s</string>
+    <string name="family_profile_edit_action">Edit</string>
+    <string name="family_quest_preferences_action">Quest preferences</string>
+
+    <string name="family_profile_editor_title">Edit family profile</string>
+    <string name="family_profile_editor_age_bands_title">Broad age groups</string>
+    <string name="family_profile_editor_durations_title">Preferred activity duration</string>
+    <string name="family_profile_editor_location_title">Indoor or outdoor</string>
+    <string name="family_profile_editor_save_action">Save</string>
+    <string name="family_profile_editor_missing_profile_error">We couldn\'t find your family profile.</string>
+    <string name="family_profile_updated_message">Family profile updated</string>
+
+    <string name="quest_preferences_title">Quest preferences</string>
+    <string name="quest_preferences_explanation">These choices help Togetherly suggest activities that fit your family. You can still explore every quest.</string>
+    <string name="quest_preferences_durations_title">Preferred duration</string>
+    <string name="quest_preferences_energy_title">Preferred energy</string>
+    <string name="quest_preferences_location_title">Indoor or outdoor</string>
+    <string name="quest_preferences_preparation_title">Preparation tolerance</string>
+    <string name="quest_preferences_reset_action">Reset to defaults</string>
+    <string name="quest_preferences_save_action">Save</string>
+    <string name="quest_preferences_error_energy_required">Choose at least one energy level.</string>
+    <string name="quest_preferences_missing_profile_error">We couldn\'t find your family profile.</string>
+    <string name="quest_preferences_updated_message">Quest preferences updated</string>
+
+    <string name="energy_level_calm">Calm</string>
+    <string name="energy_level_moderate">Balanced</string>
+    <string name="energy_level_active">Active</string>
+
+    <string name="family_discard_dialog_title">Discard changes?</string>
+    <string name="family_discard_dialog_body">Your changes haven\'t been saved yet. If you leave now, they\'ll be lost.</string>
+    <string name="family_discard_dialog_confirm_action">Discard</string>
+    <string name="family_discard_dialog_cancel_action">Keep editing</string>
+</resources>

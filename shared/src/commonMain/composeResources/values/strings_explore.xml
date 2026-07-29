@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    Explore tab copy.
+-->
+<resources>
+    <string name="explore_title">Explore together</string>
+    <string name="explore_subtitle">Find something that fits your family right now.</string>
+
+    <string name="explore_search_label">Search quests and packs</string>
+    <string name="explore_search_clear_content_description">Clear search</string>
+
+    <string name="explore_category_all">All</string>
+
+    <string name="explore_featured_packs_title">Featured</string>
+    <string name="explore_all_packs_title">All packs</string>
+    <string name="explore_suggested_quests_title">Suggested quests</string>
+    <string name="explore_search_results_title">Search results</string>
+
+    <string name="explore_filters_action">Filters</string>
+    <string name="explore_saved_action">Saved</string>
+
+    <string name="explore_pack_free">Free</string>
+    <string name="explore_pack_premium">Family Plus</string>
+    <string name="explore_pack_quest_count">%1$d quests</string>
+    <string name="explore_pack_quest_count_one">1 quest</string>
+    <string name="explore_pack_duration_range">%1$d–%2$d min</string>
+    <string name="explore_pack_duration_single">%1$d min</string>
+    <string name="explore_pack_locked_content_description">Included with Family Plus. Tap to learn more.</string>
+
+    <string name="explore_quest_premium_badge">Family Plus</string>
+    <string name="explore_quest_locked_content_description">Family Plus quest, locked for your family. Tap to preview.</string>
+    <string name="explore_quest_saved_content_description">Saved. Tap to remove from saved quests.</string>
+    <string name="explore_quest_unsaved_content_description">Not saved. Tap to save this quest.</string>
+
+    <string name="explore_empty_search_title">No quests found</string>
+    <string name="explore_empty_search_body">Try another word or clear your filters.</string>
+    <string name="explore_empty_filter_title">No quests found</string>
+    <string name="explore_empty_filter_body">Try different filters or check back soon.</string>
+
+    <string name="explore_filters_title">Filters</string>
+    <string name="explore_filter_group_duration">Duration</string>
+    <string name="explore_filter_group_energy">Energy</string>
+    <string name="explore_filter_group_location">Location</string>
+    <string name="explore_filter_group_age">Age suitability</string>
+    <string name="explore_filter_group_category">Category</string>
+    <string name="explore_filter_group_access">Access</string>
+    <string name="explore_filters_clear_all">Clear all</string>
+    <string name="explore_filters_apply">Apply</string>
+    <string name="explore_filters_cancel">Cancel</string>
+    <string name="explore_filter_access_all">All</string>
+
+    <string name="explore_saved_title">Saved</string>
+    <string name="explore_saved_empty_title">No saved quests yet</string>
+    <string name="explore_saved_empty_body">Save activities you would like to try together later.</string>
+</resources>

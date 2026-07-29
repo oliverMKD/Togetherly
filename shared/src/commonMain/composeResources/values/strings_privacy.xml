@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    Privacy summary (Step 13.5) — a static, factual summary, kept consistent with docs/privacy.md
+    and docs/private-media.md's own existing claims. Deliberately hedged where the platform (not
+    Togetherly) is what would actually guarantee something, e.g. device backups/uninstall behavior.
+-->
+<resources>
+    <string name="privacy_title">Privacy</string>
+    <string name="privacy_intro">Here\'s what actually happens with your family\'s information.</string>
+
+    <string name="privacy_profile_title">Your family profile</string>
+    <string name="privacy_profile_body">Your family profile — display name, age groups, and preferences — is stored only on this device.</string>
+
+    <string name="privacy_progress_title">Quest progress</string>
+    <string name="privacy_progress_body">Completed quests and your family\'s progress are stored only on this device.</string>
+
+    <string name="privacy_memories_title">Photos and voice memories</string>
+    <string name="privacy_memories_body">Photos and voice memories you save stay private on this device. Togetherly never uploads them anywhere.</string>
+
+    <string name="privacy_purchases_title">Purchases</string>
+    <string name="privacy_purchases_body">RevenueCat, our subscription provider, receives purchase-related identifiers and transaction information to manage Family Plus. Payments themselves are processed by the App Store or Google Play, not by Togetherly directly.</string>
+
+    <string name="privacy_notifications_title">Reminders</string>
+    <string name="privacy_notifications_body">Reminder notifications are scheduled on this device — Togetherly has no server that sends them.</string>
+
+    <string name="privacy_no_account_title">No account or cloud sync</string>
+    <string name="privacy_no_account_body">Togetherly doesn\'t currently have accounts or cloud sync — there\'s nothing to sign into, and nothing syncs across devices.</string>
+
+    <string name="privacy_uninstall_title">If you remove the app</string>
+    <string name="privacy_uninstall_body">Uninstalling Togetherly may remove its local data, depending on your device\'s own backup and storage settings.</string>
+
+    <string name="privacy_restore_purchases_title">Restoring purchases</string>
+    <string name="privacy_restore_purchases_body">Your purchase history may still be recoverable through the App Store or Google Play, separately from anything stored in the app.</string>
+</resources>

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    Navigation-shell copy: the four main-destination labels and bootstrap's own error message.
+    Never onboarding-form copy — that belongs with the onboarding feature once it's built.
+-->
+<resources>
+    <string name="nav_destination_today">Today</string>
+    <string name="nav_destination_explore">Explore</string>
+    <string name="nav_destination_journey">Journey</string>
+    <string name="nav_destination_family">Family</string>
+</resources>

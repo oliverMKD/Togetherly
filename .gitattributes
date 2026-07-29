@@ -1,0 +1,33 @@
+# Normalize every text file to LF on checkin, avoiding line-ending churn across contributors'
+# platforms (Git still checks files out using the OS default unless core.autocrlf is configured).
+* text=auto eol=lf
+
+# Windows scripts keep CRLF — the only files in this repo that need it.
+*.bat text eol=crlf
+*.cmd text eol=crlf
+
+# Images
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.ico binary
+*.icns binary
+*.webp binary
+
+# Audio
+*.mp3 binary
+*.wav binary
+*.m4a binary
+*.aac binary
+
+# Fonts
+*.ttf binary
+*.otf binary
+*.woff binary
+*.woff2 binary
+
+# Archives / prebuilt binaries
+*.jar binary
+*.jks binary
+*.keystore binary

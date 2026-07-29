@@ -1,0 +1,32 @@
+TEAM_ID=
+
+PRODUCT_NAME=Togetherly
+PRODUCT_BUNDLE_IDENTIFIER=com.togetherly.app$(TEAM_ID)
+
+CURRENT_PROJECT_VERSION=1
+MARKETING_VERSION=1.0
+
+// RevenueCat public SDK key (Step 11). Default is empty so a fresh checkout without the local
+// file below still builds and runs in free mode; RevenueCat.local.xcconfig (gitignored — copy it
+// from RevenueCat.local.xcconfig.example) overrides this with a real value, since a later
+// xcconfig assignment wins over an earlier one. Never put the real key directly in this file —
+// it is committed. See docs/revenuecat-setup.md.
+REVENUECAT_API_KEY=
+#include? "RevenueCat.local.xcconfig"
+
+// PostHog Cloud EU project token (Step 14.2). Default is empty so a fresh checkout without the
+// local file below still builds and runs with analytics disabled; PostHog.local.xcconfig
+// (gitignored — copy it from PostHog.local.xcconfig.example) overrides this with a real value,
+// since a later xcconfig assignment wins over an earlier one. Never put the real token directly
+// in this file — it is committed. See docs/analytics-setup.md.
+POSTHOG_PROJECT_KEY=
+POSTHOG_HOST=
+#include? "PostHog.local.xcconfig"
+
+// Sentry DSN (Step 14.5). Default is empty so a fresh checkout without the local file below still
+// builds and runs with crash/diagnostics reporting disabled; Sentry.local.xcconfig (gitignored —
+// copy it from Sentry.local.xcconfig.example) overrides this with a real value, since a later
+// xcconfig assignment wins over an earlier one. Never put the real DSN directly in this file — it
+// is committed — and never put a Sentry auth token anywhere in this app; see docs/sentry-setup.md.
+SENTRY_DSN=
+#include? "Sentry.local.xcconfig"

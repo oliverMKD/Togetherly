@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    Debug-only telemetry tooling (Step 14.6) — never reachable from a release build. See
+    docs/debug-telemetry.md.
+-->
+<resources>
+    <string name="debug_telemetry_title">Debug telemetry</string>
+
+    <string name="debug_section_consent">Consent</string>
+    <string name="debug_analytics_consent">Analytics consent: %1$s</string>
+    <string name="debug_diagnostics_consent">Diagnostics consent: %1$s</string>
+
+    <string name="debug_section_providers">Providers</string>
+    <string name="debug_posthog_status">PostHog: %1$s</string>
+    <string name="debug_sentry_status">Sentry: %1$s</string>
+    <string name="debug_revenuecat_status">RevenueCat: %1$s</string>
+
+    <string name="debug_section_access">Access</string>
+    <string name="debug_access_summary">Current access: %1$s</string>
+
+    <string name="debug_section_actions">Actions</string>
+    <string name="debug_action_refresh">Refresh</string>
+    <string name="debug_action_flush">Flush</string>
+    <string name="debug_action_clear_history">Clear local debug history</string>
+    <string name="debug_action_send_test_event">Send safe test analytics event</string>
+    <string name="debug_action_send_test_exception">Send handled test exception</string>
+    <string name="debug_test_event_sent">Test event sent</string>
+    <string name="debug_test_exception_sent">Test exception sent</string>
+
+    <string name="debug_section_events">Last sanitized analytics events</string>
+    <string name="debug_no_events">No events recorded yet.</string>
+
+    <string name="debug_section_breadcrumbs">Last safe breadcrumbs</string>
+    <string name="debug_no_breadcrumbs">No breadcrumbs recorded yet.</string>
+
+    <string name="debug_section_errors">Last provider error category</string>
+    <string name="debug_no_errors">No provider errors recorded yet.</string>
+</resources>

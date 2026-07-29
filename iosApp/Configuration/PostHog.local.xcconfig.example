@@ -1,0 +1,16 @@
+// Copy this file to "PostHog.local.xcconfig" in this same directory (already gitignored) and
+// fill in your own value. Never commit the real file or a real project token.
+//
+// PostHog Cloud EU project token (Project settings > "Project API Key" in the PostHog dashboard —
+// NOT a personal/private API key; that key must never be placed in this app). This is a public,
+// client-safe token by PostHog's own design, but it still must not be committed or hardcoded —
+// see docs/analytics-setup.md.
+//
+// Leave blank/absent to run Togetherly with analytics disabled (falls back to no-op analytics).
+// Unlike RevenueCat.local.xcconfig.example, this file intentionally ships with no placeholder
+// token value — PostHog has no "test store"-style safe-to-commit key the way RevenueCat does,
+// so a real project token must always come from your own PostHog Cloud EU project, never from a
+// value checked into this repository.
+POSTHOG_PROJECT_KEY=
+// Leave blank to default to PostHog Cloud EU (https://eu.i.posthog.com).
+POSTHOG_HOST=

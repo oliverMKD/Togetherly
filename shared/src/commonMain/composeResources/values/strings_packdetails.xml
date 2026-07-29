@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    Pack Details screen copy.
+-->
+<resources>
+    <string name="packdetails_included_quests_title">Included quests</string>
+    <string name="packdetails_choose_quest_action">Choose a quest</string>
+    <string name="packdetails_unlock_action">Unlock with Family Plus</string>
+    <string name="packdetails_locked_explanation">This pack is included with Family Plus. Unlock it to start any quest inside.</string>
+</resources>

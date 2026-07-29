@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    Legal, open-source licenses, and About screen copy (Step 13.6). Legal only links out to
+    externally-configured documents (see docs/legal-configuration.md) — it never contains legal
+    policy text of its own.
+-->
+<resources>
+    <string name="legal_title">Legal</string>
+    <string name="legal_privacy_policy_action">Privacy Policy</string>
+    <string name="legal_terms_of_use_action">Terms of Use</string>
+    <string name="legal_subscription_terms_action">Subscription Terms</string>
+    <string name="legal_open_source_licenses_action">Open-source licenses</string>
+
+    <string name="open_source_licenses_title">Open-source licenses</string>
+    <string name="open_source_licenses_intro">Togetherly is built with the following open-source software.</string>
+
+    <string name="about_title">About</string>
+    <string name="about_version_label">Version %1$s (%2$s)</string>
+    <string name="about_environment_debug_label">Debug build</string>
+    <string name="about_support_action">Contact support</string>
+    <string name="about_diagnostics_test_action">Send test diagnostic event</string>
+    <string name="about_diagnostics_test_sent">Test diagnostic event sent</string>
+    <string name="about_debug_telemetry_action">Open debug telemetry tools</string>
+</resources>
