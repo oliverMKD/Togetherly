@@ -18,12 +18,24 @@ plugins {
  * `linkDebugTestIosSimulatorArm64`/`linkDebugTestIosArm64` with undefined `swiftCompatibility56`/
  * `swiftCompatibilityConcurrency` symbols — the main app framework link is unaffected (it links
  * fine without this). Resolved via `xcode-select -p` rather than a hardcoded path, so this works
- * regardless of where a given machine's Xcode.app lives; `null` (no Xcode found) simply skips
- * adding the search path instead of failing configuration.
+ * regardless of where a given machine's Xcode.app lives.
+ *
+ * Only ever attempted on macOS: `xcode-select` doesn't exist on Linux/Windows at all, and a
+ * `providers.exec {}` call for a genuinely missing executable escapes `runCatching` once
+ * Configuration Cache is enabled (`org.gradle.configuration-cache=true`, this project's own
+ * `gradle.properties`) — the underlying `ValueSource` is obtained through Gradle's own internal
+ * machinery, outside this script's `runCatching` block's dynamic scope, so the exception surfaces
+ * as a build failure instead of being caught here. Confirmed by CI (Step 14.5.4): Linux runners
+ * failed configuring this module entirely until the OS check below was added. `null` (not macOS,
+ * or `xcode-select` failed/found nothing) simply skips adding the search path.
  */
-val xcodeSwiftLibraryPath: String? = runCatching {
-    providers.exec { commandLine("xcode-select", "-p") }.standardOutput.asText.get().trim()
-}.getOrNull()?.takeIf { it.isNotBlank() }
+val xcodeSwiftLibraryPath: String? = if (org.gradle.internal.os.OperatingSystem.current().isMacOsX) {
+    runCatching {
+        providers.exec { commandLine("xcode-select", "-p") }.standardOutput.asText.get().trim()
+    }.getOrNull()?.takeIf { it.isNotBlank() }
+} else {
+    null
+}
 
 kotlin {
     jvmToolchain(17)
