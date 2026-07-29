@@ -1,0 +1,66 @@
+name: Bug report
+description: Report something that isn't working correctly.
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for taking the time to report a bug.
+
+        **Please do not include, attach, or paste any of the following here** — this is a public
+        issue tracker:
+        - Family memory content (notes, reactions)
+        - Personal photos
+        - Voice recordings
+        - Purchase receipts or purchase tokens
+        - API keys, DSNs, or other configuration values
+        - Private/full crash logs — a short relevant excerpt is fine, but strip file paths,
+          device identifiers, and anything else specific to you first
+
+        If this is a **security vulnerability**, please use [private vulnerability reporting](../../security/advisories/new)
+        instead of a public issue — see [SECURITY.md](../../blob/main/SECURITY.md).
+  - type: input
+    id: platform
+    attributes:
+      label: Platform
+      description: Android or iOS, plus OS version and device/emulator model if known.
+      placeholder: "e.g. Android 15, Pixel 8"
+    validations:
+      required: true
+  - type: input
+    id: app-version
+    attributes:
+      label: App version
+      description: Found in Settings → About.
+      placeholder: "e.g. 1.0 (3)"
+    validations:
+      required: true
+  - type: textarea
+    id: repro-steps
+    attributes:
+      label: Reproduction steps
+      description: Numbered steps to reproduce, starting from a fresh app launch if relevant.
+      placeholder: |
+        1. Open the app
+        2. ...
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected result
+    validations:
+      required: true
+  - type: textarea
+    id: actual
+    attributes:
+      label: Actual result
+    validations:
+      required: true
+  - type: textarea
+    id: additional
+    attributes:
+      label: Additional context
+      description: Anything else useful — remember not to attach real memory content, photos, voice recordings, receipts, keys, or full crash logs (see the note above).
+    validations:
+      required: false

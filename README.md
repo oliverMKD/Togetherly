@@ -128,13 +128,13 @@ Togetherly is under active development and is **not yet published** to the App S
 Play. The core product flows described above — onboarding, daily quest, Explore, Quest Mode,
 completion memories, Journey, reminders, family preferences, local data deletion, Family Plus
 purchases, and consent-gated analytics/diagnostics — are implemented and tested on both platforms.
-Release tooling (CI, store listings, signing) is not yet set up.
+Pull requests are verified by CI (Android + Apple targets) — see [docs/ci.md](docs/ci.md). Release
+signing and store listings are not yet set up.
 
 ## Roadmap
 
 - Finish the debug-only telemetry verification tooling described in
   [docs/debug-telemetry.md](docs/debug-telemetry.md).
-- Add continuous integration.
 - Prepare Android/iOS release signing and store listings.
 
 ## Shipaton

@@ -1,0 +1,29 @@
+name: Feature request
+description: Suggest an idea or improvement.
+labels: ["enhancement"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for the suggestion. Please don't include real family/memory content, photos, voice
+        recordings, receipts, or API keys/DSNs here — this is a public issue tracker.
+  - type: textarea
+    id: problem
+    attributes:
+      label: What problem would this solve?
+      description: What's missing or awkward today?
+    validations:
+      required: true
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Proposed solution
+      description: What would you like to happen? Sketches/mockups welcome.
+    validations:
+      required: false
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Alternatives considered
+    validations:
+      required: false
