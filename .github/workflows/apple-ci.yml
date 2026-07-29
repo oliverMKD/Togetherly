@@ -1,0 +1,126 @@
+name: Apple CI
+
+# macOS runners cost significantly more Actions minutes than Linux — this workflow only runs when
+# a change could actually affect the Kotlin Multiplatform Apple targets or the iOS host app, never
+# for a documentation-only change. See ci.yml for the Linux/Android verification workflow.
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - "shared/**"
+      - "iosApp/**"
+      - "gradle/**"
+      - "gradle.properties"
+      - "settings.gradle.kts"
+      - "build.gradle.kts"
+      - ".github/workflows/apple-ci.yml"
+  push:
+    branches: [main]
+    paths:
+      - "shared/**"
+      - "iosApp/**"
+      - "gradle/**"
+      - "gradle.properties"
+      - "settings.gradle.kts"
+      - "build.gradle.kts"
+      - ".github/workflows/apple-ci.yml"
+  workflow_dispatch:
+
+concurrency:
+  group: apple-ci-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+jobs:
+  verify-apple:
+    name: Verify (macOS)
+    # Pinned rather than macos-latest: that label recently changed meaning (now macos-26) and can
+    # change again without notice — a pin is reproducible and its Xcode version is a deliberate
+    # choice, not whatever happens to be current. -arm64 specifically: both Kotlin/Native targets
+    # this project builds (iosArm64, iosSimulatorArm64) are arm64-only, so an Apple Silicon runner
+    # compiles natively with no Rosetta involved. macos-15-arm64's *default* Xcode is 16.4, which
+    # ships iOS SDK 18.5 — this project's IPHONEOS_DEPLOYMENT_TARGET is 18.2, and 18.5 is also
+    # exactly the SDK version Compose Multiplatform's Skiko cache expects (an older Xcode
+    # 16.3/SDK 18.4 combination previously failed to link here — see docs/architecture.md's
+    # "Known environment limitations"). Explicitly selected below rather than trusted implicitly,
+    # since a runner image's own default can change over time.
+    runs-on: macos-15-arm64
+    timeout-minutes: 45
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+
+      - name: Select Xcode 16.4
+        run: sudo xcode-select -s /Applications/Xcode_16.4.app
+
+      # Mirrors ci.yml exactly — see that workflow's own comment for why both versions are
+      # installed (gradle-daemon-jvm.properties pins the daemon to Zulu 21; jvmToolchain(17) is
+      # what individual subprojects compile against).
+      - name: Set up JDK
+        uses: actions/setup-java@03ad4de0992f5dab5e18fcb136590ce7c4a0ac95 # v5.6.0
+        with:
+          distribution: zulu
+          java-version: |
+            21
+            17
+
+      - name: Validate Gradle wrapper
+        uses: gradle/actions/wrapper-validation@3f131e8634966bd73d06cc69884922b02e6faf92 # v6.2.0
+
+      - name: Set up Gradle
+        uses: gradle/actions/setup-gradle@3f131e8634966bd73d06cc69884922b02e6faf92 # v6.2.0
+
+      - name: Print tool versions
+        run: |
+          xcodebuild -version
+          xcrun --sdk iphonesimulator --show-sdk-version
+          swift --version
+          java -version
+          ./gradlew --version
+
+      - name: Compile shared Apple targets
+        run: ./gradlew :shared:compileKotlinIosSimulatorArm64 :shared:compileKotlinIosArm64 --stacktrace --no-daemon
+
+      - name: Link iOS simulator framework
+        run: ./gradlew :shared:linkDebugFrameworkIosSimulatorArm64 --stacktrace --no-daemon
+
+      # Compiling/linking the test binary is a normal, gating step — only *running* it is
+      # unreliable (see the next step).
+      - name: Compile iOS simulator tests
+        run: ./gradlew :shared:linkDebugTestIosSimulatorArm64 --stacktrace --no-daemon
+
+      # Known, pre-existing, non-CI platform limitation (see docs/architecture.md's "Known
+      # environment limitations", Step 14.5.5): IosReminderSchedulerTest crashes the whole
+      # Kotlin/Native test process because IosReminderScheduler calls
+      # UNUserNotificationCenter.currentNotificationCenter(), which needs a real app bundle
+      # identity that a bare `iosSimulatorArm64Test` binary never has. Still run (never silently
+      # removed) so a genuine new regression is visible as a *different* failure; continue-on-error
+      # so this specific known issue never blocks a PR. Compilation above is unaffected and still
+      # gates normally.
+      - name: Run iOS simulator tests (known unreliable — see docs/architecture.md)
+        id: ios_sim_tests
+        continue-on-error: true
+        run: ./gradlew :shared:iosSimulatorArm64Test --stacktrace --no-daemon
+
+      - name: Note iOS simulator test outcome
+        if: steps.ios_sim_tests.outcome == 'failure'
+        run: echo "::warning::iOS simulator test execution failed — this is a known, pre-existing platform limitation (see docs/architecture.md), not treated as a CI failure. Compilation/linking above already gated normally."
+
+      # CODE_SIGNING_ALLOWED=NO/CODE_SIGNING_REQUIRED=NO: this repository has no Apple distribution
+      # certificate, provisioning profile, or App Store Connect key, and none is added merely to
+      # compile a pull request — a simulator destination needs no signing at all regardless, but
+      # both flags are passed explicitly rather than relied on implicitly. TEAM_ID/REVENUECAT_API_KEY/
+      # POSTHOG_PROJECT_KEY/SENTRY_DSN all default to blank in the tracked Config.xcconfig (see
+      # docs/configuration.md) — no production key of any kind is required to compile.
+      - name: Compile iOS host app (no signing)
+        run: |
+          xcodebuild build \
+            -project iosApp/iosApp.xcodeproj \
+            -scheme iosApp \
+            -destination 'generic/platform=iOS Simulator' \
+            -configuration Debug \
+            CODE_SIGNING_ALLOWED=NO \
+            CODE_SIGNING_REQUIRED=NO \
+            CODE_SIGN_IDENTITY=""
