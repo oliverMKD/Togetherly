@@ -1,6 +1,8 @@
 # Continuous Integration & Repository Automation (Step 14.5.4–14.5.6)
 
 What runs on every pull request, why it's shaped this way, and what's intentionally out of scope.
+For the full operational guide — local equivalents, required-check/branch-protection design, fork
+PR security, and a troubleshooting runbook — see [docs/continuous-integration.md](continuous-integration.md).
 
 ## 1. Workflows
 
