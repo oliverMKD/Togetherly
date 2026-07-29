@@ -1,29 +1,19 @@
 name: Apple CI
 
-# macOS runners cost significantly more Actions minutes than Linux — this workflow only runs when
-# a change could actually affect the Kotlin Multiplatform Apple targets or the iOS host app, never
-# for a documentation-only change. See ci.yml for the Linux/Android verification workflow.
+# macOS runners cost significantly more Actions minutes than Linux — the heavy verify-apple job
+# below only runs when a change could actually affect the Kotlin Multiplatform Apple targets or the
+# iOS host app. The workflow itself, however, always triggers (no path filter on `on:`): a required
+# status check pointed at a workflow that a path filter can prevent from running at all would leave
+# the PR permanently "Expected — waiting for status to be reported" for anything that never touches
+# those paths (e.g. a documentation-only PR). Path-based skipping instead happens inside the `gate`
+# job via a plain `git diff`, so the workflow always reports a real conclusion for verify-apple
+# (either it ran, or GitHub records it as "skipped" — which satisfies a required status check). See
+# docs/continuous-integration.md for the full required-checks design.
 on:
   pull_request:
     branches: [main]
-    paths:
-      - "shared/**"
-      - "iosApp/**"
-      - "gradle/**"
-      - "gradle.properties"
-      - "settings.gradle.kts"
-      - "build.gradle.kts"
-      - ".github/workflows/apple-ci.yml"
   push:
     branches: [main]
-    paths:
-      - "shared/**"
-      - "iosApp/**"
-      - "gradle/**"
-      - "gradle.properties"
-      - "settings.gradle.kts"
-      - "build.gradle.kts"
-      - ".github/workflows/apple-ci.yml"
   workflow_dispatch:
 
 concurrency:
@@ -34,8 +24,52 @@ permissions:
   contents: read
 
 jobs:
+  gate:
+    name: Detect Apple-relevant changes
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    outputs:
+      apple: ${{ steps.filter.outputs.apple }}
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          fetch-depth: 0
+
+      # SHAs and event names from the `github.event`/`github.` context are not attacker-controlled
+      # free text (unlike e.g. a PR title or body) — passed via `env:` regardless, to keep the
+      # pattern consistent with the rest of this repository's workflows.
+      - name: Determine changed paths
+        id: filter
+        env:
+          EVENT_NAME: ${{ github.event_name }}
+          BASE_SHA: ${{ github.event.pull_request.base.sha }}
+          HEAD_SHA: ${{ github.event.pull_request.head.sha || github.sha }}
+          PUSH_BEFORE: ${{ github.event.before }}
+        run: |
+          set -euo pipefail
+          if [ "$EVENT_NAME" = "pull_request" ]; then
+            RANGE="$BASE_SHA...$HEAD_SHA"
+          elif [ "$EVENT_NAME" = "push" ] && [ -n "$PUSH_BEFORE" ] && [ "$PUSH_BEFORE" != "0000000000000000000000000000000000000000" ]; then
+            RANGE="$PUSH_BEFORE...$HEAD_SHA"
+          else
+            echo "Non-comparable event ($EVENT_NAME) — running the full Apple verification to be safe."
+            echo "apple=true" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+          echo "Diffing $RANGE"
+          CHANGED=$(git diff --name-only "$RANGE")
+          echo "$CHANGED"
+          if echo "$CHANGED" | grep -qE '^(shared/|iosApp/|gradle/|gradle\.properties|settings\.gradle\.kts|build\.gradle\.kts|\.github/workflows/apple-ci\.yml)'; then
+            echo "apple=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "apple=false" >> "$GITHUB_OUTPUT"
+          fi
+
   verify-apple:
     name: Verify (macOS)
+    needs: gate
+    if: needs.gate.outputs.apple == 'true'
     # Pinned rather than macos-latest: that label recently changed meaning (now macos-26) and can
     # change again without notice — a pin is reproducible and its Xcode version is a deliberate
     # choice, not whatever happens to be current. -arm64 specifically: both Kotlin/Native targets
