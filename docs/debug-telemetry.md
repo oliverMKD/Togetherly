@@ -2,8 +2,9 @@
 
 Documents the debug-only tooling that makes analytics, consent, and diagnostics verifiable during
 development, built on top of `docs/telemetry.md`'s consent model and `docs/analytics-setup.md`/
-`docs/sentry-setup.md`'s provider setup. This file only documents what's actually implemented
-today — see [Not yet implemented](#not-yet-implemented) at the bottom for the rest of Step 14.6.
+`docs/sentry-setup.md`'s provider setup. See
+[Build-time validation, offline behavior, and manual testing](#build-time-validation-offline-behavior-and-manual-testing)
+at the bottom for the rest of Step 14.6.
 
 ## Reaching the debug screen
 
@@ -84,19 +85,25 @@ never retains any event content). It compares each `capture`/`captureHandledExce
 id's own last-seen timestamp; a repeat within 500ms logs a warning suggesting a Compose
 recomposition or a repeated collector error — it never suppresses or deduplicates the actual call.
 
-## Not yet implemented
+## Build-time validation, offline behavior, and manual testing
 
-Step 14.6 also specifies build-time validation and manual-testing documentation that do not exist
-yet — do not assume any of the following are wired up:
+Step 14.6's remaining scope — all now implemented:
 
-- No automated check exists yet that production code never references debug telemetry UI, that
-  feature code never depends directly on PostHog/Sentry types, that event names are unique or
-  snake_case, or that every production event appears in `docs/analytics-event-taxonomy.md`. No
-  generated event catalogue exists.
-- No dedicated offline-behavior test suite exists yet (the underlying architecture is offline-first
-  by construction — Room-backed consent storage, no network dependency for consent changes — but
-  this hasn't been captured as its own explicit test suite).
-- No manual test checklist doc exists yet for the fresh-install / consent-combination / offline /
-  missing-key scenarios Step 14.6 calls for.
-
-These remain open follow-up work, not something this file should describe as done.
+- **Build validation checks**: `BuildValidationChecksTest` (`androidHostTest`) confirms production
+  code (`commonMain`) never imports `com.togetherly.feature.debug` outside DI/navigation wiring,
+  that `feature/**` never imports a PostHog/Sentry SDK type directly, and that every non-debug
+  event in `TelemetryEventRegistry` appears in `docs/analytics-event-taxonomy.md`.
+  `TelemetryEventRegistryValidationTest` (`commonTest`) confirms every registered event/property
+  name is snake_case; `TelemetryEventRegistry.schemas` itself now `require`s unique event names at
+  construction time (fails fast, not a silent `associateBy` collision). No generated event
+  catalogue exists — these are validation checks against the hand-maintained registry, not a
+  codegen step.
+- **Offline-behavior test suite**: `TelemetryOfflineBehaviorTest` (`core/telemetry`) covers the
+  analytics/diagnostics provider side (`NoOpProductAnalytics`/`NoOpOperationalDiagnostics` never
+  throw and need no network; `TelemetryCoordinator` keeps working across a full consent lifecycle
+  even with an unavailable provider). `TelemetryConsentOfflineBehaviorTest` (`data/telemetry`)
+  covers the consent-persistence side (a local storage I/O failure in `TelemetryConsentCache` never
+  propagates; in-memory consent state stays correct regardless).
+- **Manual test checklist**: `docs/telemetry-manual-test-checklist.md` — fresh-install, offline,
+  missing-key, and consent-state scenarios, including an explicit note that no consent-toggle UI
+  exists yet (only `NotAsked`/`NotAsked` is currently reachable through the app itself).
