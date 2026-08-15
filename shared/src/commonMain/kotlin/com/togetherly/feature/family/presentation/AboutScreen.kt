@@ -25,6 +25,7 @@ import togetherly.shared.generated.resources.about_environment_debug_label
 import togetherly.shared.generated.resources.about_support_action
 import togetherly.shared.generated.resources.about_title
 import togetherly.shared.generated.resources.about_version_label
+import togetherly.shared.generated.resources.ds_component_back_content_description
 
 @Composable
 internal fun AboutScreen(
@@ -40,7 +41,7 @@ internal fun AboutScreen(
                 navigationIcon = {
                     TogetherlyIconButton(
                         icon = { Text("‹", style = MaterialTheme.togetherlyTypography.headlineM) },
-                        contentDescription = "Back",
+                        contentDescription = stringResource(Res.string.ds_component_back_content_description),
                         onClick = { onAction(AboutAction.BackClicked) },
                     )
                 },

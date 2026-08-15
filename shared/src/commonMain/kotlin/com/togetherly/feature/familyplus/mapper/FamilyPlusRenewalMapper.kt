@@ -1,5 +1,6 @@
 package com.togetherly.feature.familyplus.mapper
 
+import com.togetherly.core.datetime.localizedDateDisplay
 import com.togetherly.core.ui.UiText
 import com.togetherly.domain.purchase.AccessSource
 import com.togetherly.domain.purchase.FamilyAccess
@@ -24,12 +25,6 @@ fun FamilyAccess.toRenewalInfo(timeZone: TimeZone): UiText? = when {
     else -> UiText.Resource(Res.string.familyplus_ends_on, listOf(expiresAt.toReadableDate(timeZone)))
 }
 
-private val MONTH_NAMES = listOf(
-    "January", "February", "March", "April", "May", "June",
-    "July", "August", "September", "October", "November", "December",
-)
-
 private fun Instant.toReadableDate(timeZone: TimeZone): String {
-    val date = toLocalDateTime(timeZone).date
-    return "${MONTH_NAMES[date.month.ordinal]} ${date.day}, ${date.year}"
+    return toLocalDateTime(timeZone).localizedDateDisplay()
 }

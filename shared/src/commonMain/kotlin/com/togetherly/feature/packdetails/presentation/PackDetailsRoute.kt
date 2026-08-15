@@ -39,16 +39,19 @@ import com.togetherly.feature.explore.presentation.ExploreQuestCard
 import com.togetherly.feature.packdetails.model.ContentAccessState
 import com.togetherly.feature.packdetails.model.PackDetailsUiState
 import com.togetherly.feature.today.presentation.color
+import org.jetbrains.compose.resources.pluralStringResource
 import org.jetbrains.compose.resources.stringResource
 import org.koin.compose.viewmodel.koinViewModel
 import org.koin.core.parameter.parametersOf
 import togetherly.shared.generated.resources.Res
 import togetherly.shared.generated.resources.explore_pack_free
 import togetherly.shared.generated.resources.explore_pack_premium
+import togetherly.shared.generated.resources.explore_pack_quest_count
 import togetherly.shared.generated.resources.packdetails_choose_quest_action
 import togetherly.shared.generated.resources.packdetails_included_quests_title
 import togetherly.shared.generated.resources.packdetails_locked_explanation
 import togetherly.shared.generated.resources.packdetails_unlock_action
+import togetherly.shared.generated.resources.ds_component_back_content_description
 
 private val PACK_HERO_HEIGHT = 120.dp
 
@@ -91,7 +94,7 @@ internal fun PackDetailsScreen(
                 navigationIcon = {
                     TogetherlyIconButton(
                         icon = { Text("‹", style = MaterialTheme.togetherlyTypography.headlineM) },
-                        contentDescription = "Back",
+                        contentDescription = stringResource(Res.string.ds_component_back_content_description),
                         onClick = { onAction(PackDetailsAction.BackClicked) },
                     )
                 },
@@ -154,7 +157,7 @@ private fun PackDetailsContent(
                 )
                 Text(text = "•", style = MaterialTheme.togetherlyTypography.labelL, color = colors.foregroundSecondary)
                 Text(
-                    text = "${quests.size}",
+                    text = pluralStringResource(Res.plurals.explore_pack_quest_count, quests.size, quests.size),
                     style = MaterialTheme.togetherlyTypography.labelL,
                     color = colors.foregroundSecondary,
                 )

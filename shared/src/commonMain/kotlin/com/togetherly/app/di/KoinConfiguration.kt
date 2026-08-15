@@ -1,10 +1,15 @@
 package com.togetherly.app.di
 
 import com.togetherly.app.application.AppConfiguration
+import com.togetherly.core.coroutines.AppDispatchers
 import com.togetherly.core.logging.AppLogger
 import com.togetherly.core.telemetry.TelemetryCoordinator
 import com.togetherly.data.purchase.RevenueCatAnalyticsLinker
 import com.togetherly.data.purchase.RevenueCatConfigurator
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Job
+import kotlinx.coroutines.SupervisorJob
+import kotlinx.coroutines.launch
 import org.koin.core.KoinApplication
 import org.koin.core.context.startKoin
 import org.koin.core.logger.Level
@@ -26,11 +31,10 @@ private const val TAG = "KoinConfiguration"
  * entire app at startup — RevenueCat initialization must never be a hard dependency for Togetherly
  * to launch.
  *
- * [TelemetryCoordinator.start] runs the same way, right after — also `getOrNull` (a missing binding
- * degrades to no telemetry rather than a crash) and additionally wrapped in [runCatching], since
- * unlike [RevenueCatConfigurator.configure] this one has an explicit "handles initialization
- * failure without affecting app startup" requirement (see that class's own KDoc) that must hold
- * even for a failure this function's own caller could never see coming.
+ * Telemetry providers and the RevenueCat analytics bridge are resolved and started on the default
+ * dispatcher after the required purchase setup. Provider SDK setup can involve disk access and
+ * native SDK work, so it must neither extend the platform entry point's critical path nor make a
+ * provider failure affect app startup.
  */
 fun initKoin(
     appConfiguration: AppConfiguration,
@@ -45,17 +49,26 @@ fun initKoin(
 
     application.koin.getOrNull<RevenueCatConfigurator>()?.configure(debug = appConfiguration.debug)
 
-    runCatching {
-        application.koin.getOrNull<TelemetryCoordinator>()?.start()
-    }.onFailure {
-        application.koin.getOrNull<AppLogger>()?.warn(TAG, "Telemetry coordinator failed to start", it)
-    }
-
-    runCatching {
-        application.koin.getOrNull<RevenueCatAnalyticsLinker>()?.start()
-    }.onFailure {
-        application.koin.getOrNull<AppLogger>()?.warn(TAG, "RevenueCat analytics linker failed to start", it)
-    }
+    val startupScope = CoroutineScope(SupervisorJob() + application.koin.get<AppDispatchers>().default)
+    launchTelemetryStartup(
+        scope = startupScope,
+        startTelemetry = { application.koin.getOrNull<TelemetryCoordinator>()?.start() },
+        startRevenueCatAnalyticsLinker = { application.koin.getOrNull<RevenueCatAnalyticsLinker>()?.start() },
+        logFailure = { message, throwable -> application.koin.getOrNull<AppLogger>()?.warn(TAG, message, throwable) },
+    )
 
     return application
+}
+
+/** Launches optional startup integrations without putting their resolution or setup on the caller's critical path. */
+internal fun launchTelemetryStartup(
+    scope: CoroutineScope,
+    startTelemetry: () -> Unit,
+    startRevenueCatAnalyticsLinker: () -> Unit,
+    logFailure: (String, Throwable) -> Unit,
+): Job = scope.launch {
+    runCatching(startTelemetry).onFailure { logFailure("Telemetry coordinator failed to start", it) }
+    runCatching(startRevenueCatAnalyticsLinker).onFailure {
+        logFailure("RevenueCat analytics linker failed to start", it)
+    }
 }

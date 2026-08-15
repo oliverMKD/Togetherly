@@ -5,6 +5,7 @@ import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.platform.app.InstrumentationRegistry
 import com.togetherly.core.coroutines.TestAppDispatchers
 import com.togetherly.core.result.DataResult
+import com.togetherly.core.telemetry.FakeOperationalDiagnostics
 import com.togetherly.data.local.database.TogetherlyDatabase
 import com.togetherly.data.local.database.buildTogetherlyDatabase
 import com.togetherly.data.local.mapper.ActiveQuestSessionMapper
@@ -48,17 +49,25 @@ internal class RoomMemoryCleanerTest {
         completionDao = database.completionDao(),
         database = database,
         dispatchers = dispatchers,
+        diagnostics = FakeOperationalDiagnostics(),
     )
 
     private fun completionRepository() =
-        RoomCompletionRepository(database.completionDao(), ActiveQuestSessionMapper(), QuestCompletionMapper(), database, dispatchers)
+        RoomCompletionRepository(
+            completionDao = database.completionDao(),
+            activeQuestSessionMapper = ActiveQuestSessionMapper(),
+            completionMapper = QuestCompletionMapper(),
+            database = database,
+            dispatchers = dispatchers,
+            diagnostics = FakeOperationalDiagnostics(),
+        )
 
     @Test
     fun clearsNoteAndMediaButKeepsTheCompletionRowAndReactions() = runTest {
-        completionRepository().saveCompletion(
+            completionRepository().saveCompletion(
             testQuestCompletion(
                 note = MemoryNote("Best day ever"),
-                reactions = setOf(FamilyReaction.LOVE),
+                reactions = setOf(FamilyReaction.LOVED_IT),
                 media = listOf(testPhotoMedia(), testVoiceMedia()),
             ),
         )

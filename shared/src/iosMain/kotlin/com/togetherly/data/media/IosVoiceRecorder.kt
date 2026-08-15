@@ -8,6 +8,7 @@ import com.togetherly.core.error.ValidationError
 import com.togetherly.core.id.IdGenerator
 import com.togetherly.core.result.DataResult
 import com.togetherly.domain.completion.PendingMediaReference
+import com.togetherly.data.platform.protectComplete
 import kotlinx.cinterop.ExperimentalForeignApi
 import kotlinx.coroutines.CancellationException
 import kotlinx.coroutines.CoroutineScope
@@ -137,6 +138,7 @@ internal class IosVoiceRecorder(
                 )
                 audioRecorder.delegate = recorderDelegate
                 audioRecorder.record()
+                protectComplete(absolutePath)
 
                 recorder = audioRecorder
                 delegate = recorderDelegate

@@ -22,6 +22,7 @@ import com.togetherly.core.id.SequentialIdGenerator
 import com.togetherly.core.notification.FakeReminderScheduler
 import com.togetherly.core.notification.ReminderScheduler
 import com.togetherly.core.result.DataResult
+import com.togetherly.core.telemetry.FakeProductAnalytics
 import com.togetherly.designsystem.theme.TogetherlyTheme
 import com.togetherly.domain.completion.repository.CompletionRepository
 import com.togetherly.domain.completion.repository.FakeCompletionRepository
@@ -39,6 +40,7 @@ import com.togetherly.domain.family.usecase.CreateFamilyProfile
 import com.togetherly.domain.purchase.AccessSnapshot
 import com.togetherly.domain.purchase.FamilyAccess
 import com.togetherly.domain.purchase.QuestAccessPolicy
+import com.togetherly.domain.purchase.repository.FakeCustomerAttributesRepository
 import com.togetherly.domain.purchase.repository.FakeEntitlementRepository
 import com.togetherly.domain.quest.repository.FakeQuestRepository
 import com.togetherly.domain.quest.validFamilyQuest
@@ -54,6 +56,7 @@ import com.togetherly.feature.today.presentation.TodayViewModel
 import com.togetherly.data.media.PendingMediaOrphanCleaner
 import com.togetherly.integration.testFamilyProfile
 import com.togetherly.navigation.state.BootstrapViewModel
+import com.togetherly.navigation.shell.RequestedTabStore
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flowOf
 import kotlinx.coroutines.runBlocking
@@ -97,6 +100,8 @@ internal class TogetherlyNavHostTest {
             override suspend fun deleteExpiredPending(now: Instant, thresholdAge: kotlin.time.Duration) =
                 DataResult.Success(0)
         }
+        val productAnalytics = FakeProductAnalytics().apply { setCollectionEnabled(true) }
+        val customerAttributesRepository = FakeCustomerAttributesRepository()
 
         return module {
             single { repository }
@@ -107,9 +112,12 @@ internal class TogetherlyNavHostTest {
             single<CompletionRepository> { completionRepository }
             single<PendingMediaOrphanCleaner> { pendingMediaOrphanCleaner }
             single<ReminderScheduler> { FakeReminderScheduler() }
-            factory { BootstrapViewModel(get(), get(), get(), get()) }
+            single { RequestedTabStore() }
+            single { productAnalytics }
+            single { customerAttributesRepository }
+            factory { BootstrapViewModel(get(), get(), get(), get(), get()) }
             factory { CreateFamilyProfile(get(), get(), get()) }
-            factory { OnboardingViewModel(get()) }
+            factory { OnboardingViewModel(get(), get(), get()) }
             factory {
                 GetOrSelectDailyQuest(
                     repository, questRepository, dailyQuestRepository, recommendationPolicy,
@@ -129,7 +137,7 @@ internal class TogetherlyNavHostTest {
                 )
             }
             factory { SetQuestSaved(savedQuestRepository, questRepository, clock) }
-            factory { TodayViewModel(get(), get(), get(), get(), get(), get(), get(), get(), get()) }
+            factory { TodayViewModel(get(), get(), get(), get(), get(), get(), get(), get(), get(), get()) }
         }
     }
 

@@ -4,8 +4,12 @@
 <dict>
 	<key>CADisableMinimumFrameDurationOnPhone</key>
 	<true/>
+	<key>CFBundleDisplayName</key>
+	<string>Togetherly</string>
 	<key>NSMicrophoneUsageDescription</key>
 	<string>Togetherly uses your microphone only when you choose to record a voice memory for a completed quest. The recording stays stored privately on this device with your family's memories.</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>Togetherly uses your photo library only when you choose a photo memory for a completed quest. The selected photo stays stored privately on this device with your family's memories.</string>
 	<key>REVENUECAT_API_KEY</key>
 	<string>$(REVENUECAT_API_KEY)</string>
 	<key>POSTHOG_PROJECT_KEY</key>

@@ -5,6 +5,7 @@ import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.platform.app.InstrumentationRegistry
 import com.togetherly.core.coroutines.TestAppDispatchers
 import com.togetherly.core.result.DataResult
+import com.togetherly.core.telemetry.FakeOperationalDiagnostics
 import com.togetherly.data.completion.RoomCompletionRepository
 import com.togetherly.data.daily.RoomDailyQuestRepository
 import com.togetherly.data.local.database.TogetherlyDatabase
@@ -56,18 +57,43 @@ internal class RoomQuestHistoryCleanerTest {
         completionDao = database.completionDao(),
         database = database,
         dispatchers = dispatchers,
+        diagnostics = FakeOperationalDiagnostics(),
     )
 
     private suspend fun seedEverything() {
-        RoomFamilyRepository(database.familyDao(), FamilyProfileMapper(), database, dispatchers)
+        RoomFamilyRepository(
+            familyDao = database.familyDao(),
+            familyMapper = FamilyProfileMapper(),
+            database = database,
+            dispatchers = dispatchers,
+            diagnostics = FakeOperationalDiagnostics(),
+        )
             .saveProfile(testFamilyProfile())
-        RoomDailyQuestRepository(database.dailyQuestDao(), DailyQuestMapper(), DismissedQuestMapper(), dispatchers).apply {
+        RoomDailyQuestRepository(
+            dailyQuestDao = database.dailyQuestDao(),
+            dailyQuestMapper = DailyQuestMapper(),
+            dismissedQuestMapper = DismissedQuestMapper(),
+            dispatchers = dispatchers,
+            diagnostics = FakeOperationalDiagnostics(),
+        ).apply {
             saveDailyQuest(testDailyQuest(localDate = LocalDate(2026, 7, 24)))
             recordDismissal(testDismissedQuest())
         }
-        RoomSavedQuestRepository(database.savedQuestDao(), SavedQuestMapper(), dispatchers)
+        RoomSavedQuestRepository(
+            savedQuestDao = database.savedQuestDao(),
+            mapper = SavedQuestMapper(),
+            dispatchers = dispatchers,
+            diagnostics = FakeOperationalDiagnostics(),
+        )
             .save(testSavedQuest())
-        RoomCompletionRepository(database.completionDao(), ActiveQuestSessionMapper(), QuestCompletionMapper(), database, dispatchers)
+        RoomCompletionRepository(
+            completionDao = database.completionDao(),
+            activeQuestSessionMapper = ActiveQuestSessionMapper(),
+            completionMapper = QuestCompletionMapper(),
+            database = database,
+            dispatchers = dispatchers,
+            diagnostics = FakeOperationalDiagnostics(),
+        )
             .apply {
                 saveActiveSession(testActiveQuestSession())
                 saveCompletion(testQuestCompletion())

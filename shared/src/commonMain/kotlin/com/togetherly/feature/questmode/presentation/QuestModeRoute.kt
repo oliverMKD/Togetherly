@@ -3,11 +3,15 @@ package com.togetherly.feature.questmode.presentation
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.saveable.rememberSaveable
+import androidx.compose.runtime.setValue
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.togetherly.core.feedback.KeepScreenOnEffect
 import com.togetherly.core.feedback.QuestFeedbackController
 import com.togetherly.domain.completion.CompletionId
 import com.togetherly.feature.questmode.model.QuestTimerUi
+import kotlinx.coroutines.flow.Flow
 import org.koin.compose.koinInject
 import org.koin.compose.viewmodel.koinViewModel
 import org.koin.core.parameter.parametersOf
@@ -44,26 +48,53 @@ fun QuestModeRoute(
         viewModel.onAction(QuestModeAction.ScreenStarted)
     }
 
-    LaunchedEffect(viewModel) {
-        viewModel.events.collect { event ->
+    QuestModeRouteEffects(
+        completionId = completionId,
+        events = viewModel.events,
+        feedbackController = feedbackController,
+        onNavigateBack = onNavigateBack,
+        onNavigateToToday = onNavigateToToday,
+        onNavigateToCompletion = onNavigateToCompletion,
+        onTimerFinished = onTimerFinished,
+    )
+
+    KeepScreenOnEffect(enabled = shouldKeepScreenOn(state))
+
+    QuestModeScreen(state = state, onAction = viewModel::onAction)
+}
+
+@Composable
+internal fun QuestModeRouteEffects(
+    completionId: CompletionId,
+    events: Flow<QuestModeEvent>,
+    feedbackController: QuestFeedbackController,
+    onNavigateBack: () -> Unit,
+    onNavigateToToday: () -> Unit,
+    onNavigateToCompletion: (CompletionId) -> Unit,
+    onTimerFinished: () -> Unit,
+) {
+    var timerFinishedHandled by rememberSaveable(completionId.value) { mutableStateOf(false) }
+    var completionNavigationHandled by rememberSaveable(completionId.value) { mutableStateOf(false) }
+
+    LaunchedEffect(events) {
+        events.collect { event ->
             when (event) {
                 QuestModeEvent.NavigateBack -> onNavigateBack()
                 QuestModeEvent.NavigateToToday -> onNavigateToToday()
-                is QuestModeEvent.NavigateToCompletion -> {
+                is QuestModeEvent.NavigateToCompletion -> if (!completionNavigationHandled) {
+                    completionNavigationHandled = true
                     feedbackController.questCompleted()
                     onNavigateToCompletion(event.completionId)
                 }
                 QuestModeEvent.TimerFinished -> {
+                    if (timerFinishedHandled) return@collect
+                    timerFinishedHandled = true
                     feedbackController.timerFinished()
                     onTimerFinished()
                 }
             }
         }
     }
-
-    KeepScreenOnEffect(enabled = shouldKeepScreenOn(state))
-
-    QuestModeScreen(state = state, onAction = viewModel::onAction)
 }
 
 /**

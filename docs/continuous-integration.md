@@ -10,6 +10,7 @@ table and repository label list, see [docs/ci.md](ci.md).
 |---|---|---|
 | `ci.yml` | `pull_request`/`push` to `main`, `workflow_dispatch` | No path filter — always runs. |
 | `apple-ci.yml` | `pull_request`/`push` to `main`, `workflow_dispatch` | No path filter either, but see §2 — the expensive job is gated internally. |
+| `release-readiness.yml` | `pull_request`/`push` to `main`, `workflow_dispatch` | Internal gate job keeps the workflow visible on unrelated PRs while only running the release-specific Android/iOS checks when the change touches release-relevant paths. |
 | `dependency-review.yml` | `pull_request` to `main` | No path filter. |
 | CodeQL (default setup) | GitHub-managed, not a workflow file | Runs on `push` to `main` and on `pull_request`, per GitHub's own default-setup schedule. |
 
@@ -58,6 +59,14 @@ The `main` branch ruleset requires two status checks:
 - `Verify (Linux)` (`ci.yml`) — always runs.
 - `Verify (macOS)` (`apple-ci.yml`) — runs or is skipped, per §3, but always reports.
 
+`release-readiness.yml` is the release-focused supplement. It is not currently a required check in
+branch protection, but it is designed to be added there later without rewriting the workflow:
+wrapper validation, formatting sanity checks, release compilation, database migration testing, and
+stable Apple release verification all live there.
+
+Dependency Review remains a separate security check, and GitHub's server-side secret scanning /
+push protection remains the secret-scan mechanism for this repository.
+
 Both must be **up to date with `main`** (`strict_required_status_checks_policy: true`) before
 merging — GitHub's "Update branch" button (or `gh pr merge --rebase`/a manual merge-from-main) is
 enough to satisfy this after `main` moves.
@@ -76,6 +85,8 @@ Every CI check has a direct local command:
 ./gradlew :shared:testAndroidHostTest                     # common + Android unit tests
 ./gradlew :shared:compileCommonMainKotlinMetadata          # commonMain compile check
 ./gradlew :androidApp:assembleDebug                        # Android debug build
+./gradlew :androidApp:assembleRelease                      # Android release build
+./gradlew :shared:connectedAndroidDeviceTest --tests com.togetherly.data.local.database.TogetherlyDatabaseMigrationTest
 ./gradlew :shared:compileKotlinIosSimulatorArm64 :shared:compileKotlinIosArm64   # Apple compile
 ./gradlew :shared:linkDebugFrameworkIosSimulatorArm64       # iOS simulator framework link
 ./gradlew :shared:iosSimulatorArm64Test                     # iOS unit tests (see §10)
@@ -145,6 +156,10 @@ Check whether it's the known `IosReminderSchedulerTest` / `UNUserNotificationCen
 `docs/architecture.md`'s "Known environment limitations") — that step runs with
 `continue-on-error: true` specifically because of this pre-existing platform limitation, and does
 not block the PR. Any *other* iOS test failure is a real regression and should be treated as one.
+
+`release-readiness.yml` runs the same test without `continue-on-error` after the adapter fix made
+the native unit test deterministic. If that workflow fails now, treat it as a regression rather than
+the older harness crash.
 
 **A required check never appears at all.**
 Confirm the job's `name:` in the workflow YAML still matches the name registered in the ruleset's

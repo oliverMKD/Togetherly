@@ -7,6 +7,7 @@ import com.togetherly.core.coroutines.TestAppDispatchers
 import com.togetherly.core.error.AppError
 import com.togetherly.core.error.StorageError
 import com.togetherly.core.result.DataResult
+import com.togetherly.core.telemetry.FakeOperationalDiagnostics
 import com.togetherly.data.local.completion.ACTIVE_QUEST_SESSION_SLOT_ID
 import com.togetherly.data.local.completion.ActiveQuestSessionEntity
 import com.togetherly.data.local.database.TogetherlyDatabase
@@ -45,6 +46,7 @@ internal class RoomCompletionRepositoryContractTest : CompletionRepositoryContra
         completionMapper = QuestCompletionMapper(),
         database = database,
         dispatchers = TestAppDispatchers(UnconfinedTestDispatcher()),
+        diagnostics = FakeOperationalDiagnostics(),
     )
 
     /**

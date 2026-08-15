@@ -4,6 +4,7 @@ import com.togetherly.core.coroutines.TestAppDispatchers
 import com.togetherly.core.error.AppError
 import com.togetherly.core.error.StorageError
 import com.togetherly.core.error.ValidationError
+import com.togetherly.core.id.IdGenerator
 import com.togetherly.core.id.SequentialIdGenerator
 import com.togetherly.core.result.DataResult
 import com.togetherly.core.telemetry.FakeOperationalDiagnostics
@@ -19,7 +20,10 @@ import org.junit.Test
 import java.io.File
 import kotlin.test.assertEquals
 import kotlin.test.assertFalse
+import kotlin.test.assertNotEquals
 import kotlin.test.assertTrue
+import kotlin.time.Duration.Companion.hours
+import kotlin.time.Duration.Companion.seconds
 import kotlin.time.Instant
 
 private val COMPLETION_ID = CompletionId("completion-1")
@@ -102,6 +106,34 @@ class AndroidPrivateMediaStorageTest {
     }
 
     @Test
+    fun duplicatePendingPhotoFilenamesAreCollisionSafe() = runTest {
+        val collisionStorage = storageWithIdGenerator(FixedIdGenerator("collision"))
+
+        val first = (collisionStorage.createPendingPhoto(FakePhotoImportSource) as DataResult.Success).value
+        val second = (collisionStorage.createPendingPhoto(FakePhotoImportSource) as DataResult.Success).value
+
+        assertNotEquals(first.reference.value, second.reference.value)
+        assertTrue(File(mediaRoot.rootPath(), first.reference.value).exists())
+        assertTrue(File(mediaRoot.rootPath(), second.reference.value).exists())
+    }
+
+    @Test
+    fun interruptedPhotoCommitCleansUpThePartialFileAndKeepsThePendingDraft() = runTest {
+        val pending = (storage.createPendingPhoto(FakePhotoImportSource) as DataResult.Success).value
+        val blockedTarget = File(mediaRoot.rootPath(), "completions/completion-1/photo-media-1.jpg")
+        blockedTarget.parentFile?.mkdirs()
+        blockedTarget.mkdirs()
+
+        val result = storage.commitPhoto(pending.reference, COMPLETION_ID, MemoryMediaId("media-1"))
+
+        assertTrue(result is DataResult.Error)
+        assertTrue(result.error is AppError.Storage)
+        assertEquals(StorageError.WRITE_FAILED, (result.error as AppError.Storage).reason)
+        assertFalse(blockedTarget.exists())
+        assertTrue(File(mediaRoot.rootPath(), pending.reference.value).exists())
+    }
+
+    @Test
     fun thumbnailFailureCleansUpTheJustWrittenPhotoAndPreservesThePendingFile() = runTest {
         val pendingResult = storage.createPendingPhoto(FakePhotoImportSource)
         val pending = (pendingResult as DataResult.Success).value
@@ -113,6 +145,22 @@ class AndroidPrivateMediaStorageTest {
         assertEquals(DataResult.Error(error), result)
         assertFalse(File(mediaRoot.rootPath(), "completions/completion-1/photo-media-1.jpg").exists())
         assertTrue(File(mediaRoot.rootPath(), pending.reference.value).exists())
+    }
+
+    @Test
+    fun commitVoiceWritesThePendingBytesAndDeletesTheDraft() = runTest {
+        val pendingFile = File(mediaRoot.rootPath(), "pending/pending-voice.m4a").apply {
+            parentFile?.mkdirs()
+            writeBytes(byteArrayOf(4, 5, 6))
+        }
+        val pending = PendingMediaReference("pending/pending-voice.m4a")
+
+        val result = storage.commitVoice(pending, COMPLETION_ID, MemoryMediaId("voice-1"), 7.seconds)
+
+        val committed = (result as DataResult.Success).value
+        assertEquals(MediaReference("completions/completion-1/voice-voice-1.m4a"), committed.reference)
+        assertTrue(File(mediaRoot.rootPath(), committed.reference.value).exists())
+        assertFalse(pendingFile.exists())
     }
 
     @Test
@@ -162,6 +210,31 @@ class AndroidPrivateMediaStorageTest {
     }
 
     @Test
+    fun deletingOneCommittedMemoryLeavesTheOtherAndEventuallyRemovesTheDirectory() = runTest {
+        val pendingPhoto = (storage.createPendingPhoto(FakePhotoImportSource) as DataResult.Success).value
+        val photo = (storage.commitPhoto(pendingPhoto.reference, COMPLETION_ID, MemoryMediaId("media-1")) as DataResult.Success).value
+
+        val pendingVoiceFile = File(mediaRoot.rootPath(), "pending/pending-voice.m4a").apply {
+            parentFile?.mkdirs()
+            writeBytes(byteArrayOf(8, 9, 10))
+        }
+        val voice = (storage.commitVoice(PendingMediaReference("pending/pending-voice.m4a"), COMPLETION_ID, MemoryMediaId("voice-1"), 3.seconds) as DataResult.Success).value
+
+        assertTrue(File(mediaRoot.rootPath(), photo.reference.value).exists())
+        assertTrue(File(mediaRoot.rootPath(), voice.reference.value).exists())
+
+        assertEquals(DataResult.Success(Unit), storage.deleteCommitted(photo.reference))
+        assertFalse(File(mediaRoot.rootPath(), photo.reference.value).exists())
+        assertTrue(File(mediaRoot.rootPath(), voice.reference.value).exists())
+
+        assertEquals(DataResult.Success(Unit), storage.deleteCommitted(voice.reference))
+        assertFalse(File(mediaRoot.rootPath(), voice.reference.value).exists())
+        assertFalse(File(mediaRoot.rootPath(), "completions/completion-1").exists())
+
+        assertEquals(DataResult.Success(Unit), storage.deleteCommitted(voice.reference))
+    }
+
+    @Test
     fun pathTraversalIsRejectedBeforeTouchingTheFilesystem() = runTest {
         val traversalReference = MediaReference("completions/../../outside.jpg")
 
@@ -184,16 +257,37 @@ class AndroidPrivateMediaStorageTest {
         val recent = (storage.createPendingPhoto(FakePhotoImportSource) as DataResult.Success).value
         val oldFile = File(mediaRoot.rootPath(), old.reference.value)
         val recentFile = File(mediaRoot.rootPath(), recent.reference.value)
+        val oldSidecar = File(mediaRoot.rootPath(), "${old.reference.value}.dims")
+        val recentSidecar = File(mediaRoot.rootPath(), "${recent.reference.value}.dims")
         val now = Instant.parse("2026-06-15T12:00:00Z")
         oldFile.setLastModified(now.toEpochMilliseconds() - 25.hoursInMillis())
+        oldSidecar.setLastModified(now.toEpochMilliseconds() - 25.hoursInMillis())
         recentFile.setLastModified(now.toEpochMilliseconds() - 1.hoursInMillis())
+        recentSidecar.setLastModified(now.toEpochMilliseconds() - 1.hoursInMillis())
 
         val result = storage.deleteExpiredPending(now)
 
-        assertEquals(DataResult.Success(1), result)
+        assertEquals(DataResult.Success(2), result)
         assertFalse(oldFile.exists())
+        assertFalse(oldSidecar.exists())
         assertTrue(recentFile.exists())
+        assertTrue(recentSidecar.exists())
     }
 
     private fun Int.hoursInMillis(): Long = this * 60L * 60L * 1000L
+
+    private fun storageWithIdGenerator(idGenerator: IdGenerator): AndroidPrivateMediaStorage =
+        AndroidPrivateMediaStorage(
+            mediaRoot = mediaRoot,
+            photoImporter = photoImporter,
+            imageNormalizer = imageNormalizer,
+            thumbnailGenerator = thumbnailGenerator,
+            idGenerator = idGenerator,
+            dispatchers = TestAppDispatchers(Dispatchers.Unconfined),
+            diagnostics = FakeOperationalDiagnostics(),
+        )
+
+    private class FixedIdGenerator(private val id: String) : IdGenerator {
+        override fun generate(): String = id
+    }
 }

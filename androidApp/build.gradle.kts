@@ -1,4 +1,5 @@
 import org.jetbrains.kotlin.gradle.dsl.JvmTarget
+import java.io.File
 import java.util.Properties
 
 plugins {
@@ -68,7 +69,8 @@ android {
     }
     buildTypes {
         release {
-            isMinifyEnabled = false
+            isMinifyEnabled = true
+            isShrinkResources = true
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
@@ -83,4 +85,128 @@ android {
         compose = true
         buildConfig = true
     }
+}
+
+val verifyAndroidBackupPolicy = tasks.register("verifyAndroidBackupPolicy") {
+    group = "verification"
+    description = "Verifies the Android backup posture is disabled and the declared XML rules exclude all user data storage domains."
+
+    val manifestFile = layout.projectDirectory.file("src/main/AndroidManifest.xml")
+    val fullBackupRulesFile = layout.projectDirectory.file("src/main/res/xml/backup_rules.xml")
+    val dataExtractionRulesFile = layout.projectDirectory.file("src/main/res/xml/data_extraction_rules.xml")
+
+    inputs.files(manifestFile, fullBackupRulesFile, dataExtractionRulesFile)
+
+    doLast {
+        fun assertExcludedRules(file: File, expectedRules: Set<Pair<String, String>>) {
+            val pattern = Regex("""<exclude\s+domain="([^"]+)"\s+path="([^"]+)"\s*/?>""")
+            val text = file.readText()
+            val actualRules = buildSet {
+                pattern.findAll(text).forEach { match ->
+                    add(match.groupValues[1] to match.groupValues[2])
+                }
+            }
+            check(actualRules == expectedRules) {
+                "Unexpected backup exclusions in ${file.name}: expected=$expectedRules actual=$actualRules"
+            }
+            check(!text.contains("<include")) {
+                "Backup rules in ${file.name} must not include any data."
+            }
+        }
+
+        val manifestText = manifestFile.asFile.readText()
+        check(manifestText.contains("""android:allowBackup="false"""")) {
+            "android:allowBackup must be false for release builds."
+        }
+        check(manifestText.contains("""android:fullBackupContent="@xml/backup_rules"""")) {
+            "android:fullBackupContent must point at @xml/backup_rules."
+        }
+        check(manifestText.contains("""android:dataExtractionRules="@xml/data_extraction_rules"""")) {
+            "android:dataExtractionRules must point at @xml/data_extraction_rules."
+        }
+
+        val expectedRules = setOf(
+            "root" to "./",
+            "file" to "./",
+            "database" to "togetherly.db",
+            "database" to "togetherly.db-wal",
+            "database" to "togetherly.db-shm",
+            "external" to "./",
+            "device_root" to "./",
+            "device_file" to "./",
+            "device_database" to "togetherly.db",
+            "device_database" to "togetherly.db-wal",
+            "device_database" to "togetherly.db-shm",
+        )
+        assertExcludedRules(fullBackupRulesFile.asFile, expectedRules)
+
+        val dataExtractionText = dataExtractionRulesFile.asFile.readText()
+        fun excludedRules(blockName: String): Set<Pair<String, String>> {
+            val blockPattern = Regex("""<$blockName>(.*?)</$blockName>""", setOf(RegexOption.DOT_MATCHES_ALL))
+            val block = blockPattern.find(dataExtractionText)?.groupValues?.get(1)
+                ?: error("Could not find <$blockName> in ${dataExtractionRulesFile.asFile.name}")
+            return buildSet {
+                Regex("""<exclude\s+domain="([^"]+)"\s+path="([^"]+)"\s*/?>""")
+                    .findAll(block)
+                    .forEach { match -> add(match.groupValues[1] to match.groupValues[2]) }
+            }
+        }
+        check(excludedRules("cloud-backup") == expectedRules) {
+            "Unexpected cloud-backup exclusions in ${dataExtractionRulesFile.asFile.name}"
+        }
+        check(excludedRules("device-transfer") == expectedRules) {
+            "Unexpected device-transfer exclusions in ${dataExtractionRulesFile.asFile.name}"
+        }
+    }
+}
+
+val verifyAndroidReleaseConfiguration = tasks.register("verifyAndroidReleaseConfiguration") {
+    group = "verification"
+    description = "Verifies the Android release build posture: minification, shrinking, manifest flags, and explicit cleartext denial."
+
+    val manifestFile = layout.projectDirectory.file("src/main/AndroidManifest.xml")
+    val proguardRulesFile = layout.projectDirectory.file("proguard-rules.pro")
+    val releaseBuildType = android.buildTypes.getByName("release")
+    val releaseMinifyEnabled = releaseBuildType.isMinifyEnabled
+    val releaseShrinkResources = releaseBuildType.isShrinkResources
+
+    inputs.files(manifestFile, proguardRulesFile)
+
+    doLast {
+        check(releaseMinifyEnabled) {
+            "Release builds must enable R8/minification."
+        }
+        check(releaseShrinkResources) {
+            "Release builds must enable resource shrinking."
+        }
+
+        val manifestText = manifestFile.asFile.readText()
+        check(manifestText.contains("""android:allowBackup="false"""")) {
+            "Release builds must disable backup."
+        }
+        check(manifestText.contains("""android:usesCleartextTraffic="false"""")) {
+            "android:usesCleartextTraffic must be explicitly false in release."
+        }
+        check(manifestText.contains("""android:icon="@mipmap/ic_launcher"""")) {
+            "Release builds must keep the app icon."
+        }
+        check(manifestText.contains("""android:roundIcon="@mipmap/ic_launcher_round"""")) {
+            "Release builds must keep the round icon."
+        }
+        check(manifestText.contains("""android:label="@string/app_name"""")) {
+            "Release builds must keep the application label."
+        }
+
+        val proguardRulesText = proguardRulesFile.asFile.readText()
+        check(proguardRulesText.contains("kotlinx.serialization")) {
+            "ProGuard rules must preserve Kotlin serialization metadata."
+        }
+        check(proguardRulesText.contains("androidx.room")) {
+            "ProGuard rules must preserve Room metadata or explicitly document why the dependency rules are sufficient."
+        }
+    }
+}
+
+tasks.named("check") {
+    dependsOn(verifyAndroidBackupPolicy, verifyAndroidReleaseConfiguration)
 }

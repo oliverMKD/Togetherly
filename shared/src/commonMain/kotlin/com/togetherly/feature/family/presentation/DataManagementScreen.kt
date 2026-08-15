@@ -49,6 +49,7 @@ import togetherly.shared.generated.resources.data_management_reset_quest_history
 import togetherly.shared.generated.resources.data_management_reset_quest_history_description
 import togetherly.shared.generated.resources.data_management_title
 import togetherly.shared.generated.resources.ds_component_dismiss
+import togetherly.shared.generated.resources.ds_component_back_content_description
 
 @Composable
 internal fun DataManagementScreen(
@@ -64,7 +65,7 @@ internal fun DataManagementScreen(
                 navigationIcon = {
                     TogetherlyIconButton(
                         icon = { Text("‹", style = MaterialTheme.togetherlyTypography.headlineM) },
-                        contentDescription = "Back",
+                        contentDescription = stringResource(Res.string.ds_component_back_content_description),
                         onClick = { onAction(DataManagementAction.BackClicked) },
                     )
                 },

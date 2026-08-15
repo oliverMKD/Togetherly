@@ -47,6 +47,7 @@ import togetherly.shared.generated.resources.quest_preferences_preparation_title
 import togetherly.shared.generated.resources.quest_preferences_reset_action
 import togetherly.shared.generated.resources.quest_preferences_save_action
 import togetherly.shared.generated.resources.quest_preferences_title
+import togetherly.shared.generated.resources.ds_component_back_content_description
 
 @Composable
 internal fun QuestPreferencesScreen(
@@ -62,7 +63,7 @@ internal fun QuestPreferencesScreen(
                 navigationIcon = {
                     TogetherlyIconButton(
                         icon = { Text("‹", style = MaterialTheme.togetherlyTypography.headlineM) },
-                        contentDescription = "Back",
+                        contentDescription = stringResource(Res.string.ds_component_back_content_description),
                         onClick = { onAction(QuestPreferencesAction.BackClicked) },
                     )
                 },

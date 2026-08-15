@@ -7,6 +7,7 @@ import com.togetherly.core.coroutines.TestAppDispatchers
 import com.togetherly.core.error.AppError
 import com.togetherly.core.error.ContentError
 import com.togetherly.core.result.DataResult
+import com.togetherly.core.telemetry.FakeOperationalDiagnostics
 import com.togetherly.data.completion.RoomCompletionRepository
 import com.togetherly.data.local.completion.CompletionDao
 import com.togetherly.data.local.completion.QuestCompletionWithDetails
@@ -54,10 +55,11 @@ internal class RoomJourneyRepositoryTest {
         completionRepository = RoomCompletionRepository(
             completionDao = database.completionDao(),
             activeQuestSessionMapper = ActiveQuestSessionMapper(),
-            completionMapper = QuestCompletionMapper(),
-            database = database,
-            dispatchers = TestAppDispatchers(UnconfinedTestDispatcher()),
-        )
+        completionMapper = QuestCompletionMapper(),
+        database = database,
+        dispatchers = TestAppDispatchers(UnconfinedTestDispatcher()),
+        diagnostics = FakeOperationalDiagnostics(),
+    )
         questRepository = FakeQuestRepository()
     }
 
@@ -71,6 +73,7 @@ internal class RoomJourneyRepositoryTest {
         questRepository = quests,
         completionMapper = QuestCompletionMapper(),
         dispatchers = TestAppDispatchers(UnconfinedTestDispatcher()),
+        diagnostics = FakeOperationalDiagnostics(),
     )
 
     @Test
@@ -126,6 +129,7 @@ internal class RoomJourneyRepositoryTest {
             questRepository = questRepository,
             completionMapper = QuestCompletionMapper(),
             dispatchers = TestAppDispatchers(UnconfinedTestDispatcher()),
+            diagnostics = FakeOperationalDiagnostics(),
         )
 
         val result = failingRepository.getJourney()

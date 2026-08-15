@@ -10,6 +10,7 @@ import com.togetherly.core.result.runCatchingData
 import com.togetherly.core.telemetry.DiagnosticContext
 import com.togetherly.core.telemetry.OperationalDiagnostics
 import com.togetherly.core.telemetry.toDiagnosticThrowable
+import com.togetherly.data.platform.protectComplete
 import com.togetherly.domain.completion.CompletionId
 import com.togetherly.domain.completion.MediaReference
 import com.togetherly.domain.completion.MemoryMediaId
@@ -74,6 +75,7 @@ internal class IosPrivateMediaStorage(
         )
         val written = fileManager.createFileAtPath(path, contents = bytes.toNSData(), attributes = null)
         check(written) { "Could not write to $path" }
+        protectComplete(path)
     }
 
     private fun readBytes(relativeReference: String): ByteArray? {

@@ -8,6 +8,7 @@ import com.togetherly.core.coroutines.TestAppDispatchers
 import com.togetherly.core.error.AppError
 import com.togetherly.core.error.ValidationError
 import com.togetherly.core.result.DataResult
+import com.togetherly.core.telemetry.FakeOperationalDiagnostics
 import com.togetherly.data.local.database.TogetherlyDatabase
 import com.togetherly.data.local.database.buildTogetherlyDatabase
 import com.togetherly.data.local.mapper.FamilyProfileMapper
@@ -64,6 +65,7 @@ internal class RoomFamilySettingsRepositoryTest {
         familyMapper = FamilyProfileMapper(),
         database = db,
         dispatchers = TestAppDispatchers(UnconfinedTestDispatcher()),
+        diagnostics = FakeOperationalDiagnostics(),
     )
 
     private fun settingsRepository(db: TogetherlyDatabase = database) = RoomFamilySettingsRepository(
@@ -71,6 +73,7 @@ internal class RoomFamilySettingsRepositoryTest {
         familyMapper = FamilyProfileMapper(),
         clock = TestAppClock(NOW),
         dispatchers = TestAppDispatchers(UnconfinedTestDispatcher()),
+        diagnostics = FakeOperationalDiagnostics(),
     )
 
     @Test

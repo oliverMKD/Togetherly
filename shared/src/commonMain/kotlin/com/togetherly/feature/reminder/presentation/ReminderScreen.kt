@@ -20,6 +20,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import com.togetherly.core.datetime.localizedTimeDisplay
 import com.togetherly.core.notification.NotificationPermissionState
 import com.togetherly.core.ui.asString
 import com.togetherly.designsystem.component.button.TogetherlyIconButton
@@ -57,11 +58,12 @@ import togetherly.shared.generated.resources.reminder_permission_denied_explanat
 import togetherly.shared.generated.resources.reminder_permission_granted
 import togetherly.shared.generated.resources.reminder_permission_not_determined
 import togetherly.shared.generated.resources.reminder_permission_not_required
-import togetherly.shared.generated.resources.reminder_permission_status_label
+import togetherly.shared.generated.resources.reminder_permission_status
 import togetherly.shared.generated.resources.reminder_save_action
 import togetherly.shared.generated.resources.reminder_time_label
 import togetherly.shared.generated.resources.reminder_time_selected
 import togetherly.shared.generated.resources.reminder_title
+import togetherly.shared.generated.resources.ds_component_back_content_description
 
 @Composable
 internal fun ReminderScreen(
@@ -77,7 +79,7 @@ internal fun ReminderScreen(
                 navigationIcon = {
                     TogetherlyIconButton(
                         icon = { Text("‹", style = MaterialTheme.togetherlyTypography.headlineM) },
-                        contentDescription = "Back",
+                        contentDescription = stringResource(Res.string.ds_component_back_content_description),
                         onClick = { onAction(ReminderAction.BackClicked) },
                     )
                 },
@@ -178,7 +180,7 @@ private fun PermissionStatusSection(
 ) {
     Column(modifier = modifier.fillMaxWidth(), verticalArrangement = Arrangement.spacedBy(MaterialTheme.togetherlySpacing.xs)) {
         Text(
-            text = stringResource(Res.string.reminder_permission_status_label) + ": " + state.permissionState.label(),
+            text = stringResource(Res.string.reminder_permission_status, state.permissionState.label()),
             style = MaterialTheme.togetherlyTypography.bodyS,
             color = MaterialTheme.togetherlyColors.foregroundSecondary,
         )
@@ -214,7 +216,7 @@ private fun ReminderTimePicker(time: LocalTime?, onTimeChanged: (LocalTime) -> U
     var showDialog by remember { mutableStateOf(false) }
 
     TogetherlySecondaryButton(
-        label = time?.let { stringResource(Res.string.reminder_time_selected, it.formatted()) }
+        label = time?.let { stringResource(Res.string.reminder_time_selected, it.localizedTimeDisplay()) }
             ?: stringResource(Res.string.reminder_choose_time),
         onClick = { showDialog = true },
     )
@@ -238,9 +240,6 @@ private fun ReminderTimePicker(time: LocalTime?, onTimeChanged: (LocalTime) -> U
         }
     }
 }
-
-private fun LocalTime.formatted(): String =
-    "${hour.toString().padStart(2, '0')}:${minute.toString().padStart(2, '0')}"
 
 @Composable
 private fun ReminderDiscardDialog(onAction: (ReminderAction) -> Unit) {

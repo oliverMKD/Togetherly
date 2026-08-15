@@ -1,10 +1,9 @@
 package com.togetherly.data.media
 
 import com.togetherly.data.local.database.applicationSupportDirectoryPath
+import com.togetherly.data.platform.protectComplete
 import kotlinx.cinterop.ExperimentalForeignApi
 import platform.Foundation.NSFileManager
-import platform.Foundation.NSURL
-import platform.Foundation.NSURLIsExcludedFromBackupKey
 
 /**
  * `<Application Support>/media` — never Documents (user-visible) and never a public Photos-library
@@ -24,7 +23,7 @@ internal class IosPrivateMediaRoot : PrivateMediaRoot {
             attributes = null,
             error = null,
         )
-        NSURL.fileURLWithPath(directory).setResourceValue(true, forKey = NSURLIsExcludedFromBackupKey, error = null)
+        protectComplete(directory, excludeFromBackup = true)
         return directory
     }
 }

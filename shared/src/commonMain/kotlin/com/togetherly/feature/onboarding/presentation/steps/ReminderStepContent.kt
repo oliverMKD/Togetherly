@@ -15,6 +15,7 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
+import com.togetherly.core.datetime.localizedTimeDisplay
 import com.togetherly.designsystem.component.button.TogetherlySecondaryButton
 import com.togetherly.designsystem.component.button.TogetherlyTextButton
 import com.togetherly.designsystem.component.selection.TogetherlyChipFlowRow
@@ -110,7 +111,7 @@ private fun ReminderTimePicker(time: LocalTime?, onTimeChanged: (LocalTime) -> U
     var showDialog by remember { mutableStateOf(false) }
 
     TogetherlySecondaryButton(
-        label = time?.let { stringResource(Res.string.onboarding_reminder_time_selected, it.formatted()) }
+        label = time?.let { stringResource(Res.string.onboarding_reminder_time_selected, it.localizedTimeDisplay()) }
             ?: stringResource(Res.string.onboarding_reminder_choose_time),
         onClick = { showDialog = true },
     )
@@ -137,6 +138,3 @@ private fun ReminderTimePicker(time: LocalTime?, onTimeChanged: (LocalTime) -> U
         }
     }
 }
-
-private fun LocalTime.formatted(): String =
-    "${hour.toString().padStart(2, '0')}:${minute.toString().padStart(2, '0')}"

@@ -35,6 +35,7 @@ import togetherly.shared.generated.resources.privacy_restore_purchases_title
 import togetherly.shared.generated.resources.privacy_title
 import togetherly.shared.generated.resources.privacy_uninstall_body
 import togetherly.shared.generated.resources.privacy_uninstall_title
+import togetherly.shared.generated.resources.ds_component_back_content_description
 
 private data class PrivacySection(val title: StringResource, val body: StringResource)
 
@@ -62,7 +63,7 @@ internal fun PrivacyScreen(
                 navigationIcon = {
                     TogetherlyIconButton(
                         icon = { Text("‹", style = MaterialTheme.togetherlyTypography.headlineM) },
-                        contentDescription = "Back",
+                        contentDescription = stringResource(Res.string.ds_component_back_content_description),
                         onClick = { onAction(PrivacyAction.BackClicked) },
                     )
                 },

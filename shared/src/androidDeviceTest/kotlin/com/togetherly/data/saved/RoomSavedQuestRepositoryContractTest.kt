@@ -4,6 +4,7 @@ import androidx.room.Room
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.platform.app.InstrumentationRegistry
 import com.togetherly.core.coroutines.TestAppDispatchers
+import com.togetherly.core.telemetry.FakeOperationalDiagnostics
 import com.togetherly.data.local.database.TogetherlyDatabase
 import com.togetherly.data.local.database.buildTogetherlyDatabase
 import com.togetherly.data.local.mapper.SavedQuestMapper
@@ -34,5 +35,6 @@ internal class RoomSavedQuestRepositoryContractTest : SavedQuestRepositoryContra
         savedQuestDao = database.savedQuestDao(),
         mapper = SavedQuestMapper(),
         dispatchers = TestAppDispatchers(UnconfinedTestDispatcher()),
+        diagnostics = FakeOperationalDiagnostics(),
     )
 }

@@ -6,6 +6,7 @@ import androidx.test.platform.app.InstrumentationRegistry
 import app.cash.turbine.test
 import com.togetherly.core.coroutines.TestAppDispatchers
 import com.togetherly.core.result.DataResult
+import com.togetherly.core.telemetry.FakeOperationalDiagnostics
 import com.togetherly.data.local.database.TogetherlyDatabase
 import com.togetherly.data.local.database.buildTogetherlyDatabase
 import com.togetherly.data.local.mapper.ActiveQuestSessionMapper
@@ -47,6 +48,7 @@ internal class CompletionRepositoryIntegrationTest {
         completionMapper = QuestCompletionMapper(),
         database = database,
         dispatchers = TestAppDispatchers(UnconfinedTestDispatcher()),
+        diagnostics = FakeOperationalDiagnostics(),
     )
 
     @Test

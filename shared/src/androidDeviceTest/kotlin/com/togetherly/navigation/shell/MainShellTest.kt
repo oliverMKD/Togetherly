@@ -8,6 +8,7 @@ import androidx.test.ext.junit.runners.AndroidJUnit4
 import com.togetherly.core.datetime.AppClock
 import com.togetherly.core.datetime.AppTimeZoneProvider
 import com.togetherly.core.datetime.TestAppClock
+import com.togetherly.core.telemetry.FakeProductAnalytics
 import com.togetherly.designsystem.theme.TogetherlyTheme
 import com.togetherly.domain.completion.repository.CompletionRepository
 import com.togetherly.domain.completion.repository.FakeCompletionRepository
@@ -31,6 +32,7 @@ import com.togetherly.domain.explore.usecase.SearchQuestsUseCase
 import com.togetherly.domain.explore.usecase.ToggleSavedQuestUseCase
 import com.togetherly.domain.purchase.QuestAccessPolicy
 import com.togetherly.domain.purchase.repository.EntitlementRepository
+import com.togetherly.domain.purchase.repository.FakeCustomerAttributesRepository
 import com.togetherly.domain.purchase.repository.FakeEntitlementRepository
 import com.togetherly.domain.purchase.usecase.RestoreFamilyPlus
 import com.togetherly.domain.quest.repository.FakeQuestRepository
@@ -46,6 +48,7 @@ import com.togetherly.feature.explore.presentation.ExploreFilterStore
 import com.togetherly.feature.explore.presentation.ExploreViewModel
 import com.togetherly.feature.familyplus.presentation.FamilyPlusManagementViewModel
 import com.togetherly.feature.today.presentation.TodayViewModel
+import com.togetherly.navigation.shell.RequestedTabStore
 import kotlinx.datetime.TimeZone
 import org.junit.Test
 import org.junit.runner.RunWith
@@ -93,6 +96,8 @@ internal class MainShellTest {
         val timeZoneProvider = object : AppTimeZoneProvider {
             override fun current(): TimeZone = TimeZone.UTC
         }
+        val productAnalytics = FakeProductAnalytics().apply { setCollectionEnabled(true) }
+        val customerAttributesRepository = FakeCustomerAttributesRepository()
 
         return module {
             single<FamilyRepository> { familyRepository }
@@ -100,6 +105,8 @@ internal class MainShellTest {
             single<AppTimeZoneProvider> { timeZoneProvider }
             single<SavedQuestRepository> { savedQuestRepository }
             single<CompletionRepository> { completionRepository }
+            single { productAnalytics }
+            single { customerAttributesRepository }
             factory {
                 GetOrSelectDailyQuest(
                     familyRepository, questRepository, dailyQuestRepository, recommendationPolicy,
@@ -119,10 +126,11 @@ internal class MainShellTest {
                 )
             }
             factory { SetQuestSaved(savedQuestRepository, questRepository, clock) }
-            factory { TodayViewModel(get(), get(), get(), get(), get(), get(), get(), get(), get()) }
+            factory { TodayViewModel(get(), get(), get(), get(), get(), get(), get(), get(), get(), get()) }
+            single { RequestedTabStore() }
             single<EntitlementRepository> { entitlementRepository }
             factory { RestoreFamilyPlus(entitlementRepository) }
-            factory { FamilyPlusManagementViewModel(entitlementRepository, get(), get()) }
+            factory { FamilyPlusManagementViewModel(entitlementRepository, get(), get(), get()) }
             factory { ObserveExploreCatalogueUseCase(questRepository) }
             factory { SearchQuestsUseCase() }
             factory { FilterQuestsUseCase() }
@@ -131,7 +139,7 @@ internal class MainShellTest {
             factory { EvaluateQuestAccessUseCase(entitlementRepository, questAccessPolicy, clock) }
             factory { EvaluatePackAccessUseCase(entitlementRepository, questAccessPolicy, clock) }
             single { ExploreFilterStore() }
-            factory { ExploreViewModel(get(), get(), get(), get(), get(), get(), get(), get(), get()) }
+            factory { ExploreViewModel(get(), get(), get(), get(), get(), get(), get(), get(), get(), get()) }
         }
     }
 

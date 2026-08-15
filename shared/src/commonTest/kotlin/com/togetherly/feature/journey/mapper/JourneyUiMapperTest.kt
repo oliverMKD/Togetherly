@@ -34,8 +34,8 @@ class JourneyUiMapperTest {
 
         assertEquals(quest.title.value, entryUi.questTitle)
         assertEquals(QuestCategoryUi.MOVE, entryUi.category)
-        assertEquals("June 15, 2026", entryUi.completedDate)
-        assertEquals("9:05 AM", entryUi.completedTime)
+        assertEquals("Jun 15, 2026", entryUi.completedDate)
+        assertEquals("9:05 AM".normalizeLocaleSpacing(), entryUi.completedTime.normalizeLocaleSpacing())
     }
 
     @Test
@@ -119,4 +119,7 @@ class JourneyUiMapperTest {
     fun latestOrNullIsNullWhenNoMilestoneAchieved() {
         assertNull(emptySet<JourneyMilestone>().latestOrNull())
     }
+
+    private fun String.normalizeLocaleSpacing(): String =
+        replace('\u202F', ' ').replace('\u00A0', ' ')
 }

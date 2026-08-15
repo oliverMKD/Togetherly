@@ -1,0 +1,212 @@
+name: Release Readiness
+
+# This workflow adds release-focused verification without duplicating the existing CI jobs.
+# It intentionally keeps permissions read-only, never uses `pull_request_target`, and uses an
+# internal gate job instead of a workflow-level path filter so required checks can still report
+# `skipped` rather than disappearing entirely on unrelated PRs.
+on:
+  pull_request:
+    branches: [main]
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+concurrency:
+  group: release-readiness-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+jobs:
+  gate:
+    name: Detect release-relevant changes
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    outputs:
+      android: ${{ steps.filter.outputs.android }}
+      apple: ${{ steps.filter.outputs.apple }}
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          fetch-depth: 0
+
+      - name: Determine changed paths
+        id: filter
+        env:
+          EVENT_NAME: ${{ github.event_name }}
+          BASE_SHA: ${{ github.event.pull_request.base.sha }}
+          HEAD_SHA: ${{ github.event.pull_request.head.sha || github.sha }}
+          PUSH_BEFORE: ${{ github.event.before }}
+        run: |
+          set -euo pipefail
+          if [ "$EVENT_NAME" = "workflow_dispatch" ]; then
+            echo "Manual dispatch — running the full release verification."
+            echo "android=true" >> "$GITHUB_OUTPUT"
+            echo "apple=true" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+          if [ "$EVENT_NAME" = "pull_request" ]; then
+            RANGE="$BASE_SHA...$HEAD_SHA"
+          elif [ "$EVENT_NAME" = "push" ] && [ -n "$PUSH_BEFORE" ] && [ "$PUSH_BEFORE" != "0000000000000000000000000000000000000000" ]; then
+            RANGE="$PUSH_BEFORE...$HEAD_SHA"
+          else
+            echo "Non-comparable event ($EVENT_NAME) — running the full release verification to be safe."
+            echo "android=true" >> "$GITHUB_OUTPUT"
+            echo "apple=true" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+          echo "Diffing $RANGE"
+          CHANGED=$(git diff --name-only "$RANGE")
+          echo "$CHANGED"
+          if echo "$CHANGED" | grep -qE '^(androidApp/|shared/|gradle/|gradle\.properties|settings\.gradle\.kts|build\.gradle\.kts|\.github/workflows/release-readiness\.yml)'; then
+            echo "android=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "android=false" >> "$GITHUB_OUTPUT"
+          fi
+          if echo "$CHANGED" | grep -qE '^(shared/|iosApp/|gradle/|gradle\.properties|settings\.gradle\.kts|build\.gradle\.kts|\.github/workflows/release-readiness\.yml)'; then
+            echo "apple=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "apple=false" >> "$GITHUB_OUTPUT"
+          fi
+
+  verify-android-release:
+    name: Verify release (Android)
+    needs: gate
+    if: needs.gate.outputs.android == 'true'
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+
+      - name: Set up JDK
+        uses: actions/setup-java@03ad4de0992f5dab5e18fcb136590ce7c4a0ac95 # v5.6.0
+        with:
+          distribution: zulu
+          java-version: |
+            21
+            17
+
+      - name: Validate Gradle wrapper
+        uses: gradle/actions/wrapper-validation@3f131e8634966bd73d06cc69884922b02e6faf92 # v6.2.0
+
+      - name: Set up Gradle
+        uses: gradle/actions/setup-gradle@3f131e8634966bd73d06cc69884922b02e6faf92 # v6.2.0
+
+      - name: Formatting check
+        run: git diff --check
+
+      - name: Static analysis (Android Lint)
+        run: ./gradlew :androidApp:lintDebug --stacktrace --no-daemon
+
+      - name: Common tests, metadata, and catalogue validation
+        run: ./gradlew :shared:testAndroidHostTest --stacktrace --no-daemon
+
+      - name: Build Android debug variant
+        run: ./gradlew :androidApp:assembleDebug --stacktrace --no-daemon
+
+      - name: Build Android release variant
+        run: ./gradlew :androidApp:assembleRelease --stacktrace --no-daemon
+
+      - name: Verify debug-only code is not referenced from release sources
+        run: |
+          if rg -n "feature\.debug|DebugTelemetryScreen|FakePremium|TestPremium" \
+            androidApp/src/main shared/src/commonMain shared/src/androidMain shared/src/iosMain iosApp \
+            --glob '!shared/src/commonMain/kotlin/com/togetherly/feature/debug/**' \
+            --glob '!**/build/**'; then
+            echo "Release sources reference debug-only code."
+            exit 1
+          fi
+
+      - name: Start Android emulator
+        env:
+          ANDROID_SDK_ROOT: /usr/local/lib/android/sdk
+        run: |
+          set -euo pipefail
+          SDK_ROOT="${ANDROID_SDK_ROOT:-/usr/local/lib/android/sdk}"
+          SDKMANAGER="$SDK_ROOT/cmdline-tools/latest/bin/sdkmanager"
+          AVDMANAGER="$SDK_ROOT/cmdline-tools/latest/bin/avdmanager"
+          yes | "$SDKMANAGER" --licenses >/dev/null
+          "$SDKMANAGER" \
+            "platform-tools" \
+            "emulator" \
+            "platforms;android-36" \
+            "system-images;android-36;google_apis;x86_64"
+          echo "no" | "$AVDMANAGER" create avd \
+            --name togetherly_api36 \
+            --package "system-images;android-36;google_apis;x86_64" \
+            --device "pixel_6" \
+            --force
+          "$SDK_ROOT/emulator/emulator" \
+            -avd togetherly_api36 \
+            -no-window \
+            -no-audio \
+            -no-boot-anim \
+            -gpu swiftshader_indirect \
+            -no-snapshot \
+            -wipe-data &
+          "$SDK_ROOT/platform-tools/adb" wait-for-device
+          "$SDK_ROOT/platform-tools/adb" shell getprop sys.boot_completed | grep -m 1 "1"
+
+      - name: Run database migration tests
+        run: ./gradlew :shared:connectedAndroidDeviceTest --tests com.togetherly.data.local.database.TogetherlyDatabaseMigrationTest --stacktrace --no-daemon
+
+  verify-apple-release:
+    name: Verify release (Apple)
+    needs: gate
+    if: needs.gate.outputs.apple == 'true'
+    runs-on: macos-15-arm64
+    timeout-minutes: 60
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+
+      - name: Select Xcode 16.4
+        run: sudo xcode-select -s /Applications/Xcode_16.4.app
+
+      - name: Set up JDK
+        uses: actions/setup-java@03ad4de0992f5dab5e18fcb136590ce7c4a0ac95 # v5.6.0
+        with:
+          distribution: zulu
+          java-version: |
+            21
+            17
+
+      - name: Validate Gradle wrapper
+        uses: gradle/actions/wrapper-validation@3f131e8634966bd73d06cc69884922b02e6faf92 # v6.2.0
+
+      - name: Set up Gradle
+        uses: gradle/actions/setup-gradle@3f131e8634966bd73d06cc69884922b02e6faf92 # v6.2.0
+
+      - name: Print tool versions
+        run: |
+          xcodebuild -version
+          xcrun --sdk iphonesimulator --show-sdk-version
+          swift --version
+          java -version
+          ./gradlew --version
+
+      - name: Compile shared Apple targets
+        run: ./gradlew :shared:compileKotlinIosSimulatorArm64 :shared:compileKotlinIosArm64 --stacktrace --no-daemon
+
+      - name: Link iOS simulator framework
+        run: ./gradlew :shared:linkDebugFrameworkIosSimulatorArm64 --stacktrace --no-daemon
+
+      - name: Compile iOS simulator tests
+        run: ./gradlew :shared:linkDebugTestIosSimulatorArm64 --stacktrace --no-daemon
+
+      - name: Run iOS simulator tests
+        run: ./gradlew :shared:iosSimulatorArm64Test --stacktrace --no-daemon
+
+      - name: Compile iOS host app (release, no signing)
+        run: |
+          xcodebuild build \
+            -project iosApp/iosApp.xcodeproj \
+            -scheme iosApp \
+            -destination 'generic/platform=iOS' \
+            -configuration Release \
+            CODE_SIGNING_ALLOWED=NO \
+            CODE_SIGNING_REQUIRED=NO \
+            CODE_SIGN_IDENTITY=""

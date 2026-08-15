@@ -56,6 +56,24 @@ internal class AndroidPrivateMediaStorage(
         file.writeBytes(bytes)
     }
 
+    private fun deleteIfExists(relativeReference: String) {
+        File(absolutePath(relativeReference)).delete()
+    }
+
+    private fun uniquePendingPhotoRelativeReference(): String {
+        val baseId = idGenerator.generate()
+        var attempt = 0
+        while (true) {
+            val id = if (attempt == 0) baseId else "$baseId-$attempt"
+            val candidate = PrivateMediaPaths.pendingPhotoRelativeReference(id)
+            val file = File(absolutePath(candidate))
+            if (!file.exists() && !File(absolutePath(PrivateMediaPaths.dimensionsSidecarReference(candidate))).exists()) {
+                return candidate
+            }
+            attempt++
+        }
+    }
+
     private fun decodeBounds(bytes: ByteArray): Pair<Int, Int> {
         val options = BitmapFactory.Options().apply { inJustDecodeBounds = true }
         BitmapFactory.decodeByteArray(bytes, 0, bytes.size, options)
@@ -102,16 +120,32 @@ internal class AndroidPrivateMediaStorage(
                 is DataResult.Error -> return@withContext result
                 is DataResult.Success -> result.value
             }
-            runCatchingMediaStorage {
-                val relativeReference = PrivateMediaPaths.pendingPhotoRelativeReference(idGenerator.generate())
+            var relativeReference: String? = null
+            try {
+                relativeReference = uniquePendingPhotoRelativeReference()
                 writeBytes(relativeReference, normalized.bytes)
                 writeDimensionsSidecar(relativeReference, normalized.width, normalized.height)
-                PendingPhoto(
-                    reference = PendingMediaReference(relativeReference),
-                    width = normalized.width,
-                    height = normalized.height,
-                    sizeBytes = normalized.bytes.size.toLong(),
+                DataResult.Success(
+                    PendingPhoto(
+                        reference = PendingMediaReference(relativeReference),
+                        width = normalized.width,
+                        height = normalized.height,
+                        sizeBytes = normalized.bytes.size.toLong(),
+                    ),
                 )
+            } catch (cancellation: CancellationException) {
+                relativeReference?.let {
+                    deleteIfExists(it)
+                    deleteIfExists(PrivateMediaPaths.dimensionsSidecarReference(it))
+                }
+                throw cancellation
+            } catch (t: Throwable) {
+                relativeReference?.let {
+                    deleteIfExists(it)
+                    deleteIfExists(PrivateMediaPaths.dimensionsSidecarReference(it))
+                }
+                diagnostics.captureHandledException(t, PRIVATE_MEDIA_STORAGE_CONTEXT)
+                DataResult.Error(AppError.Storage(StorageError.WRITE_FAILED, t))
             }
         }
 
@@ -153,15 +187,13 @@ internal class AndroidPrivateMediaStorage(
 
         val photoRelative = PrivateMediaPaths.photoRelativeReference(completionId, mediaId)
         val thumbRelative = PrivateMediaPaths.thumbnailRelativeReference(completionId, mediaId)
-        var photoWritten = false
 
         try {
             writeBytes(photoRelative, bytes)
-            photoWritten = true
 
             val thumbnailBytes = when (val result = thumbnailGenerator.generateThumbnail(bytes)) {
                 is DataResult.Error -> {
-                    File(absolutePath(photoRelative)).delete()
+                    deleteIfExists(photoRelative)
                     return@withContext result
                 }
                 is DataResult.Success -> result.value
@@ -181,12 +213,12 @@ internal class AndroidPrivateMediaStorage(
                 ),
             )
         } catch (cancellation: CancellationException) {
-            if (photoWritten) File(absolutePath(photoRelative)).delete()
-            File(absolutePath(thumbRelative)).delete()
+            deleteIfExists(photoRelative)
+            deleteIfExists(thumbRelative)
             throw cancellation
         } catch (t: Throwable) {
-            if (photoWritten) File(absolutePath(photoRelative)).delete()
-            File(absolutePath(thumbRelative)).delete()
+            deleteIfExists(photoRelative)
+            deleteIfExists(thumbRelative)
             diagnostics.captureHandledException(t, PRIVATE_MEDIA_STORAGE_CONTEXT)
             DataResult.Error(AppError.Storage(StorageError.WRITE_FAILED, t))
         }
@@ -213,10 +245,10 @@ internal class AndroidPrivateMediaStorage(
             pendingFile.delete()
             DataResult.Success(CommittedVoice(reference = MediaReference(voiceRelative), duration = duration, sizeBytes = bytes.size.toLong()))
         } catch (cancellation: CancellationException) {
-            File(absolutePath(voiceRelative)).delete()
+            deleteIfExists(voiceRelative)
             throw cancellation
         } catch (t: Throwable) {
-            File(absolutePath(voiceRelative)).delete()
+            deleteIfExists(voiceRelative)
             diagnostics.captureHandledException(t, PRIVATE_MEDIA_STORAGE_CONTEXT)
             DataResult.Error(AppError.Storage(StorageError.WRITE_FAILED, t))
         }
@@ -291,6 +323,9 @@ internal class AndroidPrivateMediaStorage(
                     val age = now.toEpochMilliseconds() - file.lastModified()
                     if (age >= thresholdAge.inWholeMilliseconds && file.delete()) {
                         deletedCount++
+                        if (file.name.endsWith(".jpg") || file.name.endsWith(".m4a")) {
+                            File(file.absolutePath + ".dims").delete()
+                        }
                     }
                 }
                 deletedCount

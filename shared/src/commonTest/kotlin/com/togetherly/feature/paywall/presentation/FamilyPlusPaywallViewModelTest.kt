@@ -167,6 +167,52 @@ class FamilyPlusPaywallViewModelTest {
     }
 
     @Test
+    fun pendingPurchaseShowsPendingMessageAndCapturesPendingOutcome() = runTest {
+        val repository = FakeEntitlementRepository(freeSnapshot()).apply {
+            setPackages(listOf(monthlyPackage))
+            setPurchaseResult(monthlyPackage.productId, PurchaseResult.Pending(monthlyPackage.productId))
+        }
+        val analytics = FakeProductAnalytics().apply { setCollectionEnabled(true) }
+        val model = viewModel(repository, analytics = analytics)
+        model.onScreenStarted()
+        testDispatcher.scheduler.advanceUntilIdle()
+        model.onAction(FamilyPlusPaywallAction.PackageSelected(monthlyPackage.productId))
+        analytics.capturedEvents.clear()
+
+        model.onAction(FamilyPlusPaywallAction.PurchaseClicked)
+        testDispatcher.scheduler.advanceUntilIdle()
+
+        assertFalse(model.uiState.value.access.isPlus)
+        assertFalse(model.uiState.value.isPurchasing)
+        assertTrue(model.uiState.value.error != null)
+        val outcome = analytics.capturedEvents.single { it is PurchaseOutcome } as PurchaseOutcome
+        assertEquals(PurchaseOutcomeResult.PENDING, outcome.result)
+    }
+
+    @Test
+    fun alreadyOwnedPurchaseShowsAnErrorAndCapturesAlreadyOwnedOutcome() = runTest {
+        val repository = FakeEntitlementRepository(freeSnapshot()).apply {
+            setPackages(listOf(monthlyPackage))
+            setPurchaseResult(monthlyPackage.productId, PurchaseResult.Failure(PurchaseError.AlreadyOwned))
+        }
+        val analytics = FakeProductAnalytics().apply { setCollectionEnabled(true) }
+        val model = viewModel(repository, analytics = analytics)
+        model.onScreenStarted()
+        testDispatcher.scheduler.advanceUntilIdle()
+        model.onAction(FamilyPlusPaywallAction.PackageSelected(monthlyPackage.productId))
+        analytics.capturedEvents.clear()
+
+        model.onAction(FamilyPlusPaywallAction.PurchaseClicked)
+        testDispatcher.scheduler.advanceUntilIdle()
+
+        assertFalse(model.uiState.value.access.isPlus)
+        assertFalse(model.uiState.value.isPurchasing)
+        assertTrue(model.uiState.value.error != null)
+        val outcome = analytics.capturedEvents.single { it is PurchaseOutcome } as PurchaseOutcome
+        assertEquals(PurchaseOutcomeResult.ALREADY_OWNED, outcome.result)
+    }
+
+    @Test
     fun repeatedPurchaseClicksWhileInFlightAreIgnored() = runTest {
         val repository = FakeEntitlementRepository(freeSnapshot()).apply {
             setPackages(listOf(monthlyPackage))
