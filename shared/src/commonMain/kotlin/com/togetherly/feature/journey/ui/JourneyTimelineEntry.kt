@@ -1,28 +1,33 @@
 package com.togetherly.feature.journey.ui
 
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
-import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
+import com.togetherly.core.ui.asString
 import com.togetherly.designsystem.component.button.TogetherlyIconButton
 import com.togetherly.designsystem.component.card.TogetherlyCard
 import com.togetherly.designsystem.theme.togetherlyColors
 import com.togetherly.designsystem.theme.togetherlySpacing
 import com.togetherly.designsystem.theme.togetherlyTypography
-import com.togetherly.core.ui.asString
 import com.togetherly.domain.completion.MediaReference
 import com.togetherly.feature.journey.model.JourneyEntryUi
 import com.togetherly.feature.journey.presentation.JourneyAction
 import com.togetherly.feature.memory.ui.PrivatePhotoThumbnail
+import com.togetherly.feature.today.mapper.label
+import com.togetherly.feature.today.model.QuestCategoryUi
 import com.togetherly.feature.today.presentation.color
 import org.jetbrains.compose.resources.stringResource
 import togetherly.shared.generated.resources.Res
@@ -56,6 +61,10 @@ internal fun JourneyTimelineEntry(
             verticalArrangement = Arrangement.spacedBy(MaterialTheme.togetherlySpacing.xs),
         ) {
             Row(horizontalArrangement = Arrangement.spacedBy(MaterialTheme.togetherlySpacing.xs), verticalAlignment = Alignment.CenterVertically) {
+                entry.category?.let { category ->
+                    JourneyCategoryBadge(category = category)
+                    Spacer(modifier = Modifier.size(MaterialTheme.togetherlySpacing.xxs))
+                }
                 Text(
                     text = "${entry.completedDate} · ${entry.completedTime}",
                     style = MaterialTheme.togetherlyTypography.labelM,
@@ -72,7 +81,7 @@ internal fun JourneyTimelineEntry(
             Text(
                 text = entry.questTitle ?: stringResource(Res.string.journey_missing_quest_title),
                 style = MaterialTheme.togetherlyTypography.titleM,
-                color = entry.category?.color() ?: MaterialTheme.togetherlyColors.foregroundPrimary,
+                color = MaterialTheme.togetherlyColors.foregroundPrimary,
             )
 
             if (entry.reactions.isNotEmpty()) {
@@ -126,5 +135,31 @@ internal fun JourneyTimelineEntry(
                 }
             }
         }
+    }
+}
+
+/**
+ * Category color is always paired with the category's text label — never the only signal (see
+ * [com.togetherly.feature.today.presentation.color]'s own KDoc). The timeline previously tinted
+ * the whole title by category with no accompanying label anywhere on the entry, which broke that
+ * rule for color-blind users; this badge is the fix, and the title itself now stays neutral.
+ */
+@Composable
+private fun JourneyCategoryBadge(category: QuestCategoryUi, modifier: Modifier = Modifier) {
+    Row(
+        modifier = modifier,
+        verticalAlignment = Alignment.CenterVertically,
+        horizontalArrangement = Arrangement.spacedBy(MaterialTheme.togetherlySpacing.xxs),
+    ) {
+        Box(
+            modifier = Modifier
+                .size(MaterialTheme.togetherlySpacing.s)
+                .background(color = category.color(), shape = CircleShape),
+        )
+        Text(
+            text = category.label().asString(),
+            style = MaterialTheme.togetherlyTypography.labelM,
+            color = MaterialTheme.togetherlyColors.foregroundSecondary,
+        )
     }
 }

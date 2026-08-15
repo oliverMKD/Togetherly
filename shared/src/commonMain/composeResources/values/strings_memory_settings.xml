@@ -12,9 +12,9 @@
     <string name="memory_settings_prompt_title">Ask to add a memory after each quest</string>
     <string name="memory_settings_on">On</string>
     <string name="memory_settings_off">Off</string>
-    <string name="memory_settings_preserved_explanation">Turning photos, voice, or notes off never deletes anything you\'ve already saved.</string>
+    <string name="memory_settings_preserved_explanation">Turning photos, voice, or notes off never deletes anything you've already saved.</string>
     <string name="memory_settings_manage_memories_action">Manage memories</string>
     <string name="memory_settings_save_action">Save</string>
-    <string name="memory_settings_missing_profile_error">We couldn\'t find your family profile.</string>
+    <string name="memory_settings_missing_profile_error">We couldn't find your family profile.</string>
     <string name="memory_settings_updated_message">Memory settings updated</string>
 </resources>

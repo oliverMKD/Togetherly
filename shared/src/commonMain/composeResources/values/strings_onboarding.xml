@@ -24,7 +24,7 @@
     <!-- Step 3: Age bands -->
     <string name="onboarding_age_bands_title">Which ages are joining the adventures?</string>
     <string name="onboarding_age_bands_supporting">Choose every age group in your family so we can suggest activities that work for everyone.</string>
-    <string name="onboarding_age_bands_privacy_note">Togetherly doesn\'t need names or birthdays — just age groups.</string>
+    <string name="onboarding_age_bands_privacy_note">Togetherly doesn't need names or birthdays — just age groups.</string>
     <string name="onboarding_age_band_6_to_8">6–8</string>
     <string name="onboarding_age_band_9_to_11">9–11</string>
     <string name="onboarding_age_band_12_to_13">12–13</string>
@@ -93,6 +93,7 @@
     <string name="onboarding_review_field_preparation">Preparation</string>
     <string name="onboarding_review_field_reminder">Reminder</string>
     <string name="onboarding_review_no_reminder">No reminder</string>
+    <string name="onboarding_review_reminder_value">%1$s · %2$s</string>
 
     <!-- Validation errors -->
     <string name="onboarding_error_family_name_too_long">Family name is too long.</string>

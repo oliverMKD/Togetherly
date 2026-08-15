@@ -1,16 +1,22 @@
 package com.togetherly.feature.explore.presentation
 
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import com.togetherly.core.ui.asString
 import com.togetherly.designsystem.component.selection.TogetherlyChoiceChip
 import com.togetherly.designsystem.theme.togetherlySpacing
 import com.togetherly.feature.today.mapper.label
 import com.togetherly.feature.today.model.QuestCategoryUi
+import com.togetherly.feature.today.presentation.color
 import org.jetbrains.compose.resources.stringResource
 import togetherly.shared.generated.resources.Res
 import togetherly.shared.generated.resources.explore_category_all
@@ -46,7 +52,22 @@ internal fun ExploreCategorySelector(
                 label = category.label().asString(),
                 selected = category == selected,
                 onClick = { onCategorySelected(category) },
+                icon = { CategoryDot(color = category.color()) },
             )
         }
     }
+}
+
+/**
+ * Ties this filter row back to the same category color used on every quest/pack card below it
+ * (see [com.togetherly.feature.today.presentation.color]'s own KDoc) — the dot is a redundant
+ * visual hint alongside the chip's own text label, never the only signal.
+ */
+@Composable
+private fun CategoryDot(color: Color, modifier: Modifier = Modifier) {
+    Box(
+        modifier = modifier
+            .size(MaterialTheme.togetherlySpacing.s)
+            .background(color = color, shape = CircleShape),
+    )
 }

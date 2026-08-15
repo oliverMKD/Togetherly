@@ -1,13 +1,20 @@
 package com.togetherly.feature.today.presentation
 
-import androidx.compose.animation.Crossfade
+import androidx.compose.animation.AnimatedContent
 import androidx.compose.animation.core.tween
+import androidx.compose.animation.fadeIn
+import androidx.compose.animation.fadeOut
+import androidx.compose.animation.scaleIn
+import androidx.compose.animation.scaleOut
+import androidx.compose.animation.togetherWith
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -47,6 +54,7 @@ internal fun TodayScreen(
     Column(
         modifier = modifier
             .fillMaxSize()
+            .verticalScroll(rememberScrollState())
             .padding(vertical = MaterialTheme.togetherlySpacing.m),
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.spacedBy(MaterialTheme.togetherlySpacing.l),
@@ -178,10 +186,13 @@ private fun TodayQuestReveal(
     val completed = content is TodayContentState.Completed
     val duration = resolveMotionDuration(MaterialTheme.togetherlyMotion.reveal, MaterialTheme.togetherlyReduceMotion)
 
-    Crossfade(
+    AnimatedContent(
         targetState = revealed,
         modifier = modifier,
-        animationSpec = tween(durationMillis = duration),
+        transitionSpec = {
+            (fadeIn(tween(duration)) + scaleIn(tween(duration), initialScale = 0.94f))
+                .togetherWith(fadeOut(tween(duration)) + scaleOut(tween(duration), targetScale = 0.94f))
+        },
         label = "today-quest-reveal",
     ) { isRevealed ->
         if (isRevealed) {

@@ -3,7 +3,7 @@
     Today tab copy.
 -->
 <resources>
-    <string name="today_mystery_title">Today\'s family quest</string>
+    <string name="today_mystery_title">Today's family quest</string>
     <string name="today_mystery_body">A small adventure is waiting for you.</string>
     <string name="today_reveal_action">Reveal quest</string>
     <string name="today_mystery_content_description">A hidden quest, not yet revealed</string>
@@ -12,7 +12,7 @@
     <string name="today_save_action">Save quest</string>
     <string name="today_saved_content_description">Saved. Tap to remove from saved quests.</string>
     <string name="today_unsaved_content_description">Not saved. Tap to save this quest.</string>
-    <string name="today_save_failed">We couldn\'t save that. Please try again.</string>
+    <string name="today_save_failed">We couldn't save that. Please try again.</string>
 
     <string name="today_greeting_morning">Good morning</string>
     <string name="today_greeting_afternoon">Good afternoon</string>
@@ -47,7 +47,7 @@
     <string name="today_category_memories">Memories</string>
 
     <string name="today_filters_action">Filters</string>
-    <string name="today_filters_title">Find a quest</string>
+    <string name="today_filters_title">Filter quests</string>
     <string name="today_filter_group_time">Time</string>
     <string name="today_filter_group_location">Location</string>
     <string name="today_filter_group_energy">Energy</string>
@@ -56,17 +56,17 @@
     <string name="today_filters_clear_all">Clear all</string>
     <string name="today_filters_apply">Find a quest</string>
 
-    <string name="today_no_match_no_age_compatible">We couldn\'t find a quest that works for every selected age group.</string>
+    <string name="today_no_match_no_age_compatible">We couldn't find a quest that works for every selected age group.</string>
     <string name="today_no_match_no_context_compatible">Try removing one of your filters.</string>
-    <string name="today_no_match_all_in_cooldown">You\'ve explored everything that matches these filters recently.</string>
+    <string name="today_no_match_all_in_cooldown">You've explored everything that matches these filters recently.</string>
 
     <string name="today_reroll_action">Try another quest</string>
-    <string name="today_reroll_confirm_title">Use today\'s free swap?</string>
+    <string name="today_reroll_confirm_title">Use today's free swap?</string>
     <string name="today_reroll_confirm_body">You can choose one different quest today.</string>
     <string name="today_reroll_keep_action">Keep this quest</string>
     <string name="today_reroll_show_another_action">Show another</string>
-    <string name="today_reroll_used">Today\'s free swap has been used.</string>
+    <string name="today_reroll_used">Today's free swap has been used.</string>
 
     <string name="today_completed_action">Completed today</string>
-    <string name="today_completed_indicator">You\'ve already completed this quest today.</string>
+    <string name="today_completed_indicator">You've already completed this quest today.</string>
 </resources>

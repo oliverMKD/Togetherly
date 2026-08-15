@@ -16,10 +16,10 @@
     <string name="paywall_restore_action">Restore purchases</string>
     <string name="paywall_privacy_policy_action">Privacy Policy</string>
     <string name="paywall_terms_of_use_action">Terms of Use</string>
-    <string name="paywall_already_premium_title">You\'re all set</string>
+    <string name="paywall_already_premium_title">You're all set</string>
     <string name="paywall_already_premium_continue_action">Continue</string>
 
-    <string name="paywall_intro_premium_reroll">You\'ve used today\'s free reroll. Family Plus gives you unlimited rerolls.</string>
+    <string name="paywall_intro_premium_reroll">You've used today's free reroll. Family Plus gives you unlimited rerolls.</string>
     <string name="paywall_intro_premium_quest">This is a Family Plus quest.</string>
     <string name="paywall_intro_premium_pack">This pack is part of Family Plus.</string>
 </resources>
