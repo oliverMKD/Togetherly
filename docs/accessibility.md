@@ -43,4 +43,3 @@ These still need hands-on TalkBack and VoiceOver verification on real devices:
 - Blocked externally: `./gradlew :shared:compileAndroidDeviceTest`
   - The Android device-test source set still has unrelated pre-existing compilation errors, including missing `diagnostics`/`analytics` parameters in existing tests and an unresolved `LOVE` reference in `RoomMemoryCleanerTest`.
   - The accessibility test files added for this audit were fixed during the pass; the remaining failure is outside the accessibility changes.
-

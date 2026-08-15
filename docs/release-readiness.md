@@ -1,8 +1,8 @@
 # Release readiness baseline
 
-Audit date: 2026-07-29 (Europe/Skopje)  
-Audited checkout: `fe36eb5` on `chore/step-15-production-hardening`  
-Host: Apple silicon macOS, Java 21.0.9, Xcode 26.6 / iOS Simulator SDK 26.5
+- Audit date: 2026-07-29 (Europe/Skopje)
+- Audited checkout: `fe36eb5` on `chore/step-15-production-hardening`
+- Host: Apple silicon macOS, Java 21.0.9, Xcode 26.6 / iOS Simulator SDK 26.5
 
 This is a read-only assessment of production code. The only repository change made by the audit is
 this document. Build outputs and reports are ignored artifacts. Status values mean:
