@@ -64,7 +64,7 @@ internal class RoomMemoryCleanerTest {
 
     @Test
     fun clearsNoteAndMediaButKeepsTheCompletionRowAndReactions() = runTest {
-            completionRepository().saveCompletion(
+        completionRepository().saveCompletion(
             testQuestCompletion(
                 note = MemoryNote("Best day ever"),
                 reactions = setOf(FamilyReaction.LOVED_IT),

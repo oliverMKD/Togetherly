@@ -30,10 +30,14 @@ import kotlin.test.assertTrue
 import kotlin.time.Instant
 
 /**
- * Migration test scaffolding (Step 6.6) — [TogetherlyDatabase] has only ever shipped as version 1
- * (see its own KDoc), so there is no real migration to test yet. This proves the *mechanism*
- * works today, against the real exported schema in `shared/schemas/`, rather than leaving it
- * unverified until the day a version 2 migration actually lands.
+ * Migration test scaffolding (Step 6.6), since grown real teeth: [TogetherlyDatabase] is now on
+ * version 4 (see its own KDoc), and every migration that ever shipped —
+ * [migration1To2PreservesAnExistingProfileAndBackfillsSettingsDefaults],
+ * [migration2To3PreservesAnExistingProfileAndAddsAnEmptyEnergyPreferenceTable],
+ * [migration3To4PreservesAnExistingProfileAndBackfillsMemoryPromptDefaults] — is exercised here
+ * against the real exported schema in `shared/schemas/`, not just the latest version in isolation.
+ * [schemaVersion4RoundTripsCurrentPersistenceShapes]/[schemaVersion4RejectsInvalidForeignReferences]
+ * additionally regression-test the current schema's own shape and constraints directly.
  *
  * [MigrationTestHelper]'s driver-based constructor (not its older `SupportSQLiteOpenHelper.Factory`
  * one) is required here: [buildTogetherlyDatabase] configures every platform with
@@ -47,13 +51,14 @@ import kotlin.time.Instant
  * `shared/schemas/` into this source set's test assets automatically (see the
  * `copyRoomSchemasToAndroidTestAssetsAndroidDeviceTest` task) — nothing here does that by hand.
  *
- * **When a version 2 migration is introduced:** add a `Migration(1, 2) { ... }` to
- * [TogetherlyDatabase]'s builder configuration, keep the exported `1.json` file exactly as
- * committed (see [TogetherlyDatabase]'s own KDoc on why version 1 must stay immutable once real
- * users exist), and add a test here in the same shape as [schemaVersion1CanBeCreatedFromTheExportedSchema]
- * but calling `migrationTestHelper.runMigrationsAndValidate(2, listOf(theNewMigration))` instead of
- * `createDatabase(1)` — [MigrationTestHelper] then opens the exported v1 schema, runs the real
- * migration against it, and validates the result against the current schema, catching a missing
+ * **When a version 5 migration is introduced:** add a `Migration(4, 5) { ... }` to
+ * [TogetherlyDatabase]'s builder configuration, keep every already-exported schema JSON file
+ * (`1.json` through `4.json`) exactly as committed (see [TogetherlyDatabase]'s own KDoc on why a
+ * shipped version must stay immutable once real users exist), and add a test here in the same
+ * shape as [migration3To4PreservesAnExistingProfileAndBackfillsMemoryPromptDefaults] but calling
+ * `migrationTestHelper.runMigrationsAndValidate(5, listOf(theNewMigration))` against a database
+ * created at version 4 — [MigrationTestHelper] then runs the real migration against the exported
+ * v4 schema and validates the result against the current schema, catching a missing
  * column/table/index the same way a real upgrading install would hit it.
  */
 @RunWith(AndroidJUnit4::class)

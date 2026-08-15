@@ -6,6 +6,7 @@ import com.togetherly.core.datetime.AppTimeZoneProvider
 import com.togetherly.core.error.AppError
 import com.togetherly.core.error.ValidationError
 import com.togetherly.core.result.DataResult
+import com.togetherly.core.datetime.localizedDateTimeDisplay
 import com.togetherly.core.telemetry.AnalyticsScreen
 import com.togetherly.core.telemetry.ProductAnalytics
 import com.togetherly.core.ui.toUiText
@@ -14,7 +15,6 @@ import com.togetherly.domain.completion.repository.CompletionRepository
 import com.togetherly.domain.family.MemoryPreferences
 import com.togetherly.domain.family.usecase.ObserveFamilySettings
 import com.togetherly.domain.quest.repository.QuestRepository
-import com.togetherly.feature.completion.mapper.toCelebrationDisplay
 import com.togetherly.feature.completion.model.CompletionCelebrationQuestUi
 import com.togetherly.feature.completion.model.CompletionCelebrationUiState
 import com.togetherly.feature.today.mapper.toUi
@@ -88,7 +88,7 @@ class CompletionCelebrationViewModel(
             val quest = (questResult as? DataResult.Success)?.value
             val questUi = quest?.let { CompletionCelebrationQuestUi(title = it.title.value, category = it.category.toUi()) }
 
-            val displayDate = completion.completedAt.toLocalDateTime(timeZoneProvider.current()).toCelebrationDisplay()
+            val displayDate = completion.completedAt.toLocalDateTime(timeZoneProvider.current()).localizedDateTimeDisplay()
             val memoryPreferences = when (val result = observeFamilySettings().first()) {
                 is DataResult.Success -> result.value?.memoryPreferences ?: MemoryPreferences.defaults()
                 is DataResult.Error -> MemoryPreferences.defaults()

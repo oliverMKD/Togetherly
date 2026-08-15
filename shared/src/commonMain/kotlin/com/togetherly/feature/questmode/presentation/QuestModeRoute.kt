@@ -22,10 +22,16 @@ import org.koin.core.parameter.parametersOf
  * (which stays platform-independent) and never inside [QuestModeScreen] (which stays a plain,
  * reusable Composable with no Koin lookups of its own).
  *
- * [QuestFeedbackController.timerFinished] fires once per [QuestModeEvent.TimerFinished] (the
- * ViewModel's own guarantee — see that event's KDoc); [QuestFeedbackController.questCompleted]
- * fires on [QuestModeEvent.NavigateToCompletion], before actually navigating, but without waiting
- * on it — a slow or failed haptic must never delay leaving Quest Mode.
+ * [QuestFeedbackController.timerFinished] fires once per [QuestModeEvent.TimerFinished] and
+ * [QuestFeedbackController.questCompleted] once per [QuestModeEvent.NavigateToCompletion] — guarded
+ * twice, at two different scopes, deliberately: the ViewModel's own `timerFinishedEmitted` flag
+ * (see that event's KDoc) dedups within one ViewModel instance's lifetime, while
+ * [QuestModeRouteEffects]'s own `timerFinishedHandled`/`completionNavigationHandled`
+ * (`rememberSaveable`, keyed on [completionId]) additionally survive ViewModel recreation — a
+ * restored process re-running this same effect must never replay a terminal event a second time
+ * (see [QuestModeRouteEffectsTest] for the process-death scenario this specifically guards against).
+ * [QuestFeedbackController.questCompleted] fires before actually navigating, but without waiting on
+ * it — a slow or failed haptic must never delay leaving Quest Mode.
  *
  * [KeepScreenOnEffect] is enabled only while [QuestModeUiState.Content]'s quest requests it
  * ([com.togetherly.feature.questmode.model.QuestModeContentUi.keepScreenOnRequested]), the timer is

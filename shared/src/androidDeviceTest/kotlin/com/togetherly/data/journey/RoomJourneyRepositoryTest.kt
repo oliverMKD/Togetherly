@@ -55,11 +55,11 @@ internal class RoomJourneyRepositoryTest {
         completionRepository = RoomCompletionRepository(
             completionDao = database.completionDao(),
             activeQuestSessionMapper = ActiveQuestSessionMapper(),
-        completionMapper = QuestCompletionMapper(),
-        database = database,
-        dispatchers = TestAppDispatchers(UnconfinedTestDispatcher()),
-        diagnostics = FakeOperationalDiagnostics(),
-    )
+            completionMapper = QuestCompletionMapper(),
+            database = database,
+            dispatchers = TestAppDispatchers(UnconfinedTestDispatcher()),
+            diagnostics = FakeOperationalDiagnostics(),
+        )
         questRepository = FakeQuestRepository()
     }
 

@@ -58,16 +58,31 @@ class IosReminderSchedulerTest {
     }
 
     @Test
+    fun narrowingTheEnabledDaysRemovesTheNoLongerSelectedDaysPendingRequest() = runTest {
+        val adapter = FakeIosNotificationCenterAdapter()
+        val scheduler = scheduler(adapter)
+
+        scheduler.schedule(ReminderPreference(setOf(DayOfWeek.MONDAY, DayOfWeek.WEDNESDAY, DayOfWeek.FRIDAY), LocalTime(18, 0)))
+        scheduler.schedule(ReminderPreference(setOf(DayOfWeek.MONDAY), LocalTime(18, 0)))
+
+        assertEquals(listOf("togetherly.reminder.MONDAY"), adapter.pendingRequestIdentifiers())
+    }
+
+    @Test
     fun cancelRemovesAllTogetherlyReminderRequests() = runTest {
         val adapter = FakeIosNotificationCenterAdapter()
         val scheduler = scheduler(adapter)
 
         scheduler.schedule(ReminderPreference(setOf(DayOfWeek.MONDAY, DayOfWeek.WEDNESDAY), LocalTime(8, 15)))
+        // schedule() itself now also calls removePendingRequests once (clearing stale days before
+        // re-adding the enabled ones) — isolate cancel()'s own contribution rather than asserting a
+        // hardcoded total, so this stays correct regardless of how schedule() implements its cleanup.
+        val removeCallsBeforeCancel = adapter.removeCalls
         val result = scheduler.cancel()
 
         assertTrue(result is DataResult.Success)
         assertTrue(adapter.pendingRequestIdentifiers().isEmpty())
-        assertEquals(1, adapter.removeCalls)
+        assertEquals(removeCallsBeforeCancel + 1, adapter.removeCalls)
     }
 
     @Test

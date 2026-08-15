@@ -80,6 +80,10 @@ jobs:
     steps:
       - name: Check out repository
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          # Needed so "Trailing whitespace check" below has a real base commit to diff against —
+          # a shallow (depth-1) checkout only contains HEAD, which makes `git diff <range>` fail.
+          fetch-depth: 0
 
       - name: Set up JDK
         uses: actions/setup-java@03ad4de0992f5dab5e18fcb136590ce7c4a0ac95 # v5.6.0
@@ -95,8 +99,28 @@ jobs:
       - name: Set up Gradle
         uses: gradle/actions/setup-gradle@3f131e8634966bd73d06cc69884922b02e6faf92 # v6.2.0
 
-      - name: Formatting check
-        run: git diff --check
+      # `git diff --check` alone (no range) diffs the working tree against the index, which are
+      # always identical right after a checkout — that ran here as a silent no-op regardless of
+      # what the branch actually contained. Diffing the real change range catches trailing
+      # whitespace and unresolved merge-conflict markers the PR/push actually introduces. This
+      # project has no ktlint/detekt/spotless configured, so this deliberately isn't named a full
+      # "formatting" check — it only catches what `git diff --check` is actually capable of.
+      - name: Trailing whitespace check
+        env:
+          EVENT_NAME: ${{ github.event_name }}
+          BASE_SHA: ${{ github.event.pull_request.base.sha }}
+          PUSH_BEFORE: ${{ github.event.before }}
+        run: |
+          set -euo pipefail
+          if [ "$EVENT_NAME" = "pull_request" ]; then
+            RANGE="$BASE_SHA...HEAD"
+          elif [ "$EVENT_NAME" = "push" ] && [ -n "$PUSH_BEFORE" ] && [ "$PUSH_BEFORE" != "0000000000000000000000000000000000000000" ]; then
+            RANGE="$PUSH_BEFORE...HEAD"
+          else
+            echo "Non-comparable event ($EVENT_NAME) — checking the last commit only."
+            RANGE="HEAD~1...HEAD"
+          fi
+          git diff --check "$RANGE"
 
       - name: Static analysis (Android Lint)
         run: ./gradlew :androidApp:lintDebug --stacktrace --no-daemon

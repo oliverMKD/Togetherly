@@ -5,8 +5,6 @@ import com.togetherly.core.ui.UiText
 import com.togetherly.domain.purchase.AccessSource
 import com.togetherly.domain.purchase.FamilyAccess
 import kotlinx.datetime.TimeZone
-import kotlinx.datetime.toLocalDateTime
-import kotlin.time.Instant
 import togetherly.shared.generated.resources.Res
 import togetherly.shared.generated.resources.familyplus_ends_on
 import togetherly.shared.generated.resources.familyplus_lifetime_member
@@ -21,10 +19,6 @@ import togetherly.shared.generated.resources.familyplus_renews_on
 fun FamilyAccess.toRenewalInfo(timeZone: TimeZone): UiText? = when {
     source == AccessSource.LIFETIME -> UiText.Resource(Res.string.familyplus_lifetime_member)
     expiresAt == null -> null
-    willRenew == true -> UiText.Resource(Res.string.familyplus_renews_on, listOf(expiresAt.toReadableDate(timeZone)))
-    else -> UiText.Resource(Res.string.familyplus_ends_on, listOf(expiresAt.toReadableDate(timeZone)))
-}
-
-private fun Instant.toReadableDate(timeZone: TimeZone): String {
-    return toLocalDateTime(timeZone).localizedDateDisplay()
+    willRenew == true -> UiText.Resource(Res.string.familyplus_renews_on, listOf(expiresAt.localizedDateDisplay(timeZone)))
+    else -> UiText.Resource(Res.string.familyplus_ends_on, listOf(expiresAt.localizedDateDisplay(timeZone)))
 }

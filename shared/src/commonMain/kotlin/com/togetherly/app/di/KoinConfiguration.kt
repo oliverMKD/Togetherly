@@ -7,6 +7,7 @@ import com.togetherly.core.telemetry.TelemetryCoordinator
 import com.togetherly.data.purchase.RevenueCatAnalyticsLinker
 import com.togetherly.data.purchase.RevenueCatConfigurator
 import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.SupervisorJob
 import kotlinx.coroutines.launch
@@ -49,7 +50,11 @@ fun initKoin(
 
     application.koin.getOrNull<RevenueCatConfigurator>()?.configure(debug = appConfiguration.debug)
 
-    val startupScope = CoroutineScope(SupervisorJob() + application.koin.get<AppDispatchers>().default)
+    // getOrNull, not get: a missing/miswired AppDispatchers binding must degrade (fall back to the
+    // plain kotlinx.coroutines default dispatcher) exactly like every other optional lookup in this
+    // function, not crash startup before telemetry/analytics even get a chance to degrade gracefully.
+    val defaultDispatcher = application.koin.getOrNull<AppDispatchers>()?.default ?: Dispatchers.Default
+    val startupScope = CoroutineScope(SupervisorJob() + defaultDispatcher)
     launchTelemetryStartup(
         scope = startupScope,
         startTelemetry = { application.koin.getOrNull<TelemetryCoordinator>()?.start() },
