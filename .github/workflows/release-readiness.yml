@@ -152,7 +152,7 @@ jobs:
           SDK_ROOT="${ANDROID_SDK_ROOT:-/usr/local/lib/android/sdk}"
           SDKMANAGER="$SDK_ROOT/cmdline-tools/latest/bin/sdkmanager"
           AVDMANAGER="$SDK_ROOT/cmdline-tools/latest/bin/avdmanager"
-          yes | "$SDKMANAGER" --licenses >/dev/null
+          (yes || true) | "$SDKMANAGER" --licenses >/dev/null
           "$SDKMANAGER" \
             "platform-tools" \
             "emulator" \
