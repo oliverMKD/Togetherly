@@ -23,7 +23,11 @@
     <string name="journey_delete_cancel_action">Cancel</string>
 
     <string name="journey_summary_total_completions">%1$d quests completed together</string>
-    <string name="journey_constellation_content_description">A constellation of %1$d stars, one for every quest your family has completed.</string>
+    <plurals name="journey_summary_active_days">
+        <item quantity="one">%1$d day of memories so far</item>
+        <item quantity="other">%1$d days of memories so far</item>
+    </plurals>
+    <string name="journey_constellation_content_description">A constellation of %1$d stars, one for every quest your family has completed. The star with a soft glow around it is your most recent memory.</string>
 
     <string name="journey_milestone_first_star">Your first star!</string>
     <string name="journey_milestone_three_stars">Three stars in your sky.</string>

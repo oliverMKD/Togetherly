@@ -49,28 +49,47 @@ private fun previewEntry(
     voice = voice,
 )
 
-private fun previewStar(id: String, category: QuestCategoryUi?, x: Float, y: Float) = JourneyStarUi(
+private fun previewStar(
+    id: String,
+    category: QuestCategoryUi?,
+    x: Float,
+    y: Float,
+    hasPhoto: Boolean = false,
+    hasVoice: Boolean = false,
+) = JourneyStarUi(
     completionId = CompletionId(id),
     position = StarPosition(x, y),
     visualVariant = StarVisualVariant.MEDIUM,
     category = category,
     hasNote = false,
-    hasPhoto = false,
-    hasVoice = false,
+    hasPhoto = hasPhoto,
+    hasVoice = hasVoice,
 )
 
 private fun previewContent(
     entries: List<JourneyEntryUi>,
     totalCompletions: Int = entries.size,
+    activeDayCount: Int = entries.size,
     milestones: Set<JourneyMilestone> = emptySet(),
     playingVoiceId: MemoryMediaId? = null,
     transientError: UiText? = null,
 ) = JourneyUiState.Content(
-    summary = JourneySummaryUi(totalCompletions = totalCompletions, achievedMilestones = milestones.toPersistentSet()),
+    summary = JourneySummaryUi(
+        totalCompletions = totalCompletions,
+        activeDayCount = activeDayCount,
+        achievedMilestones = milestones.toPersistentSet(),
+    ),
     stars = entries
         .mapIndexed { index, entry ->
             val fraction = (index * 0.15f).coerceAtMost(0.6f)
-            previewStar(entry.completionId.value, entry.category, x = 0.2f + fraction, y = 0.3f + fraction)
+            previewStar(
+                entry.completionId.value,
+                entry.category,
+                x = 0.2f + fraction,
+                y = 0.3f + fraction,
+                hasPhoto = entry.photo != null,
+                hasVoice = entry.voice != null,
+            )
         }
         .toPersistentList(),
     entries = entries.toPersistentList(),

@@ -165,6 +165,34 @@ class JourneyViewModelTest {
         assertEquals(JourneyUiState.Empty, model.uiState.value)
     }
 
+    /**
+     * Regression test for a real bug: this tab's `ViewModel` survives switching away and back
+     * (`saveState`/`restoreState` in [com.togetherly.navigation.shell.MainShell]), so [JourneyAction.ScreenStarted]
+     * only ever fires once per process — a quest completed on Today while Journey stays mounted in
+     * the back stack must still show up without a second `ScreenStarted`, which only a live
+     * [com.togetherly.domain.journey.repository.JourneyRepository.observeJourney] subscription
+     * (rather than a one-shot fetch) can deliver.
+     */
+    @Test
+    fun completionAddedElsewhereAppearsWithoutARepeatedScreenStarted() = runTest {
+        val journeyRepository = FakeJourneyRepository().apply { setEntries(listOf(entryAt("c1", Instant.fromEpochSeconds(1_000)))) }
+        val model = viewModel(journeyRepository = journeyRepository)
+        model.onAction(JourneyAction.ScreenStarted)
+        testDispatcher.scheduler.advanceUntilIdle()
+        assertEquals(1, (model.uiState.value as JourneyUiState.Content).entries.size)
+
+        journeyRepository.setEntries(
+            listOf(
+                entryAt("c1", Instant.fromEpochSeconds(1_000)),
+                entryAt("c2", Instant.fromEpochSeconds(2_000)),
+            ),
+        )
+        testDispatcher.scheduler.advanceUntilIdle()
+
+        val content = model.uiState.value as JourneyUiState.Content
+        assertEquals(setOf(CompletionId("c1"), CompletionId("c2")), content.entries.map { it.completionId }.toSet())
+    }
+
     @Test
     fun contentOrdersEntriesNewestFirst() = runTest {
         val repository = FakeJourneyRepository().apply {
