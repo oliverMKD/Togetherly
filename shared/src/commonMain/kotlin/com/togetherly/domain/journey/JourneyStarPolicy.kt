@@ -37,7 +37,14 @@ class JourneyStarPolicy {
     }
 }
 
+/**
+ * [axis] goes *before* [seed], not after: FNV-1a's last step is a single `(hash xor char) * PRIME`,
+ * so if the axis discriminator were the final character hashed (`"$seed|$axis"`), "x" and "y"
+ * (adjacent char codes) would always produce hashes exactly `FNV_PRIME` apart — collapsing every
+ * star onto the panel's diagonal, regardless of [seed]. Hashing the discriminator first means the
+ * entire (much longer) seed diffuses through FNV-1a afterward, decorrelating x from y.
+ */
 internal fun positionFraction(seed: String, axis: String): Float {
-    val fraction = stableHash("$seed|$axis").toUnitFraction()
+    val fraction = stableHash("$axis|$seed").toUnitFraction()
     return STAR_SAFE_MARGIN.start + fraction * (STAR_SAFE_MARGIN.endInclusive - STAR_SAFE_MARGIN.start)
 }

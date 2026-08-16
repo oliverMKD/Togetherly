@@ -58,10 +58,16 @@ internal fun resolveCollisions(stars: List<JourneyStar>): List<JourneyStar> {
     return placed
 }
 
+/**
+ * `dx`/`dy` prefix the seed rather than suffix it — see [positionFraction]'s KDoc for why hashing
+ * two strings that differ only in their final character (here, "dx" vs "dy") produces hashes that
+ * are always exactly `FNV_PRIME` apart, which would nudge every colliding star in a near-identical
+ * diagonal direction instead of a genuinely varied one.
+ */
 private fun nudgedPosition(star: JourneyStar, attempt: Int): StarPosition {
     val seed = "${star.completionId.value}|nudge|$attempt"
-    val dx = (stableHash("$seed|dx").toUnitFraction() - 0.5f) * 2 * MINIMUM_SEPARATION
-    val dy = (stableHash("$seed|dy").toUnitFraction() - 0.5f) * 2 * MINIMUM_SEPARATION
+    val dx = (stableHash("dx|$seed").toUnitFraction() - 0.5f) * 2 * MINIMUM_SEPARATION
+    val dy = (stableHash("dy|$seed").toUnitFraction() - 0.5f) * 2 * MINIMUM_SEPARATION
     return StarPosition(
         x = (star.position.x + dx).coerceIn(STAR_SAFE_MARGIN),
         y = (star.position.y + dy).coerceIn(STAR_SAFE_MARGIN),

@@ -58,5 +58,6 @@ fun JourneyStar.toUi(): JourneyStarUi = JourneyStarUi(
 
 fun JourneySummary.toUi(): JourneySummaryUi = JourneySummaryUi(
     totalCompletions = totalCompletions,
+    activeDayCount = activeDays.size,
     achievedMilestones = achievedJourneyMilestones(totalCompletions).toPersistentSet(),
 )

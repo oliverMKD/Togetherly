@@ -22,6 +22,7 @@ import com.togetherly.domain.journey.repository.JourneyRepository
 import com.togetherly.feature.journey.mapper.toUi
 import com.togetherly.feature.journey.model.JourneyUiState
 import kotlinx.collections.immutable.toPersistentList
+import kotlinx.coroutines.Job
 import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -39,13 +40,16 @@ import kotlinx.coroutines.launch
  * decorative [JourneyUiState.Content.stars] and, via [deriveJourneySummary], the summary — from the
  * *same* [JourneyEntry] list each load produces, so Journey is never fetched twice per load.
  *
- * [load] uses [JourneyRepository.getJourney] (one-shot), not [JourneyRepository.observeJourney] —
- * matching [com.togetherly.feature.today.presentation.TodayViewModel.loadDailyQuest]'s own
- * fetch-then-explicit-retry convention, so [JourneyAction.RetryClicked] is a real, repeatable
- * re-fetch rather than a no-op re-subscription to a Flow that's already been collecting since
- * [onScreenStarted]. The trade-off: a memory saved elsewhere while this tab stays mounted won't
- * appear until the tab is next re-entered — acceptable since nothing in this step's spec asks for
- * live cross-screen reactivity, only a correct load and a working retry.
+ * [observeJourney] uses [JourneyRepository.observeJourney] (live), not the one-shot
+ * [JourneyRepository.getJourney] — this tab's `ViewModel` survives tab switches (`saveState`/
+ * `restoreState` in [com.togetherly.navigation.shell.MainShell]), so [onScreenStarted]'s
+ * [hasStarted] guard means a one-shot fetch would only ever run once per process, and a quest
+ * completed on Today while Journey stays mounted in the back stack would never appear — the same
+ * problem [com.togetherly.feature.today.presentation.TodayViewModel.onScreenStarted] already solves
+ * for its own family-profile observer, for the identical reason. [journeyCollectionJob] exists so
+ * [JourneyAction.RetryClicked] can restart the collection: [com.togetherly.data.catchStorageReadErrors]
+ * terminates the underlying Flow after emitting an error, so recovering from one requires a fresh
+ * [JourneyRepository.observeJourney] call, not just waiting on the old (now-completed) Flow.
  *
  * [voicePlaybackController] is injected directly (not Route-bound), the same pattern
  * [com.togetherly.feature.memory.presentation.CompletionMemoryViewModel] uses for its own voice
@@ -72,6 +76,7 @@ class JourneyViewModel(
 
     private var hasStarted = false
     private var lastRequestedVoiceId: MemoryMediaId? = null
+    private var journeyCollectionJob: Job? = null
 
     init {
         viewModelScope.launch {
@@ -82,7 +87,7 @@ class JourneyViewModel(
     fun onAction(action: JourneyAction) {
         when (action) {
             JourneyAction.ScreenStarted -> onScreenStarted()
-            JourneyAction.RetryClicked -> load()
+            JourneyAction.RetryClicked -> observeJourney()
             JourneyAction.GoToTodayClicked -> viewModelScope.launch { _events.send(JourneyEvent.NavigateToToday) }
             is JourneyAction.PlayVoiceClicked -> onPlayVoiceClicked(action.mediaId, action.reference)
             JourneyAction.PauseVoiceClicked -> viewModelScope.launch { voicePlaybackController.pause() }
@@ -98,15 +103,18 @@ class JourneyViewModel(
         if (hasStarted) return
         hasStarted = true
         analytics.screen(AnalyticsScreen.JOURNEY)
-        load()
+        observeJourney()
     }
 
-    private fun load() {
+    private fun observeJourney() {
+        journeyCollectionJob?.cancel()
         _uiState.value = JourneyUiState.Loading
-        viewModelScope.launch {
-            when (val result = journeyRepository.getJourney()) {
-                is DataResult.Error -> _uiState.value = JourneyUiState.Error(message = result.error.toUiText(), canRetry = true)
-                is DataResult.Success -> applyEntries(result.value)
+        journeyCollectionJob = viewModelScope.launch {
+            journeyRepository.observeJourney().collect { result ->
+                when (result) {
+                    is DataResult.Error -> _uiState.value = JourneyUiState.Error(message = result.error.toUiText(), canRetry = true)
+                    is DataResult.Success -> applyEntries(result.value)
+                }
             }
         }
     }
@@ -169,7 +177,13 @@ class JourneyViewModel(
         _uiState.update { current -> if (current is JourneyUiState.Content) current.copy(pendingDeleteCompletionId = null) else current }
     }
 
-    /** A successful delete reloads from scratch — [stars]/[summary]/[entries] all need to stay mutually consistent, and only [load] recomputes all three together. */
+    /**
+     * No explicit reload on success — [observeJourney]'s live collection already reacts to the
+     * underlying Room write and rebuilds [stars]/[summary]/[entries] together via [applyEntries],
+     * the same way it reacts to a completion added from Today. That rebuild also resets
+     * [JourneyUiState.Content.isDeleting]/[JourneyUiState.Content.pendingDeleteCompletionId] back to
+     * their defaults, since [applyEntries] always constructs a fresh [JourneyUiState.Content].
+     */
     private fun onConfirmDeleteClicked() {
         val current = _uiState.value
         if (current !is JourneyUiState.Content) return
@@ -178,10 +192,7 @@ class JourneyViewModel(
         _uiState.update { if (it is JourneyUiState.Content) it.copy(isDeleting = true) else it }
         viewModelScope.launch {
             when (val result = deleteCompletion(completionId)) {
-                is DataResult.Success -> {
-                    analytics.capture(MemoryDeleted)
-                    load()
-                }
+                is DataResult.Success -> analytics.capture(MemoryDeleted)
                 is DataResult.Error -> _uiState.update {
                     if (it is JourneyUiState.Content) {
                         it.copy(isDeleting = false, pendingDeleteCompletionId = null, transientError = result.error.toUiText())

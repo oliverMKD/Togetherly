@@ -99,8 +99,8 @@ class JourneyStarPolicyTest {
      */
     @Test
     fun stableHashMatchesTheDocumentedFnv1aAlgorithm() {
-        assertEquals(4122696995u, stableHash("completion-golden|x"))
-        assertEquals(4105919376u, stableHash("completion-golden|y"))
+        assertEquals(3783763139u, stableHash("x|completion-golden"))
+        assertEquals(1585894880u, stableHash("y|completion-golden"))
         assertEquals(818103658u, stableHash("completion-golden|variant"))
     }
 
@@ -108,8 +108,26 @@ class JourneyStarPolicyTest {
     fun sameFixtureProducesTheExpectedStar() {
         val star = policy.create(JourneyEntry(validQuestCompletion(id = CompletionId("completion-golden")), quest = null))
 
-        assertEquals(0.886f, star.position.x, absoluteTolerance = 0.001f)
-        assertEquals(0.883f, star.position.y, absoluteTolerance = 0.001f)
+        assertEquals(0.820f, star.position.x, absoluteTolerance = 0.001f)
+        assertEquals(0.390f, star.position.y, absoluteTolerance = 0.001f)
         assertEquals(StarVisualVariant.MEDIUM, star.visualVariant)
+    }
+
+    /**
+     * [positionFraction]'s KDoc explains why the axis discriminator must come first in the hashed
+     * string: "x"/"y" are adjacent char codes, so hashing them as the *last* character (the old
+     * `"$seed|$axis"` order) always produced two hashes exactly `FNV_PRIME` apart, collapsing every
+     * star onto the panel's diagonal. This asserts the fix holds across many different IDs, not just
+     * the one golden fixture above.
+     */
+    @Test
+    fun xAndYPositionsAreNotCorrelatedAcrossManyCompletions() {
+        val diagonalOffsets = (0 until 200).map { index ->
+            val star = policy.create(JourneyEntry(validQuestCompletion(id = CompletionId("completion-$index")), quest = null))
+            kotlin.math.abs(star.position.x - star.position.y)
+        }
+
+        val meanOffset = diagonalOffsets.average()
+        assertTrue(meanOffset > 0.15, "mean |x-y| offset was only $meanOffset, positions still read as diagonal")
     }
 }
