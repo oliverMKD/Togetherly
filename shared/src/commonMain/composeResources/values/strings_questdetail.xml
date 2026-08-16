@@ -5,7 +5,7 @@
 <resources>
     <string name="questdetail_back_content_description">Back</string>
     <string name="questdetail_start_action">Start quest</string>
-    <string name="questdetail_materials_title">What you\'ll need</string>
+    <string name="questdetail_materials_title">What you'll need</string>
     <string name="questdetail_instructions_title">Instructions</string>
     <string name="questdetail_hints_title">Hints</string>
     <string name="questdetail_safety_title">Safety note</string>

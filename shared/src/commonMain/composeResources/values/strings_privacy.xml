@@ -6,13 +6,13 @@
 -->
 <resources>
     <string name="privacy_title">Privacy</string>
-    <string name="privacy_intro">Here\'s what actually happens with your family\'s information.</string>
+    <string name="privacy_intro">Here's what actually happens with your family's information.</string>
 
     <string name="privacy_profile_title">Your family profile</string>
     <string name="privacy_profile_body">Your family profile — display name, age groups, and preferences — is stored only on this device.</string>
 
     <string name="privacy_progress_title">Quest progress</string>
-    <string name="privacy_progress_body">Completed quests and your family\'s progress are stored only on this device.</string>
+    <string name="privacy_progress_body">Completed quests and your family's progress are stored only on this device.</string>
 
     <string name="privacy_memories_title">Photos and voice memories</string>
     <string name="privacy_memories_body">Photos and voice memories you save stay private on this device. Togetherly never uploads them anywhere.</string>
@@ -24,10 +24,10 @@
     <string name="privacy_notifications_body">Reminder notifications are scheduled on this device — Togetherly has no server that sends them.</string>
 
     <string name="privacy_no_account_title">No account or cloud sync</string>
-    <string name="privacy_no_account_body">Togetherly doesn\'t currently have accounts or cloud sync — there\'s nothing to sign into, and nothing syncs across devices.</string>
+    <string name="privacy_no_account_body">Togetherly doesn't currently have accounts or cloud sync — there's nothing to sign into, and nothing syncs across devices.</string>
 
     <string name="privacy_uninstall_title">If you remove the app</string>
-    <string name="privacy_uninstall_body">Uninstalling Togetherly may remove its local data, depending on your device\'s own backup and storage settings.</string>
+    <string name="privacy_uninstall_body">Uninstalling Togetherly may remove its local data, depending on your device's own backup and storage settings.</string>
 
     <string name="privacy_restore_purchases_title">Restoring purchases</string>
     <string name="privacy_restore_purchases_body">Your purchase history may still be recoverable through the App Store or Google Play, separately from anything stored in the app.</string>

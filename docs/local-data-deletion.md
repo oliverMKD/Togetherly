@@ -2,10 +2,12 @@
 
 Togetherly has no backend and no accounts — everything the app knows about a family lives in the
 local `TogetherlyDatabase` (see [persistence.md](persistence.md)) and the private media directory
-(see [private-media.md](private-media.md)). This document is the single source of truth for what
-each parent-facing deletion action actually does, what it deliberately does not do, and how to
-verify it manually. For the local privacy model these actions operate inside, see
-[privacy.md](privacy.md).
+(see [private-media.md](private-media.md)). Togetherly's current release policy keeps that
+user-generated data out of Android backup and device-to-device transfer, and iOS stores it in the
+app's private container with explicit file protection and backup exclusion. This document is the
+single source of truth for what each parent-facing deletion action actually does, what it
+deliberately does not do, and how to verify it manually. For the local privacy model these actions
+operate inside, see [privacy.md](privacy.md).
 
 The Data Management screen (`feature/family/presentation/DataManagementScreen.kt`, reached from
 the Family tab) offers exactly three actions. Every button label is the action's own name —

@@ -8,6 +8,7 @@ import com.togetherly.core.error.ValidationError
 import com.togetherly.core.id.IdGenerator
 import com.togetherly.core.result.DataResult
 import com.togetherly.domain.completion.PendingMediaReference
+import com.togetherly.data.platform.protectComplete
 import kotlinx.cinterop.ExperimentalForeignApi
 import kotlinx.coroutines.CancellationException
 import kotlinx.coroutines.CoroutineScope
@@ -94,6 +95,18 @@ internal class IosVoiceRecorder(
     /** An automatically max-duration-finalized clip waiting for the next [stop] call to claim it. */
     private var autoFinalized: PendingVoiceRecording? = null
 
+    /** See [AndroidVoiceRecorder]'s equivalent — same numeric-suffix collision fallback, kept in parity across platforms. */
+    private fun uniquePendingVoiceRelativeReference(): String {
+        val baseId = idGenerator.generate()
+        var attempt = 0
+        while (true) {
+            val id = if (attempt == 0) baseId else "$baseId-$attempt"
+            val candidate = PrivateMediaPaths.pendingVoiceRelativeReference(id)
+            if (!NSFileManager.defaultManager.fileExistsAtPath("${mediaRoot.rootPath()}/$candidate")) return candidate
+            attempt++
+        }
+    }
+
     override fun observeState(): StateFlow<VoiceRecorderState> = stateFlow
 
     override suspend fun start(): DataResult<Unit> = mutex.withLock {
@@ -102,7 +115,7 @@ internal class IosVoiceRecorder(
                 return@withContext DataResult.Error(AppError.Validation(ValidationError.INVALID_STATE))
             }
 
-            val relativeReference = PrivateMediaPaths.pendingVoiceRelativeReference(idGenerator.generate())
+            val relativeReference = uniquePendingVoiceRelativeReference()
             val absolutePath = "${mediaRoot.rootPath()}/$relativeReference"
 
             try {
@@ -137,6 +150,7 @@ internal class IosVoiceRecorder(
                 )
                 audioRecorder.delegate = recorderDelegate
                 audioRecorder.record()
+                protectComplete(absolutePath)
 
                 recorder = audioRecorder
                 delegate = recorderDelegate

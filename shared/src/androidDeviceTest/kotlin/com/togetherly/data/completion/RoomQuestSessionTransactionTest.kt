@@ -8,6 +8,7 @@ import com.togetherly.core.coroutines.TestAppDispatchers
 import com.togetherly.core.error.AppError
 import com.togetherly.core.error.ValidationError
 import com.togetherly.core.result.DataResult
+import com.togetherly.core.telemetry.FakeOperationalDiagnostics
 import com.togetherly.data.local.completion.CompletionDao
 import com.togetherly.data.local.completion.CompletionReactionEntity
 import com.togetherly.data.local.completion.MemoryMediaEntity
@@ -60,6 +61,7 @@ internal class RoomQuestSessionTransactionTest {
         completionMapper = QuestCompletionMapper(),
         database = database,
         dispatchers = dispatchers,
+        diagnostics = FakeOperationalDiagnostics(),
     )
 
     @Test

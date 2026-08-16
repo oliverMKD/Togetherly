@@ -10,6 +10,7 @@ import com.togetherly.core.result.runCatchingData
 import com.togetherly.core.telemetry.DiagnosticContext
 import com.togetherly.core.telemetry.OperationalDiagnostics
 import com.togetherly.core.telemetry.toDiagnosticThrowable
+import com.togetherly.data.platform.completeProtectionAttributes
 import com.togetherly.domain.completion.CompletionId
 import com.togetherly.domain.completion.MediaReference
 import com.togetherly.domain.completion.MemoryMediaId
@@ -72,7 +73,9 @@ internal class IosPrivateMediaStorage(
             attributes = null,
             error = null,
         )
-        val written = fileManager.createFileAtPath(path, contents = bytes.toNSData(), attributes = null)
+        // Protection is requested as part of creation (not a follow-up setAttributes call) so the
+        // file is never briefly on disk at a weaker protection class — see completeProtectionAttributes.
+        val written = fileManager.createFileAtPath(path, contents = bytes.toNSData(), attributes = completeProtectionAttributes())
         check(written) { "Could not write to $path" }
     }
 
@@ -83,6 +86,20 @@ internal class IosPrivateMediaStorage(
 
     private fun deleteFile(relativeReference: String) {
         fileManager.removeItemAtPath(absolutePath(relativeReference), error = null)
+    }
+
+    /** See [AndroidPrivateMediaStorage]'s equivalent — same numeric-suffix collision fallback, kept in parity across platforms. */
+    private fun uniquePendingPhotoRelativeReference(): String {
+        val baseId = idGenerator.generate()
+        var attempt = 0
+        while (true) {
+            val id = if (attempt == 0) baseId else "$baseId-$attempt"
+            val candidate = PrivateMediaPaths.pendingPhotoRelativeReference(id)
+            val exists = fileManager.fileExistsAtPath(absolutePath(candidate)) ||
+                fileManager.fileExistsAtPath(absolutePath(PrivateMediaPaths.dimensionsSidecarReference(candidate)))
+            if (!exists) return candidate
+            attempt++
+        }
     }
 
     private fun deleteDirectoryIfEmpty(relativeDirectory: String) {
@@ -131,7 +148,7 @@ internal class IosPrivateMediaStorage(
                 is DataResult.Success -> result.value
             }
             runCatchingMediaStorage {
-                val relativeReference = PrivateMediaPaths.pendingPhotoRelativeReference(idGenerator.generate())
+                val relativeReference = uniquePendingPhotoRelativeReference()
                 writeBytes(relativeReference, normalized.bytes)
                 writeDimensionsSidecar(relativeReference, normalized.width, normalized.height)
                 PendingPhoto(
@@ -165,11 +182,9 @@ internal class IosPrivateMediaStorage(
 
         val photoRelative = PrivateMediaPaths.photoRelativeReference(completionId, mediaId)
         val thumbRelative = PrivateMediaPaths.thumbnailRelativeReference(completionId, mediaId)
-        var photoWritten = false
 
         try {
             writeBytes(photoRelative, bytes)
-            photoWritten = true
 
             val thumbnailBytes = when (val result = thumbnailGenerator.generateThumbnail(bytes)) {
                 is DataResult.Error -> {
@@ -193,11 +208,12 @@ internal class IosPrivateMediaStorage(
                 ),
             )
         } catch (cancellation: CancellationException) {
-            if (photoWritten) deleteFile(photoRelative)
+            // removeItemAtPath no-ops safely on a path that was never written — see AndroidPrivateMediaStorage's equivalent cleanup.
+            deleteFile(photoRelative)
             deleteFile(thumbRelative)
             throw cancellation
         } catch (t: Throwable) {
-            if (photoWritten) deleteFile(photoRelative)
+            deleteFile(photoRelative)
             deleteFile(thumbRelative)
             diagnostics.captureHandledException(t, PRIVATE_MEDIA_STORAGE_CONTEXT)
             DataResult.Error(AppError.Storage(StorageError.WRITE_FAILED, t))

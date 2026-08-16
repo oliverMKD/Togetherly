@@ -19,3 +19,14 @@
 # If you keep the line number information, uncomment this to
 # hide the original source file name.
 #-renamesourcefileattribute SourceFile
+
+# Kotlin serialization: keep the generated serializer classes and annotation metadata used by the
+# kotlinx.serialization compiler plugin and navigation/persistence argument models.
+-keepattributes *Annotation*,InnerClasses,EnclosingMethod,Signature
+-keep class **$$serializer { *; }
+
+# Room: keep the application-facing Room annotations/classes so minification never strips the
+# database model surface or DAO/database declarations used by code generation.
+-keep @androidx.room.Database class * { *; }
+-keep @androidx.room.Entity class * { *; }
+-keep @androidx.room.Dao class * { *; }

@@ -21,6 +21,7 @@ import org.jetbrains.compose.resources.stringResource
 import togetherly.shared.generated.resources.Res
 import togetherly.shared.generated.resources.open_source_licenses_intro
 import togetherly.shared.generated.resources.open_source_licenses_title
+import togetherly.shared.generated.resources.ds_component_back_content_description
 
 @Composable
 internal fun OpenSourceLicensesScreen(
@@ -35,7 +36,7 @@ internal fun OpenSourceLicensesScreen(
                 navigationIcon = {
                     TogetherlyIconButton(
                         icon = { Text("‹", style = MaterialTheme.togetherlyTypography.headlineM) },
-                        contentDescription = "Back",
+                        contentDescription = stringResource(Res.string.ds_component_back_content_description),
                         onClick = { onAction(OpenSourceLicensesAction.BackClicked) },
                     )
                 },

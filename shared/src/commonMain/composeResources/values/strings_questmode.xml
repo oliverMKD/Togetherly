@@ -4,9 +4,9 @@
 -->
 <resources>
     <string name="questmode_close_content_description">Close</string>
-    <string name="questmode_timer_finished">Time\'s up</string>
+    <string name="questmode_timer_finished">Time's up</string>
     <string name="questmode_timer_content_description_running">%1$s remaining</string>
-    <string name="questmode_timer_content_description_finished">Time\'s up</string>
+    <string name="questmode_timer_content_description_finished">Time's up</string>
 
     <string name="questmode_hints_action">Need an idea?</string>
     <string name="questmode_hints_expanded_state">Expanded</string>
@@ -14,7 +14,7 @@
     <string name="questmode_safety_title">Safety note</string>
 
     <string name="questmode_phone_down_action">Put the phone down</string>
-    <string name="questmode_phone_down_supporting_timed">We\'ll keep track of the time.</string>
+    <string name="questmode_phone_down_supporting_timed">We'll keep track of the time.</string>
     <string name="questmode_phone_down_supporting_untimed">Take your time with this one.</string>
     <string name="questmode_phone_down_active_title">Quest in progress</string>
     <string name="questmode_phone_down_active_body">Tap to return</string>

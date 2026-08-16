@@ -35,4 +35,12 @@
 
     <string name="debug_section_errors">Last provider error category</string>
     <string name="debug_no_errors">No provider errors recorded yet.</string>
+
+    <string name="debug_label_not_asked">Not asked</string>
+    <string name="debug_label_granted">Granted</string>
+    <string name="debug_label_denied">Denied</string>
+    <string name="debug_label_configured">Configured</string>
+    <string name="debug_label_missing">Missing</string>
+    <string name="debug_label_disabled_by_consent">Disabled by consent</string>
+    <string name="debug_label_initialization_failed">Initialization failed</string>
 </resources>

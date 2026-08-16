@@ -59,6 +59,17 @@ internal class AndroidVoiceRecorder(
     /** An automatically max-duration-finalized clip waiting for the next [stop] call to claim it. */
     private var autoFinalized: PendingVoiceRecording? = null
 
+    private fun uniquePendingVoiceRelativeReference(): String {
+        val baseId = idGenerator.generate()
+        var attempt = 0
+        while (true) {
+            val id = if (attempt == 0) baseId else "$baseId-$attempt"
+            val candidate = PrivateMediaPaths.pendingVoiceRelativeReference(id)
+            if (!File("${mediaRoot.rootPath()}/$candidate").exists()) return candidate
+            attempt++
+        }
+    }
+
     override fun observeState(): StateFlow<VoiceRecorderState> = stateFlow
 
     override suspend fun start(): DataResult<Unit> = mutex.withLock {
@@ -67,7 +78,7 @@ internal class AndroidVoiceRecorder(
                 return@withContext DataResult.Error(AppError.Validation(ValidationError.INVALID_STATE))
             }
 
-            val relativeReference = PrivateMediaPaths.pendingVoiceRelativeReference(idGenerator.generate())
+            val relativeReference = uniquePendingVoiceRelativeReference()
             val absolutePath = "${mediaRoot.rootPath()}/$relativeReference"
 
             try {

@@ -12,9 +12,11 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.BoxWithConstraints
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.offset
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material3.MaterialTheme
@@ -84,12 +86,29 @@ internal fun JourneyConstellationHeader(
         )
 
         summary.achievedMilestones.latestOrNull()?.let { milestone ->
-            Text(
-                text = milestone.copy().asString(),
-                style = MaterialTheme.togetherlyTypography.bodyM,
-                color = MaterialTheme.togetherlyColors.foregroundSecondary,
-            )
+            MilestoneBadge(text = milestone.copy().asString())
         }
+    }
+}
+
+/**
+ * The latest achieved milestone gets a tinted pill rather than plain secondary text — a small
+ * "you got here together" flourish for what is otherwise the app's one piece of pure positive
+ * reinforcement copy. Same alpha-tint-background + solid-foreground pattern as
+ * [com.togetherly.feature.explore.presentation.ExploreQuestCard]'s `PremiumBadge`.
+ */
+@Composable
+private fun MilestoneBadge(text: String, modifier: Modifier = Modifier) {
+    Row(
+        modifier = modifier
+            .background(color = MaterialTheme.togetherlyColors.positive.copy(alpha = 0.14f), shape = MaterialTheme.togetherlyShapes.pill)
+            .padding(horizontal = MaterialTheme.togetherlySpacing.s, vertical = MaterialTheme.togetherlySpacing.xxs),
+    ) {
+        Text(
+            text = text,
+            style = MaterialTheme.togetherlyTypography.labelM,
+            color = MaterialTheme.togetherlyColors.positive,
+        )
     }
 }
 

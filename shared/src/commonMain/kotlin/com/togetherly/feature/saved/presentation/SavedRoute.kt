@@ -32,6 +32,7 @@ import togetherly.shared.generated.resources.Res
 import togetherly.shared.generated.resources.explore_saved_empty_body
 import togetherly.shared.generated.resources.explore_saved_empty_title
 import togetherly.shared.generated.resources.explore_saved_title
+import togetherly.shared.generated.resources.ds_component_back_content_description
 
 @Composable
 fun SavedRoute(
@@ -70,7 +71,7 @@ internal fun SavedScreen(
                 navigationIcon = {
                     TogetherlyIconButton(
                         icon = { Text("‹", style = MaterialTheme.togetherlyTypography.headlineM) },
-                        contentDescription = "Back",
+                        contentDescription = stringResource(Res.string.ds_component_back_content_description),
                         onClick = onNavigateBack,
                     )
                 },

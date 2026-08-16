@@ -14,6 +14,7 @@ import com.togetherly.core.datetime.TestAppClock
 import com.togetherly.core.error.AppError
 import com.togetherly.core.error.StorageError
 import com.togetherly.core.id.SequentialIdGenerator
+import com.togetherly.core.telemetry.FakeProductAnalytics
 import com.togetherly.core.ui.UiText
 import com.togetherly.designsystem.theme.TogetherlyTheme
 import com.togetherly.domain.family.AgeBand
@@ -22,6 +23,7 @@ import com.togetherly.domain.family.LocationPreference
 import com.togetherly.domain.family.PreparationPreference
 import com.togetherly.domain.family.repository.FakeFamilyRepository
 import com.togetherly.domain.family.usecase.CreateFamilyProfile
+import com.togetherly.domain.purchase.repository.FakeCustomerAttributesRepository
 import com.togetherly.domain.quest.QuestCategory
 import com.togetherly.feature.onboarding.model.OnboardingField
 import com.togetherly.feature.onboarding.model.OnboardingStep
@@ -53,6 +55,8 @@ internal class OnboardingScreenTest {
             clock = TestAppClock(NOW),
             idGenerator = SequentialIdGenerator(prefix = "family"),
         ),
+        FakeProductAnalytics().apply { setCollectionEnabled(true) },
+        FakeCustomerAttributesRepository(),
     )
 
     // -- Stateless snapshot checks -----------------------------------------------------------
@@ -245,24 +249,16 @@ internal class OnboardingScreenTest {
         onNodeWithText("6–8").assertIsSelected()
     }
 
-    @OptIn(ExperimentalTestApi::class)
-    @Test
-    fun saveLoadingPreventsDuplicateClick() = runComposeUiTest {
-        val repository = FakeFamilyRepository()
-        setContent {
-            TogetherlyTheme {
-                OnboardingRoute(viewModel = viewModel(repository), onNavigateBack = {}, onFamilyCreated = {})
-            }
-        }
-        waitForIdle()
-        advanceToReview()
-
-        onNodeWithText("Start our first adventure").performClick()
-        onNodeWithText("Start our first adventure").performClick()
-        waitForIdle()
-
-        assertEquals(1, repository.savedProfiles.size)
-    }
+    // "Duplicate click while a save is in flight" is deliberately not tested here: under this
+    // API, performClick() drains to full idle (including the whole fake save, since neither
+    // CreateFamilyProfile nor FakeFamilyRepository ever genuinely suspend) before returning, so a
+    // second performClick() right after can only ever observe a fresh, already-completed, re-
+    // enabled button — never the mid-save state the name would suggest. Confirmed empirically:
+    // even wrapping the repository with a real suspension point before saveProfile() didn't
+    // change the outcome, because the click action itself drains that suspension too. The guard
+    // OnboardingViewModel.onCreateFamily() relies on (isSaving checked synchronously before the
+    // save coroutine launches) is what actually matters, and it's already verified precisely,
+    // with real coroutine-dispatch control, by OnboardingViewModelTest.duplicateSavingIsIgnored.
 
     @OptIn(ExperimentalTestApi::class)
     @Test

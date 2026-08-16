@@ -3,11 +3,15 @@ package com.togetherly.feature.questmode.presentation
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.saveable.rememberSaveable
+import androidx.compose.runtime.setValue
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.togetherly.core.feedback.KeepScreenOnEffect
 import com.togetherly.core.feedback.QuestFeedbackController
 import com.togetherly.domain.completion.CompletionId
 import com.togetherly.feature.questmode.model.QuestTimerUi
+import kotlinx.coroutines.flow.Flow
 import org.koin.compose.koinInject
 import org.koin.compose.viewmodel.koinViewModel
 import org.koin.core.parameter.parametersOf
@@ -18,10 +22,16 @@ import org.koin.core.parameter.parametersOf
  * (which stays platform-independent) and never inside [QuestModeScreen] (which stays a plain,
  * reusable Composable with no Koin lookups of its own).
  *
- * [QuestFeedbackController.timerFinished] fires once per [QuestModeEvent.TimerFinished] (the
- * ViewModel's own guarantee — see that event's KDoc); [QuestFeedbackController.questCompleted]
- * fires on [QuestModeEvent.NavigateToCompletion], before actually navigating, but without waiting
- * on it — a slow or failed haptic must never delay leaving Quest Mode.
+ * [QuestFeedbackController.timerFinished] fires once per [QuestModeEvent.TimerFinished] and
+ * [QuestFeedbackController.questCompleted] once per [QuestModeEvent.NavigateToCompletion] — guarded
+ * twice, at two different scopes, deliberately: the ViewModel's own `timerFinishedEmitted` flag
+ * (see that event's KDoc) dedups within one ViewModel instance's lifetime, while
+ * [QuestModeRouteEffects]'s own `timerFinishedHandled`/`completionNavigationHandled`
+ * (`rememberSaveable`, keyed on [completionId]) additionally survive ViewModel recreation — a
+ * restored process re-running this same effect must never replay a terminal event a second time
+ * (see [QuestModeRouteEffectsTest] for the process-death scenario this specifically guards against).
+ * [QuestFeedbackController.questCompleted] fires before actually navigating, but without waiting on
+ * it — a slow or failed haptic must never delay leaving Quest Mode.
  *
  * [KeepScreenOnEffect] is enabled only while [QuestModeUiState.Content]'s quest requests it
  * ([com.togetherly.feature.questmode.model.QuestModeContentUi.keepScreenOnRequested]), the timer is
@@ -44,26 +54,53 @@ fun QuestModeRoute(
         viewModel.onAction(QuestModeAction.ScreenStarted)
     }
 
-    LaunchedEffect(viewModel) {
-        viewModel.events.collect { event ->
+    QuestModeRouteEffects(
+        completionId = completionId,
+        events = viewModel.events,
+        feedbackController = feedbackController,
+        onNavigateBack = onNavigateBack,
+        onNavigateToToday = onNavigateToToday,
+        onNavigateToCompletion = onNavigateToCompletion,
+        onTimerFinished = onTimerFinished,
+    )
+
+    KeepScreenOnEffect(enabled = shouldKeepScreenOn(state))
+
+    QuestModeScreen(state = state, onAction = viewModel::onAction)
+}
+
+@Composable
+internal fun QuestModeRouteEffects(
+    completionId: CompletionId,
+    events: Flow<QuestModeEvent>,
+    feedbackController: QuestFeedbackController,
+    onNavigateBack: () -> Unit,
+    onNavigateToToday: () -> Unit,
+    onNavigateToCompletion: (CompletionId) -> Unit,
+    onTimerFinished: () -> Unit,
+) {
+    var timerFinishedHandled by rememberSaveable(completionId.value) { mutableStateOf(false) }
+    var completionNavigationHandled by rememberSaveable(completionId.value) { mutableStateOf(false) }
+
+    LaunchedEffect(events) {
+        events.collect { event ->
             when (event) {
                 QuestModeEvent.NavigateBack -> onNavigateBack()
                 QuestModeEvent.NavigateToToday -> onNavigateToToday()
-                is QuestModeEvent.NavigateToCompletion -> {
+                is QuestModeEvent.NavigateToCompletion -> if (!completionNavigationHandled) {
+                    completionNavigationHandled = true
                     feedbackController.questCompleted()
                     onNavigateToCompletion(event.completionId)
                 }
                 QuestModeEvent.TimerFinished -> {
+                    if (timerFinishedHandled) return@collect
+                    timerFinishedHandled = true
                     feedbackController.timerFinished()
                     onTimerFinished()
                 }
             }
         }
     }
-
-    KeepScreenOnEffect(enabled = shouldKeepScreenOn(state))
-
-    QuestModeScreen(state = state, onAction = viewModel::onAction)
 }
 
 /**

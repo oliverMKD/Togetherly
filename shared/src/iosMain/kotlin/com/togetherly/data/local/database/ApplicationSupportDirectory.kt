@@ -1,5 +1,6 @@
 package com.togetherly.data.local.database
 
+import com.togetherly.data.platform.protectUntilFirstUserAuthentication
 import kotlinx.cinterop.ExperimentalForeignApi
 import platform.Foundation.NSApplicationSupportDirectory
 import platform.Foundation.NSFileManager
@@ -21,5 +22,7 @@ internal fun applicationSupportDirectoryPath(): String {
         create = true,
         error = null,
     )
-    return requireNotNull(directoryUrl?.path) { "Could not resolve the application support directory" }
+    val path = requireNotNull(directoryUrl?.path) { "Could not resolve the application support directory" }
+    protectUntilFirstUserAuthentication(path, excludeFromBackup = true)
+    return path
 }

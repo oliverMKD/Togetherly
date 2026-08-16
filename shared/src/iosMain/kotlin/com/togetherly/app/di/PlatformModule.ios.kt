@@ -5,6 +5,8 @@ import com.togetherly.app.foundation.PlatformInfoProvider
 import com.togetherly.app.foundation.VersionInfoProvider
 import com.togetherly.core.feedback.IosQuestFeedbackController
 import com.togetherly.core.feedback.QuestFeedbackController
+import com.togetherly.core.notification.IosNotificationCenterAdapter
+import com.togetherly.core.notification.RealIosNotificationCenterAdapter
 import com.togetherly.core.notification.IosNotificationPermissionStatusProvider
 import com.togetherly.core.notification.IosReminderScheduler
 import com.togetherly.core.notification.NotificationPermissionStatusProvider
@@ -64,10 +66,13 @@ actual val platformModule: Module = module {
         IosQuestFeedbackController()
     }
     single<ReminderScheduler> {
-        IosReminderScheduler(diagnostics = get())
+        IosReminderScheduler(notifications = get(), diagnostics = get())
+    }
+    single<IosNotificationCenterAdapter> {
+        RealIosNotificationCenterAdapter()
     }
     single<NotificationPermissionStatusProvider> {
-        IosNotificationPermissionStatusProvider()
+        IosNotificationPermissionStatusProvider(get())
     }
 
     single<PrivateMediaRoot> { IosPrivateMediaRoot() }

@@ -1,11 +1,10 @@
 package com.togetherly.feature.familyplus.mapper
 
+import com.togetherly.core.datetime.localizedDateDisplay
 import com.togetherly.core.ui.UiText
 import com.togetherly.domain.purchase.AccessSource
 import com.togetherly.domain.purchase.FamilyAccess
 import kotlinx.datetime.TimeZone
-import kotlinx.datetime.toLocalDateTime
-import kotlin.time.Instant
 import togetherly.shared.generated.resources.Res
 import togetherly.shared.generated.resources.familyplus_ends_on
 import togetherly.shared.generated.resources.familyplus_lifetime_member
@@ -20,16 +19,6 @@ import togetherly.shared.generated.resources.familyplus_renews_on
 fun FamilyAccess.toRenewalInfo(timeZone: TimeZone): UiText? = when {
     source == AccessSource.LIFETIME -> UiText.Resource(Res.string.familyplus_lifetime_member)
     expiresAt == null -> null
-    willRenew == true -> UiText.Resource(Res.string.familyplus_renews_on, listOf(expiresAt.toReadableDate(timeZone)))
-    else -> UiText.Resource(Res.string.familyplus_ends_on, listOf(expiresAt.toReadableDate(timeZone)))
-}
-
-private val MONTH_NAMES = listOf(
-    "January", "February", "March", "April", "May", "June",
-    "July", "August", "September", "October", "November", "December",
-)
-
-private fun Instant.toReadableDate(timeZone: TimeZone): String {
-    val date = toLocalDateTime(timeZone).date
-    return "${MONTH_NAMES[date.month.ordinal]} ${date.day}, ${date.year}"
+    willRenew == true -> UiText.Resource(Res.string.familyplus_renews_on, listOf(expiresAt.localizedDateDisplay(timeZone)))
+    else -> UiText.Resource(Res.string.familyplus_ends_on, listOf(expiresAt.localizedDateDisplay(timeZone)))
 }

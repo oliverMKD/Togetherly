@@ -2,9 +2,15 @@ package com.togetherly.feature.explore.presentation
 
 import androidx.compose.ui.test.ExperimentalTestApi
 import androidx.compose.ui.test.assertIsDisplayed
+import androidx.compose.ui.test.hasContentDescription
+import androidx.compose.ui.test.hasText
+import androidx.compose.ui.test.onAllNodesWithText
+import androidx.compose.ui.test.onFirst
 import androidx.compose.ui.test.onNodeWithContentDescription
+import androidx.compose.ui.test.onNodeWithTag
 import androidx.compose.ui.test.onNodeWithText
 import androidx.compose.ui.test.performClick
+import androidx.compose.ui.test.performScrollToNode
 import androidx.compose.ui.test.performTextInput
 import androidx.compose.ui.test.runComposeUiTest
 import androidx.test.ext.junit.runners.AndroidJUnit4
@@ -70,6 +76,7 @@ internal class ExploreScreenTest {
             TogetherlyTheme { ExploreScreen(state = freeFamilyExploreUiState(), onAction = actions::add) }
         }
 
+        onNodeWithTag(ExploreContentListTestTag).performScrollToNode(hasContentDescription("Saved. Tap to remove from saved quests."))
         onNodeWithContentDescription("Saved. Tap to remove from saved quests.").performClick()
 
         assertEquals(listOf<ExploreAction>(ExploreAction.SaveClicked(QuestId("quest-3"))), actions)
@@ -83,9 +90,13 @@ internal class ExploreScreenTest {
             TogetherlyTheme { ExploreScreen(state = freeFamilyExploreUiState(), onAction = actions::add) }
         }
 
-        onNodeWithText("Quick Wins").performClick()
+        // "Everyday Together" only appears in the "All packs" section — "Quick Wins" is
+        // deliberately in both featuredPacks and packs (see the fixture's own KDoc-adjacent
+        // comment), so it renders as two separate cards and can't be targeted by text alone.
+        onNodeWithTag(ExploreContentListTestTag).performScrollToNode(hasText("Everyday Together"))
+        onNodeWithText("Everyday Together").performClick()
 
-        assertEquals(listOf<ExploreAction>(ExploreAction.PackClicked(QuestPackId("quick-wins"))), actions)
+        assertEquals(listOf<ExploreAction>(ExploreAction.PackClicked(QuestPackId("everyday-together"))), actions)
     }
 
     @OptIn(ExperimentalTestApi::class)
@@ -96,6 +107,7 @@ internal class ExploreScreenTest {
             TogetherlyTheme { ExploreScreen(state = freeFamilyExploreUiState(), onAction = actions::add) }
         }
 
+        onNodeWithTag(ExploreContentListTestTag).performScrollToNode(hasText("Backyard Scavenger Hunt"))
         onNodeWithText("Backyard Scavenger Hunt").performClick()
 
         assertEquals(listOf<ExploreAction>(ExploreAction.QuestClicked(QuestId("quest-1"))), actions)
@@ -109,6 +121,7 @@ internal class ExploreScreenTest {
             TogetherlyTheme { ExploreScreen(state = freeFamilyExploreUiState(), onAction = actions::add) }
         }
 
+        onNodeWithTag(ExploreContentListTestTag).performScrollToNode(hasText("Draw a Shared Imaginary Creature"))
         onNodeWithText("Draw a Shared Imaginary Creature").performClick()
 
         assertEquals(listOf<ExploreAction>(ExploreAction.QuestClicked(QuestId("quest-2"))), actions)
@@ -134,8 +147,11 @@ internal class ExploreScreenTest {
             TogetherlyTheme { ExploreScreen(state = lockedPremiumCardsExploreUiState(), onAction = {}) }
         }
 
+        onNodeWithTag(ExploreContentListTestTag).performScrollToNode(hasContentDescription("Family Plus quest, locked for your family. Tap to preview."))
         onNodeWithContentDescription("Family Plus quest, locked for your family. Tap to preview.").assertExists()
-        onNodeWithText("Family Plus").assertExists()
+        // This fixture has several locked cards, each with its own "Family Plus" badge — just
+        // confirming the real, visible text is what's announcing the premium state is the point.
+        onAllNodesWithText("Family Plus").onFirst().assertExists()
     }
 
     @OptIn(ExperimentalTestApi::class)

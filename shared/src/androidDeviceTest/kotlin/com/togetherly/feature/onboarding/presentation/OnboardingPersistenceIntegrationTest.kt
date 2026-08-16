@@ -8,6 +8,7 @@ import androidx.compose.ui.test.runComposeUiTest
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import com.togetherly.core.datetime.TestAppClock
 import com.togetherly.core.id.SequentialIdGenerator
+import com.togetherly.core.telemetry.FakeProductAnalytics
 import com.togetherly.designsystem.theme.TogetherlyTheme
 import com.togetherly.domain.family.AgeBand
 import com.togetherly.domain.family.DurationBand
@@ -15,6 +16,7 @@ import com.togetherly.domain.family.FamilyDisplayName
 import com.togetherly.domain.family.FamilyId
 import com.togetherly.domain.family.repository.FakeFamilyRepository
 import com.togetherly.domain.family.usecase.CreateFamilyProfile
+import com.togetherly.domain.purchase.repository.FakeCustomerAttributesRepository
 import com.togetherly.domain.quest.QuestCategory
 import org.junit.Test
 import org.junit.runner.RunWith
@@ -41,6 +43,8 @@ internal class OnboardingPersistenceIntegrationTest {
             clock = TestAppClock(NOW),
             idGenerator = SequentialIdGenerator(prefix = "family"),
         ),
+        FakeProductAnalytics().apply { setCollectionEnabled(true) },
+        FakeCustomerAttributesRepository(),
     )
 
     @OptIn(ExperimentalTestApi::class)

@@ -17,12 +17,15 @@
     <string name="explore_search_results_title">Search results</string>
 
     <string name="explore_filters_action">Filters</string>
+    <string name="explore_filters_action_with_count">Filters (%1$d)</string>
     <string name="explore_saved_action">Saved</string>
 
     <string name="explore_pack_free">Free</string>
     <string name="explore_pack_premium">Family Plus</string>
-    <string name="explore_pack_quest_count">%1$d quests</string>
-    <string name="explore_pack_quest_count_one">1 quest</string>
+    <plurals name="explore_pack_quest_count">
+        <item quantity="one">1 quest</item>
+        <item quantity="other">%1$d quests</item>
+    </plurals>
     <string name="explore_pack_duration_range">%1$d–%2$d min</string>
     <string name="explore_pack_duration_single">%1$d min</string>
     <string name="explore_pack_locked_content_description">Included with Family Plus. Tap to learn more.</string>
@@ -36,6 +39,7 @@
     <string name="explore_empty_search_body">Try another word or clear your filters.</string>
     <string name="explore_empty_filter_title">No quests found</string>
     <string name="explore_empty_filter_body">Try different filters or check back soon.</string>
+    <string name="explore_empty_state_content_description">%1$s. %2$s</string>
 
     <string name="explore_filters_title">Filters</string>
     <string name="explore_filter_group_duration">Duration</string>

@@ -1,15 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--
-    Android 12+ (API 31+) backup/transfer rules — the successor to backup_rules.xml's
-    full-backup-content on this SDK range. Excludes <filesDir>/media from both cloud backup and
-    device-to-device transfer, for the same reason backup_rules.xml excludes it: private photo/
-    voice memories (Step 10.2/10.3) must not leave the device via any platform backup path.
+    Android 12+ (API 31+) backup/transfer rules. Togetherly disables backup at the manifest level,
+    but this file remains as an explicit, current-platform declaration that all user-generated
+    storage domains stay out of cloud backup and device-to-device transfer. No app-private data
+    that belongs to a family should ever be eligible for transport by accident.
 -->
 <data-extraction-rules>
     <cloud-backup>
-        <exclude domain="file" path="media/" />
+        <exclude domain="root" path="./" />
+        <exclude domain="file" path="./" />
+        <exclude domain="database" path="togetherly.db" />
+        <exclude domain="database" path="togetherly.db-wal" />
+        <exclude domain="database" path="togetherly.db-shm" />
+        <exclude domain="external" path="./" />
+        <exclude domain="device_root" path="./" />
+        <exclude domain="device_file" path="./" />
+        <exclude domain="device_database" path="togetherly.db" />
+        <exclude domain="device_database" path="togetherly.db-wal" />
+        <exclude domain="device_database" path="togetherly.db-shm" />
     </cloud-backup>
     <device-transfer>
-        <exclude domain="file" path="media/" />
+        <exclude domain="root" path="./" />
+        <exclude domain="file" path="./" />
+        <exclude domain="database" path="togetherly.db" />
+        <exclude domain="database" path="togetherly.db-wal" />
+        <exclude domain="database" path="togetherly.db-shm" />
+        <exclude domain="external" path="./" />
+        <exclude domain="device_root" path="./" />
+        <exclude domain="device_file" path="./" />
+        <exclude domain="device_database" path="togetherly.db" />
+        <exclude domain="device_database" path="togetherly.db-wal" />
+        <exclude domain="device_database" path="togetherly.db-shm" />
     </device-transfer>
 </data-extraction-rules>

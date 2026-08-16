@@ -15,12 +15,25 @@
     <string name="family_profile_edit_action">Edit</string>
     <string name="family_quest_preferences_action">Quest preferences</string>
 
+    <string name="family_section_your_family">Your family</string>
+    <string name="family_section_memories_privacy">Memories &amp; privacy</string>
+    <string name="family_section_data">Data</string>
+    <string name="family_section_support">Support</string>
+
+    <string name="family_entry_quest_preferences_subtitle">Duration, energy, and location signals</string>
+    <string name="family_entry_reminder_subtitle">When we nudge you to play</string>
+    <string name="family_entry_memory_settings_subtitle">Notes, photos, and voice defaults</string>
+    <string name="family_entry_privacy_subtitle">What stays on this device</string>
+    <string name="family_entry_data_management_subtitle">Delete memories or reset history</string>
+    <string name="family_entry_legal_subtitle">Terms, licenses, and policies</string>
+    <string name="family_entry_about_subtitle">Version, support, and credits</string>
+
     <string name="family_profile_editor_title">Edit family profile</string>
     <string name="family_profile_editor_age_bands_title">Broad age groups</string>
     <string name="family_profile_editor_durations_title">Preferred activity duration</string>
     <string name="family_profile_editor_location_title">Indoor or outdoor</string>
     <string name="family_profile_editor_save_action">Save</string>
-    <string name="family_profile_editor_missing_profile_error">We couldn\'t find your family profile.</string>
+    <string name="family_profile_editor_missing_profile_error">We couldn't find your family profile.</string>
     <string name="family_profile_updated_message">Family profile updated</string>
 
     <string name="quest_preferences_title">Quest preferences</string>
@@ -32,7 +45,7 @@
     <string name="quest_preferences_reset_action">Reset to defaults</string>
     <string name="quest_preferences_save_action">Save</string>
     <string name="quest_preferences_error_energy_required">Choose at least one energy level.</string>
-    <string name="quest_preferences_missing_profile_error">We couldn\'t find your family profile.</string>
+    <string name="quest_preferences_missing_profile_error">We couldn't find your family profile.</string>
     <string name="quest_preferences_updated_message">Quest preferences updated</string>
 
     <string name="energy_level_calm">Calm</string>
@@ -40,7 +53,7 @@
     <string name="energy_level_active">Active</string>
 
     <string name="family_discard_dialog_title">Discard changes?</string>
-    <string name="family_discard_dialog_body">Your changes haven\'t been saved yet. If you leave now, they\'ll be lost.</string>
+    <string name="family_discard_dialog_body">Your changes haven't been saved yet. If you leave now, they'll be lost.</string>
     <string name="family_discard_dialog_confirm_action">Discard</string>
     <string name="family_discard_dialog_cancel_action">Keep editing</string>
 </resources>

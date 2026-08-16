@@ -47,6 +47,9 @@ kotlin {
         iosTarget.binaries.framework {
             baseName = "Shared"
             isStatic = true
+            freeCompilerArgs += listOf(
+                "-Xoverride-konan-properties=osVersionMin.ios_simulator_arm64=16.0;osVersionMin.ios_arm64=16.0",
+            )
         }
         if (xcodeSwiftLibraryPath != null) {
             iosTarget.binaries.getTest("DEBUG").linkerOpts(

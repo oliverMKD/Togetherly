@@ -12,21 +12,21 @@
     <string name="data_management_delete_memories_action">Delete memories</string>
     <string name="data_management_delete_memories_description">Removes photos, voice recordings, and notes attached to completed quests. Quest history itself, saved quests, and your family profile are kept.</string>
     <string name="data_management_delete_memories_confirm_title">Delete memories?</string>
-    <string name="data_management_delete_memories_confirm_body">This permanently deletes every photo, voice recording, and note attached to your completed quests. This can\'t be undone.\n\nQuest history, saved quests, and your family profile are kept.</string>
+    <string name="data_management_delete_memories_confirm_body">This permanently deletes every photo, voice recording, and note attached to your completed quests. This can't be undone.\n\nQuest history, saved quests, and your family profile are kept.</string>
     <string name="data_management_delete_memories_success">Memories deleted.</string>
 
     <string name="data_management_reset_quest_history_action">Reset quest history</string>
-    <string name="data_management_reset_quest_history_description">Clears today\'s quest, dismissed quests, and every completed quest along with its memories. Saved quests and your family profile are kept.</string>
+    <string name="data_management_reset_quest_history_description">Clears today's quest, dismissed quests, and every completed quest along with its memories. Saved quests and your family profile are kept.</string>
     <string name="data_management_reset_quest_history_confirm_title">Reset quest history?</string>
-    <string name="data_management_reset_quest_history_confirm_body">This permanently clears today\'s quest, dismissed quests, and every completed quest along with its memories. This can\'t be undone.\n\nSaved quests and your family profile are kept.</string>
+    <string name="data_management_reset_quest_history_confirm_body">This permanently clears today's quest, dismissed quests, and every completed quest along with its memories. This can't be undone.\n\nSaved quests and your family profile are kept.</string>
     <string name="data_management_reset_quest_history_success">Quest history reset.</string>
 
     <string name="data_management_delete_all_action">Delete all local data</string>
     <string name="data_management_delete_all_description">Permanently deletes everything Togetherly has stored on this device and returns to setup. This does not cancel a Family Plus subscription or delete your purchase history.</string>
     <string name="data_management_delete_all_stage_one_title">Delete all local data?</string>
-    <string name="data_management_delete_all_stage_one_body">This permanently deletes your family profile, preferences, quest history, memories, and every photo and voice recording stored on this device. This can\'t be undone.\n\nA Family Plus subscription is managed separately through the App Store or Google Play — this does not cancel it.\n\nAfterward, the app returns to setup.</string>
+    <string name="data_management_delete_all_stage_one_body">This permanently deletes your family profile, preferences, quest history, memories, and every photo and voice recording stored on this device. This can't be undone.\n\nA Family Plus subscription is managed separately through the App Store or Google Play — this does not cancel it.\n\nAfterward, the app returns to setup.</string>
     <string name="data_management_delete_all_stage_one_continue_action">Continue</string>
 
-    <string name="data_management_partial_file_failure_message">Done, but some files couldn\'t be removed and may need to be cleared manually.</string>
+    <string name="data_management_partial_file_failure_message">Done, but some files couldn't be removed and may need to be cleared manually.</string>
     <string name="data_management_dialog_cancel_action">Cancel</string>
 </resources>

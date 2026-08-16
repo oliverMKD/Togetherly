@@ -21,7 +21,9 @@ path string under that root, validated by `PrivateMediaPaths.isSafeRelativeRefer
 filesystem call: blank, absolute (leading `/`), backslash-containing, or any path segment equal to
 `.`/`..` is rejected outright. Filenames are always built from generated IDs
 (`MemoryMediaId`/a generated pending ID) — never a family name, quest title, note content, or the
-original picker filename.
+original picker filename. Pending filenames fall back to a numeric suffix on an ID collision
+(`uniquePendingPhotoRelativeReference`/`uniquePendingVoiceRelativeReference`, both platforms) rather
+than silently overwriting an existing pending file.
 
 ## Pending → committed lifecycle
 
@@ -88,23 +90,37 @@ intentionally conservative:
 
 ## Backup and cloud-sync privacy (Step 10.7 finding + fix)
 
-Before this audit, private media participated in each platform's default backup path despite the
-in-app copy ("Stored privately with Togetherly on this device.") implying on-device-only storage:
+Before the Step 10.7 audit, private media participated in each platform's default backup path
+despite the in-app copy ("Stored privately with Togetherly on this device.") implying
+on-device-only storage. The posture has been strengthened twice since:
 
-- **Android**: `android:allowBackup="true"` with no exclusion rules means Auto Backup includes the
-  *entire* app-private `filesDir` by default, `<filesDir>/media` included. Fixed by adding
-  `androidApp/src/main/res/xml/backup_rules.xml` (`full-backup-content`, API 23–30) and
-  `data_extraction_rules.xml` (`cloud-backup`/`device-transfer`, API 31+), both excluding
-  `media/`, wired via `android:fullBackupContent`/`android:dataExtractionRules` in the manifest.
-- **iOS**: `Application Support` (where `IosPrivateMediaRoot` stores media) is *not* automatically
-  excluded from iCloud/iTunes backup the way `Library/Caches` is. Fixed by setting
-  `NSURLIsExcludedFromBackupKey` on the media directory's `NSURL` right after creating it
-  (`IosPrivateMediaRoot.rootPath()`).
+- **Android**: `android:allowBackup="true"` with no exclusion rules originally meant Auto Backup
+  included the *entire* app-private `filesDir` by default, `<filesDir>/media` included. The
+  production-hardening pass went further than the original per-path fix and disables backup
+  outright at the manifest level (`android:allowBackup="false"`). `backup_rules.xml`
+  (`full-backup-content`, API 23–30) and `data_extraction_rules.xml`
+  (`cloud-backup`/`device-transfer`, API 31+) remain in the tree as an explicit, defense-in-depth
+  policy declaration — excluding `root`, `file`, `external`, `device_root`, `device_file`, and the
+  Room database files (`togetherly.db`/`-wal`/`-shm`) under both `database` and `device_database`
+  — for the older platform format and for any future build-time validation, even though the
+  manifest flag alone already makes backup unreachable.
+- **iOS**: `Application Support` (where `IosPrivateMediaRoot` stores media, alongside the database
+  and settings tree) is *not* automatically excluded from iCloud/iTunes backup the way
+  `Library/Caches` is. Fixed by setting `NSURLIsExcludedFromBackupKey` on the relevant `NSURL`s
+  right after creating them (`IosPrivateMediaRoot.rootPath()`, `applicationSupportDirectoryPath()`).
+  File protection is layered on top of backup exclusion, not a substitute for it:
+  `NSFileProtectionCompleteUntilFirstUserAuthentication` on the shared Application Support tree
+  (database/settings), `NSFileProtectionComplete` on the private-media tree specifically — the
+  strictest available class, since photo/voice memories should be unreadable whenever the device is
+  locked, not just before first unlock after boot. Every media file write requests
+  `NSFileProtectionComplete` directly through `createFileAtPath`'s own `attributes` parameter (not a
+  follow-up `setAttributes` call), so a file is never briefly readable at a weaker protection class
+  between being written and being protected.
 
-With both fixes in place, the existing privacy copy is now actually true rather than merely implied.
-Neither platform's Room/SQLite database file is addressed here — this document only covers the
-`data.media` private-media root; see [persistence.md](persistence.md) for database backup
-considerations if any are added later.
+With these fixes in place, the existing privacy copy is actually true rather than merely implied.
+Neither platform's Room/SQLite database file is addressed here beyond backup exclusion — this
+document's main focus is the `data.media` private-media root; see [persistence.md](persistence.md)
+for further database considerations.
 
 ## What still leaves no trace
 
@@ -112,8 +128,34 @@ considerations if any are added later.
   `data.media`.
 - No broad Android storage permission (`READ_EXTERNAL_STORAGE`/`READ_MEDIA_IMAGES`) — the system
   Photo Picker (`ActivityResultContracts.PickVisualMedia`) and iOS's `PHPickerViewController` both
-  hand the picked item to the app without the app itself needing library-wide access, and neither
-  requires a corresponding `Info.plist`/manifest permission entry (`iosApp/Info.plist` has no
-  `NSPhotoLibraryUsageDescription` key, confirming this).
+  hand the picked item to the app without the app itself needing library-wide access. `iosApp/Info.plist`
+  does declare `NSPhotoLibraryUsageDescription` (see [ios-release.md](ios-release.md)) — that key's
+  presence isn't evidence of broader library access; it's a separate question from whether the
+  app *uses* library-wide access, which it does not.
 - `RECORD_AUDIO` (Android) / `NSMicrophoneUsageDescription` (iOS) are the only permissions this
   feature needs, requested only when the user taps Record — never at onboarding or app startup.
+
+## Tests
+
+`AndroidPrivateMediaStorageTest`/`IosPrivateMediaStorageTest`-style suites (see
+[Path-safety and validation tests](#path-safety-and-validation-tests) above) plus
+`SaveCompletionMemoryTest` at the use-case layer cover:
+
+- successful photo storage, successful voice storage
+- collision-safe pending filenames (both platforms)
+- interrupted write / metadata failure after file creation (compensating cleanup)
+- missing file, invalid path, path traversal rejection
+- deleting one memory, deleting all memories, repeated deletion
+- orphan cleanup (`deleteExpiredPending`)
+
+The real `MediaRecorder`/`AVAudioRecorder`/`MediaPlayer` flow is covered separately by the
+instrumented device tests on each platform, since a host-side unit test can't exercise real
+hardware recording.
+
+## Remaining manual verification
+
+- Real camera/photo-picker integration on-device.
+- Real microphone recording on-device.
+- Real playback on-device.
+- Storage behavior under low-disk conditions.
+- Device-level recovery after OS kill / process death mid-capture.

@@ -86,20 +86,30 @@ internal class QuestModeScreenTest {
             TogetherlyTheme { QuestModeScreen(state = withHintsQuestModeUiState(), onAction = actions::add) }
         }
 
-        onNodeWithText("Try the garden.").assertIsDisplayed()
+        // QuestModeHints renders each hint as "•  $hint", the same bullet-prefixed format
+        // QuestDetailScreen uses for materials/hints — the bare hint text alone never matches.
+        onNodeWithText("•  Try the garden.").assertIsDisplayed()
         onNodeWithText("Need an idea?").performClick()
 
         assertEquals(listOf<QuestModeAction>(QuestModeAction.HintsToggled), actions)
     }
 
+    /**
+     * Split into two tests rather than one calling `setContent` twice — this API only supports
+     * setting content once per [runComposeUiTest]; a second call throws "has already set content".
+     */
     @OptIn(ExperimentalTestApi::class)
     @Test
-    fun safetyNoteIsConditional() = runComposeUiTest {
+    fun safetyNoteIsAbsentWithoutOne() = runComposeUiTest {
         setContent {
             TogetherlyTheme { QuestModeScreen(state = untimedQuestModeUiState(), onAction = {}) }
         }
         onNodeWithText("Safety note").assertDoesNotExist()
+    }
 
+    @OptIn(ExperimentalTestApi::class)
+    @Test
+    fun safetyNoteIsShownWhenPresent() = runComposeUiTest {
         setContent {
             TogetherlyTheme { QuestModeScreen(state = withSafetyNoteQuestModeUiState(), onAction = {}) }
         }

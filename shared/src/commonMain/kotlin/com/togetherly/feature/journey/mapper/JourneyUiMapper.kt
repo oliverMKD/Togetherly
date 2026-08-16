@@ -1,5 +1,7 @@
 package com.togetherly.feature.journey.mapper
 
+import com.togetherly.core.datetime.localizedDateDisplay
+import com.togetherly.core.datetime.localizedTimeDisplay
 import com.togetherly.domain.completion.MemoryMedia
 import com.togetherly.domain.journey.JourneyEntry
 import com.togetherly.domain.journey.JourneyStar
@@ -30,8 +32,8 @@ fun JourneyEntry.toUi(timeZone: TimeZone): JourneyEntryUi {
         completionId = completion.id,
         questTitle = quest?.title?.value,
         category = quest?.category?.toUi(),
-        completedDate = localDateTime.toJourneyDateDisplay(),
-        completedTime = localDateTime.toJourneyTimeDisplay(),
+        completedDate = localDateTime.localizedDateDisplay(),
+        completedTime = localDateTime.localizedTimeDisplay(),
         note = completion.note?.value,
         reactions = completion.reactions
             .sortedBy { it.ordinal }

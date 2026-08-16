@@ -28,13 +28,13 @@ import com.togetherly.designsystem.theme.togetherlySpacing
 import com.togetherly.designsystem.theme.togetherlyTypography
 import com.togetherly.feature.explore.model.ExplorePackUiModel
 import com.togetherly.feature.today.presentation.color
+import org.jetbrains.compose.resources.pluralStringResource
 import org.jetbrains.compose.resources.stringResource
 import togetherly.shared.generated.resources.Res
 import togetherly.shared.generated.resources.explore_pack_free
 import togetherly.shared.generated.resources.explore_pack_locked_content_description
 import togetherly.shared.generated.resources.explore_pack_premium
 import togetherly.shared.generated.resources.explore_pack_quest_count
-import togetherly.shared.generated.resources.explore_pack_quest_count_one
 
 private val FEATURED_CARD_WIDTH = 220.dp
 private val HERO_HEIGHT = 64.dp
@@ -56,11 +56,7 @@ internal fun ExplorePackCard(
     val colors = MaterialTheme.togetherlyColors
     val accessLabel = stringResource(if (pack.isPremium) Res.string.explore_pack_premium else Res.string.explore_pack_free)
     val lockedDescription = stringResource(Res.string.explore_pack_locked_content_description)
-    val questCountLabel = if (pack.questCount == 1) {
-        stringResource(Res.string.explore_pack_quest_count_one)
-    } else {
-        pluralQuestCountFallback(pack.questCount)
-    }
+    val questCountLabel = pluralStringResource(Res.plurals.explore_pack_quest_count, pack.questCount, pack.questCount)
     val cardDescription = buildString {
         append(pack.title)
         append(". ")
@@ -141,6 +137,3 @@ internal fun ExplorePackCard(
         }
     }
 }
-
-@Composable
-private fun pluralQuestCountFallback(count: Int): String = stringResource(Res.string.explore_pack_quest_count, count)

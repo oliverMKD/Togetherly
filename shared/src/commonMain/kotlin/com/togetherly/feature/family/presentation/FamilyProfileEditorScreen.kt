@@ -45,6 +45,7 @@ import togetherly.shared.generated.resources.family_profile_editor_durations_tit
 import togetherly.shared.generated.resources.family_profile_editor_location_title
 import togetherly.shared.generated.resources.family_profile_editor_save_action
 import togetherly.shared.generated.resources.family_profile_editor_title
+import togetherly.shared.generated.resources.ds_component_back_content_description
 import togetherly.shared.generated.resources.onboarding_family_name_label
 import togetherly.shared.generated.resources.onboarding_family_name_placeholder
 
@@ -65,7 +66,7 @@ internal fun FamilyProfileEditorScreen(
                 navigationIcon = {
                     TogetherlyIconButton(
                         icon = { Text("‹", style = MaterialTheme.togetherlyTypography.headlineM) },
-                        contentDescription = "Back",
+                        contentDescription = stringResource(Res.string.ds_component_back_content_description),
                         onClick = { onAction(FamilyProfileAction.BackClicked) },
                     )
                 },

@@ -109,7 +109,7 @@ actually fire.
 
 ### iOS
 
-1. Install a debug build on a simulator or device (deployment target 18.2).
+1. Install a debug build on a simulator or device (deployment target 16.0).
 2. Repeat steps 2–5 above — iOS shows its own system prompt only once ever; if you deny it, the app
    can only offer "Open Settings" (`UIApplicationOpenSettingsURLString`) from then on, never
    re-prompt in-app.

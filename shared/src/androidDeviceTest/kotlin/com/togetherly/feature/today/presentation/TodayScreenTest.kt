@@ -9,6 +9,7 @@ import androidx.compose.ui.test.onNodeWithContentDescription
 import androidx.compose.ui.test.onNodeWithText
 import androidx.compose.ui.test.onRoot
 import androidx.compose.ui.test.performClick
+import androidx.compose.ui.test.performScrollTo
 import androidx.compose.ui.test.printToString
 import androidx.compose.ui.test.runComposeUiTest
 import androidx.compose.ui.unit.Density
@@ -214,7 +215,10 @@ internal class TodayScreenTest {
             TogetherlyTheme { TodayScreen(state = state, onAction = actions::add) }
         }
 
-        onNodeWithText("Find a quest").assertIsDisplayed()
+        // The sheet renders into its own Android window (a separate Popup) — a pure assertion
+        // (no click, which would implicitly settle first) needs an explicit wait for it to attach.
+        waitForIdle()
+        onNodeWithText("Filter quests").assertIsDisplayed()
         onNodeWithText("5 minutes").performClick()
 
         assertEquals(
@@ -270,6 +274,10 @@ internal class TodayScreenTest {
         setContent {
             TogetherlyTheme { TodayScreen(state = rerollConfirmationTodayUiState(), onAction = {}) }
         }
+        // The dialog renders into its own Android window (a separate Popup) — unlike the main
+        // composition, it isn't guaranteed attached the instant setContent() returns, so a pure
+        // assertion (no click, which would implicitly settle first) needs an explicit wait.
+        waitForIdle()
 
         onNodeWithText("Use today's free swap?").assertIsDisplayed()
         onNodeWithText("Keep this quest").assertIsDisplayed()
@@ -309,7 +317,7 @@ internal class TodayScreenTest {
             TogetherlyTheme { TodayScreen(state = freeRerollConsumedTodayUiState(), onAction = {}) }
         }
 
-        onNodeWithText("Today's free swap has been used.").assertIsDisplayed()
+        onNodeWithText("Today's free swap has been used.").performScrollTo().assertIsDisplayed()
         onNodeWithText("Try another quest").assertDoesNotExist()
     }
 

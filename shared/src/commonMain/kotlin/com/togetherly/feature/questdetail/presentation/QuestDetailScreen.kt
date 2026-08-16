@@ -54,6 +54,7 @@ import togetherly.shared.generated.resources.questdetail_saved_content_descripti
 import togetherly.shared.generated.resources.questdetail_start_action
 import togetherly.shared.generated.resources.questdetail_unlock_action
 import togetherly.shared.generated.resources.questdetail_unsaved_content_description
+import togetherly.shared.generated.resources.ds_component_back_content_description
 
 /**
  * Stateless: every value comes from [state], every intent goes out through [onAction] —
@@ -75,7 +76,7 @@ internal fun QuestDetailScreen(
                 navigationIcon = {
                     TogetherlyIconButton(
                         icon = { Text("‹", style = MaterialTheme.togetherlyTypography.headlineM) },
-                        contentDescription = stringResource(Res.string.questdetail_back_content_description),
+                        contentDescription = stringResource(Res.string.ds_component_back_content_description),
                         onClick = { onAction(QuestDetailAction.BackClicked) },
                     )
                 },
@@ -216,12 +217,21 @@ private fun QuestDetailContent(quest: QuestDetailUi, modifier: Modifier = Modifi
 
         if (quest.instructions.isNotEmpty()) {
             QuestDetailSection(title = stringResource(Res.string.questdetail_instructions_title)) {
-                quest.instructions.forEachIndexed { index, instruction ->
-                    Text(
-                        text = "${index + 1}.  $instruction",
-                        style = MaterialTheme.togetherlyTypography.bodyM,
-                        color = MaterialTheme.togetherlyColors.foregroundPrimary,
-                    )
+                Column(verticalArrangement = Arrangement.spacedBy(MaterialTheme.togetherlySpacing.xs)) {
+                    quest.instructions.forEachIndexed { index, instruction ->
+                        Box(
+                            modifier = Modifier
+                                .fillMaxWidth()
+                                .background(MaterialTheme.togetherlyColors.backgroundSurface, shape = MaterialTheme.togetherlyShapes.medium)
+                                .padding(MaterialTheme.togetherlySpacing.s),
+                        ) {
+                            Text(
+                                text = "${index + 1}.  $instruction",
+                                style = MaterialTheme.togetherlyTypography.bodyM,
+                                color = MaterialTheme.togetherlyColors.foregroundPrimary,
+                            )
+                        }
+                    }
                 }
             }
         }
@@ -235,10 +245,32 @@ private fun QuestDetailContent(quest: QuestDetailUi, modifier: Modifier = Modifi
         }
 
         if (quest.safetyNote != null) {
-            QuestDetailSection(title = stringResource(Res.string.questdetail_safety_title)) {
-                Text(text = quest.safetyNote, style = MaterialTheme.togetherlyTypography.bodyM, color = MaterialTheme.togetherlyColors.foregroundSecondary)
-            }
+            QuestDetailSafetyNote(safetyNote = quest.safetyNote)
         }
+    }
+}
+
+/**
+ * Its own composable, not another [QuestDetailSection] call, so its title can carry the same
+ * `warning`-colored treatment [com.togetherly.feature.questmode.presentation.QuestModeScreen]'s
+ * own safety note already uses — previously this screen showed the identical safety copy in the
+ * same neutral style as Materials/Hints, which meant the one genuinely safety-critical section
+ * looked no more important than a shopping list.
+ */
+@Composable
+private fun QuestDetailSafetyNote(safetyNote: String, modifier: Modifier = Modifier) {
+    Column(modifier = modifier.fillMaxWidth(), verticalArrangement = Arrangement.spacedBy(MaterialTheme.togetherlySpacing.xs)) {
+        Text(
+            text = stringResource(Res.string.questdetail_safety_title),
+            style = MaterialTheme.togetherlyTypography.titleM,
+            color = MaterialTheme.togetherlyColors.warning,
+            modifier = Modifier.semantics { heading() },
+        )
+        Text(
+            text = safetyNote,
+            style = MaterialTheme.togetherlyTypography.bodyM,
+            color = MaterialTheme.togetherlyColors.foregroundSecondary,
+        )
     }
 }
 

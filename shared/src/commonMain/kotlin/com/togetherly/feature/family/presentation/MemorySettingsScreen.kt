@@ -44,6 +44,7 @@ import togetherly.shared.generated.resources.memory_settings_save_action
 import togetherly.shared.generated.resources.memory_settings_text_notes_title
 import togetherly.shared.generated.resources.memory_settings_title
 import togetherly.shared.generated.resources.memory_settings_voice_title
+import togetherly.shared.generated.resources.ds_component_back_content_description
 
 @Composable
 internal fun MemorySettingsScreen(
@@ -59,7 +60,7 @@ internal fun MemorySettingsScreen(
                 navigationIcon = {
                     TogetherlyIconButton(
                         icon = { Text("‹", style = MaterialTheme.togetherlyTypography.headlineM) },
-                        contentDescription = "Back",
+                        contentDescription = stringResource(Res.string.ds_component_back_content_description),
                         onClick = { onAction(MemorySettingsAction.BackClicked) },
                     )
                 },

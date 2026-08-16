@@ -14,11 +14,11 @@
     <string name="journey_photo_content_description">Photo from this memory</string>
     <string name="journey_voice_play_action">Play voice note</string>
     <string name="journey_voice_pause_action">Pause voice note</string>
-    <string name="journey_voice_playback_error">This voice note couldn\'t play right now.</string>
+    <string name="journey_voice_playback_error">This voice note couldn't play right now.</string>
 
     <string name="journey_delete_content_description">Delete this memory</string>
     <string name="journey_delete_dialog_title">Delete this memory?</string>
-    <string name="journey_delete_dialog_body">This removes the quest, its note, and any photo or voice memory. This can\'t be undone.</string>
+    <string name="journey_delete_dialog_body">This removes the quest, its note, and any photo or voice memory. This can't be undone.</string>
     <string name="journey_delete_confirm_action">Delete</string>
     <string name="journey_delete_cancel_action">Cancel</string>
 

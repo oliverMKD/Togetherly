@@ -4,6 +4,7 @@ import com.togetherly.domain.daily.QuestContext
 import com.togetherly.domain.family.FamilyProfile
 import com.togetherly.domain.quest.FamilyQuest
 import com.togetherly.domain.quest.QuestCategory
+import com.togetherly.domain.quest.QuestId
 import com.togetherly.domain.quest.matches
 import com.togetherly.domain.quest.supports
 import kotlin.time.Duration
@@ -65,15 +66,16 @@ class DeterministicQuestRecommendationPolicy(
             return QuestRecommendationResult.NoMatch(NoRecommendationReason.NO_CONTEXT_COMPATIBLE_QUEST)
         }
 
+        val historyIndex = RecommendationHistoryIndex.from(request.history, request.now, config.dismissalCooldown)
         val available = contextCompatible.filterNot {
-            it.isExcludedByDismissalOrCooldown(request.history, request.now, config.dismissalCooldown)
+            it.isExcludedByDismissalOrCooldown(historyIndex, request.now)
         }
         if (available.isEmpty()) {
             return QuestRecommendationResult.NoMatch(NoRecommendationReason.ALL_CANDIDATES_IN_COOLDOWN)
         }
 
         val winner = available
-            .map { scoreCandidate(it, request, config) }
+            .map { scoreCandidate(it, request, config, historyIndex) }
             .sortedWith(
                 compareByDescending<ScoredCandidate> { it.score }
                     .thenBy { it.tieBreakKey }
@@ -96,6 +98,37 @@ private data class ScoredCandidate(
     val tieBreakKey: Long,
 )
 
+/** History facts shared by every candidate, calculated once per recommendation request. */
+private data class RecommendationHistoryIndex(
+    val recentlyDismissedQuestIds: Set<QuestId>,
+    val mostRecentCompletionByQuestId: Map<QuestId, QuestHistoryEntry>,
+    val completedQuestIds: Set<QuestId>,
+    val lastTwoCompletedCategories: Set<QuestCategory>,
+) {
+    companion object {
+        fun from(history: RecommendationHistory, now: Instant, dismissalCooldown: Duration): RecommendationHistoryIndex {
+            val mostRecentCompletionByQuestId = buildMap<QuestId, QuestHistoryEntry> {
+                history.recentlyCompleted.forEach { entry ->
+                    val current = get(entry.questId)
+                    if (current == null || entry.occurredAt > current.occurredAt) put(entry.questId, entry)
+                }
+            }
+            return RecommendationHistoryIndex(
+                recentlyDismissedQuestIds = history.recentlyDismissed
+                    .asSequence()
+                    .filter { (now - it.occurredAt) < dismissalCooldown }
+                    .mapTo(mutableSetOf()) { it.questId },
+                mostRecentCompletionByQuestId = mostRecentCompletionByQuestId,
+                completedQuestIds = mostRecentCompletionByQuestId.keys,
+                lastTwoCompletedCategories = history.recentlyCompleted
+                    .sortedByDescending { it.occurredAt }
+                    .take(2)
+                    .mapNotNullTo(mutableSetOf()) { it.category },
+            )
+        }
+    }
+}
+
 private fun FamilyQuest.passesContextAndPreparationFilters(
     context: QuestContext,
     familyProfile: FamilyProfile,
@@ -112,20 +145,13 @@ private fun FamilyQuest.passesContextAndPreparationFilters(
 }
 
 private fun FamilyQuest.isExcludedByDismissalOrCooldown(
-    history: RecommendationHistory,
+    historyIndex: RecommendationHistoryIndex,
     now: Instant,
-    dismissalCooldown: Duration,
 ): Boolean {
-    val dismissedRecently = history.recentlyDismissed.any { entry ->
-        entry.questId == id && (now - entry.occurredAt) < dismissalCooldown
-    }
-    if (dismissedRecently) return true
+    if (id in historyIndex.recentlyDismissedQuestIds) return true
 
     if (cooldownDays <= 0) return false
-    val mostRecentCompletion = history.recentlyCompleted
-        .filter { it.questId == id }
-        .maxByOrNull { it.occurredAt }
-        ?: return false
+    val mostRecentCompletion = historyIndex.mostRecentCompletionByQuestId[id] ?: return false
     return (now - mostRecentCompletion.occurredAt) < cooldownDays.days
 }
 
@@ -133,6 +159,7 @@ private fun scoreCandidate(
     quest: FamilyQuest,
     request: QuestRecommendationRequest,
     config: RecommendationConfig,
+    historyIndex: RecommendationHistoryIndex,
 ): ScoredCandidate {
     var score = 0
     val reasons = mutableListOf<RecommendationReason>()
@@ -161,8 +188,8 @@ private fun scoreCandidate(
         reasons += RecommendationReason.MatchesRequestedContext
     }
 
-    val ownCompletions = request.history.recentlyCompleted.filter { it.questId == quest.id }
-    if (ownCompletions.isEmpty()) {
+    val wasCompleted = quest.id in historyIndex.completedQuestIds
+    if (!wasCompleted) {
         score += config.newToFamily
         reasons += RecommendationReason.NewToFamily
     }
@@ -191,13 +218,9 @@ private fun scoreCandidate(
         reasons += RecommendationReason.MatchesPreferredEnergy
     }
 
-    val lastTwoCompletedCategories = request.history.recentlyCompleted
-        .sortedByDescending { it.occurredAt }
-        .take(2)
-        .mapNotNull { it.category }
-    if (quest.category in lastTwoCompletedCategories) {
+    if (quest.category in historyIndex.lastTwoCompletedCategories) {
         score += config.recentCategoryRepeatPenalty
-    } else if (ownCompletions.isNotEmpty()) {
+    } else if (wasCompleted) {
         reasons += RecommendationReason.LeastRecentlyCompleted
     }
 

@@ -7,42 +7,112 @@ import kotlinx.coroutines.test.runTest
 import kotlinx.datetime.DayOfWeek
 import kotlinx.datetime.LocalTime
 import kotlin.test.Test
+import kotlin.test.assertEquals
 import kotlin.test.assertTrue
 
-/**
- * A real-simulator smoke test — same shape as `IosVoiceRecorderTest`: proves the real
- * `UNUserNotificationCenter` calls never throw and complete successfully, not that a notification
- * actually fires (which needs a granted permission and real wall-clock waiting/manual
- * verification — see docs/reminders.md's manual test procedure). The simulator has no user present
- * to grant notification permission interactively, so `addNotificationRequest` itself still
- * succeeds (scheduling doesn't require authorization — only *delivery* does), which is exactly
- * what this test can honestly verify in this environment.
- */
 class IosReminderSchedulerTest {
 
-    private val scheduler = IosReminderScheduler(FakeOperationalDiagnostics())
+    private fun scheduler(adapter: FakeIosNotificationCenterAdapter) =
+        IosReminderScheduler(adapter, FakeOperationalDiagnostics())
 
     @Test
-    fun schedulingNeverThrowsAndSucceeds() = runTest {
-        val result = scheduler.schedule(ReminderPreference(setOf(DayOfWeek.MONDAY, DayOfWeek.FRIDAY), LocalTime(18, 0)))
+    fun scheduleSucceeds() = runTest {
+        val adapter = FakeIosNotificationCenterAdapter()
+        val result = scheduler(adapter).schedule(ReminderPreference(setOf(DayOfWeek.MONDAY, DayOfWeek.FRIDAY), LocalTime(18, 0)))
 
         assertTrue(result is DataResult.Success)
+        assertEquals(setOf("togetherly.reminder.MONDAY", "togetherly.reminder.FRIDAY"), adapter.pendingRequestIdentifiers().toSet())
+        assertEquals(2, adapter.addCalls)
     }
 
     @Test
-    fun reSchedulingTheSameDayNeverThrows() = runTest {
-        val preference = ReminderPreference(setOf(DayOfWeek.MONDAY), LocalTime(18, 0))
+    fun permissionDeniedIsReportedThroughTheAdapter() = runTest {
+        val adapter = FakeIosNotificationCenterAdapter(authorizationStatusValue = NotificationPermissionState.PermanentlyDenied)
+        val status = adapter.authorizationStatus()
 
-        scheduler.schedule(preference)
-        val result = scheduler.schedule(preference)
-
-        assertTrue(result is DataResult.Success)
+        assertEquals(NotificationPermissionState.PermanentlyDenied, status)
+        assertEquals(1, adapter.authorizationStatusCalls)
     }
 
     @Test
-    fun cancelingWithNothingScheduledNeverThrows() = runTest {
+    fun addRequestFailureReturnsUnexpectedError() = runTest {
+        val adapter = FakeIosNotificationCenterAdapter(addFailurePredicate = { it.identifier == "togetherly.reminder.MONDAY" })
+        val result = scheduler(adapter).schedule(ReminderPreference(setOf(DayOfWeek.MONDAY), LocalTime(18, 0)))
+
+        assertTrue(result is DataResult.Error)
+        assertTrue(adapter.pendingRequestIdentifiers().isEmpty())
+    }
+
+    @Test
+    fun existingReminderReplacementKeepsOnePendingRequestPerDay() = runTest {
+        val adapter = FakeIosNotificationCenterAdapter()
+        val scheduler = scheduler(adapter)
+
+        scheduler.schedule(ReminderPreference(setOf(DayOfWeek.MONDAY), LocalTime(18, 0)))
+        scheduler.schedule(ReminderPreference(setOf(DayOfWeek.MONDAY), LocalTime(19, 30)))
+
+        val pending = adapter.pendingRequestIdentifiers()
+        assertEquals(listOf("togetherly.reminder.MONDAY"), pending)
+        assertEquals(19, adapter.addedRequests.last().hour)
+        assertEquals(30, adapter.addedRequests.last().minute)
+    }
+
+    @Test
+    fun narrowingTheEnabledDaysRemovesTheNoLongerSelectedDaysPendingRequest() = runTest {
+        val adapter = FakeIosNotificationCenterAdapter()
+        val scheduler = scheduler(adapter)
+
+        scheduler.schedule(ReminderPreference(setOf(DayOfWeek.MONDAY, DayOfWeek.WEDNESDAY, DayOfWeek.FRIDAY), LocalTime(18, 0)))
+        scheduler.schedule(ReminderPreference(setOf(DayOfWeek.MONDAY), LocalTime(18, 0)))
+
+        assertEquals(listOf("togetherly.reminder.MONDAY"), adapter.pendingRequestIdentifiers())
+    }
+
+    @Test
+    fun cancelRemovesAllTogetherlyReminderRequests() = runTest {
+        val adapter = FakeIosNotificationCenterAdapter()
+        val scheduler = scheduler(adapter)
+
+        scheduler.schedule(ReminderPreference(setOf(DayOfWeek.MONDAY, DayOfWeek.WEDNESDAY), LocalTime(8, 15)))
+        // schedule() itself now also calls removePendingRequests once (clearing stale days before
+        // re-adding the enabled ones) — isolate cancel()'s own contribution rather than asserting a
+        // hardcoded total, so this stays correct regardless of how schedule() implements its cleanup.
+        val removeCallsBeforeCancel = adapter.removeCalls
         val result = scheduler.cancel()
 
         assertTrue(result is DataResult.Success)
+        assertTrue(adapter.pendingRequestIdentifiers().isEmpty())
+        assertEquals(removeCallsBeforeCancel + 1, adapter.removeCalls)
+    }
+
+    @Test
+    fun selectedWeekdaysMapToStableIdentifiersAndCalendarWeekdays() = runTest {
+        val adapter = FakeIosNotificationCenterAdapter()
+        val result = scheduler(adapter).schedule(ReminderPreference(setOf(DayOfWeek.SUNDAY, DayOfWeek.TUESDAY), LocalTime(6, 45)))
+
+        assertTrue(result is DataResult.Success)
+        assertEquals(
+            setOf("togetherly.reminder.SUNDAY", "togetherly.reminder.TUESDAY"),
+            adapter.pendingRequestIdentifiers().toSet(),
+        )
+        val sunday = adapter.addedRequests.single { it.identifier.endsWith("SUNDAY") }
+        val tuesday = adapter.addedRequests.single { it.identifier.endsWith("TUESDAY") }
+        assertEquals(1, sunday.weekday)
+        assertEquals(3, tuesday.weekday)
+        assertEquals(6, sunday.hour)
+        assertEquals(45, sunday.minute)
+    }
+
+    @Test
+    fun schedulingTwiceDoesNotCreateDuplicateRequests() = runTest {
+        val adapter = FakeIosNotificationCenterAdapter()
+        val scheduler = scheduler(adapter)
+        val preference = ReminderPreference(setOf(DayOfWeek.MONDAY, DayOfWeek.FRIDAY), LocalTime(18, 0))
+
+        scheduler.schedule(preference)
+        scheduler.schedule(preference)
+
+        assertEquals(2, adapter.pendingRequestIdentifiers().size)
+        assertEquals(setOf("togetherly.reminder.MONDAY", "togetherly.reminder.FRIDAY"), adapter.pendingRequestIdentifiers().toSet())
     }
 }

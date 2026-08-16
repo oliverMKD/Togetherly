@@ -34,6 +34,13 @@ import togetherly.shared.generated.resources.debug_diagnostics_consent
 import togetherly.shared.generated.resources.debug_no_breadcrumbs
 import togetherly.shared.generated.resources.debug_no_errors
 import togetherly.shared.generated.resources.debug_no_events
+import togetherly.shared.generated.resources.debug_label_configured
+import togetherly.shared.generated.resources.debug_label_denied
+import togetherly.shared.generated.resources.debug_label_disabled_by_consent
+import togetherly.shared.generated.resources.debug_label_granted
+import togetherly.shared.generated.resources.debug_label_initialization_failed
+import togetherly.shared.generated.resources.debug_label_missing
+import togetherly.shared.generated.resources.debug_label_not_asked
 import togetherly.shared.generated.resources.debug_posthog_status
 import togetherly.shared.generated.resources.debug_revenuecat_status
 import togetherly.shared.generated.resources.debug_section_access
@@ -47,6 +54,7 @@ import togetherly.shared.generated.resources.debug_sentry_status
 import togetherly.shared.generated.resources.debug_telemetry_title
 import togetherly.shared.generated.resources.debug_test_event_sent
 import togetherly.shared.generated.resources.debug_test_exception_sent
+import togetherly.shared.generated.resources.ds_component_back_content_description
 
 @Composable
 internal fun DebugTelemetryScreen(
@@ -62,7 +70,7 @@ internal fun DebugTelemetryScreen(
                 navigationIcon = {
                     TogetherlyIconButton(
                         icon = { Text("‹", style = MaterialTheme.togetherlyTypography.headlineM) },
-                        contentDescription = "Back",
+                        contentDescription = stringResource(Res.string.ds_component_back_content_description),
                         onClick = { onAction(DebugTelemetryAction.BackClicked) },
                     )
                 },
@@ -147,17 +155,19 @@ private fun BodyRow(text: String) {
     Text(text = text, style = MaterialTheme.togetherlyTypography.bodyS, color = MaterialTheme.togetherlyColors.foregroundSecondary)
 }
 
+@Composable
 private fun ConsentDecision.toLabel(): String = when (this) {
-    ConsentDecision.NotAsked -> "Not asked"
-    ConsentDecision.Granted -> "Granted"
-    ConsentDecision.Denied -> "Denied"
+    ConsentDecision.NotAsked -> stringResource(Res.string.debug_label_not_asked)
+    ConsentDecision.Granted -> stringResource(Res.string.debug_label_granted)
+    ConsentDecision.Denied -> stringResource(Res.string.debug_label_denied)
 }
 
+@Composable
 private fun ProviderConfigurationStatus.toLabel(): String = when (this) {
-    ProviderConfigurationStatus.CONFIGURED -> "Configured"
-    ProviderConfigurationStatus.MISSING -> "Missing"
-    ProviderConfigurationStatus.DISABLED_BY_CONSENT -> "Disabled by consent"
-    ProviderConfigurationStatus.INITIALIZATION_FAILED -> "Initialization failed"
+    ProviderConfigurationStatus.CONFIGURED -> stringResource(Res.string.debug_label_configured)
+    ProviderConfigurationStatus.MISSING -> stringResource(Res.string.debug_label_missing)
+    ProviderConfigurationStatus.DISABLED_BY_CONSENT -> stringResource(Res.string.debug_label_disabled_by_consent)
+    ProviderConfigurationStatus.INITIALIZATION_FAILED -> stringResource(Res.string.debug_label_initialization_failed)
 }
 
 private fun RecordedAnalyticsEvent.toDisplayLine(): String = "$name @ $recordedAt"
