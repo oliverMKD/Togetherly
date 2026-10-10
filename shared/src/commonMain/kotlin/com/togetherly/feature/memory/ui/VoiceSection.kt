@@ -2,6 +2,7 @@ package com.togetherly.feature.memory.ui
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.FlowRow
 import androidx.compose.foundation.layout.Row
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
@@ -68,7 +69,10 @@ private fun RecordingControls(state: CompletionMemoryUiState, onAction: (Complet
         style = MaterialTheme.togetherlyTypography.bodyM,
         color = MaterialTheme.togetherlyColors.foregroundPrimary,
     )
-    Row(horizontalArrangement = Arrangement.spacedBy(MaterialTheme.togetherlySpacing.s)) {
+    FlowRow(
+        horizontalArrangement = Arrangement.spacedBy(MaterialTheme.togetherlySpacing.s),
+        verticalArrangement = Arrangement.spacedBy(MaterialTheme.togetherlySpacing.xs),
+    ) {
         TogetherlyTextButton(
             label = stringResource(Res.string.memory_voice_stop_action),
             onClick = { onAction(CompletionMemoryAction.StopRecordingClicked) },
@@ -100,7 +104,10 @@ private fun RecordedVoiceControls(state: CompletionMemoryUiState, onAction: (Com
             color = MaterialTheme.togetherlyColors.foregroundPrimary,
         )
     }
-    Row(horizontalArrangement = Arrangement.spacedBy(MaterialTheme.togetherlySpacing.s)) {
+    FlowRow(
+        horizontalArrangement = Arrangement.spacedBy(MaterialTheme.togetherlySpacing.s),
+        verticalArrangement = Arrangement.spacedBy(MaterialTheme.togetherlySpacing.xs),
+    ) {
         TogetherlyTextButton(
             label = stringResource(Res.string.memory_voice_rerecord_action),
             onClick = { onAction(CompletionMemoryAction.RecordVoiceClicked) },

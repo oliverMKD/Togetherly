@@ -4,6 +4,7 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.FlowRow
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -60,17 +61,18 @@ internal fun JourneyTimelineEntry(
             modifier = Modifier.fillMaxWidth().padding(MaterialTheme.togetherlySpacing.m),
             verticalArrangement = Arrangement.spacedBy(MaterialTheme.togetherlySpacing.xs),
         ) {
-            Row(horizontalArrangement = Arrangement.spacedBy(MaterialTheme.togetherlySpacing.xs), verticalAlignment = Alignment.CenterVertically) {
-                entry.category?.let { category ->
-                    JourneyCategoryBadge(category = category)
-                    Spacer(modifier = Modifier.size(MaterialTheme.togetherlySpacing.xxs))
+            Row(verticalAlignment = Alignment.Top) {
+                Column(
+                    modifier = Modifier.weight(1f),
+                    verticalArrangement = Arrangement.spacedBy(MaterialTheme.togetherlySpacing.xxs),
+                ) {
+                    entry.category?.let { category -> JourneyCategoryBadge(category = category) }
+                    Text(
+                        text = "${entry.completedDate} · ${entry.completedTime}",
+                        style = MaterialTheme.togetherlyTypography.labelM,
+                        color = MaterialTheme.togetherlyColors.foregroundSecondary,
+                    )
                 }
-                Text(
-                    text = "${entry.completedDate} · ${entry.completedTime}",
-                    style = MaterialTheme.togetherlyTypography.labelM,
-                    color = MaterialTheme.togetherlyColors.foregroundSecondary,
-                )
-                Spacer(modifier = Modifier.weight(1f))
                 TogetherlyIconButton(
                     icon = { Text("✕", style = MaterialTheme.togetherlyTypography.bodyM) },
                     contentDescription = stringResource(Res.string.journey_delete_content_description),
@@ -85,7 +87,10 @@ internal fun JourneyTimelineEntry(
             )
 
             if (entry.reactions.isNotEmpty()) {
-                Row(horizontalArrangement = Arrangement.spacedBy(MaterialTheme.togetherlySpacing.xs)) {
+                FlowRow(
+                    horizontalArrangement = Arrangement.spacedBy(MaterialTheme.togetherlySpacing.xs),
+                    verticalArrangement = Arrangement.spacedBy(MaterialTheme.togetherlySpacing.xxs),
+                ) {
                     entry.reactions.forEach { reaction ->
                         Text(
                             text = "${reaction.emoji} ${reaction.label.asString()}",

@@ -8,6 +8,7 @@ import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.text.style.TextOverflow
 import com.togetherly.designsystem.theme.togetherlyColors
 import com.togetherly.designsystem.theme.togetherlyTypography
 
@@ -41,6 +42,8 @@ fun TogetherlyTopBar(
                     text = title,
                     style = MaterialTheme.togetherlyTypography.titleL,
                     color = colors.foregroundPrimary,
+                    maxLines = 1,
+                    overflow = TextOverflow.Ellipsis,
                 )
             }
         },

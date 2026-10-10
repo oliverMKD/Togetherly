@@ -63,7 +63,7 @@ internal fun ExploreQuestCard(
                 horizontalArrangement = Arrangement.SpaceBetween,
                 verticalAlignment = Alignment.CenterVertically,
             ) {
-                CategoryBadge(quest = quest)
+                CategoryBadge(quest = quest, modifier = Modifier.weight(1f))
                 Row(verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.spacedBy(MaterialTheme.togetherlySpacing.xxs)) {
                     if (quest.isPremium) {
                         PremiumBadge(locked = quest.locked)

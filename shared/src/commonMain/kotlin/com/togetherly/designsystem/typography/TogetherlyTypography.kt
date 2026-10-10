@@ -86,12 +86,12 @@ internal val DefaultTogetherlyTypography = TogetherlyTypography(
     labelL = TextStyle(
         fontWeight = FontWeight.Medium,
         fontSize = 15.sp,
-        lineHeight = 20.sp,
+        lineHeight = 22.sp,
     ),
     labelM = TextStyle(
         fontWeight = FontWeight.Medium,
         fontSize = 13.sp,
-        lineHeight = 16.sp,
+        lineHeight = 18.sp,
     ),
 )
 

@@ -3,7 +3,7 @@ package com.togetherly.feature.paywall.presentation
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.FlowRow
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.MaterialTheme
@@ -160,7 +160,10 @@ private fun PaywallOfferContent(
             TogetherlyInlineError(message = state.error.asString())
         }
 
-        Row(horizontalArrangement = Arrangement.spacedBy(MaterialTheme.togetherlySpacing.m)) {
+        FlowRow(
+            horizontalArrangement = Arrangement.spacedBy(MaterialTheme.togetherlySpacing.m),
+            verticalArrangement = Arrangement.spacedBy(MaterialTheme.togetherlySpacing.xs),
+        ) {
             TogetherlyTextButton(
                 label = stringResource(Res.string.paywall_privacy_policy_action),
                 onClick = { onAction(FamilyPlusPaywallAction.PrivacyPolicyClicked) },

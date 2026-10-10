@@ -8,6 +8,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.Immutable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.text.style.TextOverflow
 import com.togetherly.designsystem.theme.togetherlyColors
 import com.togetherly.designsystem.theme.togetherlyTypography
 
@@ -62,7 +63,12 @@ fun TogetherlyBottomNavigationBar(
                 onClick = { onItemSelected(item.destination) },
                 icon = item.icon,
                 label = {
-                    Text(text = item.label, style = MaterialTheme.togetherlyTypography.labelM)
+                    Text(
+                        text = item.label,
+                        style = MaterialTheme.togetherlyTypography.labelM,
+                        maxLines = 1,
+                        overflow = TextOverflow.Ellipsis,
+                    )
                 },
                 colors = NavigationBarItemDefaults.colors(
                     selectedIconColor = colors.actionPrimary,

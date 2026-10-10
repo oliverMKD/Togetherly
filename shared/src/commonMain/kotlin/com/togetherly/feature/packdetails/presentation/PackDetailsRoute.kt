@@ -4,6 +4,7 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.FlowRow
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -146,9 +147,10 @@ private fun PackDetailsContent(
             Text(text = pack.title, style = MaterialTheme.togetherlyTypography.headlineM, color = colors.foregroundPrimary)
             Text(text = pack.description, style = MaterialTheme.togetherlyTypography.bodyL, color = colors.foregroundSecondary)
 
-            Row(
+            FlowRow(
                 horizontalArrangement = Arrangement.spacedBy(MaterialTheme.togetherlySpacing.xs),
-                verticalAlignment = Alignment.CenterVertically,
+                itemVerticalAlignment = Alignment.CenterVertically,
+                verticalArrangement = Arrangement.spacedBy(MaterialTheme.togetherlySpacing.xxs),
             ) {
                 Text(
                     text = stringResource(if (pack.isPremium) Res.string.explore_pack_premium else Res.string.explore_pack_free),
