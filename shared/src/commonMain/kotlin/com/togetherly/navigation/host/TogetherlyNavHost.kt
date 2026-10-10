@@ -41,7 +41,9 @@ import com.togetherly.feature.saved.presentation.SavedRoute
 import com.togetherly.navigation.destination.MainDestination
 import com.togetherly.navigation.destination.RootDestination
 import com.togetherly.navigation.destination.completionIdNavType
+import com.togetherly.navigation.destination.paywallContextNavType
 import com.togetherly.navigation.destination.questIdNavType
+import com.togetherly.navigation.destination.questOpenSourceNavType
 import com.togetherly.navigation.destination.questPackIdNavType
 import com.togetherly.navigation.shell.MainShell
 import com.togetherly.navigation.shell.RequestedTabStore
@@ -261,7 +263,9 @@ fun TogetherlyNavHost(
             )
         }
 
-        composable<RootDestination.FamilyPlusPaywall> { backStackEntry ->
+        composable<RootDestination.FamilyPlusPaywall>(
+            typeMap = mapOf(typeOf<PaywallContext>() to paywallContextNavType),
+        ) { backStackEntry ->
             val destination = backStackEntry.toRoute<RootDestination.FamilyPlusPaywall>()
             FamilyPlusPaywallRoute(
                 context = destination.context,
@@ -274,7 +278,10 @@ fun TogetherlyNavHost(
         }
 
         composable<RootDestination.QuestDetail>(
-            typeMap = mapOf(typeOf<QuestId>() to questIdNavType),
+            typeMap = mapOf(
+                typeOf<QuestId>() to questIdNavType,
+                typeOf<QuestOpenSource>() to questOpenSourceNavType,
+            ),
         ) { backStackEntry ->
             val destination = backStackEntry.toRoute<RootDestination.QuestDetail>()
             QuestDetailRoute(
