@@ -2,7 +2,7 @@ package com.togetherly.feature.memory.ui
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.FlowRow
 import androidx.compose.foundation.layout.size
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
@@ -48,7 +48,10 @@ internal fun PhotoSection(
                 contentDescription = stringResource(Res.string.memory_photo_thumbnail_description),
                 modifier = Modifier.size(120.dp),
             )
-            Row(horizontalArrangement = Arrangement.spacedBy(MaterialTheme.togetherlySpacing.s)) {
+            FlowRow(
+                horizontalArrangement = Arrangement.spacedBy(MaterialTheme.togetherlySpacing.s),
+                verticalArrangement = Arrangement.spacedBy(MaterialTheme.togetherlySpacing.xs),
+            ) {
                 TogetherlyTextButton(
                     label = stringResource(Res.string.memory_photo_replace_action),
                     onClick = { onAction(CompletionMemoryAction.AddPhotoClicked) },

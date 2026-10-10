@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="questmode_close_content_description">Fermer</string>
+    <string name="questmode_timer_finished">Temps écoulé</string>
+    <string name="questmode_timer_content_description_running">%1$s restantes</string>
+    <string name="questmode_timer_content_description_finished">Temps écoulé</string>
+
+    <string name="questmode_hints_action">Besoin d'une idée ?</string>
+    <string name="questmode_hints_expanded_state">Développé</string>
+    <string name="questmode_hints_collapsed_state">Réduit</string>
+    <string name="questmode_safety_title">Consigne de sécurité</string>
+
+    <string name="questmode_phone_down_action">Pose ton téléphone</string>
+    <string name="questmode_phone_down_supporting_timed">On garde un œil sur le temps.</string>
+    <string name="questmode_phone_down_supporting_untimed">Prends ton temps pour celle-ci.</string>
+    <string name="questmode_phone_down_active_title">Quête en cours</string>
+    <string name="questmode_phone_down_active_body">Appuie pour revenir</string>
+
+    <string name="questmode_complete_action">On l'a fait</string>
+
+    <string name="questmode_exit_title">Garder cette quête en cours ?</string>
+    <string name="questmode_exit_body">Tu pourras revenir et continuer plus tard.</string>
+    <string name="questmode_exit_keep_action">Garder pour plus tard</string>
+    <string name="questmode_exit_continue_action">Continuer la quête</string>
+    <string name="questmode_exit_abandon_action">Abandonner la quête</string>
+
+    <string name="questmode_abandon_confirm_title">Abandonner cette quête ?</string>
+    <string name="questmode_abandon_confirm_body">Cela efface ta progression. Tu pourras ensuite commencer une nouvelle quête depuis Aujourd'hui.</string>
+    <string name="questmode_abandon_confirm_action">Abandonner la quête</string>
+    <string name="questmode_abandon_cancel_action">Annuler</string>
+
+    <string name="questmode_error_close_action">Fermer</string>
+</resources>

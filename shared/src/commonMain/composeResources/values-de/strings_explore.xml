@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="explore_title">Gemeinsam entdecken</string>
+    <string name="explore_subtitle">Finde etwas, das gerade zu deiner Familie passt.</string>
+
+    <string name="explore_search_label">Quests und Pakete durchsuchen</string>
+    <string name="explore_search_clear_content_description">Suche löschen</string>
+
+    <string name="explore_category_all">Alle</string>
+
+    <string name="explore_featured_packs_title">Empfohlen</string>
+    <string name="explore_all_packs_title">Alle Pakete</string>
+    <string name="explore_suggested_quests_title">Vorgeschlagene Quests</string>
+    <string name="explore_search_results_title">Suchergebnisse</string>
+
+    <string name="explore_filters_action">Filter</string>
+    <string name="explore_filters_action_with_count">Filter (%1$d)</string>
+    <string name="explore_saved_action">Gespeichert</string>
+
+    <string name="explore_pack_free">Kostenlos</string>
+    <string name="explore_pack_premium">Family Plus</string>
+    <plurals name="explore_pack_quest_count">
+        <item quantity="one">1 Quest</item>
+        <item quantity="other">%1$d Quests</item>
+    </plurals>
+    <string name="explore_pack_duration_range">%1$d–%2$d Min.</string>
+    <string name="explore_pack_duration_single">%1$d Min.</string>
+    <string name="explore_pack_locked_content_description">In Family Plus enthalten. Tippen, um mehr zu erfahren.</string>
+
+    <string name="explore_quest_premium_badge">Family Plus</string>
+    <string name="explore_quest_locked_content_description">Family-Plus-Quest, für deine Familie gesperrt. Tippen zur Vorschau.</string>
+    <string name="explore_quest_saved_content_description">Gespeichert. Tippen, um aus den gespeicherten Quests zu entfernen.</string>
+    <string name="explore_quest_unsaved_content_description">Nicht gespeichert. Tippen, um diese Quest zu speichern.</string>
+
+    <string name="explore_empty_search_title">Keine Quests gefunden</string>
+    <string name="explore_empty_search_body">Versuche ein anderes Wort oder setze deine Filter zurück.</string>
+    <string name="explore_empty_filter_title">Keine Quests gefunden</string>
+    <string name="explore_empty_filter_body">Versuche andere Filter oder schau bald wieder vorbei.</string>
+    <string name="explore_empty_state_content_description">%1$s. %2$s</string>
+
+    <string name="explore_filters_title">Filter</string>
+    <string name="explore_filter_group_duration">Dauer</string>
+    <string name="explore_filter_group_energy">Energie</string>
+    <string name="explore_filter_group_location">Ort</string>
+    <string name="explore_filter_group_age">Altersempfehlung</string>
+    <string name="explore_filter_group_category">Kategorie</string>
+    <string name="explore_filter_group_access">Zugang</string>
+    <string name="explore_filters_clear_all">Alle zurücksetzen</string>
+    <string name="explore_filters_apply">Anwenden</string>
+    <string name="explore_filters_cancel">Abbrechen</string>
+    <string name="explore_filter_access_all">Alle</string>
+
+    <string name="explore_saved_title">Gespeichert</string>
+    <string name="explore_saved_empty_title">Noch keine gespeicherten Quests</string>
+    <string name="explore_saved_empty_body">Speichere Aktivitäten, die ihr später gemeinsam ausprobieren möchtet.</string>
+</resources>

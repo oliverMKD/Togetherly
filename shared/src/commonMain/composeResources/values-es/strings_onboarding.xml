@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="onboarding_continue">Continuar</string>
+    <string name="onboarding_back_content_description">Atrás</string>
+
+    <string name="onboarding_welcome_title">Una pequeña aventura familiar cada día.</string>
+    <string name="onboarding_welcome_body">Togetherly le da a tu familia ideas rápidas para hablar, reír, crear y hacer recuerdos, sin pasar la tarde buscando algo que hacer.</string>
+    <string name="onboarding_welcome_primary">Crear nuestra familia</string>
+    <string name="onboarding_welcome_privacy">Sin cuentas infantiles. Sin perfiles públicos. Los recuerdos de tu familia son privados.</string>
+
+    <string name="onboarding_family_name_title">¿Cómo deberíamos llamar a tu equipo?</string>
+    <string name="onboarding_family_name_supporting">Esto es opcional y solo aparece dentro de Togetherly.</string>
+    <string name="onboarding_family_name_label">Nombre de familia o equipo</string>
+    <string name="onboarding_family_name_placeholder">Equipo Luciérnaga</string>
+    <string name="onboarding_skip_name">Omitir por ahora</string>
+
+    <string name="onboarding_age_bands_title">¿Qué edades participarán en las aventuras?</string>
+    <string name="onboarding_age_bands_supporting">Elige todos los grupos de edad de tu familia para que podamos sugerir actividades que funcionen para todos.</string>
+    <string name="onboarding_age_bands_privacy_note">Togetherly no necesita nombres ni fechas de nacimiento, solo grupos de edad.</string>
+    <string name="onboarding_age_band_6_to_8">6–8</string>
+    <string name="onboarding_age_band_9_to_11">9–11</string>
+    <string name="onboarding_age_band_12_to_13">12–13</string>
+
+    <string name="onboarding_interests_title">¿Qué disfruta tu familia?</string>
+    <string name="onboarding_interests_supporting">Elige tantos como quieras: esto determina el tipo de actividades que te sugerimos.</string>
+    <string name="onboarding_interest_talk_label">Hablar</string>
+    <string name="onboarding_interest_talk_description">Conversaciones y preguntas que acercan a tu familia.</string>
+    <string name="onboarding_interest_create_label">Crear</string>
+    <string name="onboarding_interest_create_description">Manualidades, construcción y arte.</string>
+    <string name="onboarding_interest_move_label">Moverse</string>
+    <string name="onboarding_interest_move_description">Diversión activa, para moverse y no parar.</string>
+    <string name="onboarding_interest_kindness_label">Bondad</string>
+    <string name="onboarding_interest_kindness_description">Pequeños gestos que ayudan a otra persona.</string>
+    <string name="onboarding_interest_discover_label">Descubrir</string>
+    <string name="onboarding_interest_discover_description">Aprender y explorar algo nuevo.</string>
+    <string name="onboarding_interest_silly_label">Divertido</string>
+    <string name="onboarding_interest_silly_description">Diversión sin presión, solo para reír.</string>
+    <string name="onboarding_interest_memories_label">Recuerdos</string>
+    <string name="onboarding_interest_memories_description">Momentos que vale la pena recordar.</string>
+
+    <string name="onboarding_preferences_title">¿Qué le funciona mejor a tu familia?</string>
+    <string name="onboarding_preferences_time_label">¿Cuánto tiempo sueles tener?</string>
+    <string name="onboarding_preferences_time_supporting">Elige todas las duraciones que te funcionen: puedes elegir más de una.</string>
+    <string name="onboarding_duration_5">5 minutos</string>
+    <string name="onboarding_duration_10">10 minutos</string>
+    <string name="onboarding_duration_20">20 minutos</string>
+    <string name="onboarding_duration_30_plus">30+ minutos</string>
+    <string name="onboarding_preferences_location_label">¿Interior o exterior?</string>
+    <string name="onboarding_location_indoor">Interior</string>
+    <string name="onboarding_location_outdoor">Exterior</string>
+    <string name="onboarding_location_both">Ambos</string>
+    <string name="onboarding_preferences_preparation_label">¿Cuánta preparación te funciona bien?</string>
+    <string name="onboarding_preparation_none">Sin preparación</string>
+    <string name="onboarding_preparation_simple_materials">Materiales sencillos está bien</string>
+    <string name="onboarding_preparation_any">Cualquier cosa funciona</string>
+
+    <string name="onboarding_reminder_title">¿Te ayudaría un recordatorio suave?</string>
+    <string name="onboarding_reminder_not_now">Ahora no</string>
+    <string name="onboarding_reminder_choose">Elegir recordatorio</string>
+    <string name="onboarding_reminder_days_label">¿Qué días?</string>
+    <string name="onboarding_reminder_time_label">¿A qué hora?</string>
+    <string name="onboarding_reminder_choose_time">Elegir hora</string>
+    <string name="onboarding_reminder_time_selected">%1$s</string>
+    <string name="onboarding_day_monday">Lun</string>
+    <string name="onboarding_day_tuesday">Mar</string>
+    <string name="onboarding_day_wednesday">Mié</string>
+    <string name="onboarding_day_thursday">Jue</string>
+    <string name="onboarding_day_friday">Vie</string>
+    <string name="onboarding_day_saturday">Sáb</string>
+    <string name="onboarding_day_sunday">Dom</string>
+
+    <string name="onboarding_review_title">Revisa tus opciones</string>
+    <string name="onboarding_review_team_name_default">Nuestra familia</string>
+    <string name="onboarding_review_primary">Comenzar nuestra primera aventura</string>
+    <string name="onboarding_review_back_and_edit">Volver y editar</string>
+    <string name="onboarding_review_field_team_name">Nombre del equipo</string>
+    <string name="onboarding_review_field_age_bands">Edades</string>
+    <string name="onboarding_review_field_interests">Intereses</string>
+    <string name="onboarding_review_field_durations">Duración</string>
+    <string name="onboarding_review_field_location">Ubicación</string>
+    <string name="onboarding_review_field_preparation">Preparación</string>
+    <string name="onboarding_review_field_reminder">Recordatorio</string>
+    <string name="onboarding_review_no_reminder">Sin recordatorio</string>
+    <string name="onboarding_review_reminder_value">%1$s · %2$s</string>
+
+    <string name="onboarding_error_family_name_too_long">El nombre de familia es demasiado largo.</string>
+    <string name="onboarding_error_family_name_invalid">Revisa el nombre de familia.</string>
+    <string name="onboarding_error_age_bands_required">Elige al menos un grupo de edad.</string>
+    <string name="onboarding_error_interests_required">Elige al menos un interés.</string>
+    <string name="onboarding_error_durations_required">Elige al menos una duración.</string>
+    <string name="onboarding_error_reminder_days_required">Elige al menos un día para el recordatorio.</string>
+    <string name="onboarding_error_reminder_time_required">Elige una hora para el recordatorio.</string>
+</resources>

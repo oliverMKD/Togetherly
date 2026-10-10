@@ -26,6 +26,7 @@ fun FamilyRoute(
     onOpenLegal: () -> Unit,
     onOpenAbout: () -> Unit,
     onOpenDataManagement: () -> Unit,
+    onOpenLanguage: () -> Unit,
     viewModel: FamilyViewModel = koinViewModel(),
 ) {
     val state by viewModel.uiState.collectAsStateWithLifecycle()
@@ -43,6 +44,7 @@ fun FamilyRoute(
                 FamilyEvent.OpenLegal -> onOpenLegal()
                 FamilyEvent.OpenAbout -> onOpenAbout()
                 FamilyEvent.OpenDataManagement -> onOpenDataManagement()
+                FamilyEvent.OpenLanguage -> onOpenLanguage()
             }
         }
     }

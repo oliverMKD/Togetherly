@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="questdetail_back_content_description">Retour</string>
+    <string name="questdetail_start_action">Commencer la quête</string>
+    <string name="questdetail_materials_title">Ce dont tu auras besoin</string>
+    <string name="questdetail_instructions_title">Instructions</string>
+    <string name="questdetail_hints_title">Astuces</string>
+    <string name="questdetail_safety_title">Consigne de sécurité</string>
+    <string name="questdetail_saved_content_description">Enregistrée. Appuie pour la retirer des quêtes enregistrées.</string>
+    <string name="questdetail_unsaved_content_description">Non enregistrée. Appuie pour enregistrer cette quête.</string>
+
+    <string name="questdetail_conflict_title">Une autre quête est encore en cours</string>
+    <string name="questdetail_conflict_body">Commencer cette quête remplacera la session inachevée.</string>
+    <string name="questdetail_conflict_replace_action">Remplacer et commencer cette quête</string>
+    <string name="questdetail_conflict_cancel_action">Annuler</string>
+
+    <string name="questdetail_locked_title">Cette quête fait partie de Family Plus.</string>
+    <string name="questdetail_locked_body">Débloque l'activité complète et plus de façons de passer du temps de qualité ensemble.</string>
+    <string name="questdetail_unlock_action">Débloquer avec Family Plus</string>
+    <string name="questdetail_premium_badge">Family Plus</string>
+    <string name="questdetail_age_suitability_title">Idéal pour</string>
+    <string name="questdetail_pack_label">Fait partie de %1$s</string>
+</resources>

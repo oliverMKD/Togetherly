@@ -27,6 +27,7 @@ import com.togetherly.feature.family.presentation.MemorySettingsRoute
 import com.togetherly.feature.family.presentation.OpenSourceLicensesRoute
 import com.togetherly.feature.family.presentation.PrivacyRoute
 import com.togetherly.feature.family.presentation.QuestPreferencesRoute
+import com.togetherly.feature.language.presentation.LanguageRoute
 import com.togetherly.feature.memory.ui.CompletionMemoryRoute
 import com.togetherly.feature.reminder.presentation.ReminderRoute
 import com.togetherly.feature.onboarding.presentation.OnboardingRoute
@@ -72,6 +73,12 @@ import kotlin.reflect.typeOf
  *   the back stack here. Since [RootDestination.Bootstrap] was already removed, that leaves
  *   nothing — the platform's own exit/dismiss behavior takes over, no extra handling needed.
  *
+ * [mainNavController] is forwarded, unmodified, straight into [MainShell]'s own `navController`
+ * parameter — this composable never reads or navigates it directly. It exists purely so
+ * [com.togetherly.app.application.App] can hoist it outside its own `key(language)` boundary,
+ * alongside [navController] — see that composable's own KDoc for why both need to survive a
+ * language-switch remount, not just one of them.
+ *
  * [pendingGatedNavigation] (Step 11.8) is the one parental-purchase-gate seam: Today's reroll
  * limit and a locked premium quest are both child-facing triggers, so their `FamilyPlusPaywall`
  * navigation is deferred behind [TogetherlyParentalGateDialog] rather than firing immediately —
@@ -85,6 +92,7 @@ import kotlin.reflect.typeOf
 fun TogetherlyNavHost(
     modifier: Modifier = Modifier,
     navController: NavHostController = rememberNavController(),
+    mainNavController: NavHostController = rememberNavController(),
 ) {
     var pendingGatedNavigation by remember { mutableStateOf<(() -> Unit)?>(null) }
     val requestedTabStore = koinInject<RequestedTabStore>()
@@ -173,6 +181,10 @@ fun TogetherlyNavHost(
                 onOpenDataManagement = {
                     navController.navigate(RootDestination.DataManagement)
                 },
+                onOpenLanguage = {
+                    navController.navigate(RootDestination.Language)
+                },
+                navController = mainNavController,
             )
         }
 
@@ -210,6 +222,10 @@ fun TogetherlyNavHost(
 
         composable<RootDestination.Privacy> {
             PrivacyRoute(onNavigateBack = { navController.popBackStack() })
+        }
+
+        composable<RootDestination.Language> {
+            LanguageRoute(onNavigateBack = { navController.popBackStack() })
         }
 
         composable<RootDestination.Legal> {

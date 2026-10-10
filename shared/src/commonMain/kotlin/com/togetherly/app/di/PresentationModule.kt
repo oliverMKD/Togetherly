@@ -15,6 +15,7 @@ import com.togetherly.feature.family.presentation.MemorySettingsViewModel
 import com.togetherly.feature.family.presentation.OpenSourceLicensesViewModel
 import com.togetherly.feature.family.presentation.PrivacyViewModel
 import com.togetherly.feature.family.presentation.QuestPreferencesViewModel
+import com.togetherly.feature.language.presentation.LanguageViewModel
 import com.togetherly.feature.reminder.presentation.ReminderViewModel
 import com.togetherly.navigation.shell.RequestedTabStore
 import com.togetherly.feature.journey.presentation.JourneyViewModel
@@ -68,6 +69,7 @@ val presentationModule = module {
     factory { ReminderViewModel(get(), get(), get(), get(), get(), get()) }
     factory { MemorySettingsViewModel(get(), get(), get()) }
     factory { PrivacyViewModel() }
+    factory { LanguageViewModel(get()) }
     factory { LegalViewModel(get()) }
     factory { OpenSourceLicensesViewModel() }
     factory { AboutViewModel(get(), get(), get(), get()) }

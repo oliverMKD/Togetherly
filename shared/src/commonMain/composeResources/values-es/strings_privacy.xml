@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="privacy_title">Privacidad</string>
+    <string name="privacy_intro">Esto es lo que realmente ocurre con la información de tu familia.</string>
+
+    <string name="privacy_profile_title">El perfil de tu familia</string>
+    <string name="privacy_profile_body">El perfil de tu familia (nombre, grupos de edad y preferencias) se guarda únicamente en este dispositivo.</string>
+
+    <string name="privacy_progress_title">Progreso de actividades</string>
+    <string name="privacy_progress_body">Las actividades completadas y el progreso de tu familia se guardan únicamente en este dispositivo.</string>
+
+    <string name="privacy_memories_title">Fotos y recuerdos de voz</string>
+    <string name="privacy_memories_body">Las fotos y los recuerdos de voz que guardas permanecen privados en este dispositivo. Togetherly nunca los sube a ningún sitio.</string>
+
+    <string name="privacy_purchases_title">Compras</string>
+    <string name="privacy_purchases_body">RevenueCat, nuestro proveedor de suscripciones, recibe identificadores relacionados con la compra e información de la transacción para gestionar Family Plus. Los pagos en sí los procesa la App Store o Google Play, no Togetherly directamente.</string>
+
+    <string name="privacy_notifications_title">Recordatorios</string>
+    <string name="privacy_notifications_body">Las notificaciones de recordatorio se programan en este dispositivo: Togetherly no tiene un servidor que las envíe.</string>
+
+    <string name="privacy_no_account_title">Sin cuenta ni sincronización en la nube</string>
+    <string name="privacy_no_account_body">Por ahora, Togetherly no tiene cuentas ni sincronización en la nube: no hay nada en lo que iniciar sesión, y nada se sincroniza entre dispositivos.</string>
+
+    <string name="privacy_uninstall_title">Si eliminas la app</string>
+    <string name="privacy_uninstall_body">Desinstalar Togetherly puede eliminar sus datos locales, según los ajustes de copia de seguridad y almacenamiento de tu dispositivo.</string>
+
+    <string name="privacy_restore_purchases_title">Restaurar compras</string>
+    <string name="privacy_restore_purchases_body">Es posible que tu historial de compras se pueda recuperar a través de la App Store o Google Play, de forma independiente a lo guardado en la app.</string>
+</resources>

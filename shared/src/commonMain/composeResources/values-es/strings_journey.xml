@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="journey_top_bar_title">Viaje</string>
+
+    <string name="journey_empty_title">Tu viaje en familia empieza aquí.</string>
+    <string name="journey_empty_body">Completa tu primera actividad y se convertirá en una estrella.</string>
+    <string name="journey_empty_action">Ir a Hoy</string>
+
+    <string name="journey_missing_quest_title">Aventura familiar</string>
+
+    <string name="journey_photo_content_description">Foto de este recuerdo</string>
+    <string name="journey_voice_play_action">Reproducir nota de voz</string>
+    <string name="journey_voice_pause_action">Pausar nota de voz</string>
+    <string name="journey_voice_playback_error">Esta nota de voz no se pudo reproducir en este momento.</string>
+
+    <string name="journey_delete_content_description">Eliminar este recuerdo</string>
+    <string name="journey_delete_dialog_title">¿Eliminar este recuerdo?</string>
+    <string name="journey_delete_dialog_body">Esto elimina la actividad, su nota y cualquier foto o nota de voz. Esta acción no se puede deshacer.</string>
+    <string name="journey_delete_confirm_action">Eliminar</string>
+    <string name="journey_delete_cancel_action">Cancelar</string>
+
+    <string name="journey_summary_total_completions">%1$d actividades completadas en familia</string>
+    <plurals name="journey_summary_active_days">
+        <item quantity="one">%1$d día de recuerdos hasta ahora</item>
+        <item quantity="other">%1$d días de recuerdos hasta ahora</item>
+    </plurals>
+    <string name="journey_constellation_content_description">Una constelación de %1$d estrellas, una por cada actividad que tu familia ha completado. La estrella con un suave resplandor a su alrededor es tu recuerdo más reciente.</string>
+
+    <string name="journey_milestone_first_star">¡Tu primera estrella!</string>
+    <string name="journey_milestone_three_stars">Tres estrellas en tu cielo.</string>
+    <string name="journey_milestone_seven_stars">Siete estrellas y contando.</string>
+    <string name="journey_milestone_fourteen_stars">Catorce estrellas juntos.</string>
+    <string name="journey_milestone_thirty_stars">Treinta estrellas — qué viaje.</string>
+</resources>

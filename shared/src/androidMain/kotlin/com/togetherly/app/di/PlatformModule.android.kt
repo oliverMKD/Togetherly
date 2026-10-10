@@ -9,6 +9,7 @@ import com.togetherly.app.foundation.PlatformInfoProvider
 import com.togetherly.app.foundation.VersionInfoProvider
 import com.togetherly.core.feedback.AndroidQuestFeedbackController
 import com.togetherly.core.feedback.QuestFeedbackController
+import com.togetherly.core.locale.AppLocaleStore
 import com.togetherly.core.notification.AndroidNotificationPermissionStatusProvider
 import com.togetherly.core.notification.AndroidReminderScheduler
 import com.togetherly.core.notification.NotificationPermissionStatusProvider
@@ -59,12 +60,36 @@ internal class AndroidVersionInfoProvider(private val context: Context) : Versio
     }
 }
 
+/**
+ * Backs [AppLocaleStore] with a single dedicated `SharedPreferences` file rather than reusing any
+ * other one — this preference must be readable synchronously and independently of every other
+ * subsystem (Room, family profile, ...), see [AppLocaleStore]'s own KDoc.
+ */
+internal class AndroidAppLocaleStore(context: Context) : AppLocaleStore {
+    private val preferences = context.getSharedPreferences("app_locale", Context.MODE_PRIVATE)
+
+    override fun getSelectedLanguage(): String? = preferences.getString(SELECTED_LANGUAGE_KEY, null)
+
+    override fun setSelectedLanguage(code: String?) {
+        preferences.edit().apply {
+            if (code == null) remove(SELECTED_LANGUAGE_KEY) else putString(SELECTED_LANGUAGE_KEY, code)
+        }.apply()
+    }
+
+    private companion object {
+        const val SELECTED_LANGUAGE_KEY = "selected_language"
+    }
+}
+
 actual val platformModule: Module = module {
     single<PlatformInfoProvider> {
         AndroidPlatformInfoProvider()
     }
     single<VersionInfoProvider> {
         AndroidVersionInfoProvider(context = get())
+    }
+    single<AppLocaleStore> {
+        AndroidAppLocaleStore(context = get())
     }
     single<PostHogContext> {
         // The bound Context is always the real Application instance (applicationContext, read

@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="data_management_title">Управувајте со вашите податоци</string>
+    <string name="data_management_intro">Togetherly чува сѐ само на овој уред. Можете да отстраните одредени податоци подолу, или да избришете сѐ и да започнете одново.</string>
+
+    <string name="data_management_delete_memories_action">Избриши спомени</string>
+    <string name="data_management_delete_memories_description">Ги отстранува фотографиите, гласовните снимки и белешките прикачени кон завршените активности. Историјата на активности, зачуваните активности и вашиот семеен профил остануваат.</string>
+    <string name="data_management_delete_memories_confirm_title">Да ги избришеме спомените?</string>
+    <string name="data_management_delete_memories_confirm_body">Ова трајно ги брише сите фотографии, гласовни снимки и белешки прикачени кон вашите завршени активности. Ова не може да се врати назад.\n\nИсторијата на активности, зачуваните активности и вашиот семеен профил остануваат.</string>
+    <string name="data_management_delete_memories_success">Спомените се избришани.</string>
+
+    <string name="data_management_reset_quest_history_action">Ресетирај историја на активности</string>
+    <string name="data_management_reset_quest_history_description">Ги брише денешната активност, отфрлените активности и секоја завршена активност заедно со нејзините спомени. Зачуваните активности и вашиот семеен профил остануваат.</string>
+    <string name="data_management_reset_quest_history_confirm_title">Да ја ресетираме историјата на активности?</string>
+    <string name="data_management_reset_quest_history_confirm_body">Ова трајно ги брише денешната активност, отфрлените активности и секоја завршена активност заедно со нејзините спомени. Ова не може да се врати назад.\n\nЗачуваните активности и вашиот семеен профил остануваат.</string>
+    <string name="data_management_reset_quest_history_success">Историјата на активности е ресетирана.</string>
+
+    <string name="data_management_delete_all_action">Избриши ги сите локални податоци</string>
+    <string name="data_management_delete_all_description">Трајно брише сѐ што Togetherly има зачувано на овој уред и се враќа на почетното поставување. Ова не ја откажува претплатата на Family Plus и не ја брише вашата историја на купувања.</string>
+    <string name="data_management_delete_all_stage_one_title">Да ги избришеме сите локални податоци?</string>
+    <string name="data_management_delete_all_stage_one_body">Ова трајно го брише вашиот семеен профил, преференции, историја на активности, спомени, и секоја фотографија и гласовна снимка зачувана на овој уред. Ова не може да се врати назад.\n\nПретплатата на Family Plus се управува одделно преку App Store или Google Play — ова не ја откажува.\n\nПотоа, апликацијата се враќа на почетното поставување.</string>
+    <string name="data_management_delete_all_stage_one_continue_action">Продолжи</string>
+
+    <string name="data_management_partial_file_failure_message">Готово, но некои датотеки не можеа да се отстранат и можеби ќе треба рачно да се исчистат.</string>
+    <string name="data_management_dialog_cancel_action">Откажи</string>
+</resources>

@@ -1,8 +1,11 @@
 # Persistence
 
-Togetherly's local storage is a single Room database (`TogetherlyDatabase`, package
-`com.togetherly.data.local.database`), used identically on Android and iOS via Room's KMP
-`BundledSQLiteDriver` (never the OS-provided SQLite). This document covers the database's tables,
+Togetherly's structured family and quest storage is a single Room database (`TogetherlyDatabase`,
+package `com.togetherly.data.local.database`), used identically on Android and iOS via Room's KMP
+`BundledSQLiteDriver` (never the OS-provided SQLite). App-private media files live outside the
+database, and the pre-onboarding language choice uses synchronous platform preferences
+(`SharedPreferences`/`NSUserDefaults`); see [private-media.md](private-media.md) and
+[localization.md](localization.md). This document covers the database's tables,
 who owns each one, how cross-table writes stay atomic, what a full data wipe actually deletes, the
 migration policy, and how corrupted rows are handled. For the quest-catalogue content pipeline
 (JSON-backed, not a database table), see [content-system.md](content-system.md). For the domain/DI

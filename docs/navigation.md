@@ -31,9 +31,9 @@ Three files in `com.togetherly.navigation.destination`, each a sealed interface 
 `@Serializable data object`/`data class` route types — never a string route, never a domain object
 passed as a navigation argument:
 
-- **`RootDestination`** — `Bootstrap`, `Onboarding`, `Main`, `QuestDetail(questId: QuestId)`,
-  `QuestMode(completionId: CompletionId)`, `CompletionCelebration(completionId: CompletionId)`
-  (Step 9.6). The root graph's only destinations.
+- **`RootDestination`** — startup/main routes; quest, pack, completion, purchase, and saved flows;
+  Explore filters; family profile/settings, privacy/legal/about/data-management/language screens;
+  and debug telemetry. Parameterized routes carry only typed IDs or small serializable context.
 - **`MainDestination`** — `Today`, `Explore`, `Journey`, `Family`. Main's four bottom-nav tabs,
   each currently a flat destination (no nested sub-graph).
 
@@ -54,6 +54,11 @@ repositories. `QuestMode` navigates to it with `popUpTo(RootDestination.Main) { 
 stripping `QuestDetail`/`QuestMode` off the back stack in the same step so Back from the celebration
 can never reopen a session that has already been completed and cleared — see
 [quest-mode.md](quest-mode.md#completion-transaction).
+
+The Language screen is also root-level. Changing language remounts the themed content tree on
+Android, so `App` hoists both the root and Main-shell `NavHostController`s outside the locale key.
+The current root destination and selected bottom tab therefore survive an immediate language
+switch instead of resetting to Today. iOS applies the selected language after restart.
 
 Onboarding has **no destination type of its own** — it's a single `RootDestination.Onboarding`
 entry hosting one internal state machine
@@ -127,7 +132,6 @@ viewModel: QuestDetailViewModel = koinViewModel(key = questId.value) { parameter
 
 The `key = questId.value` matters: without a distinct key, Koin/Compose would reuse the same
 `QuestDetailViewModel` instance across two different quest IDs viewed in the same composition
-lifetime (e.g. Back then opening a different quest while the first instance is still scoped) —
 keying by the ID itself guarantees a fresh instance per distinct quest.
 
 ## Adding a new top-level destination

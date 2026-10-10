@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="packdetails_included_quests_title">Enthaltene Quests</string>
+    <string name="packdetails_choose_quest_action">Quest auswählen</string>
+    <string name="packdetails_unlock_action">Mit Family Plus freischalten</string>
+    <string name="packdetails_locked_explanation">Dieses Paket ist in Family Plus enthalten. Schalte es frei, um jede enthaltene Quest zu starten.</string>
+</resources>

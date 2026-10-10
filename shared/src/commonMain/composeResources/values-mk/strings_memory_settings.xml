@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="memory_settings_title">Поставки за спомени</string>
+    <string name="memory_settings_explanation">Изберете што вашето семејство може да додаде на спомен по активност. Исклучувањето на нешто влијае само на новите спомени.</string>
+    <string name="memory_settings_photos_title">Спомени со фотографии</string>
+    <string name="memory_settings_voice_title">Гласовни спомени</string>
+    <string name="memory_settings_text_notes_title">Текстуални белешки</string>
+    <string name="memory_settings_prompt_title">Прашај за додавање спомен по секоја активност</string>
+    <string name="memory_settings_on">Вклучено</string>
+    <string name="memory_settings_off">Исклучено</string>
+    <string name="memory_settings_preserved_explanation">Исклучувањето на фотографии, глас или белешки никогаш не брише нешто што веќе сте го зачувале.</string>
+    <string name="memory_settings_manage_memories_action">Управувај со спомени</string>
+    <string name="memory_settings_save_action">Зачувај</string>
+    <string name="memory_settings_missing_profile_error">Не можевме да го најдеме вашиот семеен профил.</string>
+    <string name="memory_settings_updated_message">Поставките за спомени се ажурирани</string>
+</resources>

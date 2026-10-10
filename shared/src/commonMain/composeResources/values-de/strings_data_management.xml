@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="data_management_title">Deine Daten verwalten</string>
+    <string name="data_management_intro">Togetherly speichert alles nur auf diesem Gerät. Du kannst unten gezielt Daten entfernen oder alles löschen und neu beginnen.</string>
+
+    <string name="data_management_delete_memories_action">Erinnerungen löschen</string>
+    <string name="data_management_delete_memories_description">Entfernt Fotos, Sprachaufnahmen und Notizen, die zu abgeschlossenen Quests gehören. Der Quest-Verlauf selbst, gespeicherte Quests und dein Familienprofil bleiben erhalten.</string>
+    <string name="data_management_delete_memories_confirm_title">Erinnerungen löschen?</string>
+    <string name="data_management_delete_memories_confirm_body">Damit werden alle Fotos, Sprachaufnahmen und Notizen zu deinen abgeschlossenen Quests endgültig gelöscht. Das kann nicht rückgängig gemacht werden.\n\nQuest-Verlauf, gespeicherte Quests und dein Familienprofil bleiben erhalten.</string>
+    <string name="data_management_delete_memories_success">Erinnerungen gelöscht.</string>
+
+    <string name="data_management_reset_quest_history_action">Quest-Verlauf zurücksetzen</string>
+    <string name="data_management_reset_quest_history_description">Löscht die heutige Quest, abgelehnte Quests und alle abgeschlossenen Quests samt ihrer Erinnerungen. Gespeicherte Quests und dein Familienprofil bleiben erhalten.</string>
+    <string name="data_management_reset_quest_history_confirm_title">Quest-Verlauf zurücksetzen?</string>
+    <string name="data_management_reset_quest_history_confirm_body">Damit werden die heutige Quest, abgelehnte Quests und alle abgeschlossenen Quests samt ihrer Erinnerungen endgültig gelöscht. Das kann nicht rückgängig gemacht werden.\n\nGespeicherte Quests und dein Familienprofil bleiben erhalten.</string>
+    <string name="data_management_reset_quest_history_success">Quest-Verlauf zurückgesetzt.</string>
+
+    <string name="data_management_delete_all_action">Alle lokalen Daten löschen</string>
+    <string name="data_management_delete_all_description">Löscht endgültig alles, was Togetherly auf diesem Gerät gespeichert hat, und kehrt zur Einrichtung zurück. Ein Family-Plus-Abo wird dadurch nicht gekündigt, und dein Kaufverlauf bleibt bestehen.</string>
+    <string name="data_management_delete_all_stage_one_title">Alle lokalen Daten löschen?</string>
+    <string name="data_management_delete_all_stage_one_body">Damit werden dein Familienprofil, deine Einstellungen, der Quest-Verlauf, alle Erinnerungen sowie jedes auf diesem Gerät gespeicherte Foto und jede Sprachaufnahme endgültig gelöscht. Das kann nicht rückgängig gemacht werden.\n\nEin Family-Plus-Abo wird separat über den App Store oder Google Play verwaltet — es wird dadurch nicht gekündigt.\n\nAnschließend kehrt die App zur Einrichtung zurück.</string>
+    <string name="data_management_delete_all_stage_one_continue_action">Weiter</string>
+
+    <string name="data_management_partial_file_failure_message">Erledigt, aber einige Dateien konnten nicht entfernt werden und müssen eventuell manuell gelöscht werden.</string>
+    <string name="data_management_dialog_cancel_action">Abbrechen</string>
+</resources>

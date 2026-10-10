@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="questdetail_back_content_description">Zurück</string>
+    <string name="questdetail_start_action">Quest starten</string>
+    <string name="questdetail_materials_title">Was ihr braucht</string>
+    <string name="questdetail_instructions_title">Anleitung</string>
+    <string name="questdetail_hints_title">Tipps</string>
+    <string name="questdetail_safety_title">Sicherheitshinweis</string>
+    <string name="questdetail_saved_content_description">Gespeichert. Tippen, um aus den gespeicherten Quests zu entfernen.</string>
+    <string name="questdetail_unsaved_content_description">Nicht gespeichert. Tippen, um diese Quest zu speichern.</string>
+
+    <string name="questdetail_conflict_title">Eine andere Quest läuft noch</string>
+    <string name="questdetail_conflict_body">Wenn du diese Quest startest, wird die unvollendete Sitzung ersetzt.</string>
+    <string name="questdetail_conflict_replace_action">Ersetzen und diese Quest starten</string>
+    <string name="questdetail_conflict_cancel_action">Abbrechen</string>
+
+    <string name="questdetail_locked_title">Diese Quest ist Teil von Family Plus.</string>
+    <string name="questdetail_locked_body">Schalte die vollständige Aktivität frei und entdecke mehr Wege, wertvolle Zeit miteinander zu verbringen.</string>
+    <string name="questdetail_unlock_action">Mit Family Plus freischalten</string>
+    <string name="questdetail_premium_badge">Family Plus</string>
+    <string name="questdetail_age_suitability_title">Am besten geeignet für</string>
+    <string name="questdetail_pack_label">Teil von %1$s</string>
+</resources>

@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Shared -->
+    <string name="onboarding_continue">Продолжи</string>
+    <string name="onboarding_back_content_description">Назад</string>
+
+    <!-- Step 1: Welcome -->
+    <string name="onboarding_welcome_title">Една мала семејна авантура секој ден.</string>
+    <string name="onboarding_welcome_body">Togetherly му дава на вашето семејство брзи идеи за разговор, смеа, творештво и создавање спомени — без да ја поминете вечерта барајќи нешто за правење.</string>
+    <string name="onboarding_welcome_primary">Создади го нашето семејство</string>
+    <string name="onboarding_welcome_privacy">Без детски сметки. Без јавни профили. Спомените на вашето семејство остануваат приватни.</string>
+
+    <!-- Step 2: Family name -->
+    <string name="onboarding_family_name_title">Како да го наречеме вашиот тим?</string>
+    <string name="onboarding_family_name_supporting">Ова не е задолжително и се прикажува само во Togetherly.</string>
+    <string name="onboarding_family_name_label">Име на семејство или тим</string>
+    <string name="onboarding_family_name_placeholder">Тим Светулка</string>
+    <string name="onboarding_skip_name">Прескокни засега</string>
+
+    <!-- Step 3: Age bands -->
+    <string name="onboarding_age_bands_title">Кои возрасти ќе се приклучат на авантурите?</string>
+    <string name="onboarding_age_bands_supporting">Изберете ги сите возрасни групи во вашето семејство за да можеме да предложиме активности што одговараат на сите.</string>
+    <string name="onboarding_age_bands_privacy_note">Togetherly не бара имиња или датуми на раѓање — само возрасни групи.</string>
+    <string name="onboarding_age_band_6_to_8">6–8</string>
+    <string name="onboarding_age_band_9_to_11">9–11</string>
+    <string name="onboarding_age_band_12_to_13">12–13</string>
+
+    <!-- Step 4: Interests -->
+    <string name="onboarding_interests_title">Што ужива вашето семејство?</string>
+    <string name="onboarding_interests_supporting">Изберете колку сакате — ова го обликува видот на активности што ги предлагаме.</string>
+    <string name="onboarding_interest_talk_label">Разговор</string>
+    <string name="onboarding_interest_talk_description">Разговори и прашања што ве зближуваат.</string>
+    <string name="onboarding_interest_create_label">Творештво</string>
+    <string name="onboarding_interest_create_description">Практично изработување, градење и уметност.</string>
+    <string name="onboarding_interest_move_label">Движење</string>
+    <string name="onboarding_interest_move_description">Активна, енергична забава.</string>
+    <string name="onboarding_interest_kindness_label">Љубезност</string>
+    <string name="onboarding_interest_kindness_description">Мали дела што му помагаат на некој друг.</string>
+    <string name="onboarding_interest_discover_label">Откривање</string>
+    <string name="onboarding_interest_discover_description">Учење и истражување на нешто ново.</string>
+    <string name="onboarding_interest_silly_label">Смешно</string>
+    <string name="onboarding_interest_silly_description">Забава само за смеа, без притисок.</string>
+    <string name="onboarding_interest_memories_label">Спомени</string>
+    <string name="onboarding_interest_memories_description">Моменти вредни да им се вратите.</string>
+
+    <!-- Step 5: Preferences -->
+    <string name="onboarding_preferences_title">Што му одговара на вашето семејство?</string>
+    <string name="onboarding_preferences_time_label">Колку време обично имате?</string>
+    <string name="onboarding_preferences_time_supporting">Изберете секое времетраење што ви одговара — можете да изберете повеќе од едно.</string>
+    <string name="onboarding_duration_5">5 минути</string>
+    <string name="onboarding_duration_10">10 минути</string>
+    <string name="onboarding_duration_20">20 минути</string>
+    <string name="onboarding_duration_30_plus">30+ минути</string>
+    <string name="onboarding_preferences_location_label">Затворено или отворено?</string>
+    <string name="onboarding_location_indoor">Затворено</string>
+    <string name="onboarding_location_outdoor">Отворено</string>
+    <string name="onboarding_location_both">И двете</string>
+    <string name="onboarding_preferences_preparation_label">Колку подготовка ви одговара?</string>
+    <string name="onboarding_preparation_none">Без подготовка</string>
+    <string name="onboarding_preparation_simple_materials">Едноставни материјали се во ред</string>
+    <string name="onboarding_preparation_any">Сѐ е во ред</string>
+
+    <!-- Step 6: Reminder -->
+    <string name="onboarding_reminder_title">Дали благ потсетник би помогнал?</string>
+    <string name="onboarding_reminder_not_now">Не сега</string>
+    <string name="onboarding_reminder_choose">Избери потсетник</string>
+    <string name="onboarding_reminder_days_label">Кои денови?</string>
+    <string name="onboarding_reminder_time_label">Во колку часот?</string>
+    <string name="onboarding_reminder_choose_time">Избери време</string>
+    <string name="onboarding_reminder_time_selected">%1$s</string>
+    <string name="onboarding_day_monday">Пон</string>
+    <string name="onboarding_day_tuesday">Вто</string>
+    <string name="onboarding_day_wednesday">Сре</string>
+    <string name="onboarding_day_thursday">Чет</string>
+    <string name="onboarding_day_friday">Пет</string>
+    <string name="onboarding_day_saturday">Саб</string>
+    <string name="onboarding_day_sunday">Нед</string>
+
+    <!-- Step 7: Review -->
+    <string name="onboarding_review_title">Прегледајте ги вашите избори</string>
+    <string name="onboarding_review_team_name_default">Нашето семејство</string>
+    <string name="onboarding_review_primary">Започни ја нашата прва авантура</string>
+    <string name="onboarding_review_back_and_edit">Назад и уреди</string>
+    <string name="onboarding_review_field_team_name">Име на тимот</string>
+    <string name="onboarding_review_field_age_bands">Возрасти</string>
+    <string name="onboarding_review_field_interests">Интереси</string>
+    <string name="onboarding_review_field_durations">Времетраење</string>
+    <string name="onboarding_review_field_location">Локација</string>
+    <string name="onboarding_review_field_preparation">Подготовка</string>
+    <string name="onboarding_review_field_reminder">Потсетник</string>
+    <string name="onboarding_review_no_reminder">Без потсетник</string>
+    <string name="onboarding_review_reminder_value">%1$s · %2$s</string>
+
+    <!-- Validation errors -->
+    <string name="onboarding_error_family_name_too_long">Името на семејството е предолго.</string>
+    <string name="onboarding_error_family_name_invalid">Проверете го името на семејството.</string>
+    <string name="onboarding_error_age_bands_required">Изберете барем една возрасна група.</string>
+    <string name="onboarding_error_interests_required">Изберете барем еден интерес.</string>
+    <string name="onboarding_error_durations_required">Изберете барем едно времетраење.</string>
+    <string name="onboarding_error_reminder_days_required">Изберете барем еден ден за потсетникот.</string>
+    <string name="onboarding_error_reminder_time_required">Изберете време за потсетникот.</string>
+</resources>

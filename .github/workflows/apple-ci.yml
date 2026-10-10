@@ -120,27 +120,15 @@ jobs:
       - name: Link iOS simulator framework
         run: ./gradlew :shared:linkDebugFrameworkIosSimulatorArm64 --stacktrace --no-daemon
 
-      # Compiling/linking the test binary is a normal, gating step — only *running* it is
-      # unreliable (see the next step).
+      # Compile the test binary separately so link failures are reported distinctly from test
+      # failures.
       - name: Compile iOS simulator tests
         run: ./gradlew :shared:linkDebugTestIosSimulatorArm64 --stacktrace --no-daemon
 
-      # Known, pre-existing, non-CI platform limitation (see docs/architecture.md's "Known
-      # environment limitations", Step 14.5.5): IosReminderSchedulerTest crashes the whole
-      # Kotlin/Native test process because IosReminderScheduler calls
-      # UNUserNotificationCenter.currentNotificationCenter(), which needs a real app bundle
-      # identity that a bare `iosSimulatorArm64Test` binary never has. Still run (never silently
-      # removed) so a genuine new regression is visible as a *different* failure; continue-on-error
-      # so this specific known issue never blocks a PR. Compilation above is unaffected and still
-      # gates normally.
-      - name: Run iOS simulator tests (known unreliable — see docs/architecture.md)
-        id: ios_sim_tests
-        continue-on-error: true
+      # Notification behavior is isolated behind IosNotificationCenterAdapter; native unit tests
+      # use its fake and do not require an app-bundle-backed UNUserNotificationCenter.
+      - name: Run iOS simulator tests
         run: ./gradlew :shared:iosSimulatorArm64Test --stacktrace --no-daemon
-
-      - name: Note iOS simulator test outcome
-        if: steps.ios_sim_tests.outcome == 'failure'
-        run: echo "::warning::iOS simulator test execution failed — this is a known, pre-existing platform limitation (see docs/architecture.md), not treated as a CI failure. Compilation/linking above already gated normally."
 
       # CODE_SIGNING_ALLOWED=NO/CODE_SIGNING_REQUIRED=NO: this repository has no Apple distribution
       # certificate, provisioning profile, or App Store Connect key, and none is added merely to

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="questmode_close_content_description">Затвори</string>
+    <string name="questmode_timer_finished">Времето истече</string>
+    <string name="questmode_timer_content_description_running">Преостануваат %1$s</string>
+    <string name="questmode_timer_content_description_finished">Времето истече</string>
+
+    <string name="questmode_hints_action">Ви треба идеја?</string>
+    <string name="questmode_hints_expanded_state">Проширено</string>
+    <string name="questmode_hints_collapsed_state">Собрано</string>
+    <string name="questmode_safety_title">Безбедносна белешка</string>
+
+    <string name="questmode_phone_down_action">Оставете го телефонот</string>
+    <string name="questmode_phone_down_supporting_timed">Ние ќе го следиме времето.</string>
+    <string name="questmode_phone_down_supporting_untimed">Не брзајте со ова.</string>
+    <string name="questmode_phone_down_active_title">Активност во тек</string>
+    <string name="questmode_phone_down_active_body">Допрете за враќање</string>
+
+    <string name="questmode_complete_action">Успеавме</string>
+
+    <string name="questmode_exit_title">Да ја оставиме оваа активност во тек?</string>
+    <string name="questmode_exit_body">Можете да се вратите и да продолжите подоцна.</string>
+    <string name="questmode_exit_keep_action">Зачувај за подоцна</string>
+    <string name="questmode_exit_continue_action">Продолжи ја активноста</string>
+    <string name="questmode_exit_abandon_action">Откажи ја активноста</string>
+
+    <string name="questmode_abandon_confirm_title">Да ја откажеме оваа активност?</string>
+    <string name="questmode_abandon_confirm_body">Ова го брише вашиот напредок. Потоа можете да започнете нова активност од Денес.</string>
+    <string name="questmode_abandon_confirm_action">Откажи ја активноста</string>
+    <string name="questmode_abandon_cancel_action">Откажи</string>
+
+    <string name="questmode_error_close_action">Затвори</string>
+</resources>

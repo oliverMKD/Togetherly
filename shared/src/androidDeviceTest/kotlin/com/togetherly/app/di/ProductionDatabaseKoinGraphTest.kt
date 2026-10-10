@@ -61,6 +61,7 @@ import com.togetherly.feature.explore.presentation.ExploreFilterStore
 import com.togetherly.feature.explore.presentation.ExploreFiltersViewModel
 import com.togetherly.feature.explore.presentation.ExploreViewModel
 import com.togetherly.feature.familyplus.presentation.FamilyPlusManagementViewModel
+import com.togetherly.feature.language.presentation.LanguageViewModel
 import com.togetherly.feature.onboarding.presentation.OnboardingViewModel
 import com.togetherly.feature.packdetails.presentation.PackDetailsViewModel
 import com.togetherly.feature.paywall.model.PaywallContext
@@ -119,6 +120,13 @@ import org.koin.dsl.module
  * The `domain.explore.usecase` use cases and [ExploreViewModel] joined in Step 12.1 — every one of
  * them resolves entirely from repositories/policies already proven above (no new database-backed
  * repository was introduced for Explore itself).
+ *
+ * [LanguageViewModel] joined here (not [KoinGraphTest]) because
+ * [com.togetherly.core.locale.AppLocaleStore]'s Android implementation needs a real
+ * [android.content.Context] to open its `SharedPreferences` file — the exact same reason the
+ * database-backed repositories above live here rather than in [KoinGraphTest]. A missing
+ * `factory { LanguageViewModel(...) }` binding in [presentationModule] once reached production
+ * undetected precisely because no test resolved it from the full graph.
  */
 @RunWith(AndroidJUnit4::class)
 internal class ProductionDatabaseKoinGraphTest {
@@ -207,5 +215,6 @@ internal class ProductionDatabaseKoinGraphTest {
         application.koin.get<ExploreFiltersViewModel>()
         application.koin.get<SavedViewModel>()
         application.koin.get<PackDetailsViewModel> { parametersOf(QuestPackId("proof-pack")) }
+        application.koin.get<LanguageViewModel>()
     }
 }

@@ -53,6 +53,7 @@ class FamilyViewModel(
             FamilyAction.LegalClicked -> viewModelScope.launch { _events.send(FamilyEvent.OpenLegal) }
             FamilyAction.AboutClicked -> viewModelScope.launch { _events.send(FamilyEvent.OpenAbout) }
             FamilyAction.DataManagementClicked -> viewModelScope.launch { _events.send(FamilyEvent.OpenDataManagement) }
+            FamilyAction.LanguageClicked -> viewModelScope.launch { _events.send(FamilyEvent.OpenLanguage) }
             FamilyAction.MessageDismissed -> _uiState.update { it.copy(message = null) }
         }
     }

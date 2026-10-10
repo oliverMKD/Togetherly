@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="paywall_close_content_description">Fermer</string>
+    <string name="paywall_title">Plus de façons de grandir ensemble</string>
+    <string name="paywall_benefit_rerolls">Relances quotidiennes illimitées</string>
+    <string name="paywall_benefit_quest_packs">Packs de quêtes premium</string>
+    <string name="paywall_benefit_moods">Plus d'activités pour chaque humeur</string>
+    <string name="paywall_benefit_support">Soutiens les futurs contenus de Togetherly</string>
+    <string name="paywall_recommended_label">Recommandé</string>
+    <string name="paywall_purchase_action">Obtenir Family Plus</string>
+    <string name="paywall_restore_action">Restaurer les achats</string>
+    <string name="paywall_privacy_policy_action">Politique de confidentialité</string>
+    <string name="paywall_terms_of_use_action">Conditions d'utilisation</string>
+    <string name="paywall_already_premium_title">Tout est prêt</string>
+    <string name="paywall_already_premium_continue_action">Continuer</string>
+
+    <string name="paywall_intro_premium_reroll">Tu as déjà utilisé ta relance gratuite du jour. Family Plus t'offre des relances illimitées.</string>
+    <string name="paywall_intro_premium_quest">Ceci est une quête Family Plus.</string>
+    <string name="paywall_intro_premium_pack">Ce pack fait partie de Family Plus.</string>
+</resources>

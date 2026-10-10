@@ -9,4 +9,5 @@ sealed interface FamilyEvent {
     data object OpenLegal : FamilyEvent
     data object OpenAbout : FamilyEvent
     data object OpenDataManagement : FamilyEvent
+    data object OpenLanguage : FamilyEvent
 }

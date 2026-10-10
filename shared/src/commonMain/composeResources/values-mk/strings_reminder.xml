@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="reminder_title">Потсетници</string>
+    <string name="reminder_explanation">Благ потсетник да си направите време заедно.</string>
+    <string name="reminder_enable_toggle">Потсети нѐ</string>
+    <string name="reminder_days_label">Кои денови?</string>
+    <string name="reminder_time_label">Во колку часот?</string>
+    <string name="reminder_choose_time">Избери време</string>
+    <string name="reminder_time_selected">%1$s</string>
+    <string name="reminder_permission_status">Дозвола за известувања: %1$s</string>
+    <string name="reminder_error_days_required">Изберете барем еден ден.</string>
+
+    <string name="reminder_permission_status_label">Дозвола за известувања</string>
+    <string name="reminder_permission_granted">Дозволено</string>
+    <string name="reminder_permission_denied">Не е дозволено</string>
+    <string name="reminder_permission_not_determined">Сѐ уште не е побарано</string>
+    <string name="reminder_permission_not_required">Дозволено</string>
+    <string name="reminder_open_settings_action">Отвори поставки</string>
+    <string name="reminder_permission_denied_explanation">Потсетниците се вклучени, но Togetherly не може да прикажува известувања додека не ги дозволите во Поставки.</string>
+
+    <string name="reminder_save_action">Зачувај</string>
+    <string name="reminder_missing_profile_error">Не можевме да го најдеме вашиот семеен профил.</string>
+    <string name="reminder_updated_message">Потсетникот е ажуриран</string>
+
+    <string name="reminder_notification_channel_name">Семејни потсетници</string>
+    <string name="reminder_notification_title">Малку време заедно?</string>
+    <string name="reminder_notification_body">Вашата Togetherly активност е подготвена кога и да е подготвено вашето семејство.</string>
+</resources>

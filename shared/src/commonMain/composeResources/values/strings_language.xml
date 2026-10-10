@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    In-app language picker copy. The 5 language display names themselves (English, Македонски,
+    Deutsch, Français, Español) are NOT here — they're plain Kotlin strings on SupportedLanguage,
+    deliberately not translated resources, since a language's name for itself doesn't change
+    depending on which language the app is currently displayed in.
+-->
+<resources>
+    <string name="language_title">Language</string>
+    <string name="language_system_default">System default</string>
+    <string name="language_restart_required">Restart Togetherly for this change to take full effect.</string>
+</resources>

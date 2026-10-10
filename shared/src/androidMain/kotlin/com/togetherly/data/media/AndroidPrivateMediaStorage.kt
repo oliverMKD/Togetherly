@@ -324,7 +324,9 @@ internal class AndroidPrivateMediaStorage(
                     if (age >= thresholdAge.inWholeMilliseconds && file.delete()) {
                         deletedCount++
                         if (file.name.endsWith(".jpg") || file.name.endsWith(".m4a")) {
-                            File(file.absolutePath + ".dims").delete()
+                            if (File(file.absolutePath + ".dims").delete()) {
+                                deletedCount++
+                            }
                         }
                     }
                 }

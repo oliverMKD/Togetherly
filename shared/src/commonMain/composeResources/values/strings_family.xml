@@ -22,6 +22,7 @@
 
     <string name="family_entry_quest_preferences_subtitle">Duration, energy, and location signals</string>
     <string name="family_entry_reminder_subtitle">When we nudge you to play</string>
+    <string name="family_entry_language_subtitle">Choose how Togetherly is displayed</string>
     <string name="family_entry_memory_settings_subtitle">Notes, photos, and voice defaults</string>
     <string name="family_entry_privacy_subtitle">What stays on this device</string>
     <string name="family_entry_data_management_subtitle">Delete memories or reset history</string>

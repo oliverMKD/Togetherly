@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="questmode_close_content_description">Schließen</string>
+    <string name="questmode_timer_finished">Zeit ist um</string>
+    <string name="questmode_timer_content_description_running">%1$s verbleibend</string>
+    <string name="questmode_timer_content_description_finished">Zeit ist um</string>
+
+    <string name="questmode_hints_action">Brauchst du eine Idee?</string>
+    <string name="questmode_hints_expanded_state">Ausgeklappt</string>
+    <string name="questmode_hints_collapsed_state">Eingeklappt</string>
+    <string name="questmode_safety_title">Sicherheitshinweis</string>
+
+    <string name="questmode_phone_down_action">Leg das Handy weg</string>
+    <string name="questmode_phone_down_supporting_timed">Wir behalten die Zeit im Blick.</string>
+    <string name="questmode_phone_down_supporting_untimed">Lasst euch dafür Zeit.</string>
+    <string name="questmode_phone_down_active_title">Quest läuft</string>
+    <string name="questmode_phone_down_active_body">Tippen zum Zurückkehren</string>
+
+    <string name="questmode_complete_action">Wir haben es geschafft</string>
+
+    <string name="questmode_exit_title">Diese Quest weiterlaufen lassen?</string>
+    <string name="questmode_exit_body">Du kannst später zurückkehren und weitermachen.</string>
+    <string name="questmode_exit_keep_action">Für später aufheben</string>
+    <string name="questmode_exit_continue_action">Quest fortsetzen</string>
+    <string name="questmode_exit_abandon_action">Quest abbrechen</string>
+
+    <string name="questmode_abandon_confirm_title">Diese Quest abbrechen?</string>
+    <string name="questmode_abandon_confirm_body">Damit wird dein Fortschritt gelöscht. Danach kannst du über Heute eine neue Quest starten.</string>
+    <string name="questmode_abandon_confirm_action">Quest abbrechen</string>
+    <string name="questmode_abandon_cancel_action">Abbrechen</string>
+
+    <string name="questmode_error_close_action">Schließen</string>
+</resources>

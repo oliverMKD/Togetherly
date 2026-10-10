@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="paywall_close_content_description">Cerrar</string>
+    <string name="paywall_title">Más formas de crecer juntos</string>
+    <string name="paywall_benefit_rerolls">Cambios diarios ilimitados</string>
+    <string name="paywall_benefit_quest_packs">Packs de actividades premium</string>
+    <string name="paywall_benefit_moods">Más actividades para cada momento</string>
+    <string name="paywall_benefit_support">Apoya el contenido futuro de Togetherly</string>
+    <string name="paywall_recommended_label">Recomendado</string>
+    <string name="paywall_purchase_action">Consigue Family Plus</string>
+    <string name="paywall_restore_action">Restaurar compras</string>
+    <string name="paywall_privacy_policy_action">Política de privacidad</string>
+    <string name="paywall_terms_of_use_action">Términos de uso</string>
+    <string name="paywall_already_premium_title">Ya lo tienes todo listo</string>
+    <string name="paywall_already_premium_continue_action">Continuar</string>
+
+    <string name="paywall_intro_premium_reroll">Ya has usado el cambio gratuito de hoy. Family Plus te da cambios ilimitados.</string>
+    <string name="paywall_intro_premium_quest">Esta es una actividad de Family Plus.</string>
+    <string name="paywall_intro_premium_pack">Este pack forma parte de Family Plus.</string>
+</resources>

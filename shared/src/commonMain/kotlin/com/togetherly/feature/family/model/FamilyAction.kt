@@ -9,5 +9,6 @@ sealed interface FamilyAction {
     data object LegalClicked : FamilyAction
     data object AboutClicked : FamilyAction
     data object DataManagementClicked : FamilyAction
+    data object LanguageClicked : FamilyAction
     data object MessageDismissed : FamilyAction
 }

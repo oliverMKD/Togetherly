@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="questdetail_back_content_description">Назад</string>
+    <string name="questdetail_start_action">Започни активност</string>
+    <string name="questdetail_materials_title">Што ви е потребно</string>
+    <string name="questdetail_instructions_title">Упатства</string>
+    <string name="questdetail_hints_title">Совети</string>
+    <string name="questdetail_safety_title">Безбедносна белешка</string>
+    <string name="questdetail_saved_content_description">Зачувано. Допрете за отстранување од зачуваните активности.</string>
+    <string name="questdetail_unsaved_content_description">Не е зачувано. Допрете за да ја зачувате оваа активност.</string>
+
+    <string name="questdetail_conflict_title">Друга активност сѐ уште е во тек</string>
+    <string name="questdetail_conflict_body">Со започнување на оваа активност ќе ја замените незавршената сесија.</string>
+    <string name="questdetail_conflict_replace_action">Замени и започни ја оваа активност</string>
+    <string name="questdetail_conflict_cancel_action">Откажи</string>
+
+    <string name="questdetail_locked_title">Оваа активност е дел од Family Plus.</string>
+    <string name="questdetail_locked_body">Отклучете ја целата активност и повеќе начини да поминете значајно време заедно.</string>
+    <string name="questdetail_unlock_action">Отклучи со Family Plus</string>
+    <string name="questdetail_premium_badge">Family Plus</string>
+    <string name="questdetail_age_suitability_title">Најдобро за</string>
+    <string name="questdetail_pack_label">Дел од %1$s</string>
+</resources>

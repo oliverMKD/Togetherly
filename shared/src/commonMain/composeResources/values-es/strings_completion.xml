@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="completion_title">Has creado un recuerdo</string>
+    <string name="completion_body">Otra pequeña aventura familiar completada.</string>
+    <string name="completion_neutral_quest_title">Una actividad familiar</string>
+    <string name="completion_add_memory_action">Añadir un recuerdo</string>
+    <string name="completion_continue_action">Continuar</string>
+    <string name="completion_close_action">Cerrar</string>
+</resources>

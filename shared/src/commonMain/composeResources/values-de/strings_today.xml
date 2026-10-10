@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="today_mystery_title">Die heutige Familien-Quest</string>
+    <string name="today_mystery_body">Ein kleines Abenteuer wartet auf euch.</string>
+    <string name="today_reveal_action">Quest aufdecken</string>
+    <string name="today_mystery_content_description">Eine verborgene Quest, noch nicht aufgedeckt</string>
+
+    <string name="today_see_quest_action">Quest ansehen</string>
+    <string name="today_save_action">Quest speichern</string>
+    <string name="today_saved_content_description">Gespeichert. Tippen, um aus den gespeicherten Quests zu entfernen.</string>
+    <string name="today_unsaved_content_description">Nicht gespeichert. Tippen, um diese Quest zu speichern.</string>
+    <string name="today_save_failed">Das konnten wir nicht speichern. Bitte versuche es erneut.</string>
+
+    <string name="today_greeting_morning">Guten Morgen</string>
+    <string name="today_greeting_afternoon">Guten Tag</string>
+    <string name="today_greeting_evening">Guten Abend</string>
+
+    <string name="today_duration_five_minutes">5 Minuten</string>
+    <string name="today_duration_ten_minutes">10 Minuten</string>
+    <string name="today_duration_twenty_minutes">20 Minuten</string>
+    <string name="today_duration_thirty_plus_minutes">30+ Minuten</string>
+
+    <string name="today_location_indoor">Drinnen</string>
+    <string name="today_location_outdoor">Draußen</string>
+    <string name="today_location_either">Drinnen oder draußen</string>
+
+    <string name="today_preparation_none">Keine Vorbereitung</string>
+    <string name="today_preparation_simple_materials">Einfache Materialien</string>
+    <string name="today_preparation_advanced">Umfangreiche Vorbereitung</string>
+
+    <string name="today_energy_calm">Ruhig</string>
+    <string name="today_energy_moderate">Moderat</string>
+    <string name="today_energy_active">Aktiv</string>
+
+    <string name="today_material_summary">%1$d Materialien benötigt</string>
+    <string name="today_material_summary_one">1 Material benötigt</string>
+
+    <string name="today_category_talk">Reden</string>
+    <string name="today_category_create">Kreativsein</string>
+    <string name="today_category_move">Bewegen</string>
+    <string name="today_category_kindness">Freundlichkeit</string>
+    <string name="today_category_discover">Entdecken</string>
+    <string name="today_category_silly">Albern</string>
+    <string name="today_category_memories">Erinnerungen</string>
+
+    <string name="today_filters_action">Filter</string>
+    <string name="today_filters_title">Quests filtern</string>
+    <string name="today_filter_group_time">Zeit</string>
+    <string name="today_filter_group_location">Ort</string>
+    <string name="today_filter_group_energy">Energie</string>
+    <string name="today_filter_group_preparation">Vorbereitung</string>
+    <string name="today_filter_group_category">Kategorie</string>
+    <string name="today_filters_clear_all">Alle zurücksetzen</string>
+    <string name="today_filters_apply">Quest finden</string>
+
+    <string name="today_no_match_no_age_compatible">Wir konnten keine Quest finden, die für alle ausgewählten Altersgruppen passt.</string>
+    <string name="today_no_match_no_context_compatible">Versuche, einen deiner Filter zu entfernen.</string>
+    <string name="today_no_match_all_in_cooldown">Ihr habt kürzlich schon alles entdeckt, was zu diesen Filtern passt.</string>
+
+    <string name="today_reroll_action">Andere Quest versuchen</string>
+    <string name="today_reroll_confirm_title">Den heutigen kostenlosen Tausch nutzen?</string>
+    <string name="today_reroll_confirm_body">Du kannst heute eine andere Quest auswählen.</string>
+    <string name="today_reroll_keep_action">Diese Quest behalten</string>
+    <string name="today_reroll_show_another_action">Andere anzeigen</string>
+    <string name="today_reroll_used">Der heutige kostenlose Tausch wurde bereits genutzt.</string>
+
+    <string name="today_completed_action">Heute abgeschlossen</string>
+    <string name="today_completed_indicator">Ihr habt diese Quest heute bereits abgeschlossen.</string>
+</resources>

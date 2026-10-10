@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="paywall_close_content_description">Затвори</string>
+    <string name="paywall_title">Повеќе начини да растете заедно</string>
+    <string name="paywall_benefit_rerolls">Неограничени дневни замени</string>
+    <string name="paywall_benefit_quest_packs">Премиум пакети со активности</string>
+    <string name="paywall_benefit_moods">Повеќе активности за секое расположение</string>
+    <string name="paywall_benefit_support">Поддржете идна содржина на Togetherly</string>
+    <string name="paywall_recommended_label">Препорачано</string>
+    <string name="paywall_purchase_action">Земи Family Plus</string>
+    <string name="paywall_restore_action">Врати ги купувањата</string>
+    <string name="paywall_privacy_policy_action">Политика за приватност</string>
+    <string name="paywall_terms_of_use_action">Услови на користење</string>
+    <string name="paywall_already_premium_title">Веќе сте подготвени</string>
+    <string name="paywall_already_premium_continue_action">Продолжи</string>
+
+    <string name="paywall_intro_premium_reroll">Ја искористивте денешната бесплатна замена. Family Plus ви дава неограничени замени.</string>
+    <string name="paywall_intro_premium_quest">Ова е Family Plus активност.</string>
+    <string name="paywall_intro_premium_pack">Овој пакет е дел од Family Plus.</string>
+</resources>

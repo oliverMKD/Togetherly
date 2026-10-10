@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="family_title">Нашето семејство</string>
+
+    <string name="family_profile_name_fallback">Нашето семејство</string>
+    <string name="family_profile_summary_context_label">Претпочита %1$s</string>
+    <string name="family_profile_edit_action">Уреди</string>
+    <string name="family_quest_preferences_action">Преференции за активности</string>
+
+    <string name="family_section_your_family">Вашето семејство</string>
+    <string name="family_section_memories_privacy">Спомени и приватност</string>
+    <string name="family_section_data">Податоци</string>
+    <string name="family_section_support">Поддршка</string>
+
+    <string name="family_entry_quest_preferences_subtitle">Времетраење, енергија и локациски преференции</string>
+    <string name="family_entry_reminder_subtitle">Кога ве потсетуваме да играте</string>
+    <string name="family_entry_language_subtitle">Изберете како да се прикажува Togetherly</string>
+    <string name="family_entry_memory_settings_subtitle">Стандардни поставки за белешки, фотографии и глас</string>
+    <string name="family_entry_privacy_subtitle">Што останува на овој уред</string>
+    <string name="family_entry_data_management_subtitle">Избришете спомени или ресетирајте историја</string>
+    <string name="family_entry_legal_subtitle">Услови, лиценци и политики</string>
+    <string name="family_entry_about_subtitle">Верзија, поддршка и заслуги</string>
+
+    <string name="family_profile_editor_title">Уреди семеен профил</string>
+    <string name="family_profile_editor_age_bands_title">Општи возрасни групи</string>
+    <string name="family_profile_editor_durations_title">Претпочитано времетраење на активност</string>
+    <string name="family_profile_editor_location_title">Затворено или отворено</string>
+    <string name="family_profile_editor_save_action">Зачувај</string>
+    <string name="family_profile_editor_missing_profile_error">Не можевме да го најдеме вашиот семеен профил.</string>
+    <string name="family_profile_updated_message">Семејниот профил е ажуриран</string>
+
+    <string name="quest_preferences_title">Преференции за активности</string>
+    <string name="quest_preferences_explanation">Овие избори ѝ помагаат на Togetherly да предложи активности што одговараат на вашето семејство. Сепак можете да ги истражувате сите активности.</string>
+    <string name="quest_preferences_durations_title">Претпочитано времетраење</string>
+    <string name="quest_preferences_energy_title">Претпочитана енергија</string>
+    <string name="quest_preferences_location_title">Затворено или отворено</string>
+    <string name="quest_preferences_preparation_title">Толеранција за подготовка</string>
+    <string name="quest_preferences_reset_action">Врати на стандардни поставки</string>
+    <string name="quest_preferences_save_action">Зачувај</string>
+    <string name="quest_preferences_error_energy_required">Изберете барем едно ниво на енергија.</string>
+    <string name="quest_preferences_missing_profile_error">Не можевме да го најдеме вашиот семеен профил.</string>
+    <string name="quest_preferences_updated_message">Преференциите за активности се ажурирани</string>
+
+    <string name="energy_level_calm">Смирено</string>
+    <string name="energy_level_moderate">Урамнотежено</string>
+    <string name="energy_level_active">Активно</string>
+
+    <string name="family_discard_dialog_title">Да ги отфрлиме промените?</string>
+    <string name="family_discard_dialog_body">Вашите промени сѐ уште не се зачувани. Ако излезете сега, ќе бидат изгубени.</string>
+    <string name="family_discard_dialog_confirm_action">Отфрли</string>
+    <string name="family_discard_dialog_cancel_action">Продолжи со уредување</string>
+</resources>

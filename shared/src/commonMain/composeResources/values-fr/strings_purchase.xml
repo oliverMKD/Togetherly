@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="purchase_error_product_unavailable">Cette formule n'est pas disponible pour le moment.</string>
+    <string name="purchase_error_store_unavailable">Le store n'est pas disponible pour le moment. Réessaie plus tard.</string>
+    <string name="purchase_error_network_problem">Vérifie ta connexion et réessaie.</string>
+    <string name="purchase_error_configuration_problem">Nous n'avons pas pu charger les formules pour le moment. Réessaie plus tard.</string>
+    <string name="purchase_error_not_allowed">Les achats ne sont pas autorisés sur cet appareil pour le moment.</string>
+    <string name="purchase_error_already_owned">Tu possèdes déjà cette formule.</string>
+    <string name="purchase_error_unknown">Ton achat n'a pas pu être finalisé. Réessaie.</string>
+
+    <string name="purchase_cancelled_message">Pas de souci — tu peux réessayer à tout moment.</string>
+    <string name="purchase_pending_message">Ton achat est en attente d'approbation. Nous débloquerons Family Plus dès qu'il sera confirmé.</string>
+    <string name="purchase_success_message">Family Plus est prêt. Profite de nouvelles façons de vous retrouver.</string>
+    <string name="restore_no_purchases_found_message">Nous n'avons trouvé aucun achat précédent à restaurer.</string>
+    <string name="restore_succeeded_message">Family Plus restauré.</string>
+</resources>

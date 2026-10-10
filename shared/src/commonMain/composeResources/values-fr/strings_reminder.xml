@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="reminder_title">Rappels</string>
+    <string name="reminder_explanation">Un petit rappel pour prendre du temps ensemble.</string>
+    <string name="reminder_enable_toggle">Nous le rappeler</string>
+    <string name="reminder_days_label">Quels jours ?</string>
+    <string name="reminder_time_label">À quelle heure ?</string>
+    <string name="reminder_choose_time">Choisir une heure</string>
+    <string name="reminder_time_selected">%1$s</string>
+    <string name="reminder_permission_status">Autorisation de notification : %1$s</string>
+    <string name="reminder_error_days_required">Choisis au moins un jour.</string>
+
+    <string name="reminder_permission_status_label">Autorisation de notification</string>
+    <string name="reminder_permission_granted">Autorisée</string>
+    <string name="reminder_permission_denied">Non autorisée</string>
+    <string name="reminder_permission_not_determined">Pas encore demandée</string>
+    <string name="reminder_permission_not_required">Autorisée</string>
+    <string name="reminder_open_settings_action">Ouvrir les réglages</string>
+    <string name="reminder_permission_denied_explanation">Les rappels sont activés, mais Togetherly ne peut pas afficher de notifications tant que tu ne les autorises pas dans les Réglages.</string>
+
+    <string name="reminder_save_action">Enregistrer</string>
+    <string name="reminder_missing_profile_error">Nous n'avons pas trouvé le profil de ta famille.</string>
+    <string name="reminder_updated_message">Rappel mis à jour</string>
+
+    <string name="reminder_notification_channel_name">Rappels familiaux</string>
+    <string name="reminder_notification_title">Un peu de temps ensemble ?</string>
+    <string name="reminder_notification_body">Ta quête Togetherly est prête dès que ta famille l'est.</string>
+</resources>

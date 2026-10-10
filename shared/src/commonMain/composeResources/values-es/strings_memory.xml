@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="memory_screen_title">Añadir un recuerdo</string>
+    <string name="memory_neutral_quest_title">Tu actividad</string>
+    <string name="memory_back_content_description">Atrás</string>
+
+    <string name="memory_reactions_heading">¿Cómo te sentiste?</string>
+    <string name="memory_reaction_happy">Feliz</string>
+    <string name="memory_reaction_silly">Divertido</string>
+    <string name="memory_reaction_loved_it">Nos encantó</string>
+    <string name="memory_reaction_calm">Tranquilo</string>
+    <string name="memory_reaction_surprised">Sorprendido</string>
+
+    <string name="memory_note_heading">¿Qué quieres recordar de hoy?</string>
+    <string name="memory_note_placeholder">Escribe una nota (opcional)</string>
+
+    <string name="memory_photo_heading">Foto</string>
+    <string name="memory_photo_add_action">Añadir foto</string>
+    <string name="memory_photo_replace_action">Reemplazar</string>
+    <string name="memory_photo_remove_action">Quitar</string>
+    <string name="memory_photo_thumbnail_description">Tu foto añadida</string>
+    <string name="memory_photo_privacy_note">Solo se importa a Togetherly la foto que elijas.</string>
+    <string name="memory_photo_importing">Importando foto…</string>
+
+    <string name="memory_voice_heading">Nota de voz</string>
+    <string name="memory_voice_record_action">Grabar</string>
+    <string name="memory_voice_stop_action">Detener</string>
+    <string name="memory_voice_cancel_action">Cancelar</string>
+    <string name="memory_voice_play_action">Reproducir</string>
+    <string name="memory_voice_pause_action">Pausar</string>
+    <string name="memory_voice_remove_action">Quitar</string>
+    <string name="memory_voice_rerecord_action">Grabar de nuevo</string>
+    <string name="memory_voice_recording_label">Grabando %1$s</string>
+    <string name="memory_voice_max_duration_note">Hasta 60 segundos</string>
+    <string name="memory_voice_permission_denied">Se denegó el acceso al micrófono. Puedes intentarlo de nuevo.</string>
+    <string name="memory_voice_permission_permanently_denied">El acceso al micrófono está desactivado para Togetherly. Actívalo en Ajustes para grabar una nota de voz.</string>
+    <string name="memory_voice_open_settings_action">Abrir Ajustes</string>
+
+    <string name="memory_privacy_reassurance">Guardado de forma privada con Togetherly en este dispositivo.</string>
+
+    <string name="memory_save_action">Guardar recuerdo</string>
+    <string name="memory_skip_action">Omitir por ahora</string>
+    <string name="memory_saving_label">Guardando tu recuerdo…</string>
+
+    <string name="memory_discard_title">¿Descartar este recuerdo?</string>
+    <string name="memory_discard_body">Se perderán la nota, las reacciones, la foto y la nota de voz de esta actividad. La actividad completada seguirá guardada.</string>
+    <string name="memory_discard_confirm_action">Descartar</string>
+    <string name="memory_discard_cancel_action">Seguir editando</string>
+</resources>

@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="language_title">Sprache</string>
+    <string name="language_system_default">Systemstandard</string>
+    <string name="language_restart_required">Starte Togetherly neu, damit diese Änderung vollständig wirksam wird.</string>
+</resources>

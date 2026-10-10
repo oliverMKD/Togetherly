@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="purchase_error_product_unavailable">Este plan no está disponible en este momento.</string>
+    <string name="purchase_error_store_unavailable">La tienda no está disponible en este momento. Inténtalo de nuevo más tarde.</string>
+    <string name="purchase_error_network_problem">Comprueba tu conexión e inténtalo de nuevo.</string>
+    <string name="purchase_error_configuration_problem">No pudimos cargar los planes en este momento. Inténtalo de nuevo más tarde.</string>
+    <string name="purchase_error_not_allowed">Las compras no están permitidas en este dispositivo en este momento.</string>
+    <string name="purchase_error_already_owned">Ya tienes este plan.</string>
+    <string name="purchase_error_unknown">Tu compra no se pudo completar. Inténtalo de nuevo.</string>
+
+    <string name="purchase_cancelled_message">No te preocupes: puedes intentarlo de nuevo cuando quieras.</string>
+    <string name="purchase_pending_message">Tu compra está pendiente de aprobación. Desbloquearemos Family Plus en cuanto se confirme.</string>
+    <string name="purchase_success_message">Family Plus ya está listo. Disfruta de más formas de conectar.</string>
+    <string name="restore_no_purchases_found_message">No encontramos compras anteriores que restaurar.</string>
+    <string name="restore_succeeded_message">Family Plus restaurado.</string>
+</resources>

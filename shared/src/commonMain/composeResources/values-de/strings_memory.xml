@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="memory_screen_title">Erinnerung hinzufügen</string>
+    <string name="memory_neutral_quest_title">Deine Quest</string>
+    <string name="memory_back_content_description">Zurück</string>
+
+    <string name="memory_reactions_heading">Wie hat es sich angefühlt?</string>
+    <string name="memory_reaction_happy">Fröhlich</string>
+    <string name="memory_reaction_silly">Albern</string>
+    <string name="memory_reaction_loved_it">Geliebt</string>
+    <string name="memory_reaction_calm">Entspannt</string>
+    <string name="memory_reaction_surprised">Überrascht</string>
+
+    <string name="memory_note_heading">Woran möchtet ihr euch von heute erinnern?</string>
+    <string name="memory_note_placeholder">Schreibe eine Notiz (optional)</string>
+
+    <string name="memory_photo_heading">Foto</string>
+    <string name="memory_photo_add_action">Foto hinzufügen</string>
+    <string name="memory_photo_replace_action">Ersetzen</string>
+    <string name="memory_photo_remove_action">Entfernen</string>
+    <string name="memory_photo_thumbnail_description">Dein hinzugefügtes Foto</string>
+    <string name="memory_photo_privacy_note">Nur das von dir ausgewählte Foto wird in Togetherly importiert.</string>
+    <string name="memory_photo_importing">Foto wird importiert …</string>
+
+    <string name="memory_voice_heading">Sprachnotiz</string>
+    <string name="memory_voice_record_action">Aufnehmen</string>
+    <string name="memory_voice_stop_action">Stopp</string>
+    <string name="memory_voice_cancel_action">Abbrechen</string>
+    <string name="memory_voice_play_action">Abspielen</string>
+    <string name="memory_voice_pause_action">Pause</string>
+    <string name="memory_voice_remove_action">Entfernen</string>
+    <string name="memory_voice_rerecord_action">Neu aufnehmen</string>
+    <string name="memory_voice_recording_label">Aufnahme %1$s</string>
+    <string name="memory_voice_max_duration_note">Bis zu 60 Sekunden</string>
+    <string name="memory_voice_permission_denied">Der Mikrofonzugriff wurde abgelehnt. Du kannst es erneut versuchen.</string>
+    <string name="memory_voice_permission_permanently_denied">Der Mikrofonzugriff ist für Togetherly deaktiviert. Aktiviere ihn in den Einstellungen, um eine Sprachnotiz aufzunehmen.</string>
+    <string name="memory_voice_open_settings_action">Einstellungen öffnen</string>
+
+    <string name="memory_privacy_reassurance">Privat mit Togetherly auf diesem Gerät gespeichert.</string>
+
+    <string name="memory_save_action">Erinnerung speichern</string>
+    <string name="memory_skip_action">Vorerst überspringen</string>
+    <string name="memory_saving_label">Deine Erinnerung wird gespeichert …</string>
+
+    <string name="memory_discard_title">Diese Erinnerung verwerfen?</string>
+    <string name="memory_discard_body">Deine Notiz, Reaktionen, dein Foto und deine Sprachnotiz zu dieser Quest gehen verloren. Die abgeschlossene Quest selbst bleibt gespeichert.</string>
+    <string name="memory_discard_confirm_action">Verwerfen</string>
+    <string name="memory_discard_cancel_action">Weiter bearbeiten</string>
+</resources>

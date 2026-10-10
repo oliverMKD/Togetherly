@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="reminder_title">Recordatorios</string>
+    <string name="reminder_explanation">Un recordatorio suave para dedicar tiempo juntos.</string>
+    <string name="reminder_enable_toggle">Recordarnos</string>
+    <string name="reminder_days_label">¿Qué días?</string>
+    <string name="reminder_time_label">¿A qué hora?</string>
+    <string name="reminder_choose_time">Elegir una hora</string>
+    <string name="reminder_time_selected">%1$s</string>
+    <string name="reminder_permission_status">Permiso de notificaciones: %1$s</string>
+    <string name="reminder_error_days_required">Elige al menos un día.</string>
+
+    <string name="reminder_permission_status_label">Permiso de notificaciones</string>
+    <string name="reminder_permission_granted">Permitido</string>
+    <string name="reminder_permission_denied">No permitido</string>
+    <string name="reminder_permission_not_determined">Aún no solicitado</string>
+    <string name="reminder_permission_not_required">Permitido</string>
+    <string name="reminder_open_settings_action">Abrir ajustes</string>
+    <string name="reminder_permission_denied_explanation">Los recordatorios están activados, pero Togetherly no puede mostrar notificaciones hasta que las permitas en Ajustes.</string>
+
+    <string name="reminder_save_action">Guardar</string>
+    <string name="reminder_missing_profile_error">No pudimos encontrar el perfil de tu familia.</string>
+    <string name="reminder_updated_message">Recordatorio actualizado</string>
+
+    <string name="reminder_notification_channel_name">Recordatorios familiares</string>
+    <string name="reminder_notification_title">¿Un poco de tiempo juntos?</string>
+    <string name="reminder_notification_body">Tu actividad de Togetherly está lista cuando tu familia lo esté.</string>
+</resources>

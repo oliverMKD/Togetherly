@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="today_mystery_title">La actividad familiar de hoy</string>
+    <string name="today_mystery_body">Una pequeña aventura te está esperando.</string>
+    <string name="today_reveal_action">Revelar actividad</string>
+    <string name="today_mystery_content_description">Una actividad oculta, aún no revelada</string>
+
+    <string name="today_see_quest_action">Ver actividad</string>
+    <string name="today_save_action">Guardar actividad</string>
+    <string name="today_saved_content_description">Guardada. Toca para quitarla de las actividades guardadas.</string>
+    <string name="today_unsaved_content_description">No guardada. Toca para guardar esta actividad.</string>
+    <string name="today_save_failed">No pudimos guardar eso. Inténtalo de nuevo.</string>
+
+    <string name="today_greeting_morning">Buenos días</string>
+    <string name="today_greeting_afternoon">Buenas tardes</string>
+    <string name="today_greeting_evening">Buenas noches</string>
+
+    <string name="today_duration_five_minutes">5 minutos</string>
+    <string name="today_duration_ten_minutes">10 minutos</string>
+    <string name="today_duration_twenty_minutes">20 minutos</string>
+    <string name="today_duration_thirty_plus_minutes">30+ minutos</string>
+
+    <string name="today_location_indoor">Interior</string>
+    <string name="today_location_outdoor">Exterior</string>
+    <string name="today_location_either">Interior o exterior</string>
+
+    <string name="today_preparation_none">Sin preparación</string>
+    <string name="today_preparation_simple_materials">Materiales sencillos</string>
+    <string name="today_preparation_advanced">Preparación avanzada</string>
+
+    <string name="today_energy_calm">Tranquila</string>
+    <string name="today_energy_moderate">Moderada</string>
+    <string name="today_energy_active">Activa</string>
+
+    <string name="today_material_summary">%1$d materiales necesarios</string>
+    <string name="today_material_summary_one">1 material necesario</string>
+
+    <string name="today_category_talk">Hablar</string>
+    <string name="today_category_create">Crear</string>
+    <string name="today_category_move">Moverse</string>
+    <string name="today_category_kindness">Bondad</string>
+    <string name="today_category_discover">Descubrir</string>
+    <string name="today_category_silly">Divertido</string>
+    <string name="today_category_memories">Recuerdos</string>
+
+    <string name="today_filters_action">Filtros</string>
+    <string name="today_filters_title">Filtrar actividades</string>
+    <string name="today_filter_group_time">Tiempo</string>
+    <string name="today_filter_group_location">Ubicación</string>
+    <string name="today_filter_group_energy">Energía</string>
+    <string name="today_filter_group_preparation">Preparación</string>
+    <string name="today_filter_group_category">Categoría</string>
+    <string name="today_filters_clear_all">Borrar todo</string>
+    <string name="today_filters_apply">Buscar una actividad</string>
+
+    <string name="today_no_match_no_age_compatible">No pudimos encontrar una actividad que funcione para todos los grupos de edad seleccionados.</string>
+    <string name="today_no_match_no_context_compatible">Prueba a quitar uno de tus filtros.</string>
+    <string name="today_no_match_all_in_cooldown">Ya has explorado recientemente todo lo que coincide con estos filtros.</string>
+
+    <string name="today_reroll_action">Probar otra actividad</string>
+    <string name="today_reroll_confirm_title">¿Usar el cambio gratuito de hoy?</string>
+    <string name="today_reroll_confirm_body">Puedes elegir una actividad diferente hoy.</string>
+    <string name="today_reroll_keep_action">Mantener esta actividad</string>
+    <string name="today_reroll_show_another_action">Mostrar otra</string>
+    <string name="today_reroll_used">Ya has usado el cambio gratuito de hoy.</string>
+
+    <string name="today_completed_action">Completada hoy</string>
+    <string name="today_completed_indicator">Ya has completado esta actividad hoy.</string>
+</resources>

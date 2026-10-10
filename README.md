@@ -37,6 +37,8 @@ family has done together.
 - **Reminders** — local, opt-in daily notifications on the family's own chosen days/time.
 - **Family profile & preferences** — age bands, interests, duration/energy/location preferences,
   reminder settings, and privacy controls, all stored locally.
+- **Localization** — English, Macedonian, German, French, and Spanish UI with an in-app language
+  picker; Android switches immediately and iOS applies the choice after restart.
 - **Local data deletion** — a family can delete memories, quest history, or everything, entirely
   from the device, at any time.
 - **Family Plus** — an optional subscription unlocking additional quest content (see below).
@@ -47,15 +49,17 @@ Kotlin Multiplatform + Compose Multiplatform, targeting **Android and iOS only**
 target), built around a single `shared` module with strict domain/data/presentation boundaries:
 `domain` (pure model, repository interfaces, use cases) never depends on `content` or `data`;
 `content` (the bundled quest catalogue) and `data` (Room persistence, RevenueCat, PostHog, Sentry)
-each implement a `domain` repository interface and are only ever resolved through it; `feature`
-(presentation) depends only on `domain`. See [docs/architecture.md](docs/architecture.md) for the
+implement domain-facing contracts and are resolved through DI; `feature` presentation consumes
+domain use cases plus shared core/design-system primitives, never concrete data implementations.
+See [docs/architecture.md](docs/architecture.md) for the
 full layer map, module dependency diagram, and conventions.
 
 ## Technology stack
 
 - **Kotlin Multiplatform** + **Compose Multiplatform** (shared UI, Android + iOS)
 - **Koin** for dependency injection
-- **Room** (KMP) for local persistence — the only datastore; no backend, no cloud database
+- **Room** (KMP) for structured family, quest, completion, and entitlement-cache persistence;
+  platform preferences hold the pre-onboarding app-language choice
 - **Kotlinx** Coroutines, Serialization, DateTime, Collections-Immutable
 - **AndroidX Navigation Compose** (type-safe destinations)
 - **RevenueCat** KMP SDK — the optional Family Plus subscription
@@ -74,9 +78,10 @@ full layer map, module dependency diagram, and conventions.
 ## Offline-first and privacy
 
 There is no account, no login, and no cloud sync anywhere in this app — every family's quest
-history, preferences, and memories exist only in that device's own local Room database and private
-filesystem. Product analytics and crash diagnostics are both off by default, provider-neutral
-(the app never hardcodes a vendor into feature code), consent-gated per category, and fall back to
+history, preferences, language selection, and memories exist only in that device's own Room
+database, private preferences, and private filesystem. Product analytics and crash diagnostics are
+both off by default, provider-neutral (the app never hardcodes a vendor into feature code),
+consent-gated per category, and fall back to
 a full no-op if never configured — the app is completely usable with neither ever turned on. See
 [docs/privacy.md](docs/privacy.md), [docs/private-media.md](docs/private-media.md),
 [docs/local-data-deletion.md](docs/local-data-deletion.md), and
@@ -104,11 +109,11 @@ everything else in the app behaves identically on both tiers.
 - **Requirements**: JDK 17+ (via the Gradle toolchain), Android Studio or IntelliJ IDEA for
   Android, Xcode for iOS.
 - **Configuration**: copy `local.properties.example` → `local.properties` and
-  `iosApp/Configuration/*.local.xcconfig.example` → the matching `*.local.xcconfig` files. Every
-  value is optional — the app runs fully in free mode with analytics/diagnostics disabled if none
-  are configured. See [docs/configuration.md](docs/configuration.md) for what each value is, where
-  it comes from, and how it's classified (client configuration vs. a secret that must never be
-  committed), and [docs/revenuecat-setup.md](docs/revenuecat-setup.md) /
+  `iosApp/Configuration/*.local.xcconfig.example` → the matching `*.local.xcconfig` files. PostHog
+  and Sentry are optional and fall back to no-op implementations; a missing RevenueCat key fails
+  clearly in debug builds and falls back to free mode in release builds. See
+  [docs/configuration.md](docs/configuration.md) for classification and missing-value behavior, and
+  [docs/revenuecat-setup.md](docs/revenuecat-setup.md) /
   [docs/analytics-setup.md](docs/analytics-setup.md) / [docs/sentry-setup.md](docs/sentry-setup.md)
   for full per-integration setup.
 
@@ -132,7 +137,8 @@ For iOS, open [`iosApp`](iosApp) in Xcode and run it from there.
 Togetherly is under active development and is **not yet published** to the App Store or Google
 Play. The core product flows described above — onboarding, daily quest, Explore, Quest Mode,
 completion memories, Journey, reminders, family preferences, local data deletion, Family Plus
-purchases, and consent-gated analytics/diagnostics — are implemented and tested on both platforms.
+purchases, in-app language selection, and consent-gated analytics/diagnostics — are implemented and
+tested on both platforms.
 Pull requests are verified by CI (Android + Apple targets) — see [docs/ci.md](docs/ci.md). Release
 signing and store listings are not yet set up.
 
@@ -157,6 +163,9 @@ and a [security policy](SECURITY.md).
 MIT — see [LICENSE](LICENSE).
 
 ## Further documentation
+
+See the full [documentation index](docs/README.md) for all architecture, feature, operations, and
+dated audit documents. Key references:
 
 - [docs/architecture.md](docs/architecture.md) — module layout, core conventions, presentation
   conventions, dependency injection, application startup behavior.

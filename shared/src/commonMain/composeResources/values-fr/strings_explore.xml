@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="explore_title">Explorer ensemble</string>
+    <string name="explore_subtitle">Trouve une activité qui convient à ta famille en ce moment.</string>
+
+    <string name="explore_search_label">Rechercher des quêtes et des packs</string>
+    <string name="explore_search_clear_content_description">Effacer la recherche</string>
+
+    <string name="explore_category_all">Tout</string>
+
+    <string name="explore_featured_packs_title">En vedette</string>
+    <string name="explore_all_packs_title">Tous les packs</string>
+    <string name="explore_suggested_quests_title">Quêtes suggérées</string>
+    <string name="explore_search_results_title">Résultats de recherche</string>
+
+    <string name="explore_filters_action">Filtres</string>
+    <string name="explore_filters_action_with_count">Filtres (%1$d)</string>
+    <string name="explore_saved_action">Enregistrées</string>
+
+    <string name="explore_pack_free">Gratuit</string>
+    <string name="explore_pack_premium">Family Plus</string>
+    <plurals name="explore_pack_quest_count">
+        <item quantity="one">1 quête</item>
+        <item quantity="other">%1$d quêtes</item>
+    </plurals>
+    <string name="explore_pack_duration_range">%1$d–%2$d min</string>
+    <string name="explore_pack_duration_single">%1$d min</string>
+    <string name="explore_pack_locked_content_description">Inclus avec Family Plus. Appuie pour en savoir plus.</string>
+
+    <string name="explore_quest_premium_badge">Family Plus</string>
+    <string name="explore_quest_locked_content_description">Quête Family Plus, verrouillée pour ta famille. Appuie pour un aperçu.</string>
+    <string name="explore_quest_saved_content_description">Enregistrée. Appuie pour la retirer des quêtes enregistrées.</string>
+    <string name="explore_quest_unsaved_content_description">Non enregistrée. Appuie pour enregistrer cette quête.</string>
+
+    <string name="explore_empty_search_title">Aucune quête trouvée</string>
+    <string name="explore_empty_search_body">Essaie un autre mot ou efface tes filtres.</string>
+    <string name="explore_empty_filter_title">Aucune quête trouvée</string>
+    <string name="explore_empty_filter_body">Essaie d'autres filtres ou reviens bientôt.</string>
+    <string name="explore_empty_state_content_description">%1$s. %2$s</string>
+
+    <string name="explore_filters_title">Filtres</string>
+    <string name="explore_filter_group_duration">Durée</string>
+    <string name="explore_filter_group_energy">Énergie</string>
+    <string name="explore_filter_group_location">Lieu</string>
+    <string name="explore_filter_group_age">Âge conseillé</string>
+    <string name="explore_filter_group_category">Catégorie</string>
+    <string name="explore_filter_group_access">Accès</string>
+    <string name="explore_filters_clear_all">Tout effacer</string>
+    <string name="explore_filters_apply">Appliquer</string>
+    <string name="explore_filters_cancel">Annuler</string>
+    <string name="explore_filter_access_all">Tout</string>
+
+    <string name="explore_saved_title">Enregistrées</string>
+    <string name="explore_saved_empty_title">Aucune quête enregistrée pour l'instant</string>
+    <string name="explore_saved_empty_body">Enregistre les activités que tu aimerais essayer ensemble plus tard.</string>
+</resources>

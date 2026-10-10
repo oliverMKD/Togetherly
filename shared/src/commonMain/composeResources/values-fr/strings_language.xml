@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="language_title">Langue</string>
+    <string name="language_system_default">Paramètres du système</string>
+    <string name="language_restart_required">Redémarre Togetherly pour que ce changement prenne pleinement effet.</string>
+</resources>

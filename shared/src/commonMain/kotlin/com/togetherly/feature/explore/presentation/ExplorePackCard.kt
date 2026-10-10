@@ -4,7 +4,7 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.FlowRow
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
@@ -107,19 +107,20 @@ internal fun ExplorePackCard(
                     text = pack.title,
                     style = MaterialTheme.togetherlyTypography.titleM,
                     color = colors.foregroundPrimary,
-                    maxLines = 1,
+                    maxLines = 2,
                     overflow = TextOverflow.Ellipsis,
                 )
                 Text(
                     text = pack.description,
                     style = MaterialTheme.togetherlyTypography.bodyM,
                     color = colors.foregroundSecondary,
-                    maxLines = 2,
+                    maxLines = 3,
                     overflow = TextOverflow.Ellipsis,
                 )
-                Row(
+                FlowRow(
                     horizontalArrangement = Arrangement.spacedBy(MaterialTheme.togetherlySpacing.xs),
-                    verticalAlignment = Alignment.CenterVertically,
+                    itemVerticalAlignment = Alignment.CenterVertically,
+                    verticalArrangement = Arrangement.spacedBy(MaterialTheme.togetherlySpacing.xxs),
                 ) {
                     Text(
                         text = accessLabel,

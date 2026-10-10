@@ -9,6 +9,7 @@ import androidx.compose.ui.Modifier
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.navigation.NavDestination.Companion.hasRoute
 import androidx.navigation.NavGraph.Companion.findStartDestination
+import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
@@ -68,6 +69,14 @@ private val MAIN_TABS = listOf(
  * exactly where "return to root on reselect" would be added, at this same call site, not a reason
  * to build that machinery now.
  *
+ * [navController] takes a default so every existing call site keeps compiling unchanged, but
+ * [com.togetherly.navigation.host.TogetherlyNavHost] passes one explicitly, hoisted (alongside its
+ * own root [androidx.navigation.NavHostController]) all the way up to
+ * [com.togetherly.app.application.App] — same reasoning as that hoist's own KDoc: without it,
+ * switching language would tear this tab-selection state down too (it lives in whichever
+ * `NavHostController` composes it), on top of the *outer* back-stack reset that hoist already
+ * fixes.
+ *
  * Bottom navigation exists *only* inside this shell — neither Bootstrap nor Onboarding wrap their
  * content in it.
  *
@@ -111,8 +120,9 @@ fun MainShell(
     onOpenLegal: () -> Unit = {},
     onOpenAbout: () -> Unit = {},
     onOpenDataManagement: () -> Unit = {},
+    onOpenLanguage: () -> Unit = {},
+    navController: NavHostController = rememberNavController(),
 ) {
-    val navController = rememberNavController()
     val currentBackStackEntry by navController.currentBackStackEntryAsState()
     val currentDestination = currentBackStackEntry?.destination
 
@@ -192,6 +202,7 @@ fun MainShell(
                     onOpenLegal = onOpenLegal,
                     onOpenAbout = onOpenAbout,
                     onOpenDataManagement = onOpenDataManagement,
+                    onOpenLanguage = onOpenLanguage,
                 )
             }
         }

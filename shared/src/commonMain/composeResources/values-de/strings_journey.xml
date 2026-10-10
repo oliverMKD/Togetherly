@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="journey_top_bar_title">Reise</string>
+
+    <string name="journey_empty_title">Deine Familienreise beginnt hier.</string>
+    <string name="journey_empty_body">Schließe deine erste Quest ab, und sie wird zu einem Stern.</string>
+    <string name="journey_empty_action">Zu Heute</string>
+
+    <string name="journey_missing_quest_title">Familienabenteuer</string>
+
+    <string name="journey_photo_content_description">Foto zu dieser Erinnerung</string>
+    <string name="journey_voice_play_action">Sprachnotiz abspielen</string>
+    <string name="journey_voice_pause_action">Sprachnotiz pausieren</string>
+    <string name="journey_voice_playback_error">Diese Sprachnotiz konnte gerade nicht abgespielt werden.</string>
+
+    <string name="journey_delete_content_description">Diese Erinnerung löschen</string>
+    <string name="journey_delete_dialog_title">Diese Erinnerung löschen?</string>
+    <string name="journey_delete_dialog_body">Damit werden die Quest, ihre Notiz sowie jedes Foto und jede Sprachnotiz entfernt. Das kann nicht rückgängig gemacht werden.</string>
+    <string name="journey_delete_confirm_action">Löschen</string>
+    <string name="journey_delete_cancel_action">Abbrechen</string>
+
+    <string name="journey_summary_total_completions">%1$d gemeinsam abgeschlossene Quests</string>
+    <plurals name="journey_summary_active_days">
+        <item quantity="one">%1$d Tag voller Erinnerungen bisher</item>
+        <item quantity="other">%1$d Tage voller Erinnerungen bisher</item>
+    </plurals>
+    <string name="journey_constellation_content_description">Ein Sternbild aus %1$d Sternen, einer für jede Quest, die deine Familie abgeschlossen hat. Der Stern mit dem sanften Schimmer ist deine neueste Erinnerung.</string>
+
+    <string name="journey_milestone_first_star">Dein erster Stern!</string>
+    <string name="journey_milestone_three_stars">Drei Sterne an deinem Himmel.</string>
+    <string name="journey_milestone_seven_stars">Sieben Sterne, und es werden mehr.</string>
+    <string name="journey_milestone_fourteen_stars">Vierzehn Sterne gemeinsam.</string>
+    <string name="journey_milestone_thirty_stars">Dreißig Sterne — was für eine Reise.</string>
+</resources>

@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="family_title">Notre famille</string>
+
+    <string name="family_profile_name_fallback">Notre famille</string>
+    <string name="family_profile_summary_context_label">Préfère %1$s</string>
+    <string name="family_profile_edit_action">Modifier</string>
+    <string name="family_quest_preferences_action">Préférences de quêtes</string>
+
+    <string name="family_section_your_family">Ta famille</string>
+    <string name="family_section_memories_privacy">Souvenirs et confidentialité</string>
+    <string name="family_section_data">Données</string>
+    <string name="family_section_support">Assistance</string>
+
+    <string name="family_entry_quest_preferences_subtitle">Durée, énergie et lieu</string>
+    <string name="family_entry_reminder_subtitle">Quand on te rappelle de jouer</string>
+    <string name="family_entry_language_subtitle">Choisis comment Togetherly s'affiche</string>
+    <string name="family_entry_memory_settings_subtitle">Réglages par défaut des notes, photos et messages vocaux</string>
+    <string name="family_entry_privacy_subtitle">Ce qui reste sur cet appareil</string>
+    <string name="family_entry_data_management_subtitle">Supprimer des souvenirs ou réinitialiser l'historique</string>
+    <string name="family_entry_legal_subtitle">Conditions, licences et politiques</string>
+    <string name="family_entry_about_subtitle">Version, assistance et crédits</string>
+
+    <string name="family_profile_editor_title">Modifier le profil familial</string>
+    <string name="family_profile_editor_age_bands_title">Tranches d'âge</string>
+    <string name="family_profile_editor_durations_title">Durée d'activité préférée</string>
+    <string name="family_profile_editor_location_title">Intérieur ou extérieur</string>
+    <string name="family_profile_editor_save_action">Enregistrer</string>
+    <string name="family_profile_editor_missing_profile_error">Nous n'avons pas trouvé le profil de ta famille.</string>
+    <string name="family_profile_updated_message">Profil familial mis à jour</string>
+
+    <string name="quest_preferences_title">Préférences de quêtes</string>
+    <string name="quest_preferences_explanation">Ces choix aident Togetherly à suggérer des activités adaptées à ta famille. Tu peux toujours explorer toutes les quêtes.</string>
+    <string name="quest_preferences_durations_title">Durée préférée</string>
+    <string name="quest_preferences_energy_title">Énergie préférée</string>
+    <string name="quest_preferences_location_title">Intérieur ou extérieur</string>
+    <string name="quest_preferences_preparation_title">Préparation acceptée</string>
+    <string name="quest_preferences_reset_action">Réinitialiser</string>
+    <string name="quest_preferences_save_action">Enregistrer</string>
+    <string name="quest_preferences_error_energy_required">Choisis au moins un niveau d'énergie.</string>
+    <string name="quest_preferences_missing_profile_error">Nous n'avons pas trouvé le profil de ta famille.</string>
+    <string name="quest_preferences_updated_message">Préférences de quêtes mises à jour</string>
+
+    <string name="energy_level_calm">Calme</string>
+    <string name="energy_level_moderate">Équilibré</string>
+    <string name="energy_level_active">Actif</string>
+
+    <string name="family_discard_dialog_title">Abandonner les modifications ?</string>
+    <string name="family_discard_dialog_body">Tes modifications n'ont pas encore été enregistrées. Si tu quittes maintenant, elles seront perdues.</string>
+    <string name="family_discard_dialog_confirm_action">Abandonner</string>
+    <string name="family_discard_dialog_cancel_action">Continuer la modification</string>
+</resources>

@@ -57,7 +57,7 @@ internal fun RevealedQuestCard(
                 horizontalArrangement = Arrangement.SpaceBetween,
                 verticalAlignment = Alignment.CenterVertically,
             ) {
-                CategoryBadge(quest = quest)
+                CategoryBadge(quest = quest, modifier = Modifier.weight(1f))
                 SaveToggle(isSaved = quest.isSaved, onToggle = { onAction(TodayAction.SaveClicked) })
             }
 
