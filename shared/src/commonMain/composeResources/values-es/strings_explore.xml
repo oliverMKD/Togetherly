@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="explore_title">Explora en familia</string>
+    <string name="explore_subtitle">Encuentra algo que se adapte a tu familia ahora mismo.</string>
+
+    <string name="explore_search_label">Buscar actividades y packs</string>
+    <string name="explore_search_clear_content_description">Borrar búsqueda</string>
+
+    <string name="explore_category_all">Todas</string>
+
+    <string name="explore_featured_packs_title">Destacados</string>
+    <string name="explore_all_packs_title">Todos los packs</string>
+    <string name="explore_suggested_quests_title">Actividades sugeridas</string>
+    <string name="explore_search_results_title">Resultados de búsqueda</string>
+
+    <string name="explore_filters_action">Filtros</string>
+    <string name="explore_filters_action_with_count">Filtros (%1$d)</string>
+    <string name="explore_saved_action">Guardadas</string>
+
+    <string name="explore_pack_free">Gratis</string>
+    <string name="explore_pack_premium">Family Plus</string>
+    <plurals name="explore_pack_quest_count">
+        <item quantity="one">1 actividad</item>
+        <item quantity="other">%1$d actividades</item>
+    </plurals>
+    <string name="explore_pack_duration_range">%1$d–%2$d min</string>
+    <string name="explore_pack_duration_single">%1$d min</string>
+    <string name="explore_pack_locked_content_description">Incluido con Family Plus. Toca para saber más.</string>
+
+    <string name="explore_quest_premium_badge">Family Plus</string>
+    <string name="explore_quest_locked_content_description">Actividad de Family Plus, bloqueada para tu familia. Toca para obtener una vista previa.</string>
+    <string name="explore_quest_saved_content_description">Guardada. Toca para quitarla de las actividades guardadas.</string>
+    <string name="explore_quest_unsaved_content_description">No guardada. Toca para guardar esta actividad.</string>
+
+    <string name="explore_empty_search_title">No se encontraron actividades</string>
+    <string name="explore_empty_search_body">Prueba con otra palabra o borra tus filtros.</string>
+    <string name="explore_empty_filter_title">No se encontraron actividades</string>
+    <string name="explore_empty_filter_body">Prueba con otros filtros o vuelve a consultarlo pronto.</string>
+    <string name="explore_empty_state_content_description">%1$s. %2$s</string>
+
+    <string name="explore_filters_title">Filtros</string>
+    <string name="explore_filter_group_duration">Duración</string>
+    <string name="explore_filter_group_energy">Energía</string>
+    <string name="explore_filter_group_location">Ubicación</string>
+    <string name="explore_filter_group_age">Edad recomendada</string>
+    <string name="explore_filter_group_category">Categoría</string>
+    <string name="explore_filter_group_access">Acceso</string>
+    <string name="explore_filters_clear_all">Borrar todo</string>
+    <string name="explore_filters_apply">Aplicar</string>
+    <string name="explore_filters_cancel">Cancelar</string>
+    <string name="explore_filter_access_all">Todo</string>
+
+    <string name="explore_saved_title">Guardadas</string>
+    <string name="explore_saved_empty_title">Aún no hay actividades guardadas</string>
+    <string name="explore_saved_empty_body">Guarda las actividades que te gustaría probar en familia más adelante.</string>
+</resources>

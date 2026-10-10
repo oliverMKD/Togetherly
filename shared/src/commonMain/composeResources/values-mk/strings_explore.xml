@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="explore_title">Истражувајте заедно</string>
+    <string name="explore_subtitle">Пронајдете нешто што му одговара на вашето семејство токму сега.</string>
+
+    <string name="explore_search_label">Пребарај активности и пакети</string>
+    <string name="explore_search_clear_content_description">Исчисти пребарување</string>
+
+    <string name="explore_category_all">Сите</string>
+
+    <string name="explore_featured_packs_title">Издвоени</string>
+    <string name="explore_all_packs_title">Сите пакети</string>
+    <string name="explore_suggested_quests_title">Предложени активности</string>
+    <string name="explore_search_results_title">Резултати од пребарувањето</string>
+
+    <string name="explore_filters_action">Филтри</string>
+    <string name="explore_filters_action_with_count">Филтри (%1$d)</string>
+    <string name="explore_saved_action">Зачувани</string>
+
+    <string name="explore_pack_free">Бесплатно</string>
+    <string name="explore_pack_premium">Family Plus</string>
+    <plurals name="explore_pack_quest_count">
+        <item quantity="one">1 активност</item>
+        <item quantity="other">%1$d активности</item>
+    </plurals>
+    <string name="explore_pack_duration_range">%1$d–%2$d мин</string>
+    <string name="explore_pack_duration_single">%1$d мин</string>
+    <string name="explore_pack_locked_content_description">Вклучено со Family Plus. Допрете за повеќе информации.</string>
+
+    <string name="explore_quest_premium_badge">Family Plus</string>
+    <string name="explore_quest_locked_content_description">Family Plus активност, заклучена за вашето семејство. Допрете за преглед.</string>
+    <string name="explore_quest_saved_content_description">Зачувано. Допрете за отстранување од зачуваните активности.</string>
+    <string name="explore_quest_unsaved_content_description">Не е зачувано. Допрете за да ја зачувате оваа активност.</string>
+
+    <string name="explore_empty_search_title">Не се пронајдени активности</string>
+    <string name="explore_empty_search_body">Обидете се со друг збор или исчистете ги филтрите.</string>
+    <string name="explore_empty_filter_title">Не се пронајдени активности</string>
+    <string name="explore_empty_filter_body">Обидете се со различни филтри или проверете повторно наскоро.</string>
+    <string name="explore_empty_state_content_description">%1$s. %2$s</string>
+
+    <string name="explore_filters_title">Филтри</string>
+    <string name="explore_filter_group_duration">Времетраење</string>
+    <string name="explore_filter_group_energy">Енергија</string>
+    <string name="explore_filter_group_location">Локација</string>
+    <string name="explore_filter_group_age">Соодветна возраст</string>
+    <string name="explore_filter_group_category">Категорија</string>
+    <string name="explore_filter_group_access">Пристап</string>
+    <string name="explore_filters_clear_all">Исчисти сѐ</string>
+    <string name="explore_filters_apply">Примени</string>
+    <string name="explore_filters_cancel">Откажи</string>
+    <string name="explore_filter_access_all">Сите</string>
+
+    <string name="explore_saved_title">Зачувани</string>
+    <string name="explore_saved_empty_title">Сѐ уште нема зачувани активности</string>
+    <string name="explore_saved_empty_body">Зачувајте активности што сакате подоцна да ги пробате заедно.</string>
+</resources>

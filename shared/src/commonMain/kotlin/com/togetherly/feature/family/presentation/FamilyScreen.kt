@@ -47,6 +47,7 @@ import togetherly.shared.generated.resources.family_entry_legal_subtitle
 import togetherly.shared.generated.resources.family_entry_memory_settings_subtitle
 import togetherly.shared.generated.resources.family_entry_privacy_subtitle
 import togetherly.shared.generated.resources.family_entry_quest_preferences_subtitle
+import togetherly.shared.generated.resources.family_entry_language_subtitle
 import togetherly.shared.generated.resources.family_entry_reminder_subtitle
 import togetherly.shared.generated.resources.family_profile_edit_action
 import togetherly.shared.generated.resources.family_profile_name_fallback
@@ -57,6 +58,7 @@ import togetherly.shared.generated.resources.family_section_memories_privacy
 import togetherly.shared.generated.resources.family_section_support
 import togetherly.shared.generated.resources.family_section_your_family
 import togetherly.shared.generated.resources.family_title
+import togetherly.shared.generated.resources.language_title
 import togetherly.shared.generated.resources.legal_title
 import togetherly.shared.generated.resources.memory_settings_title
 import togetherly.shared.generated.resources.privacy_title
@@ -112,6 +114,14 @@ internal fun FamilyScreen(
                         glyph = "🔔",
                         tint = MaterialTheme.togetherlyColors.actionPrimary,
                         onClick = { onAction(FamilyAction.ReminderClicked) },
+                    )
+                    SettingsDivider()
+                    SettingsEntryRow(
+                        title = stringResource(Res.string.language_title),
+                        subtitle = stringResource(Res.string.family_entry_language_subtitle),
+                        glyph = "🌐",
+                        tint = MaterialTheme.togetherlyColors.actionPrimary,
+                        onClick = { onAction(FamilyAction.LanguageClicked) },
                     )
                 }
 

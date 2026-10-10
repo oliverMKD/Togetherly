@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="familyplus_free_title">Family Plus</string>
+    <string name="familyplus_free_body">Débloque des relances quotidiennes illimitées, des packs de quêtes premium et bien plus encore.</string>
+    <string name="familyplus_view_plans_action">Voir les formules</string>
+
+    <string name="familyplus_active_title">Family Plus est actif</string>
+    <string name="familyplus_manage_subscription_action">Gérer l'abonnement</string>
+    <string name="familyplus_customer_center_unavailable">La gestion de l'abonnement n'est pas disponible pour le moment. Réessaie plus tard.</string>
+    <string name="familyplus_provider_unavailable_notice">Nous n'avons pas pu vérifier l'état de ton abonnement. Certaines options peuvent être indisponibles tant que ce problème n'est pas résolu.</string>
+
+    <string name="familyplus_renews_on">Se renouvelle le %1$s</string>
+    <string name="familyplus_ends_on">Se termine le %1$s</string>
+    <string name="familyplus_lifetime_member">Tu as un accès à vie à Family Plus</string>
+
+    <string name="familyplus_restore_action">Restaurer les achats</string>
+</resources>

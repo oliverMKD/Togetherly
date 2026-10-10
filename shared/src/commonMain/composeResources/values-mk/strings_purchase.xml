@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="purchase_error_product_unavailable">Овој план не е достапен во моментов.</string>
+    <string name="purchase_error_store_unavailable">Продавницата не е достапна во моментов. Обидете се повторно подоцна.</string>
+    <string name="purchase_error_network_problem">Проверете ја вашата интернет-конекција и обидете се повторно.</string>
+    <string name="purchase_error_configuration_problem">Не можевме да ги вчитаме плановите во моментов. Обидете се повторно подоцна.</string>
+    <string name="purchase_error_not_allowed">Купувањата не се дозволени на овој уред во моментов.</string>
+    <string name="purchase_error_already_owned">Веќе го поседувате овој план.</string>
+    <string name="purchase_error_unknown">Вашето купување не можеше да се заврши. Обидете се повторно.</string>
+
+    <string name="purchase_cancelled_message">Нема проблем — можете да се обидете повторно во секое време.</string>
+    <string name="purchase_pending_message">Вашето купување чека одобрување. Ќе го отклучиме Family Plus веднаш штом ќе биде потврдено.</string>
+    <string name="purchase_success_message">Family Plus е подготвен. Уживајте во повеќе начини да се поврзете.</string>
+    <string name="restore_no_purchases_found_message">Не пронајдовме претходни купувања за враќање.</string>
+    <string name="restore_succeeded_message">Family Plus е вратен.</string>
+</resources>

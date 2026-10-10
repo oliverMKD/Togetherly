@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="legal_title">Legal</string>
+    <string name="legal_privacy_policy_action">Política de privacidad</string>
+    <string name="legal_terms_of_use_action">Términos de uso</string>
+    <string name="legal_subscription_terms_action">Términos de suscripción</string>
+    <string name="legal_open_source_licenses_action">Licencias de código abierto</string>
+
+    <string name="open_source_licenses_title">Licencias de código abierto</string>
+    <string name="open_source_licenses_intro">Togetherly está creado con el siguiente software de código abierto.</string>
+
+    <string name="about_title">Acerca de</string>
+    <string name="about_version_label">Versión %1$s (%2$s)</string>
+    <string name="about_environment_debug_label">Compilación de depuración</string>
+    <string name="about_support_action">Contactar con soporte</string>
+    <string name="about_diagnostics_test_action">Enviar evento de diagnóstico de prueba</string>
+    <string name="about_diagnostics_test_sent">Evento de diagnóstico de prueba enviado</string>
+    <string name="about_debug_telemetry_action">Abrir herramientas de telemetría de depuración</string>
+</resources>

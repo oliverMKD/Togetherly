@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="packdetails_included_quests_title">Вклучени активности</string>
+    <string name="packdetails_choose_quest_action">Избери активност</string>
+    <string name="packdetails_unlock_action">Отклучи со Family Plus</string>
+    <string name="packdetails_locked_explanation">Овој пакет е вклучен со Family Plus. Отклучете го за да започнете која било активност во него.</string>
+</resources>

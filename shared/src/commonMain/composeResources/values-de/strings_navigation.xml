@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="nav_destination_today">Heute</string>
+    <string name="nav_destination_explore">Entdecken</string>
+    <string name="nav_destination_journey">Reise</string>
+    <string name="nav_destination_family">Familie</string>
+</resources>

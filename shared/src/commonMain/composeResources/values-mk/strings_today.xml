@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="today_mystery_title">Денешната семејна активност</string>
+    <string name="today_mystery_body">Ве чека мала авантура.</string>
+    <string name="today_reveal_action">Откриј активност</string>
+    <string name="today_mystery_content_description">Скриена активност, сѐ уште неоткриена</string>
+
+    <string name="today_see_quest_action">Погледни активност</string>
+    <string name="today_save_action">Зачувај активност</string>
+    <string name="today_saved_content_description">Зачувано. Допрете за отстранување од зачуваните активности.</string>
+    <string name="today_unsaved_content_description">Не е зачувано. Допрете за да ја зачувате оваа активност.</string>
+    <string name="today_save_failed">Не можевме да го зачуваме тоа. Обидете се повторно.</string>
+
+    <string name="today_greeting_morning">Добро утро</string>
+    <string name="today_greeting_afternoon">Добар ден</string>
+    <string name="today_greeting_evening">Добра вечер</string>
+
+    <string name="today_duration_five_minutes">5 минути</string>
+    <string name="today_duration_ten_minutes">10 минути</string>
+    <string name="today_duration_twenty_minutes">20 минути</string>
+    <string name="today_duration_thirty_plus_minutes">30+ минути</string>
+
+    <string name="today_location_indoor">Затворено</string>
+    <string name="today_location_outdoor">Отворено</string>
+    <string name="today_location_either">Затворено или отворено</string>
+
+    <string name="today_preparation_none">Без подготовка</string>
+    <string name="today_preparation_simple_materials">Едноставни материјали</string>
+    <string name="today_preparation_advanced">Напредна подготовка</string>
+
+    <string name="today_energy_calm">Смирено</string>
+    <string name="today_energy_moderate">Урамнотежено</string>
+    <string name="today_energy_active">Активно</string>
+
+    <string name="today_material_summary">Потребни се %1$d материјали</string>
+    <string name="today_material_summary_one">Потребен е 1 материјал</string>
+
+    <string name="today_category_talk">Разговор</string>
+    <string name="today_category_create">Творештво</string>
+    <string name="today_category_move">Движење</string>
+    <string name="today_category_kindness">Љубезност</string>
+    <string name="today_category_discover">Откривање</string>
+    <string name="today_category_silly">Смешно</string>
+    <string name="today_category_memories">Спомени</string>
+
+    <string name="today_filters_action">Филтри</string>
+    <string name="today_filters_title">Филтрирај активности</string>
+    <string name="today_filter_group_time">Време</string>
+    <string name="today_filter_group_location">Локација</string>
+    <string name="today_filter_group_energy">Енергија</string>
+    <string name="today_filter_group_preparation">Подготовка</string>
+    <string name="today_filter_group_category">Категорија</string>
+    <string name="today_filters_clear_all">Исчисти сѐ</string>
+    <string name="today_filters_apply">Најди активност</string>
+
+    <string name="today_no_match_no_age_compatible">Не можевме да најдеме активност што одговара на секоја избрана возрасна група.</string>
+    <string name="today_no_match_no_context_compatible">Обидете се да отстраните еден од вашите филтри.</string>
+    <string name="today_no_match_all_in_cooldown">Неодамна ги истраживте сите активности што одговараат на овие филтри.</string>
+
+    <string name="today_reroll_action">Пробај друга активност</string>
+    <string name="today_reroll_confirm_title">Да ја искористиме денешната бесплатна замена?</string>
+    <string name="today_reroll_confirm_body">Денес можете да изберете уште една различна активност.</string>
+    <string name="today_reroll_keep_action">Задржи ја оваа активност</string>
+    <string name="today_reroll_show_another_action">Покажи друга</string>
+    <string name="today_reroll_used">Денешната бесплатна замена е искористена.</string>
+
+    <string name="today_completed_action">Завршена денес</string>
+    <string name="today_completed_indicator">Веќе ја завршивте оваа активност денес.</string>
+</resources>

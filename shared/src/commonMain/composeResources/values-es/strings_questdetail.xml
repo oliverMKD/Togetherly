@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="questdetail_back_content_description">Atrás</string>
+    <string name="questdetail_start_action">Empezar actividad</string>
+    <string name="questdetail_materials_title">Lo que necesitarás</string>
+    <string name="questdetail_instructions_title">Instrucciones</string>
+    <string name="questdetail_hints_title">Pistas</string>
+    <string name="questdetail_safety_title">Nota de seguridad</string>
+    <string name="questdetail_saved_content_description">Guardada. Toca para quitarla de las actividades guardadas.</string>
+    <string name="questdetail_unsaved_content_description">No guardada. Toca para guardar esta actividad.</string>
+
+    <string name="questdetail_conflict_title">Todavía hay otra actividad en curso</string>
+    <string name="questdetail_conflict_body">Empezar esta actividad reemplazará la sesión sin terminar.</string>
+    <string name="questdetail_conflict_replace_action">Reemplazar y empezar esta actividad</string>
+    <string name="questdetail_conflict_cancel_action">Cancelar</string>
+
+    <string name="questdetail_locked_title">Esta actividad forma parte de Family Plus.</string>
+    <string name="questdetail_locked_body">Desbloquea la actividad completa y más formas de pasar tiempo juntos con sentido.</string>
+    <string name="questdetail_unlock_action">Desbloquear con Family Plus</string>
+    <string name="questdetail_premium_badge">Family Plus</string>
+    <string name="questdetail_age_suitability_title">Recomendado para</string>
+    <string name="questdetail_pack_label">Parte de %1$s</string>
+</resources>

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="familyplus_free_title">Family Plus</string>
+    <string name="familyplus_free_body">Отклучете неограничени дневни замени, премиум пакети со активности и уште многу повеќе.</string>
+    <string name="familyplus_view_plans_action">Погледни планови</string>
+
+    <string name="familyplus_active_title">Family Plus е активен</string>
+    <string name="familyplus_manage_subscription_action">Управувај со претплатата</string>
+    <string name="familyplus_customer_center_unavailable">Управувањето со претплатата не е достапно во моментов. Обидете се повторно подоцна.</string>
+    <string name="familyplus_provider_unavailable_notice">Не можевме да го провериме статусот на вашата претплата. Некои опции можеби нема да бидат достапни додека ова не се разреши.</string>
+
+    <string name="familyplus_renews_on">Се обновува на %1$s</string>
+    <string name="familyplus_ends_on">Завршува на %1$s</string>
+    <string name="familyplus_lifetime_member">Имате доживотен пристап до Family Plus</string>
+
+    <string name="familyplus_restore_action">Врати ги купувањата</string>
+</resources>

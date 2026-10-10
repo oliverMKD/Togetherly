@@ -5,6 +5,7 @@ import com.togetherly.app.foundation.PlatformInfoProvider
 import com.togetherly.app.foundation.VersionInfoProvider
 import com.togetherly.core.feedback.IosQuestFeedbackController
 import com.togetherly.core.feedback.QuestFeedbackController
+import com.togetherly.core.locale.AppLocaleStore
 import com.togetherly.core.notification.IosNotificationCenterAdapter
 import com.togetherly.core.notification.RealIosNotificationCenterAdapter
 import com.togetherly.core.notification.IosNotificationPermissionStatusProvider
@@ -29,6 +30,7 @@ import com.togetherly.data.media.VoiceRecorder
 import org.koin.core.module.Module
 import org.koin.dsl.module
 import platform.Foundation.NSBundle
+import platform.Foundation.NSUserDefaults
 import platform.UIKit.UIDevice
 
 internal class IosPlatformInfoProvider : PlatformInfoProvider {
@@ -51,12 +53,30 @@ internal class IosVersionInfoProvider : VersionInfoProvider {
         (NSBundle.mainBundle.objectForInfoDictionaryKey("CFBundleVersion") as? String).orEmpty()
 }
 
+/** Backs [AppLocaleStore] with its own dedicated key — see that interface's own KDoc. Distinct from the `AppleLanguages` key [applyPlatformLocale][com.togetherly.core.locale.applyPlatformLocale] writes: that one is what iOS itself reads at process start, this one is what this app reads back to know the user's own choice. */
+internal class IosAppLocaleStore : AppLocaleStore {
+    private val defaults = NSUserDefaults.standardUserDefaults
+
+    override fun getSelectedLanguage(): String? = defaults.stringForKey(SELECTED_LANGUAGE_KEY)
+
+    override fun setSelectedLanguage(code: String?) {
+        if (code == null) defaults.removeObjectForKey(SELECTED_LANGUAGE_KEY) else defaults.setObject(code, forKey = SELECTED_LANGUAGE_KEY)
+    }
+
+    private companion object {
+        const val SELECTED_LANGUAGE_KEY = "selected_language"
+    }
+}
+
 actual val platformModule: Module = module {
     single<PlatformInfoProvider> {
         IosPlatformInfoProvider()
     }
     single<VersionInfoProvider> {
         IosVersionInfoProvider()
+    }
+    single<AppLocaleStore> {
+        IosAppLocaleStore()
     }
     single<PostHogContext> {
         // No platform-specific context is required on iOS — see PostHogContext's own KDoc.

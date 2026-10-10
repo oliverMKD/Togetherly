@@ -10,6 +10,7 @@ import com.togetherly.core.datetime.DefaultAppClock
 import com.togetherly.core.datetime.DefaultAppTimeZoneProvider
 import com.togetherly.core.id.DefaultIdGenerator
 import com.togetherly.core.id.IdGenerator
+import com.togetherly.core.locale.AppLocaleController
 import com.togetherly.core.logging.AppLogger
 import com.togetherly.core.logging.createPlatformLogger
 import com.togetherly.data.purchase.RevenueCatConfigurator
@@ -34,6 +35,10 @@ val coreModule = module {
 
     single<IdGenerator> {
         DefaultIdGenerator()
+    }
+
+    single {
+        AppLocaleController(store = get())
     }
 
     single {

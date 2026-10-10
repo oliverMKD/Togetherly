@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="data_management_title">Gérer tes données</string>
+    <string name="data_management_intro">Togetherly conserve tout uniquement sur cet appareil. Tu peux supprimer certaines données ci-dessous, ou tout supprimer et repartir à zéro.</string>
+
+    <string name="data_management_delete_memories_action">Supprimer les souvenirs</string>
+    <string name="data_management_delete_memories_description">Supprime les photos, les enregistrements vocaux et les notes associés aux quêtes terminées. L'historique des quêtes, les quêtes enregistrées et le profil de ta famille sont conservés.</string>
+    <string name="data_management_delete_memories_confirm_title">Supprimer les souvenirs ?</string>
+    <string name="data_management_delete_memories_confirm_body">Cela supprime définitivement toutes les photos, tous les enregistrements vocaux et toutes les notes associés à tes quêtes terminées. Cette action est irréversible.\n\nL'historique des quêtes, les quêtes enregistrées et le profil de ta famille sont conservés.</string>
+    <string name="data_management_delete_memories_success">Souvenirs supprimés.</string>
+
+    <string name="data_management_reset_quest_history_action">Réinitialiser l'historique des quêtes</string>
+    <string name="data_management_reset_quest_history_description">Efface la quête du jour, les quêtes ignorées et toutes les quêtes terminées, ainsi que leurs souvenirs. Les quêtes enregistrées et le profil de ta famille sont conservés.</string>
+    <string name="data_management_reset_quest_history_confirm_title">Réinitialiser l'historique des quêtes ?</string>
+    <string name="data_management_reset_quest_history_confirm_body">Cela efface définitivement la quête du jour, les quêtes ignorées et toutes les quêtes terminées, ainsi que leurs souvenirs. Cette action est irréversible.\n\nLes quêtes enregistrées et le profil de ta famille sont conservés.</string>
+    <string name="data_management_reset_quest_history_success">Historique des quêtes réinitialisé.</string>
+
+    <string name="data_management_delete_all_action">Supprimer toutes les données locales</string>
+    <string name="data_management_delete_all_description">Supprime définitivement tout ce que Togetherly a enregistré sur cet appareil et revient à la configuration initiale. Cela n'annule pas un abonnement Family Plus et ne supprime pas ton historique d'achats.</string>
+    <string name="data_management_delete_all_stage_one_title">Supprimer toutes les données locales ?</string>
+    <string name="data_management_delete_all_stage_one_body">Cela supprime définitivement le profil de ta famille, tes préférences, l'historique des quêtes, les souvenirs, ainsi que toutes les photos et tous les enregistrements vocaux stockés sur cet appareil. Cette action est irréversible.\n\nUn abonnement Family Plus est géré séparément via l'App Store ou Google Play — cela ne l'annule pas.\n\nEnsuite, l'application revient à la configuration initiale.</string>
+    <string name="data_management_delete_all_stage_one_continue_action">Continuer</string>
+
+    <string name="data_management_partial_file_failure_message">Terminé, mais certains fichiers n'ont pas pu être supprimés et devront peut-être être effacés manuellement.</string>
+    <string name="data_management_dialog_cancel_action">Annuler</string>
+</resources>

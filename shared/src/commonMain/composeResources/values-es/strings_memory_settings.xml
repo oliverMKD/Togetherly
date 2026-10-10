@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="memory_settings_title">Ajustes de recuerdos</string>
+    <string name="memory_settings_explanation">Elige qué puede añadir tu familia a un recuerdo después de una actividad. Desactivar algo solo afecta a los recuerdos nuevos.</string>
+    <string name="memory_settings_photos_title">Recuerdos con foto</string>
+    <string name="memory_settings_voice_title">Recuerdos con voz</string>
+    <string name="memory_settings_text_notes_title">Notas de texto</string>
+    <string name="memory_settings_prompt_title">Preguntar si añadir un recuerdo después de cada actividad</string>
+    <string name="memory_settings_on">Activado</string>
+    <string name="memory_settings_off">Desactivado</string>
+    <string name="memory_settings_preserved_explanation">Desactivar fotos, voz o notas nunca elimina lo que ya has guardado.</string>
+    <string name="memory_settings_manage_memories_action">Gestionar recuerdos</string>
+    <string name="memory_settings_save_action">Guardar</string>
+    <string name="memory_settings_missing_profile_error">No pudimos encontrar el perfil de tu familia.</string>
+    <string name="memory_settings_updated_message">Ajustes de recuerdos actualizados</string>
+</resources>

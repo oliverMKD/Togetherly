@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="nav_destination_today">Денес</string>
+    <string name="nav_destination_explore">Истражи</string>
+    <string name="nav_destination_journey">Патување</string>
+    <string name="nav_destination_family">Семејство</string>
+</resources>

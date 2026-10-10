@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="language_title">Јазик</string>
+    <string name="language_system_default">Стандардно на системот</string>
+    <string name="language_restart_required">Рестартирајте ја Togetherly за оваа промена целосно да се примени.</string>
+</resources>

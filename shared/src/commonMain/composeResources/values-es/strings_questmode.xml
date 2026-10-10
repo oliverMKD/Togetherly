@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="questmode_close_content_description">Cerrar</string>
+    <string name="questmode_timer_finished">Se acabó el tiempo</string>
+    <string name="questmode_timer_content_description_running">%1$s restante</string>
+    <string name="questmode_timer_content_description_finished">Se acabó el tiempo</string>
+
+    <string name="questmode_hints_action">¿Necesitas una idea?</string>
+    <string name="questmode_hints_expanded_state">Expandido</string>
+    <string name="questmode_hints_collapsed_state">Contraído</string>
+    <string name="questmode_safety_title">Nota de seguridad</string>
+
+    <string name="questmode_phone_down_action">Suelta el teléfono</string>
+    <string name="questmode_phone_down_supporting_timed">Nosotros controlamos el tiempo.</string>
+    <string name="questmode_phone_down_supporting_untimed">Tómate tu tiempo con esta.</string>
+    <string name="questmode_phone_down_active_title">Actividad en curso</string>
+    <string name="questmode_phone_down_active_body">Toca para volver</string>
+
+    <string name="questmode_complete_action">Lo logramos</string>
+
+    <string name="questmode_exit_title">¿Mantener esta actividad en curso?</string>
+    <string name="questmode_exit_body">Puedes volver y continuar más tarde.</string>
+    <string name="questmode_exit_keep_action">Guardar para después</string>
+    <string name="questmode_exit_continue_action">Continuar actividad</string>
+    <string name="questmode_exit_abandon_action">Abandonar actividad</string>
+
+    <string name="questmode_abandon_confirm_title">¿Abandonar esta actividad?</string>
+    <string name="questmode_abandon_confirm_body">Esto borra tu progreso. Después podrás empezar una nueva actividad desde Hoy.</string>
+    <string name="questmode_abandon_confirm_action">Abandonar actividad</string>
+    <string name="questmode_abandon_cancel_action">Cancelar</string>
+
+    <string name="questmode_error_close_action">Cerrar</string>
+</resources>

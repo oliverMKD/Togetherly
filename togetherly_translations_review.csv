@@ -1,0 +1,469 @@
+file,key,en,mk,de,fr,es
+common,ds_component_back_content_description,Back,Назад,Zurück,Retour,Atrás
+common,error_generic_message,Something went wrong. Please try again.,Нешто тргна наопаку. Обидете се повторно.,Etwas ist schiefgelaufen. Bitte versuche es noch einmal.,Une erreur s'est produite. Réessaie.,Algo salió mal. Inténtalo de nuevo.
+completion,completion_title,You made a memory,Направивте спомен,Ihr habt eine Erinnerung geschaffen,Tu as créé un souvenir,Has creado un recuerdo
+completion,completion_body,Another little family adventure is complete.,Уште една мала семејна авантура заврши.,Ein weiteres kleines Familienabenteuer ist geschafft.,Encore une petite aventure familiale accomplie.,Otra pequeña aventura familiar completada.
+completion,completion_neutral_quest_title,A family quest,Семејна активност,Eine Familien-Quest,Une quête familiale,Una actividad familiar
+completion,completion_add_memory_action,Add a memory,Додади спомен,Erinnerung hinzufügen,Ajouter un souvenir,Añadir un recuerdo
+completion,completion_continue_action,Continue,Продолжи,Weiter,Continuer,Continuar
+completion,completion_close_action,Close,Затвори,Schließen,Fermer,Cerrar
+data_management,data_management_title,Manage your data,Управувајте со вашите податоци,Deine Daten verwalten,Gérer tes données,Gestiona tus datos
+data_management,data_management_intro,"Togetherly stores everything only on this device. You can remove specific data below, or delete everything and start over.","Togetherly чува сѐ само на овој уред. Можете да отстраните одредени податоци подолу, или да избришете сѐ и да започнете одново.",Togetherly speichert alles nur auf diesem Gerät. Du kannst unten gezielt Daten entfernen oder alles löschen und neu beginnen.,"Togetherly conserve tout uniquement sur cet appareil. Tu peux supprimer certaines données ci-dessous, ou tout supprimer et repartir à zéro.","Togetherly guarda todo únicamente en este dispositivo. Puedes eliminar datos específicos a continuación, o borrar todo y empezar de nuevo."
+data_management,data_management_delete_memories_action,Delete memories,Избриши спомени,Erinnerungen löschen,Supprimer les souvenirs,Eliminar recuerdos
+data_management,data_management_delete_memories_description,"Removes photos, voice recordings, and notes attached to completed quests. Quest history itself, saved quests, and your family profile are kept.","Ги отстранува фотографиите, гласовните снимки и белешките прикачени кон завршените активности. Историјата на активности, зачуваните активности и вашиот семеен профил остануваат.","Entfernt Fotos, Sprachaufnahmen und Notizen, die zu abgeschlossenen Quests gehören. Der Quest-Verlauf selbst, gespeicherte Quests und dein Familienprofil bleiben erhalten.","Supprime les photos, les enregistrements vocaux et les notes associés aux quêtes terminées. L'historique des quêtes, les quêtes enregistrées et le profil de ta famille sont conservés.","Elimina las fotos, grabaciones de voz y notas asociadas a las actividades completadas. Se conservan el historial de actividades, las actividades guardadas y el perfil de tu familia."
+data_management,data_management_delete_memories_confirm_title,Delete memories?,Да ги избришеме спомените?,Erinnerungen löschen?,Supprimer les souvenirs ?,¿Eliminar recuerdos?
+data_management,data_management_delete_memories_confirm_body,"This permanently deletes every photo, voice recording, and note attached to your completed quests. This can't be undone.\n\nQuest history, saved quests, and your family profile are kept.","Ова трајно ги брише сите фотографии, гласовни снимки и белешки прикачени кон вашите завршени активности. Ова не може да се врати назад.\n\nИсторијата на активности, зачуваните активности и вашиот семеен профил остануваат.","Damit werden alle Fotos, Sprachaufnahmen und Notizen zu deinen abgeschlossenen Quests endgültig gelöscht. Das kann nicht rückgängig gemacht werden.\n\nQuest-Verlauf, gespeicherte Quests und dein Familienprofil bleiben erhalten.","Cela supprime définitivement toutes les photos, tous les enregistrements vocaux et toutes les notes associés à tes quêtes terminées. Cette action est irréversible.\n\nL'historique des quêtes, les quêtes enregistrées et le profil de ta famille sont conservés.","Esto elimina de forma permanente todas las fotos, grabaciones de voz y notas asociadas a tus actividades completadas. Esta acción no se puede deshacer.\n\nSe conservan el historial de actividades, las actividades guardadas y el perfil de tu familia."
+data_management,data_management_delete_memories_success,Memories deleted.,Спомените се избришани.,Erinnerungen gelöscht.,Souvenirs supprimés.,Recuerdos eliminados.
+data_management,data_management_reset_quest_history_action,Reset quest history,Ресетирај историја на активности,Quest-Verlauf zurücksetzen,Réinitialiser l'historique des quêtes,Restablecer historial de actividades
+data_management,data_management_reset_quest_history_description,"Clears today's quest, dismissed quests, and every completed quest along with its memories. Saved quests and your family profile are kept.","Ги брише денешната активност, отфрлените активности и секоја завршена активност заедно со нејзините спомени. Зачуваните активности и вашиот семеен профил остануваат.","Löscht die heutige Quest, abgelehnte Quests und alle abgeschlossenen Quests samt ihrer Erinnerungen. Gespeicherte Quests und dein Familienprofil bleiben erhalten.","Efface la quête du jour, les quêtes ignorées et toutes les quêtes terminées, ainsi que leurs souvenirs. Les quêtes enregistrées et le profil de ta famille sont conservés.","Borra la actividad de hoy, las actividades descartadas y todas las actividades completadas junto con sus recuerdos. Se conservan las actividades guardadas y el perfil de tu familia."
+data_management,data_management_reset_quest_history_confirm_title,Reset quest history?,Да ја ресетираме историјата на активности?,Quest-Verlauf zurücksetzen?,Réinitialiser l'historique des quêtes ?,¿Restablecer historial de actividades?
+data_management,data_management_reset_quest_history_confirm_body,"This permanently clears today's quest, dismissed quests, and every completed quest along with its memories. This can't be undone.\n\nSaved quests and your family profile are kept.","Ова трајно ги брише денешната активност, отфрлените активности и секоја завршена активност заедно со нејзините спомени. Ова не може да се врати назад.\n\nЗачуваните активности и вашиот семеен профил остануваат.","Damit werden die heutige Quest, abgelehnte Quests und alle abgeschlossenen Quests samt ihrer Erinnerungen endgültig gelöscht. Das kann nicht rückgängig gemacht werden.\n\nGespeicherte Quests und dein Familienprofil bleiben erhalten.","Cela efface définitivement la quête du jour, les quêtes ignorées et toutes les quêtes terminées, ainsi que leurs souvenirs. Cette action est irréversible.\n\nLes quêtes enregistrées et le profil de ta famille sont conservés.","Esto borra de forma permanente la actividad de hoy, las actividades descartadas y todas las actividades completadas junto con sus recuerdos. Esta acción no se puede deshacer.\n\nSe conservan las actividades guardadas y el perfil de tu familia."
+data_management,data_management_reset_quest_history_success,Quest history reset.,Историјата на активности е ресетирана.,Quest-Verlauf zurückgesetzt.,Historique des quêtes réinitialisé.,Historial de actividades restablecido.
+data_management,data_management_delete_all_action,Delete all local data,Избриши ги сите локални податоци,Alle lokalen Daten löschen,Supprimer toutes les données locales,Eliminar todos los datos locales
+data_management,data_management_delete_all_description,Permanently deletes everything Togetherly has stored on this device and returns to setup. This does not cancel a Family Plus subscription or delete your purchase history.,Трајно брише сѐ што Togetherly има зачувано на овој уред и се враќа на почетното поставување. Ова не ја откажува претплатата на Family Plus и не ја брише вашата историја на купувања.,"Löscht endgültig alles, was Togetherly auf diesem Gerät gespeichert hat, und kehrt zur Einrichtung zurück. Ein Family-Plus-Abo wird dadurch nicht gekündigt, und dein Kaufverlauf bleibt bestehen.",Supprime définitivement tout ce que Togetherly a enregistré sur cet appareil et revient à la configuration initiale. Cela n'annule pas un abonnement Family Plus et ne supprime pas ton historique d'achats.,Elimina de forma permanente todo lo que Togetherly ha guardado en este dispositivo y vuelve a la configuración inicial. Esto no cancela una suscripción a Family Plus ni elimina tu historial de compras.
+data_management,data_management_delete_all_stage_one_title,Delete all local data?,Да ги избришеме сите локални податоци?,Alle lokalen Daten löschen?,Supprimer toutes les données locales ?,¿Eliminar todos los datos locales?
+data_management,data_management_delete_all_stage_one_body,"This permanently deletes your family profile, preferences, quest history, memories, and every photo and voice recording stored on this device. This can't be undone.\n\nA Family Plus subscription is managed separately through the App Store or Google Play — this does not cancel it.\n\nAfterward, the app returns to setup.","Ова трајно го брише вашиот семеен профил, преференции, историја на активности, спомени, и секоја фотографија и гласовна снимка зачувана на овој уред. Ова не може да се врати назад.\n\nПретплатата на Family Plus се управува одделно преку App Store или Google Play — ова не ја откажува.\n\nПотоа, апликацијата се враќа на почетното поставување.","Damit werden dein Familienprofil, deine Einstellungen, der Quest-Verlauf, alle Erinnerungen sowie jedes auf diesem Gerät gespeicherte Foto und jede Sprachaufnahme endgültig gelöscht. Das kann nicht rückgängig gemacht werden.\n\nEin Family-Plus-Abo wird separat über den App Store oder Google Play verwaltet — es wird dadurch nicht gekündigt.\n\nAnschließend kehrt die App zur Einrichtung zurück.","Cela supprime définitivement le profil de ta famille, tes préférences, l'historique des quêtes, les souvenirs, ainsi que toutes les photos et tous les enregistrements vocaux stockés sur cet appareil. Cette action est irréversible.\n\nUn abonnement Family Plus est géré séparément via l'App Store ou Google Play — cela ne l'annule pas.\n\nEnsuite, l'application revient à la configuration initiale.","Esto elimina de forma permanente el perfil de tu familia, tus preferencias, el historial de actividades, los recuerdos, y todas las fotos y grabaciones de voz guardadas en este dispositivo. Esta acción no se puede deshacer.\n\nLa suscripción a Family Plus se gestiona por separado a través de la App Store o Google Play — esto no la cancela.\n\nDespués, la app volverá a la configuración inicial."
+data_management,data_management_delete_all_stage_one_continue_action,Continue,Продолжи,Weiter,Continuer,Continuar
+data_management,data_management_partial_file_failure_message,"Done, but some files couldn't be removed and may need to be cleared manually.","Готово, но некои датотеки не можеа да се отстранат и можеби ќе треба рачно да се исчистат.","Erledigt, aber einige Dateien konnten nicht entfernt werden und müssen eventuell manuell gelöscht werden.","Terminé, mais certains fichiers n'ont pas pu être supprimés et devront peut-être être effacés manuellement.","Listo, pero algunos archivos no se pudieron eliminar y quizá debas borrarlos manualmente."
+data_management,data_management_dialog_cancel_action,Cancel,Откажи,Abbrechen,Annuler,Cancelar
+explore,explore_title,Explore together,Истражувајте заедно,Gemeinsam entdecken,Explorer ensemble,Explora en familia
+explore,explore_subtitle,Find something that fits your family right now.,Пронајдете нешто што му одговара на вашето семејство токму сега.,"Finde etwas, das gerade zu deiner Familie passt.",Trouve une activité qui convient à ta famille en ce moment.,Encuentra algo que se adapte a tu familia ahora mismo.
+explore,explore_search_label,Search quests and packs,Пребарај активности и пакети,Quests und Pakete durchsuchen,Rechercher des quêtes et des packs,Buscar actividades y packs
+explore,explore_search_clear_content_description,Clear search,Исчисти пребарување,Suche löschen,Effacer la recherche,Borrar búsqueda
+explore,explore_category_all,All,Сите,Alle,Tout,Todas
+explore,explore_featured_packs_title,Featured,Издвоени,Empfohlen,En vedette,Destacados
+explore,explore_all_packs_title,All packs,Сите пакети,Alle Pakete,Tous les packs,Todos los packs
+explore,explore_suggested_quests_title,Suggested quests,Предложени активности,Vorgeschlagene Quests,Quêtes suggérées,Actividades sugeridas
+explore,explore_search_results_title,Search results,Резултати од пребарувањето,Suchergebnisse,Résultats de recherche,Resultados de búsqueda
+explore,explore_filters_action,Filters,Филтри,Filter,Filtres,Filtros
+explore,explore_filters_action_with_count,Filters (%1$d),Филтри (%1$d),Filter (%1$d),Filtres (%1$d),Filtros (%1$d)
+explore,explore_saved_action,Saved,Зачувани,Gespeichert,Enregistrées,Guardadas
+explore,explore_pack_free,Free,Бесплатно,Kostenlos,Gratuit,Gratis
+explore,explore_pack_premium,Family Plus,Family Plus,Family Plus,Family Plus,Family Plus
+explore,explore_pack_quest_count [one],1 quest,1 активност,1 Quest,1 quête,1 actividad
+explore,explore_pack_quest_count [other],%1$d quests,%1$d активности,%1$d Quests,%1$d quêtes,%1$d actividades
+explore,explore_pack_duration_range,%1$d–%2$d min,%1$d–%2$d мин,%1$d–%2$d Min.,%1$d–%2$d min,%1$d–%2$d min
+explore,explore_pack_duration_single,%1$d min,%1$d мин,%1$d Min.,%1$d min,%1$d min
+explore,explore_pack_locked_content_description,Included with Family Plus. Tap to learn more.,Вклучено со Family Plus. Допрете за повеќе информации.,"In Family Plus enthalten. Tippen, um mehr zu erfahren.",Inclus avec Family Plus. Appuie pour en savoir plus.,Incluido con Family Plus. Toca para saber más.
+explore,explore_quest_premium_badge,Family Plus,Family Plus,Family Plus,Family Plus,Family Plus
+explore,explore_quest_locked_content_description,"Family Plus quest, locked for your family. Tap to preview.","Family Plus активност, заклучена за вашето семејство. Допрете за преглед.","Family-Plus-Quest, für deine Familie gesperrt. Tippen zur Vorschau.","Quête Family Plus, verrouillée pour ta famille. Appuie pour un aperçu.","Actividad de Family Plus, bloqueada para tu familia. Toca para obtener una vista previa."
+explore,explore_quest_saved_content_description,Saved. Tap to remove from saved quests.,Зачувано. Допрете за отстранување од зачуваните активности.,"Gespeichert. Tippen, um aus den gespeicherten Quests zu entfernen.",Enregistrée. Appuie pour la retirer des quêtes enregistrées.,Guardada. Toca para quitarla de las actividades guardadas.
+explore,explore_quest_unsaved_content_description,Not saved. Tap to save this quest.,Не е зачувано. Допрете за да ја зачувате оваа активност.,"Nicht gespeichert. Tippen, um diese Quest zu speichern.",Non enregistrée. Appuie pour enregistrer cette quête.,No guardada. Toca para guardar esta actividad.
+explore,explore_empty_search_title,No quests found,Не се пронајдени активности,Keine Quests gefunden,Aucune quête trouvée,No se encontraron actividades
+explore,explore_empty_search_body,Try another word or clear your filters.,Обидете се со друг збор или исчистете ги филтрите.,Versuche ein anderes Wort oder setze deine Filter zurück.,Essaie un autre mot ou efface tes filtres.,Prueba con otra palabra o borra tus filtros.
+explore,explore_empty_filter_title,No quests found,Не се пронајдени активности,Keine Quests gefunden,Aucune quête trouvée,No se encontraron actividades
+explore,explore_empty_filter_body,Try different filters or check back soon.,Обидете се со различни филтри или проверете повторно наскоро.,Versuche andere Filter oder schau bald wieder vorbei.,Essaie d'autres filtres ou reviens bientôt.,Prueba con otros filtros o vuelve a consultarlo pronto.
+explore,explore_empty_state_content_description,%1$s. %2$s,%1$s. %2$s,%1$s. %2$s,%1$s. %2$s,%1$s. %2$s
+explore,explore_filters_title,Filters,Филтри,Filter,Filtres,Filtros
+explore,explore_filter_group_duration,Duration,Времетраење,Dauer,Durée,Duración
+explore,explore_filter_group_energy,Energy,Енергија,Energie,Énergie,Energía
+explore,explore_filter_group_location,Location,Локација,Ort,Lieu,Ubicación
+explore,explore_filter_group_age,Age suitability,Соодветна возраст,Altersempfehlung,Âge conseillé,Edad recomendada
+explore,explore_filter_group_category,Category,Категорија,Kategorie,Catégorie,Categoría
+explore,explore_filter_group_access,Access,Пристап,Zugang,Accès,Acceso
+explore,explore_filters_clear_all,Clear all,Исчисти сѐ,Alle zurücksetzen,Tout effacer,Borrar todo
+explore,explore_filters_apply,Apply,Примени,Anwenden,Appliquer,Aplicar
+explore,explore_filters_cancel,Cancel,Откажи,Abbrechen,Annuler,Cancelar
+explore,explore_filter_access_all,All,Сите,Alle,Tout,Todo
+explore,explore_saved_title,Saved,Зачувани,Gespeichert,Enregistrées,Guardadas
+explore,explore_saved_empty_title,No saved quests yet,Сѐ уште нема зачувани активности,Noch keine gespeicherten Quests,Aucune quête enregistrée pour l'instant,Aún no hay actividades guardadas
+explore,explore_saved_empty_body,Save activities you would like to try together later.,Зачувајте активности што сакате подоцна да ги пробате заедно.,"Speichere Aktivitäten, die ihr später gemeinsam ausprobieren möchtet.",Enregistre les activités que tu aimerais essayer ensemble plus tard.,Guarda las actividades que te gustaría probar en familia más adelante.
+family,family_title,Our family,Нашето семејство,Unsere Familie,Notre famille,Nuestra familia
+family,family_profile_name_fallback,Our family,Нашето семејство,Unsere Familie,Notre famille,Nuestra familia
+family,family_profile_summary_context_label,Prefers %1$s,Претпочита %1$s,Bevorzugt %1$s,Préfère %1$s,Prefiere %1$s
+family,family_profile_edit_action,Edit,Уреди,Bearbeiten,Modifier,Editar
+family,family_quest_preferences_action,Quest preferences,Преференции за активности,Quest-Einstellungen,Préférences de quêtes,Preferencias de actividades
+family,family_section_your_family,Your family,Вашето семејство,Deine Familie,Ta famille,Tu familia
+family,family_section_memories_privacy,Memories & privacy,Спомени и приватност,Erinnerungen & Privatsphäre,Souvenirs et confidentialité,Recuerdos y privacidad
+family,family_section_data,Data,Податоци,Daten,Données,Datos
+family,family_section_support,Support,Поддршка,Support,Assistance,Ayuda
+family,family_entry_quest_preferences_subtitle,"Duration, energy, and location signals","Времетраење, енергија и локациски преференции","Dauer, Energie und Ort","Durée, énergie et lieu","Duración, energía y ubicación"
+family,family_entry_reminder_subtitle,When we nudge you to play,Кога ве потсетуваме да играте,Wann wir dich zum Spielen erinnern,Quand on te rappelle de jouer,Cuándo te lo recordamos
+family,family_entry_language_subtitle,Choose how Togetherly is displayed,Изберете како да се прикажува Togetherly,"Wähle, wie Togetherly angezeigt wird",Choisis comment Togetherly s'affiche,Elige cómo se muestra Togetherly
+family,family_entry_memory_settings_subtitle,"Notes, photos, and voice defaults","Стандардни поставки за белешки, фотографии и глас","Standardeinstellungen für Notizen, Fotos und Sprachnotizen","Réglages par défaut des notes, photos et messages vocaux","Ajustes de notas, fotos y voz"
+family,family_entry_privacy_subtitle,What stays on this device,Што останува на овој уред,Was auf diesem Gerät bleibt,Ce qui reste sur cet appareil,Qué se queda en este dispositivo
+family,family_entry_data_management_subtitle,Delete memories or reset history,Избришете спомени или ресетирајте историја,Erinnerungen löschen oder Verlauf zurücksetzen,Supprimer des souvenirs ou réinitialiser l'historique,Elimina recuerdos o restablece el historial
+family,family_entry_legal_subtitle,"Terms, licenses, and policies","Услови, лиценци и политики","Bedingungen, Lizenzen und Richtlinien","Conditions, licences et politiques","Términos, licencias y políticas"
+family,family_entry_about_subtitle,"Version, support, and credits","Верзија, поддршка и заслуги","Version, Support und Mitwirkende","Version, assistance et crédits","Versión, ayuda y créditos"
+family,family_profile_editor_title,Edit family profile,Уреди семеен профил,Familienprofil bearbeiten,Modifier le profil familial,Editar perfil familiar
+family,family_profile_editor_age_bands_title,Broad age groups,Општи возрасни групи,Altersgruppen,Tranches d'âge,Grupos de edad
+family,family_profile_editor_durations_title,Preferred activity duration,Претпочитано времетраење на активност,Bevorzugte Aktivitätsdauer,Durée d'activité préférée,Duración de actividad preferida
+family,family_profile_editor_location_title,Indoor or outdoor,Затворено или отворено,Drinnen oder draußen,Intérieur ou extérieur,Interior o exterior
+family,family_profile_editor_save_action,Save,Зачувај,Speichern,Enregistrer,Guardar
+family,family_profile_editor_missing_profile_error,We couldn't find your family profile.,Не можевме да го најдеме вашиот семеен профил.,Wir konnten dein Familienprofil nicht finden.,Nous n'avons pas trouvé le profil de ta famille.,No pudimos encontrar el perfil de tu familia.
+family,family_profile_updated_message,Family profile updated,Семејниот профил е ажуриран,Familienprofil aktualisiert,Profil familial mis à jour,Perfil familiar actualizado
+family,quest_preferences_title,Quest preferences,Преференции за активности,Quest-Einstellungen,Préférences de quêtes,Preferencias de actividades
+family,quest_preferences_explanation,These choices help Togetherly suggest activities that fit your family. You can still explore every quest.,Овие избори ѝ помагаат на Togetherly да предложи активности што одговараат на вашето семејство. Сепак можете да ги истражувате сите активности.,"Diese Angaben helfen Togetherly, Aktivitäten vorzuschlagen, die zu deiner Familie passen. Du kannst trotzdem jede Quest entdecken.",Ces choix aident Togetherly à suggérer des activités adaptées à ta famille. Tu peux toujours explorer toutes les quêtes.,"Estas opciones ayudan a Togetherly a sugerir actividades que se adapten a tu familia. Aun así, podrás explorar todas las actividades."
+family,quest_preferences_durations_title,Preferred duration,Претпочитано времетраење,Bevorzugte Dauer,Durée préférée,Duración preferida
+family,quest_preferences_energy_title,Preferred energy,Претпочитана енергија,Bevorzugte Energie,Énergie préférée,Energía preferida
+family,quest_preferences_location_title,Indoor or outdoor,Затворено или отворено,Drinnen oder draußen,Intérieur ou extérieur,Interior o exterior
+family,quest_preferences_preparation_title,Preparation tolerance,Толеранција за подготовка,Vorbereitungsaufwand,Préparation acceptée,Nivel de preparación
+family,quest_preferences_reset_action,Reset to defaults,Врати на стандардни поставки,Auf Standard zurücksetzen,Réinitialiser,Restablecer valores predeterminados
+family,quest_preferences_save_action,Save,Зачувај,Speichern,Enregistrer,Guardar
+family,quest_preferences_error_energy_required,Choose at least one energy level.,Изберете барем едно ниво на енергија.,Wähle mindestens ein Energielevel.,Choisis au moins un niveau d'énergie.,Elige al menos un nivel de energía.
+family,quest_preferences_missing_profile_error,We couldn't find your family profile.,Не можевме да го најдеме вашиот семеен профил.,Wir konnten dein Familienprofil nicht finden.,Nous n'avons pas trouvé le profil de ta famille.,No pudimos encontrar el perfil de tu familia.
+family,quest_preferences_updated_message,Quest preferences updated,Преференциите за активности се ажурирани,Quest-Einstellungen aktualisiert,Préférences de quêtes mises à jour,Preferencias de actividades actualizadas
+family,energy_level_calm,Calm,Смирено,Ruhig,Calme,Tranquila
+family,energy_level_moderate,Balanced,Урамнотежено,Ausgewogen,Équilibré,Equilibrada
+family,energy_level_active,Active,Активно,Aktiv,Actif,Activa
+family,family_discard_dialog_title,Discard changes?,Да ги отфрлиме промените?,Änderungen verwerfen?,Abandonner les modifications ?,¿Descartar los cambios?
+family,family_discard_dialog_body,"Your changes haven't been saved yet. If you leave now, they'll be lost.","Вашите промени сѐ уште не се зачувани. Ако излезете сега, ќе бидат изгубени.","Deine Änderungen wurden noch nicht gespeichert. Wenn du jetzt gehst, gehen sie verloren.","Tes modifications n'ont pas encore été enregistrées. Si tu quittes maintenant, elles seront perdues.","Tus cambios aún no se han guardado. Si sales ahora, se perderán."
+family,family_discard_dialog_confirm_action,Discard,Отфрли,Verwerfen,Abandonner,Descartar
+family,family_discard_dialog_cancel_action,Keep editing,Продолжи со уредување,Weiter bearbeiten,Continuer la modification,Seguir editando
+familyplus,familyplus_free_title,Family Plus,Family Plus,Family Plus,Family Plus,Family Plus
+familyplus,familyplus_free_body,"Unlock unlimited daily rerolls, premium quest packs, and more.","Отклучете неограничени дневни замени, премиум пакети со активности и уште многу повеќе.","Schalte unbegrenzte tägliche Neuwürfe, Premium-Quest-Pakete und mehr frei.","Débloque des relances quotidiennes illimitées, des packs de quêtes premium et bien plus encore.","Desbloquea cambios diarios ilimitados, packs de actividades premium y mucho más."
+familyplus,familyplus_view_plans_action,View plans,Погледни планови,Pläne ansehen,Voir les formules,Ver planes
+familyplus,familyplus_active_title,Family Plus is active,Family Plus е активен,Family Plus ist aktiv,Family Plus est actif,Family Plus está activo
+familyplus,familyplus_manage_subscription_action,Manage subscription,Управувај со претплатата,Abo verwalten,Gérer l'abonnement,Gestionar suscripción
+familyplus,familyplus_customer_center_unavailable,Subscription management isn't available right now. Please try again later.,Управувањето со претплатата не е достапно во моментов. Обидете се повторно подоцна.,Die Abo-Verwaltung ist gerade nicht verfügbar. Bitte versuche es später erneut.,La gestion de l'abonnement n'est pas disponible pour le moment. Réessaie plus tard.,La gestión de la suscripción no está disponible en este momento. Inténtalo de nuevo más tarde.
+familyplus,familyplus_provider_unavailable_notice,We couldn't check your subscription status. Some options may be unavailable until this is resolved.,Не можевме да го провериме статусот на вашата претплата. Некои опции можеби нема да бидат достапни додека ова не се разреши.,"Wir konnten deinen Abo-Status nicht überprüfen. Einige Optionen sind möglicherweise nicht verfügbar, bis dies behoben ist.",Nous n'avons pas pu vérifier l'état de ton abonnement. Certaines options peuvent être indisponibles tant que ce problème n'est pas résolu.,No pudimos comprobar el estado de tu suscripción. Es posible que algunas opciones no estén disponibles hasta que esto se resuelva.
+familyplus,familyplus_renews_on,Renews on %1$s,Се обновува на %1$s,Verlängert sich am %1$s,Se renouvelle le %1$s,Se renueva el %1$s
+familyplus,familyplus_ends_on,Ends on %1$s,Завршува на %1$s,Endet am %1$s,Se termine le %1$s,Finaliza el %1$s
+familyplus,familyplus_lifetime_member,You have lifetime access to Family Plus,Имате доживотен пристап до Family Plus,Du hast lebenslangen Zugang zu Family Plus,Tu as un accès à vie à Family Plus,Tienes acceso de por vida a Family Plus
+familyplus,familyplus_restore_action,Restore purchases,Врати ги купувањата,Käufe wiederherstellen,Restaurer les achats,Restaurar compras
+journey,journey_top_bar_title,Journey,Патување,Reise,Parcours,Viaje
+journey,journey_empty_title,Your family journey starts here.,Патувањето на вашето семејство започнува тука.,Deine Familienreise beginnt hier.,Le parcours de ta famille commence ici.,Tu viaje en familia empieza aquí.
+journey,journey_empty_body,Complete your first quest and it will become a star.,Завршете ја вашата прва активност и таа ќе стане ѕвезда.,"Schließe deine erste Quest ab, und sie wird zu einem Stern.",Termine ta première quête et elle deviendra une étoile.,Completa tu primera actividad y se convertirá en una estrella.
+journey,journey_empty_action,Go to Today,Оди на Денес,Zu Heute,Aller à Aujourd'hui,Ir a Hoy
+journey,journey_missing_quest_title,Family adventure,Семејна авантура,Familienabenteuer,Aventure familiale,Aventura familiar
+journey,journey_photo_content_description,Photo from this memory,Фотографија од овој спомен,Foto zu dieser Erinnerung,Photo de ce souvenir,Foto de este recuerdo
+journey,journey_voice_play_action,Play voice note,Пушти гласовна белешка,Sprachnotiz abspielen,Lire le message vocal,Reproducir nota de voz
+journey,journey_voice_pause_action,Pause voice note,Паузирај гласовна белешка,Sprachnotiz pausieren,Mettre en pause le message vocal,Pausar nota de voz
+journey,journey_voice_playback_error,This voice note couldn't play right now.,Оваа гласовна белешка не можеше да се пушти во моментов.,Diese Sprachnotiz konnte gerade nicht abgespielt werden.,Ce message vocal n'a pas pu être lu pour le moment.,Esta nota de voz no se pudo reproducir en este momento.
+journey,journey_delete_content_description,Delete this memory,Избриши го овој спомен,Diese Erinnerung löschen,Supprimer ce souvenir,Eliminar este recuerdo
+journey,journey_delete_dialog_title,Delete this memory?,Да го избришеме овој спомен?,Diese Erinnerung löschen?,Supprimer ce souvenir ?,¿Eliminar este recuerdo?
+journey,journey_delete_dialog_body,"This removes the quest, its note, and any photo or voice memory. This can't be undone.","Ова ги отстранува активноста, нејзината белешка, и секоја фотографија или гласовен спомен. Ова не може да се врати назад.","Damit werden die Quest, ihre Notiz sowie jedes Foto und jede Sprachnotiz entfernt. Das kann nicht rückgängig gemacht werden.","Cela supprime la quête, sa note, ainsi que toute photo ou tout message vocal associés. Cette action est irréversible.","Esto elimina la actividad, su nota y cualquier foto o nota de voz. Esta acción no se puede deshacer."
+journey,journey_delete_confirm_action,Delete,Избриши,Löschen,Supprimer,Eliminar
+journey,journey_delete_cancel_action,Cancel,Откажи,Abbrechen,Annuler,Cancelar
+journey,journey_summary_total_completions,%1$d quests completed together,%1$d активности завршени заедно,%1$d gemeinsam abgeschlossene Quests,%1$d quêtes accomplies ensemble,%1$d actividades completadas en familia
+journey,journey_summary_active_days [one],%1$d day of memories so far,%1$d ден со спомени досега,%1$d Tag voller Erinnerungen bisher,%1$d jour de souvenirs jusqu'à présent,%1$d día de recuerdos hasta ahora
+journey,journey_summary_active_days [other],%1$d days of memories so far,%1$d дена со спомени досега,%1$d Tage voller Erinnerungen bisher,%1$d jours de souvenirs jusqu'à présent,%1$d días de recuerdos hasta ahora
+journey,journey_constellation_content_description,"A constellation of %1$d stars, one for every quest your family has completed. The star with a soft glow around it is your most recent memory.","Соѕвездие од %1$d ѕвезди, по една за секоја активност што вашето семејство ја завршило. Ѕвездата со благ сјај околу неа е вашиот последен спомен.","Ein Sternbild aus %1$d Sternen, einer für jede Quest, die deine Familie abgeschlossen hat. Der Stern mit dem sanften Schimmer ist deine neueste Erinnerung.","Une constellation de %1$d étoiles, une pour chaque quête accomplie par ta famille. L'étoile entourée d'une douce lueur est ton souvenir le plus récent.","Una constelación de %1$d estrellas, una por cada actividad que tu familia ha completado. La estrella con un suave resplandor a su alrededor es tu recuerdo más reciente."
+journey,journey_milestone_first_star,Your first star!,Вашата прва ѕвезда!,Dein erster Stern!,Ta première étoile !,¡Tu primera estrella!
+journey,journey_milestone_three_stars,Three stars in your sky.,Три ѕвезди на вашето небо.,Drei Sterne an deinem Himmel.,Trois étoiles dans ton ciel.,Tres estrellas en tu cielo.
+journey,journey_milestone_seven_stars,Seven stars and counting.,Седум ѕвезди и продолжувате.,"Sieben Sterne, und es werden mehr.","Sept étoiles, et ça continue.",Siete estrellas y contando.
+journey,journey_milestone_fourteen_stars,Fourteen stars together.,Четиринаесет ѕвезди заедно.,Vierzehn Sterne gemeinsam.,Quatorze étoiles ensemble.,Catorce estrellas juntos.
+journey,journey_milestone_thirty_stars,Thirty stars — what a journey.,Триесет ѕвезди — какво патување.,Dreißig Sterne — was für eine Reise.,Trente étoiles — quel beau parcours.,Treinta estrellas — qué viaje.
+language,language_title,Language,Јазик,Sprache,Langue,Idioma
+language,language_system_default,System default,Стандардно на системот,Systemstandard,Paramètres du système,Predeterminado del sistema
+language,language_restart_required,Restart Togetherly for this change to take full effect.,Рестартирајте ја Togetherly за оваа промена целосно да се примени.,"Starte Togetherly neu, damit diese Änderung vollständig wirksam wird.",Redémarre Togetherly pour que ce changement prenne pleinement effet.,Reinicia Togetherly para que este cambio surta efecto por completo.
+legal,legal_title,Legal,Правни информации,Rechtliches,Mentions légales,Legal
+legal,legal_privacy_policy_action,Privacy Policy,Политика за приватност,Datenschutzerklärung,Politique de confidentialité,Política de privacidad
+legal,legal_terms_of_use_action,Terms of Use,Услови на користење,Nutzungsbedingungen,Conditions d'utilisation,Términos de uso
+legal,legal_subscription_terms_action,Subscription Terms,Услови за претплата,Abo-Bedingungen,Conditions d'abonnement,Términos de suscripción
+legal,legal_open_source_licenses_action,Open-source licenses,Лиценци со отворен код,Open-Source-Lizenzen,Licences open source,Licencias de código abierto
+legal,open_source_licenses_title,Open-source licenses,Лиценци со отворен код,Open-Source-Lizenzen,Licences open source,Licencias de código abierto
+legal,open_source_licenses_intro,Togetherly is built with the following open-source software.,Togetherly е изградена со следниот софтвер со отворен код.,Togetherly basiert auf folgender Open-Source-Software.,Togetherly est développé avec les logiciels open source suivants.,Togetherly está creado con el siguiente software de código abierto.
+legal,about_title,About,За апликацијата,Über die App,À propos,Acerca de
+legal,about_version_label,Version %1$s (%2$s),Верзија %1$s (%2$s),Version %1$s (%2$s),Version %1$s (%2$s),Versión %1$s (%2$s)
+legal,about_environment_debug_label,Debug build,Дебаг верзија,Debug-Build,Version de débogage,Compilación de depuración
+legal,about_support_action,Contact support,Контактирај поддршка,Support kontaktieren,Contacter l'assistance,Contactar con soporte
+legal,about_diagnostics_test_action,Send test diagnostic event,Испрати тест дијагностички настан,Test-Diagnoseereignis senden,Envoyer un événement de diagnostic test,Enviar evento de diagnóstico de prueba
+legal,about_diagnostics_test_sent,Test diagnostic event sent,Тест дијагностичкиот настан е испратен,Test-Diagnoseereignis gesendet,Événement de diagnostic test envoyé,Evento de diagnóstico de prueba enviado
+legal,about_debug_telemetry_action,Open debug telemetry tools,Отвори алатки за дебаг телеметрија,Debug-Telemetrie-Tools öffnen,Ouvrir les outils de télémétrie de débogage,Abrir herramientas de telemetría de depuración
+memory,memory_screen_title,Add a memory,Додади спомен,Erinnerung hinzufügen,Ajouter un souvenir,Añadir un recuerdo
+memory,memory_neutral_quest_title,Your quest,Вашата активност,Deine Quest,Ta quête,Tu actividad
+memory,memory_back_content_description,Back,Назад,Zurück,Retour,Atrás
+memory,memory_reactions_heading,How did it feel?,Како се почувствувавте?,Wie hat es sich angefühlt?,Comment c'était ?,¿Cómo te sentiste?
+memory,memory_reaction_happy,Happy,Среќно,Fröhlich,Joie,Feliz
+memory,memory_reaction_silly,Silly,Смешно,Albern,Fou rire,Divertido
+memory,memory_reaction_loved_it,Loved it,Го обожававме,Geliebt,On a adoré,Nos encantó
+memory,memory_reaction_calm,Calm,Смирено,Entspannt,Calme,Tranquilo
+memory,memory_reaction_surprised,Surprised,Изненадено,Überrascht,Surprise,Sorprendido
+memory,memory_note_heading,What should you remember about today?,Што треба да запомните за денес?,Woran möchtet ihr euch von heute erinnern?,Que veux-tu retenir d'aujourd'hui ?,¿Qué quieres recordar de hoy?
+memory,memory_note_placeholder,Write a note (optional),Напишете белешка (не е задолжително),Schreibe eine Notiz (optional),Écris une note (facultatif),Escribe una nota (opcional)
+memory,memory_photo_heading,Photo,Фотографија,Foto,Photo,Foto
+memory,memory_photo_add_action,Add photo,Додади фотографија,Foto hinzufügen,Ajouter une photo,Añadir foto
+memory,memory_photo_replace_action,Replace,Замени,Ersetzen,Remplacer,Reemplazar
+memory,memory_photo_remove_action,Remove,Отстрани,Entfernen,Supprimer,Quitar
+memory,memory_photo_thumbnail_description,Your added photo,Вашата додадена фотографија,Dein hinzugefügtes Foto,Ta photo ajoutée,Tu foto añadida
+memory,memory_photo_privacy_note,Only the photo you choose is imported into Togetherly.,Само фотографијата што ја избирате се внесува во Togetherly.,Nur das von dir ausgewählte Foto wird in Togetherly importiert.,Seule la photo que tu choisis est importée dans Togetherly.,Solo se importa a Togetherly la foto que elijas.
+memory,memory_photo_importing,Importing photo…,Се внесува фотографијата…,Foto wird importiert …,Importation de la photo…,Importando foto…
+memory,memory_voice_heading,Voice note,Гласовна белешка,Sprachnotiz,Message vocal,Nota de voz
+memory,memory_voice_record_action,Record,Сними,Aufnehmen,Enregistrer,Grabar
+memory,memory_voice_stop_action,Stop,Стоп,Stopp,Arrêter,Detener
+memory,memory_voice_cancel_action,Cancel,Откажи,Abbrechen,Annuler,Cancelar
+memory,memory_voice_play_action,Play,Пушти,Abspielen,Lire,Reproducir
+memory,memory_voice_pause_action,Pause,Паузирај,Pause,Pause,Pausar
+memory,memory_voice_remove_action,Remove,Отстрани,Entfernen,Supprimer,Quitar
+memory,memory_voice_rerecord_action,Re-record,Сними повторно,Neu aufnehmen,Réenregistrer,Grabar de nuevo
+memory,memory_voice_recording_label,Recording %1$s,Снимање %1$s,Aufnahme %1$s,Enregistrement %1$s,Grabando %1$s
+memory,memory_voice_max_duration_note,Up to 60 seconds,До 60 секунди,Bis zu 60 Sekunden,Jusqu'à 60 secondes,Hasta 60 segundos
+memory,memory_voice_permission_denied,Microphone access was declined. You can try again.,Пристапот до микрофонот е одбиен. Можете да се обидете повторно.,Der Mikrofonzugriff wurde abgelehnt. Du kannst es erneut versuchen.,L'accès au microphone a été refusé. Tu peux réessayer.,Se denegó el acceso al micrófono. Puedes intentarlo de nuevo.
+memory,memory_voice_permission_permanently_denied,Microphone access is off for Togetherly. Turn it on in Settings to record a voice note.,Пристапот до микрофонот е исклучен за Togetherly. Вклучете го во Поставки за да снимите гласовна белешка.,"Der Mikrofonzugriff ist für Togetherly deaktiviert. Aktiviere ihn in den Einstellungen, um eine Sprachnotiz aufzunehmen.",L'accès au microphone est désactivé pour Togetherly. Active-le dans les Réglages pour enregistrer un message vocal.,El acceso al micrófono está desactivado para Togetherly. Actívalo en Ajustes para grabar una nota de voz.
+memory,memory_voice_open_settings_action,Open Settings,Отвори Поставки,Einstellungen öffnen,Ouvrir les Réglages,Abrir Ajustes
+memory,memory_privacy_reassurance,Stored privately with Togetherly on this device.,Чувано приватно во Togetherly на овој уред.,Privat mit Togetherly auf diesem Gerät gespeichert.,"Conservé de façon privée dans Togetherly, sur cet appareil.",Guardado de forma privada con Togetherly en este dispositivo.
+memory,memory_save_action,Save memory,Зачувај спомен,Erinnerung speichern,Enregistrer le souvenir,Guardar recuerdo
+memory,memory_skip_action,Skip for now,Прескокни засега,Vorerst überspringen,Passer pour l'instant,Omitir por ahora
+memory,memory_saving_label,Saving your memory…,Се зачувува вашиот спомен…,Deine Erinnerung wird gespeichert …,Enregistrement de ton souvenir…,Guardando tu recuerdo…
+memory,memory_discard_title,Discard this memory?,Да го отфрлиме овој спомен?,Diese Erinnerung verwerfen?,Abandonner ce souvenir ?,¿Descartar este recuerdo?
+memory,memory_discard_body,"Your note, reactions, photo, and voice note for this quest will be lost. The completed quest itself stays saved.","Вашата белешка, реакции, фотографија и гласовна белешка за оваа активност ќе бидат изгубени. Самата завршена активност останува зачувана.","Deine Notiz, Reaktionen, dein Foto und deine Sprachnotiz zu dieser Quest gehen verloren. Die abgeschlossene Quest selbst bleibt gespeichert.","Ta note, tes réactions, ta photo et ton message vocal pour cette quête seront perdus. La quête terminée reste enregistrée.","Se perderán la nota, las reacciones, la foto y la nota de voz de esta actividad. La actividad completada seguirá guardada."
+memory,memory_discard_confirm_action,Discard,Отфрли,Verwerfen,Abandonner,Descartar
+memory,memory_discard_cancel_action,Keep editing,Продолжи со уредување,Weiter bearbeiten,Continuer la modification,Seguir editando
+memory_settings,memory_settings_title,Memory settings,Поставки за спомени,Erinnerungseinstellungen,Réglages des souvenirs,Ajustes de recuerdos
+memory_settings,memory_settings_explanation,Choose what your family can add to a memory after a quest. Turning something off only affects new memories.,Изберете што вашето семејство може да додаде на спомен по активност. Исклучувањето на нешто влијае само на новите спомени.,"Wähle, was deine Familie einer Erinnerung nach einer Quest hinzufügen kann. Das Deaktivieren wirkt sich nur auf neue Erinnerungen aus.",Choisis ce que ta famille peut ajouter à un souvenir après une quête. Désactiver une option n'affecte que les nouveaux souvenirs.,Elige qué puede añadir tu familia a un recuerdo después de una actividad. Desactivar algo solo afecta a los recuerdos nuevos.
+memory_settings,memory_settings_photos_title,Photo memories,Спомени со фотографии,Foto-Erinnerungen,Souvenirs photo,Recuerdos con foto
+memory_settings,memory_settings_voice_title,Voice memories,Гласовни спомени,Sprach-Erinnerungen,Souvenirs vocaux,Recuerdos con voz
+memory_settings,memory_settings_text_notes_title,Text notes,Текстуални белешки,Textnotizen,Notes écrites,Notas de texto
+memory_settings,memory_settings_prompt_title,Ask to add a memory after each quest,Прашај за додавање спомен по секоја активност,Nach jeder Quest nach einer Erinnerung fragen,Proposer d'ajouter un souvenir après chaque quête,Preguntar si añadir un recuerdo después de cada actividad
+memory_settings,memory_settings_on,On,Вклучено,An,Activé,Activado
+memory_settings,memory_settings_off,Off,Исклучено,Aus,Désactivé,Desactivado
+memory_settings,memory_settings_preserved_explanation,"Turning photos, voice, or notes off never deletes anything you've already saved.","Исклучувањето на фотографии, глас или белешки никогаш не брише нешто што веќе сте го зачувале.","Das Deaktivieren von Fotos, Sprachnotizen oder Notizen löscht nie etwas, das du bereits gespeichert hast.","Désactiver les photos, les messages vocaux ou les notes ne supprime jamais ce que tu as déjà enregistré.","Desactivar fotos, voz o notas nunca elimina lo que ya has guardado."
+memory_settings,memory_settings_manage_memories_action,Manage memories,Управувај со спомени,Erinnerungen verwalten,Gérer les souvenirs,Gestionar recuerdos
+memory_settings,memory_settings_save_action,Save,Зачувај,Speichern,Enregistrer,Guardar
+memory_settings,memory_settings_missing_profile_error,We couldn't find your family profile.,Не можевме да го најдеме вашиот семеен профил.,Wir konnten dein Familienprofil nicht finden.,Nous n'avons pas trouvé le profil de ta famille.,No pudimos encontrar el perfil de tu familia.
+memory_settings,memory_settings_updated_message,Memory settings updated,Поставките за спомени се ажурирани,Erinnerungseinstellungen aktualisiert,Réglages des souvenirs mis à jour,Ajustes de recuerdos actualizados
+navigation,nav_destination_today,Today,Денес,Heute,Aujourd'hui,Hoy
+navigation,nav_destination_explore,Explore,Истражи,Entdecken,Explorer,Explorar
+navigation,nav_destination_journey,Journey,Патување,Reise,Parcours,Viaje
+navigation,nav_destination_family,Family,Семејство,Familie,Famille,Familia
+onboarding,onboarding_continue,Continue,Продолжи,Weiter,Continuer,Continuar
+onboarding,onboarding_back_content_description,Back,Назад,Zurück,Retour,Atrás
+onboarding,onboarding_welcome_title,One small family adventure every day.,Една мала семејна авантура секој ден.,Jeden Tag ein kleines Familienabenteuer.,Une petite aventure familiale chaque jour.,Una pequeña aventura familiar cada día.
+onboarding,onboarding_welcome_body,"Togetherly gives your family quick ideas to talk, laugh, create and make memories—without spending the evening searching for something to do.","Togetherly му дава на вашето семејство брзи идеи за разговор, смеа, творештво и создавање спомени — без да ја поминете вечерта барајќи нешто за правење.","Togetherly gibt deiner Familie schnelle Ideen zum Reden, Lachen, Kreativsein und Erinnerungen-Schaffen — ohne den Abend mit der Suche nach etwas zu tun zu verbringen.","Togetherly propose à ta famille des idées rapides pour discuter, rire, créer et fabriquer des souvenirs — sans passer la soirée à chercher quoi faire.","Togetherly le da a tu familia ideas rápidas para hablar, reír, crear y hacer recuerdos, sin pasar la tarde buscando algo que hacer."
+onboarding,onboarding_welcome_primary,Create our family,Создади го нашето семејство,Unsere Familie erstellen,Créer notre famille,Crear nuestra familia
+onboarding,onboarding_welcome_privacy,No child accounts. No public profiles. Your family memories stay private.,Без детски сметки. Без јавни профили. Спомените на вашето семејство остануваат приватни.,Keine Kinderkonten. Keine öffentlichen Profile. Die Erinnerungen deiner Familie bleiben privat.,Pas de comptes enfants. Pas de profils publics. Les souvenirs de ta famille restent privés.,Sin cuentas infantiles. Sin perfiles públicos. Los recuerdos de tu familia son privados.
+onboarding,onboarding_family_name_title,What should we call your team?,Како да го наречеме вашиот тим?,Wie sollen wir dein Team nennen?,Comment devrions-nous appeler ton équipe ?,¿Cómo deberíamos llamar a tu equipo?
+onboarding,onboarding_family_name_supporting,This is optional and only appears inside Togetherly.,Ова не е задолжително и се прикажува само во Togetherly.,Das ist optional und erscheint nur innerhalb von Togetherly.,"C'est facultatif, et ça n'apparaît que dans Togetherly.",Esto es opcional y solo aparece dentro de Togetherly.
+onboarding,onboarding_family_name_label,Family or team name,Име на семејство или тим,Familien- oder Teamname,Nom de famille ou d'équipe,Nombre de familia o equipo
+onboarding,onboarding_family_name_placeholder,Team Firefly,Тим Светулка,Team Glühwürmchen,Équipe Lucioles,Equipo Luciérnaga
+onboarding,onboarding_skip_name,Skip for now,Прескокни засега,Vorerst überspringen,Passer pour l'instant,Omitir por ahora
+onboarding,onboarding_age_bands_title,Which ages are joining the adventures?,Кои возрасти ќе се приклучат на авантурите?,Welche Altersgruppen sind bei den Abenteuern dabei?,Quels âges participent aux aventures ?,¿Qué edades participarán en las aventuras?
+onboarding,onboarding_age_bands_supporting,Choose every age group in your family so we can suggest activities that work for everyone.,Изберете ги сите возрасни групи во вашето семејство за да можеме да предложиме активности што одговараат на сите.,"Wähle jede Altersgruppe in deiner Familie aus, damit wir Aktivitäten vorschlagen können, die für alle passen.",Choisis toutes les tranches d'âge de ta famille pour qu'on puisse te suggérer des activités adaptées à tout le monde.,Elige todos los grupos de edad de tu familia para que podamos sugerir actividades que funcionen para todos.
+onboarding,onboarding_age_bands_privacy_note,Togetherly doesn't need names or birthdays — just age groups.,Togetherly не бара имиња или датуми на раѓање — само возрасни групи.,Togetherly braucht weder Namen noch Geburtstage — nur Altersgruppen.,Togetherly n'a pas besoin de noms ni de dates de naissance — juste des tranches d'âge.,"Togetherly no necesita nombres ni fechas de nacimiento, solo grupos de edad."
+onboarding,onboarding_age_band_6_to_8,6–8,6–8,6–8,6–8,6–8
+onboarding,onboarding_age_band_9_to_11,9–11,9–11,9–11,9–11,9–11
+onboarding,onboarding_age_band_12_to_13,12–13,12–13,12–13,12–13,12–13
+onboarding,onboarding_interests_title,What does your family enjoy?,Што ужива вашето семејство?,Was genießt deine Familie?,Qu'est-ce que ta famille aime faire ?,¿Qué disfruta tu familia?
+onboarding,onboarding_interests_supporting,Choose as many as you like — this shapes the kinds of quests we suggest.,Изберете колку сакате — ова го обликува видот на активности што ги предлагаме.,"Wähle so viele aus, wie du möchtest — das beeinflusst, welche Quests wir vorschlagen.",Choisis-en autant que tu veux — cela influence le type de quêtes que nous te suggérons.,Elige tantos como quieras: esto determina el tipo de actividades que te sugerimos.
+onboarding,onboarding_interest_talk_label,Talk,Разговор,Reden,Discuter,Hablar
+onboarding,onboarding_interest_talk_description,Conversations and questions that bring you closer.,Разговори и прашања што ве зближуваат.,"Gespräche und Fragen, die euch einander näherbringen.",Des conversations et des questions qui vous rapprochent.,Conversaciones y preguntas que acercan a tu familia.
+onboarding,onboarding_interest_create_label,Create,Творештво,Kreativsein,Créer,Crear
+onboarding,onboarding_interest_create_description,"Hands-on making, building and art.","Практично изработување, градење и уметност.","Selbermachen, Bauen und Kunst.","Fabriquer, construire et créer de ses mains.","Manualidades, construcción y arte."
+onboarding,onboarding_interest_move_label,Move,Движење,Bewegen,Bouger,Moverse
+onboarding,onboarding_interest_move_description,"Active, get-up-and-go fun.","Активна, енергична забава.","Aktiver Spaß, bei dem man in Schwung kommt.","Du fun actif, plein d'énergie.","Diversión activa, para moverse y no parar."
+onboarding,onboarding_interest_kindness_label,Kindness,Љубезност,Freundlichkeit,Gentillesse,Bondad
+onboarding,onboarding_interest_kindness_description,Small acts that help someone else.,Мали дела што му помагаат на некој друг.,"Kleine Gesten, die jemand anderem helfen.",De petits gestes qui aident les autres.,Pequeños gestos que ayudan a otra persona.
+onboarding,onboarding_interest_discover_label,Discover,Откривање,Entdecken,Découvrir,Descubrir
+onboarding,onboarding_interest_discover_description,Learning and exploring something new.,Учење и истражување на нешто ново.,Etwas Neues lernen und entdecken.,Apprendre et explorer quelque chose de nouveau.,Aprender y explorar algo nuevo.
+onboarding,onboarding_interest_silly_label,Silly,Смешно,Albern,Rigolo,Divertido
+onboarding,onboarding_interest_silly_description,"Just-for-laughs, no-pressure fun.","Забава само за смеа, без притисок.","Spaß nur zum Lachen, ganz ohne Druck.","Du fun sans pression, juste pour rire.","Diversión sin presión, solo para reír."
+onboarding,onboarding_interest_memories_label,Memories,Спомени,Erinnerungen,Souvenirs,Recuerdos
+onboarding,onboarding_interest_memories_description,Moments worth looking back on.,Моменти вредни да им се вратите.,"Momente, an die man sich gerne zurückerinnert.",Des moments qui valent la peine d'être gardés en mémoire.,Momentos que vale la pena recordar.
+onboarding,onboarding_preferences_title,What works for your family?,Што му одговара на вашето семејство?,Was passt zu deiner Familie?,Qu'est-ce qui convient à ta famille ?,¿Qué le funciona mejor a tu familia?
+onboarding,onboarding_preferences_time_label,How much time do you usually have?,Колку време обично имате?,Wie viel Zeit habt ihr normalerweise?,Combien de temps as-tu habituellement ?,¿Cuánto tiempo sueles tener?
+onboarding,onboarding_preferences_time_supporting,Choose every length that works — you can pick more than one.,Изберете секое времетраење што ви одговара — можете да изберете повеќе од едно.,"Wähle jede Dauer aus, die passt — du kannst mehr als eine auswählen.",Choisis toutes les durées qui te conviennent — tu peux en choisir plusieurs.,Elige todas las duraciones que te funcionen: puedes elegir más de una.
+onboarding,onboarding_duration_5,5 minutes,5 минути,5 Minuten,5 minutes,5 minutos
+onboarding,onboarding_duration_10,10 minutes,10 минути,10 Minuten,10 minutes,10 minutos
+onboarding,onboarding_duration_20,20 minutes,20 минути,20 Minuten,20 minutes,20 minutos
+onboarding,onboarding_duration_30_plus,30+ minutes,30+ минути,30+ Minuten,30 minutes et plus,30+ minutos
+onboarding,onboarding_preferences_location_label,Indoors or outdoors?,Затворено или отворено?,Drinnen oder draußen?,Intérieur ou extérieur ?,¿Interior o exterior?
+onboarding,onboarding_location_indoor,Indoors,Затворено,Drinnen,Intérieur,Interior
+onboarding,onboarding_location_outdoor,Outdoors,Отворено,Draußen,Extérieur,Exterior
+onboarding,onboarding_location_both,Both,И двете,Beides,Les deux,Ambos
+onboarding,onboarding_preferences_preparation_label,How much prep works for you?,Колку подготовка ви одговара?,Wie viel Vorbereitung passt für euch?,Combien de préparation te convient ?,¿Cuánta preparación te funciona bien?
+onboarding,onboarding_preparation_none,No preparation,Без подготовка,Keine Vorbereitung,Aucune préparation,Sin preparación
+onboarding,onboarding_preparation_simple_materials,Simple materials are fine,Едноставни материјали се во ред,Einfache Materialien sind in Ordnung,"Du matériel simple, ça marche",Materiales sencillos está bien
+onboarding,onboarding_preparation_any,Anything works,Сѐ е во ред,Alles ist möglich,Tout me va,Cualquier cosa funciona
+onboarding,onboarding_reminder_title,Would a gentle reminder help?,Дали благ потсетник би помогнал?,Würde eine sanfte Erinnerung helfen?,Un petit rappel te serait-il utile ?,¿Te ayudaría un recordatorio suave?
+onboarding,onboarding_reminder_not_now,Not now,Не сега,Nicht jetzt,Pas maintenant,Ahora no
+onboarding,onboarding_reminder_choose,Choose reminder,Избери потсетник,Erinnerung wählen,Choisir un rappel,Elegir recordatorio
+onboarding,onboarding_reminder_days_label,Which days?,Кои денови?,Welche Tage?,Quels jours ?,¿Qué días?
+onboarding,onboarding_reminder_time_label,What time?,Во колку часот?,Um wie viel Uhr?,À quelle heure ?,¿A qué hora?
+onboarding,onboarding_reminder_choose_time,Choose time,Избери време,Uhrzeit wählen,Choisir l'heure,Elegir hora
+onboarding,onboarding_reminder_time_selected,%1$s,%1$s,%1$s,%1$s,%1$s
+onboarding,onboarding_day_monday,Mon,Пон,Mo,Lun,Lun
+onboarding,onboarding_day_tuesday,Tue,Вто,Di,Mar,Mar
+onboarding,onboarding_day_wednesday,Wed,Сре,Mi,Mer,Mié
+onboarding,onboarding_day_thursday,Thu,Чет,Do,Jeu,Jue
+onboarding,onboarding_day_friday,Fri,Пет,Fr,Ven,Vie
+onboarding,onboarding_day_saturday,Sat,Саб,Sa,Sam,Sáb
+onboarding,onboarding_day_sunday,Sun,Нед,So,Dim,Dom
+onboarding,onboarding_review_title,Review your choices,Прегледајте ги вашите избори,Überprüfe deine Auswahl,Vérifie tes choix,Revisa tus opciones
+onboarding,onboarding_review_team_name_default,Our family,Нашето семејство,Unsere Familie,Notre famille,Nuestra familia
+onboarding,onboarding_review_primary,Start our first adventure,Започни ја нашата прва авантура,Unser erstes Abenteuer beginnen,Commencer notre première aventure,Comenzar nuestra primera aventura
+onboarding,onboarding_review_back_and_edit,Back and edit,Назад и уреди,Zurück und bearbeiten,Retour et modifier,Volver y editar
+onboarding,onboarding_review_field_team_name,Team name,Име на тимот,Teamname,Nom d'équipe,Nombre del equipo
+onboarding,onboarding_review_field_age_bands,Ages,Возрасти,Altersgruppen,Âges,Edades
+onboarding,onboarding_review_field_interests,Interests,Интереси,Interessen,Intérêts,Intereses
+onboarding,onboarding_review_field_durations,Duration,Времетраење,Dauer,Durée,Duración
+onboarding,onboarding_review_field_location,Location,Локација,Ort,Lieu,Ubicación
+onboarding,onboarding_review_field_preparation,Preparation,Подготовка,Vorbereitung,Préparation,Preparación
+onboarding,onboarding_review_field_reminder,Reminder,Потсетник,Erinnerung,Rappel,Recordatorio
+onboarding,onboarding_review_no_reminder,No reminder,Без потсетник,Keine Erinnerung,Aucun rappel,Sin recordatorio
+onboarding,onboarding_review_reminder_value,%1$s · %2$s,%1$s · %2$s,%1$s · %2$s,%1$s · %2$s,%1$s · %2$s
+onboarding,onboarding_error_family_name_too_long,Family name is too long.,Името на семејството е предолго.,Der Familienname ist zu lang.,Le nom de famille est trop long.,El nombre de familia es demasiado largo.
+onboarding,onboarding_error_family_name_invalid,Please check the family name.,Проверете го името на семејството.,Bitte überprüfe den Familiennamen.,Vérifie le nom de famille.,Revisa el nombre de familia.
+onboarding,onboarding_error_age_bands_required,Choose at least one age group.,Изберете барем една возрасна група.,Wähle mindestens eine Altersgruppe.,Choisis au moins une tranche d'âge.,Elige al menos un grupo de edad.
+onboarding,onboarding_error_interests_required,Choose at least one interest.,Изберете барем еден интерес.,Wähle mindestens ein Interesse.,Choisis au moins un intérêt.,Elige al menos un interés.
+onboarding,onboarding_error_durations_required,Choose at least one duration.,Изберете барем едно времетраење.,Wähle mindestens eine Dauer.,Choisis au moins une durée.,Elige al menos una duración.
+onboarding,onboarding_error_reminder_days_required,Choose at least one reminder day.,Изберете барем еден ден за потсетникот.,Wähle mindestens einen Erinnerungstag.,Choisis au moins un jour de rappel.,Elige al menos un día para el recordatorio.
+onboarding,onboarding_error_reminder_time_required,Choose a reminder time.,Изберете време за потсетникот.,Wähle eine Erinnerungszeit.,Choisis une heure de rappel.,Elige una hora para el recordatorio.
+packdetails,packdetails_included_quests_title,Included quests,Вклучени активности,Enthaltene Quests,Quêtes incluses,Actividades incluidas
+packdetails,packdetails_choose_quest_action,Choose a quest,Избери активност,Quest auswählen,Choisir une quête,Elegir una actividad
+packdetails,packdetails_unlock_action,Unlock with Family Plus,Отклучи со Family Plus,Mit Family Plus freischalten,Débloquer avec Family Plus,Desbloquear con Family Plus
+packdetails,packdetails_locked_explanation,This pack is included with Family Plus. Unlock it to start any quest inside.,Овој пакет е вклучен со Family Plus. Отклучете го за да започнете која било активност во него.,"Dieses Paket ist in Family Plus enthalten. Schalte es frei, um jede enthaltene Quest zu starten.",Ce pack est inclus avec Family Plus. Débloque-le pour commencer n'importe quelle quête à l'intérieur.,Este pack está incluido con Family Plus. Desbloquéalo para empezar cualquier actividad que contiene.
+paywall,paywall_close_content_description,Close,Затвори,Schließen,Fermer,Cerrar
+paywall,paywall_title,More ways to grow together,Повеќе начини да растете заедно,"Mehr Wege, gemeinsam zu wachsen",Plus de façons de grandir ensemble,Más formas de crecer juntos
+paywall,paywall_benefit_rerolls,Unlimited daily rerolls,Неограничени дневни замени,Unbegrenzte tägliche Neuwürfe,Relances quotidiennes illimitées,Cambios diarios ilimitados
+paywall,paywall_benefit_quest_packs,Premium quest packs,Премиум пакети со активности,Premium-Quest-Pakete,Packs de quêtes premium,Packs de actividades premium
+paywall,paywall_benefit_moods,More activities for every mood,Повеќе активности за секое расположение,Mehr Aktivitäten für jede Stimmung,Plus d'activités pour chaque humeur,Más actividades para cada momento
+paywall,paywall_benefit_support,Support future Togetherly content,Поддржете идна содржина на Togetherly,Unterstütze zukünftige Togetherly-Inhalte,Soutiens les futurs contenus de Togetherly,Apoya el contenido futuro de Togetherly
+paywall,paywall_recommended_label,Recommended,Препорачано,Empfohlen,Recommandé,Recomendado
+paywall,paywall_purchase_action,Get Family Plus,Земи Family Plus,Family Plus holen,Obtenir Family Plus,Consigue Family Plus
+paywall,paywall_restore_action,Restore purchases,Врати ги купувањата,Käufe wiederherstellen,Restaurer les achats,Restaurar compras
+paywall,paywall_privacy_policy_action,Privacy Policy,Политика за приватност,Datenschutzerklärung,Politique de confidentialité,Política de privacidad
+paywall,paywall_terms_of_use_action,Terms of Use,Услови на користење,Nutzungsbedingungen,Conditions d'utilisation,Términos de uso
+paywall,paywall_already_premium_title,You're all set,Веќе сте подготвени,Du bist schon dabei,Tout est prêt,Ya lo tienes todo listo
+paywall,paywall_already_premium_continue_action,Continue,Продолжи,Weiter,Continuer,Continuar
+paywall,paywall_intro_premium_reroll,You've used today's free reroll. Family Plus gives you unlimited rerolls.,Ја искористивте денешната бесплатна замена. Family Plus ви дава неограничени замени.,Du hast deinen kostenlosen Neuwurf für heute bereits genutzt. Family Plus gibt dir unbegrenzte Neuwürfe.,Tu as déjà utilisé ta relance gratuite du jour. Family Plus t'offre des relances illimitées.,Ya has usado el cambio gratuito de hoy. Family Plus te da cambios ilimitados.
+paywall,paywall_intro_premium_quest,This is a Family Plus quest.,Ова е Family Plus активност.,Das ist eine Family-Plus-Quest.,Ceci est une quête Family Plus.,Esta es una actividad de Family Plus.
+paywall,paywall_intro_premium_pack,This pack is part of Family Plus.,Овој пакет е дел од Family Plus.,Dieses Paket ist Teil von Family Plus.,Ce pack fait partie de Family Plus.,Este pack forma parte de Family Plus.
+privacy,privacy_title,Privacy,Приватност,Datenschutz,Confidentialité,Privacidad
+privacy,privacy_intro,Here's what actually happens with your family's information.,Еве што всушност се случува со информациите на вашето семејство.,"Hier erfährst du, was tatsächlich mit den Daten deiner Familie passiert.",Voici ce qui se passe réellement avec les informations de ta famille.,Esto es lo que realmente ocurre con la información de tu familia.
+privacy,privacy_profile_title,Your family profile,Вашиот семеен профил,Dein Familienprofil,Le profil de ta famille,El perfil de tu familia
+privacy,privacy_profile_body,"Your family profile — display name, age groups, and preferences — is stored only on this device.","Вашиот семеен профил — прикажано име, возрасни групи и преференции — се чува само на овој уред.","Dein Familienprofil — Anzeigename, Altersgruppen und Einstellungen — wird nur auf diesem Gerät gespeichert.","Le profil de ta famille — nom affiché, tranches d'âge et préférences — est stocké uniquement sur cet appareil.","El perfil de tu familia (nombre, grupos de edad y preferencias) se guarda únicamente en este dispositivo."
+privacy,privacy_progress_title,Quest progress,Напредок на активности,Quest-Fortschritt,Progression des quêtes,Progreso de actividades
+privacy,privacy_progress_body,Completed quests and your family's progress are stored only on this device.,Завршените активности и напредокот на вашето семејство се чуваат само на овој уред.,Abgeschlossene Quests und der Fortschritt deiner Familie werden nur auf diesem Gerät gespeichert.,Les quêtes terminées et la progression de ta famille sont stockées uniquement sur cet appareil.,Las actividades completadas y el progreso de tu familia se guardan únicamente en este dispositivo.
+privacy,privacy_memories_title,Photos and voice memories,Фотографии и гласовни спомени,Fotos und Sprach-Erinnerungen,Photos et souvenirs vocaux,Fotos y recuerdos de voz
+privacy,privacy_memories_body,Photos and voice memories you save stay private on this device. Togetherly never uploads them anywhere.,Фотографиите и гласовните спомени што ги зачувувате остануваат приватни на овој уред. Togetherly никогаш не ги прикачува никаде.,"Fotos und Sprach-Erinnerungen, die du speicherst, bleiben privat auf diesem Gerät. Togetherly lädt sie niemals irgendwohin hoch.",Les photos et souvenirs vocaux que tu enregistres restent privés sur cet appareil. Togetherly ne les envoie jamais nulle part.,Las fotos y los recuerdos de voz que guardas permanecen privados en este dispositivo. Togetherly nunca los sube a ningún sitio.
+privacy,privacy_purchases_title,Purchases,Купувања,Käufe,Achats,Compras
+privacy,privacy_purchases_body,"RevenueCat, our subscription provider, receives purchase-related identifiers and transaction information to manage Family Plus. Payments themselves are processed by the App Store or Google Play, not by Togetherly directly.","RevenueCat, нашиот давател на услуги за претплата, добива идентификатори поврзани со купувањето и информации за трансакции за да управува со Family Plus. Самите плаќања се обработуваат преку App Store или Google Play, а не директно преку Togetherly.","RevenueCat, unser Anbieter für Abo-Verwaltung, erhält kaufbezogene Kennungen und Transaktionsinformationen, um Family Plus zu verwalten. Zahlungen selbst werden vom App Store oder Google Play abgewickelt, nicht direkt von Togetherly.","RevenueCat, notre prestataire d'abonnements, reçoit des identifiants liés aux achats et des informations de transaction pour gérer Family Plus. Les paiements eux-mêmes sont traités par l'App Store ou Google Play, et non directement par Togetherly.","RevenueCat, nuestro proveedor de suscripciones, recibe identificadores relacionados con la compra e información de la transacción para gestionar Family Plus. Los pagos en sí los procesa la App Store o Google Play, no Togetherly directamente."
+privacy,privacy_notifications_title,Reminders,Потсетници,Erinnerungen,Rappels,Recordatorios
+privacy,privacy_notifications_body,Reminder notifications are scheduled on this device — Togetherly has no server that sends them.,Известувањата за потсетници се закажани на овој уред — Togetherly нема сервер што ги испраќа.,"Erinnerungsbenachrichtigungen werden auf diesem Gerät geplant — Togetherly hat keinen Server, der sie versendet.",Les notifications de rappel sont programmées sur cet appareil — Togetherly n'a aucun serveur qui les envoie.,Las notificaciones de recordatorio se programan en este dispositivo: Togetherly no tiene un servidor que las envíe.
+privacy,privacy_no_account_title,No account or cloud sync,Без сметка или синхронизација во облак,Kein Konto und keine Cloud-Synchronisierung,Pas de compte ni de synchronisation cloud,Sin cuenta ni sincronización en la nube
+privacy,privacy_no_account_body,"Togetherly doesn't currently have accounts or cloud sync — there's nothing to sign into, and nothing syncs across devices.","Togetherly моментално нема сметки или синхронизација во облак — нема каде да се најавите, и ништо не се синхронизира меѓу уреди.","Togetherly hat derzeit weder Konten noch Cloud-Synchronisierung — es gibt nichts, wo du dich anmelden musst, und nichts wird geräteübergreifend synchronisiert.","Togetherly n'a actuellement ni comptes ni synchronisation cloud — il n'y a rien où se connecter, et rien ne se synchronise entre appareils.","Por ahora, Togetherly no tiene cuentas ni sincronización en la nube: no hay nada en lo que iniciar sesión, y nada se sincroniza entre dispositivos."
+privacy,privacy_uninstall_title,If you remove the app,Ако ја отстраните апликацијата,Wenn du die App entfernst,Si tu supprimes l'application,Si eliminas la app
+privacy,privacy_uninstall_body,"Uninstalling Togetherly may remove its local data, depending on your device's own backup and storage settings.","Деинсталирањето на Togetherly може да ги отстрани нејзините локални податоци, во зависност од сопствените поставки за резервна копија и складирање на вашиот уред.","Das Deinstallieren von Togetherly kann die lokalen Daten entfernen, abhängig von den Backup- und Speichereinstellungen deines Geräts.","Désinstaller Togetherly peut supprimer ses données locales, selon les réglages de sauvegarde et de stockage propres à ton appareil.","Desinstalar Togetherly puede eliminar sus datos locales, según los ajustes de copia de seguridad y almacenamiento de tu dispositivo."
+privacy,privacy_restore_purchases_title,Restoring purchases,Враќање купувања,Käufe wiederherstellen,Restauration des achats,Restaurar compras
+privacy,privacy_restore_purchases_body,"Your purchase history may still be recoverable through the App Store or Google Play, separately from anything stored in the app.","Вашата историја на купувања сепак може да биде обновлива преку App Store или Google Play, одделно од сѐ што е зачувано во апликацијата.","Dein Kaufverlauf lässt sich möglicherweise weiterhin über den App Store oder Google Play wiederherstellen, unabhängig von allem, was in der App gespeichert ist.","Ton historique d'achats peut toujours être récupéré via l'App Store ou Google Play, indépendamment de ce qui est stocké dans l'application.","Es posible que tu historial de compras se pueda recuperar a través de la App Store o Google Play, de forma independiente a lo guardado en la app."
+purchase,purchase_error_product_unavailable,This plan isn't available right now.,Овој план не е достапен во моментов.,Dieser Plan ist gerade nicht verfügbar.,Cette formule n'est pas disponible pour le moment.,Este plan no está disponible en este momento.
+purchase,purchase_error_store_unavailable,The store isn't available right now. Please try again later.,Продавницата не е достапна во моментов. Обидете се повторно подоцна.,Der Store ist gerade nicht verfügbar. Bitte versuche es später erneut.,Le store n'est pas disponible pour le moment. Réessaie plus tard.,La tienda no está disponible en este momento. Inténtalo de nuevo más tarde.
+purchase,purchase_error_network_problem,Check your connection and try again.,Проверете ја вашата интернет-конекција и обидете се повторно.,Überprüfe deine Verbindung und versuche es erneut.,Vérifie ta connexion et réessaie.,Comprueba tu conexión e inténtalo de nuevo.
+purchase,purchase_error_configuration_problem,We couldn't load the plans right now. Please try again later.,Не можевме да ги вчитаме плановите во моментов. Обидете се повторно подоцна.,Wir konnten die Pläne gerade nicht laden. Bitte versuche es später erneut.,Nous n'avons pas pu charger les formules pour le moment. Réessaie plus tard.,No pudimos cargar los planes en este momento. Inténtalo de nuevo más tarde.
+purchase,purchase_error_not_allowed,Purchases aren't allowed on this device right now.,Купувањата не се дозволени на овој уред во моментов.,Käufe sind auf diesem Gerät derzeit nicht erlaubt.,Les achats ne sont pas autorisés sur cet appareil pour le moment.,Las compras no están permitidas en este dispositivo en este momento.
+purchase,purchase_error_already_owned,You already own this plan.,Веќе го поседувате овој план.,Du besitzt diesen Plan bereits.,Tu possèdes déjà cette formule.,Ya tienes este plan.
+purchase,purchase_error_unknown,Your purchase couldn't be completed. Please try again.,Вашето купување не можеше да се заврши. Обидете се повторно.,Dein Kauf konnte nicht abgeschlossen werden. Bitte versuche es erneut.,Ton achat n'a pas pu être finalisé. Réessaie.,Tu compra no se pudo completar. Inténtalo de nuevo.
+purchase,purchase_cancelled_message,No worries — you can try again anytime.,Нема проблем — можете да се обидете повторно во секое време.,Kein Problem — du kannst es jederzeit erneut versuchen.,Pas de souci — tu peux réessayer à tout moment.,No te preocupes: puedes intentarlo de nuevo cuando quieras.
+purchase,purchase_pending_message,Your purchase is pending approval. We'll unlock Family Plus as soon as it's confirmed.,Вашето купување чека одобрување. Ќе го отклучиме Family Plus веднаш штом ќе биде потврдено.,"Dein Kauf wartet auf Bestätigung. Wir schalten Family Plus frei, sobald er bestätigt ist.",Ton achat est en attente d'approbation. Nous débloquerons Family Plus dès qu'il sera confirmé.,Tu compra está pendiente de aprobación. Desbloquearemos Family Plus en cuanto se confirme.
+purchase,purchase_success_message,Family Plus is ready. Enjoy more ways to connect.,Family Plus е подготвен. Уживајте во повеќе начини да се поврзете.,"Family Plus ist bereit. Genieße mehr Wege, euch zu verbinden.",Family Plus est prêt. Profite de nouvelles façons de vous retrouver.,Family Plus ya está listo. Disfruta de más formas de conectar.
+purchase,restore_no_purchases_found_message,We didn't find any previous purchases to restore.,Не пронајдовме претходни купувања за враќање.,Wir konnten keine früheren Käufe zum Wiederherstellen finden.,Nous n'avons trouvé aucun achat précédent à restaurer.,No encontramos compras anteriores que restaurar.
+purchase,restore_succeeded_message,Family Plus restored.,Family Plus е вратен.,Family Plus wiederhergestellt.,Family Plus restauré.,Family Plus restaurado.
+questdetail,questdetail_back_content_description,Back,Назад,Zurück,Retour,Atrás
+questdetail,questdetail_start_action,Start quest,Започни активност,Quest starten,Commencer la quête,Empezar actividad
+questdetail,questdetail_materials_title,What you'll need,Што ви е потребно,Was ihr braucht,Ce dont tu auras besoin,Lo que necesitarás
+questdetail,questdetail_instructions_title,Instructions,Упатства,Anleitung,Instructions,Instrucciones
+questdetail,questdetail_hints_title,Hints,Совети,Tipps,Astuces,Pistas
+questdetail,questdetail_safety_title,Safety note,Безбедносна белешка,Sicherheitshinweis,Consigne de sécurité,Nota de seguridad
+questdetail,questdetail_saved_content_description,Saved. Tap to remove from saved quests.,Зачувано. Допрете за отстранување од зачуваните активности.,"Gespeichert. Tippen, um aus den gespeicherten Quests zu entfernen.",Enregistrée. Appuie pour la retirer des quêtes enregistrées.,Guardada. Toca para quitarla de las actividades guardadas.
+questdetail,questdetail_unsaved_content_description,Not saved. Tap to save this quest.,Не е зачувано. Допрете за да ја зачувате оваа активност.,"Nicht gespeichert. Tippen, um diese Quest zu speichern.",Non enregistrée. Appuie pour enregistrer cette quête.,No guardada. Toca para guardar esta actividad.
+questdetail,questdetail_conflict_title,Another quest is still in progress,Друга активност сѐ уште е во тек,Eine andere Quest läuft noch,Une autre quête est encore en cours,Todavía hay otra actividad en curso
+questdetail,questdetail_conflict_body,Starting this quest will replace the unfinished session.,Со започнување на оваа активност ќе ја замените незавршената сесија.,"Wenn du diese Quest startest, wird die unvollendete Sitzung ersetzt.",Commencer cette quête remplacera la session inachevée.,Empezar esta actividad reemplazará la sesión sin terminar.
+questdetail,questdetail_conflict_replace_action,Replace and start this quest,Замени и започни ја оваа активност,Ersetzen und diese Quest starten,Remplacer et commencer cette quête,Reemplazar y empezar esta actividad
+questdetail,questdetail_conflict_cancel_action,Cancel,Откажи,Abbrechen,Annuler,Cancelar
+questdetail,questdetail_locked_title,This quest is part of Family Plus.,Оваа активност е дел од Family Plus.,Diese Quest ist Teil von Family Plus.,Cette quête fait partie de Family Plus.,Esta actividad forma parte de Family Plus.
+questdetail,questdetail_locked_body,Unlock the full activity and more ways to spend meaningful time together.,Отклучете ја целата активност и повеќе начини да поминете значајно време заедно.,"Schalte die vollständige Aktivität frei und entdecke mehr Wege, wertvolle Zeit miteinander zu verbringen.",Débloque l'activité complète et plus de façons de passer du temps de qualité ensemble.,Desbloquea la actividad completa y más formas de pasar tiempo juntos con sentido.
+questdetail,questdetail_unlock_action,Unlock with Family Plus,Отклучи со Family Plus,Mit Family Plus freischalten,Débloquer avec Family Plus,Desbloquear con Family Plus
+questdetail,questdetail_premium_badge,Family Plus,Family Plus,Family Plus,Family Plus,Family Plus
+questdetail,questdetail_age_suitability_title,Best for,Најдобро за,Am besten geeignet für,Idéal pour,Recomendado para
+questdetail,questdetail_pack_label,Part of %1$s,Дел од %1$s,Teil von %1$s,Fait partie de %1$s,Parte de %1$s
+questmode,questmode_close_content_description,Close,Затвори,Schließen,Fermer,Cerrar
+questmode,questmode_timer_finished,Time's up,Времето истече,Zeit ist um,Temps écoulé,Se acabó el tiempo
+questmode,questmode_timer_content_description_running,%1$s remaining,Преостануваат %1$s,%1$s verbleibend,%1$s restantes,%1$s restante
+questmode,questmode_timer_content_description_finished,Time's up,Времето истече,Zeit ist um,Temps écoulé,Se acabó el tiempo
+questmode,questmode_hints_action,Need an idea?,Ви треба идеја?,Brauchst du eine Idee?,Besoin d'une idée ?,¿Necesitas una idea?
+questmode,questmode_hints_expanded_state,Expanded,Проширено,Ausgeklappt,Développé,Expandido
+questmode,questmode_hints_collapsed_state,Collapsed,Собрано,Eingeklappt,Réduit,Contraído
+questmode,questmode_safety_title,Safety note,Безбедносна белешка,Sicherheitshinweis,Consigne de sécurité,Nota de seguridad
+questmode,questmode_phone_down_action,Put the phone down,Оставете го телефонот,Leg das Handy weg,Pose ton téléphone,Suelta el teléfono
+questmode,questmode_phone_down_supporting_timed,We'll keep track of the time.,Ние ќе го следиме времето.,Wir behalten die Zeit im Blick.,On garde un œil sur le temps.,Nosotros controlamos el tiempo.
+questmode,questmode_phone_down_supporting_untimed,Take your time with this one.,Не брзајте со ова.,Lasst euch dafür Zeit.,Prends ton temps pour celle-ci.,Tómate tu tiempo con esta.
+questmode,questmode_phone_down_active_title,Quest in progress,Активност во тек,Quest läuft,Quête en cours,Actividad en curso
+questmode,questmode_phone_down_active_body,Tap to return,Допрете за враќање,Tippen zum Zurückkehren,Appuie pour revenir,Toca para volver
+questmode,questmode_complete_action,We did it,Успеавме,Wir haben es geschafft,On l'a fait,Lo logramos
+questmode,questmode_exit_title,Keep this quest in progress?,Да ја оставиме оваа активност во тек?,Diese Quest weiterlaufen lassen?,Garder cette quête en cours ?,¿Mantener esta actividad en curso?
+questmode,questmode_exit_body,You can return and continue later.,Можете да се вратите и да продолжите подоцна.,Du kannst später zurückkehren und weitermachen.,Tu pourras revenir et continuer plus tard.,Puedes volver y continuar más tarde.
+questmode,questmode_exit_keep_action,Keep for later,Зачувај за подоцна,Für später aufheben,Garder pour plus tard,Guardar para después
+questmode,questmode_exit_continue_action,Continue quest,Продолжи ја активноста,Quest fortsetzen,Continuer la quête,Continuar actividad
+questmode,questmode_exit_abandon_action,Abandon quest,Откажи ја активноста,Quest abbrechen,Abandonner la quête,Abandonar actividad
+questmode,questmode_abandon_confirm_title,Abandon this quest?,Да ја откажеме оваа активност?,Diese Quest abbrechen?,Abandonner cette quête ?,¿Abandonar esta actividad?
+questmode,questmode_abandon_confirm_body,This clears your progress. You can start a new quest from Today afterward.,Ова го брише вашиот напредок. Потоа можете да започнете нова активност од Денес.,Damit wird dein Fortschritt gelöscht. Danach kannst du über Heute eine neue Quest starten.,Cela efface ta progression. Tu pourras ensuite commencer une nouvelle quête depuis Aujourd'hui.,Esto borra tu progreso. Después podrás empezar una nueva actividad desde Hoy.
+questmode,questmode_abandon_confirm_action,Abandon quest,Откажи ја активноста,Quest abbrechen,Abandonner la quête,Abandonar actividad
+questmode,questmode_abandon_cancel_action,Cancel,Откажи,Abbrechen,Annuler,Cancelar
+questmode,questmode_error_close_action,Close,Затвори,Schließen,Fermer,Cerrar
+reminder,reminder_title,Reminders,Потсетници,Erinnerungen,Rappels,Recordatorios
+reminder,reminder_explanation,A gentle reminder to make time together.,Благ потсетник да си направите време заедно.,"Eine sanfte Erinnerung, euch Zeit füreinander zu nehmen.",Un petit rappel pour prendre du temps ensemble.,Un recordatorio suave para dedicar tiempo juntos.
+reminder,reminder_enable_toggle,Remind us,Потсети нѐ,Erinnere uns,Nous le rappeler,Recordarnos
+reminder,reminder_days_label,Which days?,Кои денови?,Welche Tage?,Quels jours ?,¿Qué días?
+reminder,reminder_time_label,What time?,Во колку часот?,Um wie viel Uhr?,À quelle heure ?,¿A qué hora?
+reminder,reminder_choose_time,Choose a time,Избери време,Uhrzeit wählen,Choisir une heure,Elegir una hora
+reminder,reminder_time_selected,%1$s,%1$s,%1$s,%1$s,%1$s
+reminder,reminder_permission_status,Notification permission: %1$s,Дозвола за известувања: %1$s,Benachrichtigungsberechtigung: %1$s,Autorisation de notification : %1$s,Permiso de notificaciones: %1$s
+reminder,reminder_error_days_required,Choose at least one day.,Изберете барем еден ден.,Wähle mindestens einen Tag.,Choisis au moins un jour.,Elige al menos un día.
+reminder,reminder_permission_status_label,Notification permission,Дозвола за известувања,Benachrichtigungsberechtigung,Autorisation de notification,Permiso de notificaciones
+reminder,reminder_permission_granted,Allowed,Дозволено,Erlaubt,Autorisée,Permitido
+reminder,reminder_permission_denied,Not allowed,Не е дозволено,Nicht erlaubt,Non autorisée,No permitido
+reminder,reminder_permission_not_determined,Not yet requested,Сѐ уште не е побарано,Noch nicht angefragt,Pas encore demandée,Aún no solicitado
+reminder,reminder_permission_not_required,Allowed,Дозволено,Erlaubt,Autorisée,Permitido
+reminder,reminder_open_settings_action,Open settings,Отвори поставки,Einstellungen öffnen,Ouvrir les réglages,Abrir ajustes
+reminder,reminder_permission_denied_explanation,"Reminders are turned on, but Togetherly can't show notifications until you allow them in Settings.","Потсетниците се вклучени, но Togetherly не може да прикажува известувања додека не ги дозволите во Поставки.","Erinnerungen sind aktiviert, aber Togetherly kann keine Benachrichtigungen anzeigen, bis du sie in den Einstellungen erlaubst.","Les rappels sont activés, mais Togetherly ne peut pas afficher de notifications tant que tu ne les autorises pas dans les Réglages.","Los recordatorios están activados, pero Togetherly no puede mostrar notificaciones hasta que las permitas en Ajustes."
+reminder,reminder_save_action,Save,Зачувај,Speichern,Enregistrer,Guardar
+reminder,reminder_missing_profile_error,We couldn't find your family profile.,Не можевме да го најдеме вашиот семеен профил.,Wir konnten dein Familienprofil nicht finden.,Nous n'avons pas trouvé le profil de ta famille.,No pudimos encontrar el perfil de tu familia.
+reminder,reminder_updated_message,Reminder updated,Потсетникот е ажуриран,Erinnerung aktualisiert,Rappel mis à jour,Recordatorio actualizado
+reminder,reminder_notification_channel_name,Family reminders,Семејни потсетници,Familienerinnerungen,Rappels familiaux,Recordatorios familiares
+reminder,reminder_notification_title,A little time together?,Малку време заедно?,Ein bisschen Zeit miteinander?,Un peu de temps ensemble ?,¿Un poco de tiempo juntos?
+reminder,reminder_notification_body,Your Togetherly quest is ready whenever your family is.,Вашата Togetherly активност е подготвена кога и да е подготвено вашето семејство.,"Deine Togetherly-Quest ist bereit, sobald deine Familie es ist.",Ta quête Togetherly est prête dès que ta famille l'est.,Tu actividad de Togetherly está lista cuando tu familia lo esté.
+today,today_mystery_title,Today's family quest,Денешната семејна активност,Die heutige Familien-Quest,La quête familiale du jour,La actividad familiar de hoy
+today,today_mystery_body,A small adventure is waiting for you.,Ве чека мала авантура.,Ein kleines Abenteuer wartet auf euch.,Une petite aventure t'attend.,Una pequeña aventura te está esperando.
+today,today_reveal_action,Reveal quest,Откриј активност,Quest aufdecken,Révéler la quête,Revelar actividad
+today,today_mystery_content_description,"A hidden quest, not yet revealed","Скриена активност, сѐ уште неоткриена","Eine verborgene Quest, noch nicht aufgedeckt","Une quête cachée, pas encore révélée","Una actividad oculta, aún no revelada"
+today,today_see_quest_action,See quest,Погледни активност,Quest ansehen,Voir la quête,Ver actividad
+today,today_save_action,Save quest,Зачувај активност,Quest speichern,Enregistrer la quête,Guardar actividad
+today,today_saved_content_description,Saved. Tap to remove from saved quests.,Зачувано. Допрете за отстранување од зачуваните активности.,"Gespeichert. Tippen, um aus den gespeicherten Quests zu entfernen.",Enregistrée. Appuie pour la retirer des quêtes enregistrées.,Guardada. Toca para quitarla de las actividades guardadas.
+today,today_unsaved_content_description,Not saved. Tap to save this quest.,Не е зачувано. Допрете за да ја зачувате оваа активност.,"Nicht gespeichert. Tippen, um diese Quest zu speichern.",Non enregistrée. Appuie pour enregistrer cette quête.,No guardada. Toca para guardar esta actividad.
+today,today_save_failed,We couldn't save that. Please try again.,Не можевме да го зачуваме тоа. Обидете се повторно.,Das konnten wir nicht speichern. Bitte versuche es erneut.,Nous n'avons pas pu enregistrer ça. Réessaie.,No pudimos guardar eso. Inténtalo de nuevo.
+today,today_greeting_morning,Good morning,Добро утро,Guten Morgen,Bonjour,Buenos días
+today,today_greeting_afternoon,Good afternoon,Добар ден,Guten Tag,Bon après-midi,Buenas tardes
+today,today_greeting_evening,Good evening,Добра вечер,Guten Abend,Bonsoir,Buenas noches
+today,today_duration_five_minutes,5 minutes,5 минути,5 Minuten,5 minutes,5 minutos
+today,today_duration_ten_minutes,10 minutes,10 минути,10 Minuten,10 minutes,10 minutos
+today,today_duration_twenty_minutes,20 minutes,20 минути,20 Minuten,20 minutes,20 minutos
+today,today_duration_thirty_plus_minutes,30+ minutes,30+ минути,30+ Minuten,30 minutes et plus,30+ minutos
+today,today_location_indoor,Indoors,Затворено,Drinnen,Intérieur,Interior
+today,today_location_outdoor,Outdoors,Отворено,Draußen,Extérieur,Exterior
+today,today_location_either,Indoors or outdoors,Затворено или отворено,Drinnen oder draußen,Intérieur ou extérieur,Interior o exterior
+today,today_preparation_none,No preparation,Без подготовка,Keine Vorbereitung,Aucune préparation,Sin preparación
+today,today_preparation_simple_materials,Simple materials,Едноставни материјали,Einfache Materialien,Matériel simple,Materiales sencillos
+today,today_preparation_advanced,Advanced preparation,Напредна подготовка,Umfangreiche Vorbereitung,Préparation avancée,Preparación avanzada
+today,today_energy_calm,Calm,Смирено,Ruhig,Calme,Tranquila
+today,today_energy_moderate,Moderate,Урамнотежено,Moderat,Modérée,Moderada
+today,today_energy_active,Active,Активно,Aktiv,Active,Activa
+today,today_material_summary,%1$d materials needed,Потребни се %1$d материјали,%1$d Materialien benötigt,%1$d éléments nécessaires,%1$d materiales necesarios
+today,today_material_summary_one,1 material needed,Потребен е 1 материјал,1 Material benötigt,1 élément nécessaire,1 material necesario
+today,today_category_talk,Talk,Разговор,Reden,Discuter,Hablar
+today,today_category_create,Create,Творештво,Kreativsein,Créer,Crear
+today,today_category_move,Move,Движење,Bewegen,Bouger,Moverse
+today,today_category_kindness,Kindness,Љубезност,Freundlichkeit,Gentillesse,Bondad
+today,today_category_discover,Discover,Откривање,Entdecken,Découvrir,Descubrir
+today,today_category_silly,Silly,Смешно,Albern,Rigolo,Divertido
+today,today_category_memories,Memories,Спомени,Erinnerungen,Souvenirs,Recuerdos
+today,today_filters_action,Filters,Филтри,Filter,Filtres,Filtros
+today,today_filters_title,Filter quests,Филтрирај активности,Quests filtern,Filtrer les quêtes,Filtrar actividades
+today,today_filter_group_time,Time,Време,Zeit,Durée,Tiempo
+today,today_filter_group_location,Location,Локација,Ort,Lieu,Ubicación
+today,today_filter_group_energy,Energy,Енергија,Energie,Énergie,Energía
+today,today_filter_group_preparation,Preparation,Подготовка,Vorbereitung,Préparation,Preparación
+today,today_filter_group_category,Category,Категорија,Kategorie,Catégorie,Categoría
+today,today_filters_clear_all,Clear all,Исчисти сѐ,Alle zurücksetzen,Tout effacer,Borrar todo
+today,today_filters_apply,Find a quest,Најди активност,Quest finden,Trouver une quête,Buscar una actividad
+today,today_no_match_no_age_compatible,We couldn't find a quest that works for every selected age group.,Не можевме да најдеме активност што одговара на секоја избрана возрасна група.,"Wir konnten keine Quest finden, die für alle ausgewählten Altersgruppen passt.",Nous n'avons pas trouvé de quête adaptée à toutes les tranches d'âge sélectionnées.,No pudimos encontrar una actividad que funcione para todos los grupos de edad seleccionados.
+today,today_no_match_no_context_compatible,Try removing one of your filters.,Обидете се да отстраните еден од вашите филтри.,"Versuche, einen deiner Filter zu entfernen.",Essaie de retirer un de tes filtres.,Prueba a quitar uno de tus filtros.
+today,today_no_match_all_in_cooldown,You've explored everything that matches these filters recently.,Неодамна ги истраживте сите активности што одговараат на овие филтри.,"Ihr habt kürzlich schon alles entdeckt, was zu diesen Filtern passt.",Tu as récemment exploré tout ce qui correspond à ces filtres.,Ya has explorado recientemente todo lo que coincide con estos filtros.
+today,today_reroll_action,Try another quest,Пробај друга активност,Andere Quest versuchen,Essayer une autre quête,Probar otra actividad
+today,today_reroll_confirm_title,Use today's free swap?,Да ја искористиме денешната бесплатна замена?,Den heutigen kostenlosen Tausch nutzen?,Utiliser ton échange gratuit du jour ?,¿Usar el cambio gratuito de hoy?
+today,today_reroll_confirm_body,You can choose one different quest today.,Денес можете да изберете уште една различна активност.,Du kannst heute eine andere Quest auswählen.,Tu peux choisir une quête différente aujourd'hui.,Puedes elegir una actividad diferente hoy.
+today,today_reroll_keep_action,Keep this quest,Задржи ја оваа активност,Diese Quest behalten,Garder cette quête,Mantener esta actividad
+today,today_reroll_show_another_action,Show another,Покажи друга,Andere anzeigen,En montrer une autre,Mostrar otra
+today,today_reroll_used,Today's free swap has been used.,Денешната бесплатна замена е искористена.,Der heutige kostenlose Tausch wurde bereits genutzt.,L'échange gratuit du jour a déjà été utilisé.,Ya has usado el cambio gratuito de hoy.
+today,today_completed_action,Completed today,Завршена денес,Heute abgeschlossen,Terminée aujourd'hui,Completada hoy
+today,today_completed_indicator,You've already completed this quest today.,Веќе ја завршивте оваа активност денес.,Ihr habt diese Quest heute bereits abgeschlossen.,Tu as déjà terminé cette quête aujourd'hui.,Ya has completado esta actividad hoy.

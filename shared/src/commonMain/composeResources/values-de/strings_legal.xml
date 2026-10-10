@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="legal_title">Rechtliches</string>
+    <string name="legal_privacy_policy_action">Datenschutzerklärung</string>
+    <string name="legal_terms_of_use_action">Nutzungsbedingungen</string>
+    <string name="legal_subscription_terms_action">Abo-Bedingungen</string>
+    <string name="legal_open_source_licenses_action">Open-Source-Lizenzen</string>
+
+    <string name="open_source_licenses_title">Open-Source-Lizenzen</string>
+    <string name="open_source_licenses_intro">Togetherly basiert auf folgender Open-Source-Software.</string>
+
+    <string name="about_title">Über die App</string>
+    <string name="about_version_label">Version %1$s (%2$s)</string>
+    <string name="about_environment_debug_label">Debug-Build</string>
+    <string name="about_support_action">Support kontaktieren</string>
+    <string name="about_diagnostics_test_action">Test-Diagnoseereignis senden</string>
+    <string name="about_diagnostics_test_sent">Test-Diagnoseereignis gesendet</string>
+    <string name="about_debug_telemetry_action">Debug-Telemetrie-Tools öffnen</string>
+</resources>

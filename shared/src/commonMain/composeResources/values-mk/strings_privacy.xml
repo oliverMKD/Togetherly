@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="privacy_title">Приватност</string>
+    <string name="privacy_intro">Еве што всушност се случува со информациите на вашето семејство.</string>
+
+    <string name="privacy_profile_title">Вашиот семеен профил</string>
+    <string name="privacy_profile_body">Вашиот семеен профил — прикажано име, возрасни групи и преференции — се чува само на овој уред.</string>
+
+    <string name="privacy_progress_title">Напредок на активности</string>
+    <string name="privacy_progress_body">Завршените активности и напредокот на вашето семејство се чуваат само на овој уред.</string>
+
+    <string name="privacy_memories_title">Фотографии и гласовни спомени</string>
+    <string name="privacy_memories_body">Фотографиите и гласовните спомени што ги зачувувате остануваат приватни на овој уред. Togetherly никогаш не ги прикачува никаде.</string>
+
+    <string name="privacy_purchases_title">Купувања</string>
+    <string name="privacy_purchases_body">RevenueCat, нашиот давател на услуги за претплата, добива идентификатори поврзани со купувањето и информации за трансакции за да управува со Family Plus. Самите плаќања се обработуваат преку App Store или Google Play, а не директно преку Togetherly.</string>
+
+    <string name="privacy_notifications_title">Потсетници</string>
+    <string name="privacy_notifications_body">Известувањата за потсетници се закажани на овој уред — Togetherly нема сервер што ги испраќа.</string>
+
+    <string name="privacy_no_account_title">Без сметка или синхронизација во облак</string>
+    <string name="privacy_no_account_body">Togetherly моментално нема сметки или синхронизација во облак — нема каде да се најавите, и ништо не се синхронизира меѓу уреди.</string>
+
+    <string name="privacy_uninstall_title">Ако ја отстраните апликацијата</string>
+    <string name="privacy_uninstall_body">Деинсталирањето на Togetherly може да ги отстрани нејзините локални податоци, во зависност од сопствените поставки за резервна копија и складирање на вашиот уред.</string>
+
+    <string name="privacy_restore_purchases_title">Враќање купувања</string>
+    <string name="privacy_restore_purchases_body">Вашата историја на купувања сепак може да биде обновлива преку App Store или Google Play, одделно од сѐ што е зачувано во апликацијата.</string>
+</resources>

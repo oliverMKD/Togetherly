@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="memory_screen_title">Додади спомен</string>
+    <string name="memory_neutral_quest_title">Вашата активност</string>
+    <string name="memory_back_content_description">Назад</string>
+
+    <string name="memory_reactions_heading">Како се почувствувавте?</string>
+    <string name="memory_reaction_happy">Среќно</string>
+    <string name="memory_reaction_silly">Смешно</string>
+    <string name="memory_reaction_loved_it">Го обожававме</string>
+    <string name="memory_reaction_calm">Смирено</string>
+    <string name="memory_reaction_surprised">Изненадено</string>
+
+    <string name="memory_note_heading">Што треба да запомните за денес?</string>
+    <string name="memory_note_placeholder">Напишете белешка (не е задолжително)</string>
+
+    <string name="memory_photo_heading">Фотографија</string>
+    <string name="memory_photo_add_action">Додади фотографија</string>
+    <string name="memory_photo_replace_action">Замени</string>
+    <string name="memory_photo_remove_action">Отстрани</string>
+    <string name="memory_photo_thumbnail_description">Вашата додадена фотографија</string>
+    <string name="memory_photo_privacy_note">Само фотографијата што ја избирате се внесува во Togetherly.</string>
+    <string name="memory_photo_importing">Се внесува фотографијата…</string>
+
+    <string name="memory_voice_heading">Гласовна белешка</string>
+    <string name="memory_voice_record_action">Сними</string>
+    <string name="memory_voice_stop_action">Стоп</string>
+    <string name="memory_voice_cancel_action">Откажи</string>
+    <string name="memory_voice_play_action">Пушти</string>
+    <string name="memory_voice_pause_action">Паузирај</string>
+    <string name="memory_voice_remove_action">Отстрани</string>
+    <string name="memory_voice_rerecord_action">Сними повторно</string>
+    <string name="memory_voice_recording_label">Снимање %1$s</string>
+    <string name="memory_voice_max_duration_note">До 60 секунди</string>
+    <string name="memory_voice_permission_denied">Пристапот до микрофонот е одбиен. Можете да се обидете повторно.</string>
+    <string name="memory_voice_permission_permanently_denied">Пристапот до микрофонот е исклучен за Togetherly. Вклучете го во Поставки за да снимите гласовна белешка.</string>
+    <string name="memory_voice_open_settings_action">Отвори Поставки</string>
+
+    <string name="memory_privacy_reassurance">Чувано приватно во Togetherly на овој уред.</string>
+
+    <string name="memory_save_action">Зачувај спомен</string>
+    <string name="memory_skip_action">Прескокни засега</string>
+    <string name="memory_saving_label">Се зачувува вашиот спомен…</string>
+
+    <string name="memory_discard_title">Да го отфрлиме овој спомен?</string>
+    <string name="memory_discard_body">Вашата белешка, реакции, фотографија и гласовна белешка за оваа активност ќе бидат изгубени. Самата завршена активност останува зачувана.</string>
+    <string name="memory_discard_confirm_action">Отфрли</string>
+    <string name="memory_discard_cancel_action">Продолжи со уредување</string>
+</resources>

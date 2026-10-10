@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="paywall_close_content_description">Schließen</string>
+    <string name="paywall_title">Mehr Wege, gemeinsam zu wachsen</string>
+    <string name="paywall_benefit_rerolls">Unbegrenzte tägliche Neuwürfe</string>
+    <string name="paywall_benefit_quest_packs">Premium-Quest-Pakete</string>
+    <string name="paywall_benefit_moods">Mehr Aktivitäten für jede Stimmung</string>
+    <string name="paywall_benefit_support">Unterstütze zukünftige Togetherly-Inhalte</string>
+    <string name="paywall_recommended_label">Empfohlen</string>
+    <string name="paywall_purchase_action">Family Plus holen</string>
+    <string name="paywall_restore_action">Käufe wiederherstellen</string>
+    <string name="paywall_privacy_policy_action">Datenschutzerklärung</string>
+    <string name="paywall_terms_of_use_action">Nutzungsbedingungen</string>
+    <string name="paywall_already_premium_title">Du bist schon dabei</string>
+    <string name="paywall_already_premium_continue_action">Weiter</string>
+
+    <string name="paywall_intro_premium_reroll">Du hast deinen kostenlosen Neuwurf für heute bereits genutzt. Family Plus gibt dir unbegrenzte Neuwürfe.</string>
+    <string name="paywall_intro_premium_quest">Das ist eine Family-Plus-Quest.</string>
+    <string name="paywall_intro_premium_pack">Dieses Paket ist Teil von Family Plus.</string>
+</resources>

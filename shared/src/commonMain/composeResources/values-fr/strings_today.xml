@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="today_mystery_title">La quête familiale du jour</string>
+    <string name="today_mystery_body">Une petite aventure t'attend.</string>
+    <string name="today_reveal_action">Révéler la quête</string>
+    <string name="today_mystery_content_description">Une quête cachée, pas encore révélée</string>
+
+    <string name="today_see_quest_action">Voir la quête</string>
+    <string name="today_save_action">Enregistrer la quête</string>
+    <string name="today_saved_content_description">Enregistrée. Appuie pour la retirer des quêtes enregistrées.</string>
+    <string name="today_unsaved_content_description">Non enregistrée. Appuie pour enregistrer cette quête.</string>
+    <string name="today_save_failed">Nous n'avons pas pu enregistrer ça. Réessaie.</string>
+
+    <string name="today_greeting_morning">Bonjour</string>
+    <string name="today_greeting_afternoon">Bon après-midi</string>
+    <string name="today_greeting_evening">Bonsoir</string>
+
+    <string name="today_duration_five_minutes">5 minutes</string>
+    <string name="today_duration_ten_minutes">10 minutes</string>
+    <string name="today_duration_twenty_minutes">20 minutes</string>
+    <string name="today_duration_thirty_plus_minutes">30 minutes et plus</string>
+
+    <string name="today_location_indoor">Intérieur</string>
+    <string name="today_location_outdoor">Extérieur</string>
+    <string name="today_location_either">Intérieur ou extérieur</string>
+
+    <string name="today_preparation_none">Aucune préparation</string>
+    <string name="today_preparation_simple_materials">Matériel simple</string>
+    <string name="today_preparation_advanced">Préparation avancée</string>
+
+    <string name="today_energy_calm">Calme</string>
+    <string name="today_energy_moderate">Modérée</string>
+    <string name="today_energy_active">Active</string>
+
+    <string name="today_material_summary">%1$d éléments nécessaires</string>
+    <string name="today_material_summary_one">1 élément nécessaire</string>
+
+    <string name="today_category_talk">Discuter</string>
+    <string name="today_category_create">Créer</string>
+    <string name="today_category_move">Bouger</string>
+    <string name="today_category_kindness">Gentillesse</string>
+    <string name="today_category_discover">Découvrir</string>
+    <string name="today_category_silly">Rigolo</string>
+    <string name="today_category_memories">Souvenirs</string>
+
+    <string name="today_filters_action">Filtres</string>
+    <string name="today_filters_title">Filtrer les quêtes</string>
+    <string name="today_filter_group_time">Durée</string>
+    <string name="today_filter_group_location">Lieu</string>
+    <string name="today_filter_group_energy">Énergie</string>
+    <string name="today_filter_group_preparation">Préparation</string>
+    <string name="today_filter_group_category">Catégorie</string>
+    <string name="today_filters_clear_all">Tout effacer</string>
+    <string name="today_filters_apply">Trouver une quête</string>
+
+    <string name="today_no_match_no_age_compatible">Nous n'avons pas trouvé de quête adaptée à toutes les tranches d'âge sélectionnées.</string>
+    <string name="today_no_match_no_context_compatible">Essaie de retirer un de tes filtres.</string>
+    <string name="today_no_match_all_in_cooldown">Tu as récemment exploré tout ce qui correspond à ces filtres.</string>
+
+    <string name="today_reroll_action">Essayer une autre quête</string>
+    <string name="today_reroll_confirm_title">Utiliser ton échange gratuit du jour ?</string>
+    <string name="today_reroll_confirm_body">Tu peux choisir une quête différente aujourd'hui.</string>
+    <string name="today_reroll_keep_action">Garder cette quête</string>
+    <string name="today_reroll_show_another_action">En montrer une autre</string>
+    <string name="today_reroll_used">L'échange gratuit du jour a déjà été utilisé.</string>
+
+    <string name="today_completed_action">Terminée aujourd'hui</string>
+    <string name="today_completed_indicator">Tu as déjà terminé cette quête aujourd'hui.</string>
+</resources>

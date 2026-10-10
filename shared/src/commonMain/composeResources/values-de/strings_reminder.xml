@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="reminder_title">Erinnerungen</string>
+    <string name="reminder_explanation">Eine sanfte Erinnerung, euch Zeit füreinander zu nehmen.</string>
+    <string name="reminder_enable_toggle">Erinnere uns</string>
+    <string name="reminder_days_label">Welche Tage?</string>
+    <string name="reminder_time_label">Um wie viel Uhr?</string>
+    <string name="reminder_choose_time">Uhrzeit wählen</string>
+    <string name="reminder_time_selected">%1$s</string>
+    <string name="reminder_permission_status">Benachrichtigungsberechtigung: %1$s</string>
+    <string name="reminder_error_days_required">Wähle mindestens einen Tag.</string>
+
+    <string name="reminder_permission_status_label">Benachrichtigungsberechtigung</string>
+    <string name="reminder_permission_granted">Erlaubt</string>
+    <string name="reminder_permission_denied">Nicht erlaubt</string>
+    <string name="reminder_permission_not_determined">Noch nicht angefragt</string>
+    <string name="reminder_permission_not_required">Erlaubt</string>
+    <string name="reminder_open_settings_action">Einstellungen öffnen</string>
+    <string name="reminder_permission_denied_explanation">Erinnerungen sind aktiviert, aber Togetherly kann keine Benachrichtigungen anzeigen, bis du sie in den Einstellungen erlaubst.</string>
+
+    <string name="reminder_save_action">Speichern</string>
+    <string name="reminder_missing_profile_error">Wir konnten dein Familienprofil nicht finden.</string>
+    <string name="reminder_updated_message">Erinnerung aktualisiert</string>
+
+    <string name="reminder_notification_channel_name">Familienerinnerungen</string>
+    <string name="reminder_notification_title">Ein bisschen Zeit miteinander?</string>
+    <string name="reminder_notification_body">Deine Togetherly-Quest ist bereit, sobald deine Familie es ist.</string>
+</resources>

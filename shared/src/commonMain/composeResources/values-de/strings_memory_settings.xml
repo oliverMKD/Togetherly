@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="memory_settings_title">Erinnerungseinstellungen</string>
+    <string name="memory_settings_explanation">Wähle, was deine Familie einer Erinnerung nach einer Quest hinzufügen kann. Das Deaktivieren wirkt sich nur auf neue Erinnerungen aus.</string>
+    <string name="memory_settings_photos_title">Foto-Erinnerungen</string>
+    <string name="memory_settings_voice_title">Sprach-Erinnerungen</string>
+    <string name="memory_settings_text_notes_title">Textnotizen</string>
+    <string name="memory_settings_prompt_title">Nach jeder Quest nach einer Erinnerung fragen</string>
+    <string name="memory_settings_on">An</string>
+    <string name="memory_settings_off">Aus</string>
+    <string name="memory_settings_preserved_explanation">Das Deaktivieren von Fotos, Sprachnotizen oder Notizen löscht nie etwas, das du bereits gespeichert hast.</string>
+    <string name="memory_settings_manage_memories_action">Erinnerungen verwalten</string>
+    <string name="memory_settings_save_action">Speichern</string>
+    <string name="memory_settings_missing_profile_error">Wir konnten dein Familienprofil nicht finden.</string>
+    <string name="memory_settings_updated_message">Erinnerungseinstellungen aktualisiert</string>
+</resources>

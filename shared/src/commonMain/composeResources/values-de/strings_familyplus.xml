@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="familyplus_free_title">Family Plus</string>
+    <string name="familyplus_free_body">Schalte unbegrenzte tägliche Neuwürfe, Premium-Quest-Pakete und mehr frei.</string>
+    <string name="familyplus_view_plans_action">Pläne ansehen</string>
+
+    <string name="familyplus_active_title">Family Plus ist aktiv</string>
+    <string name="familyplus_manage_subscription_action">Abo verwalten</string>
+    <string name="familyplus_customer_center_unavailable">Die Abo-Verwaltung ist gerade nicht verfügbar. Bitte versuche es später erneut.</string>
+    <string name="familyplus_provider_unavailable_notice">Wir konnten deinen Abo-Status nicht überprüfen. Einige Optionen sind möglicherweise nicht verfügbar, bis dies behoben ist.</string>
+
+    <string name="familyplus_renews_on">Verlängert sich am %1$s</string>
+    <string name="familyplus_ends_on">Endet am %1$s</string>
+    <string name="familyplus_lifetime_member">Du hast lebenslangen Zugang zu Family Plus</string>
+
+    <string name="familyplus_restore_action">Käufe wiederherstellen</string>
+</resources>

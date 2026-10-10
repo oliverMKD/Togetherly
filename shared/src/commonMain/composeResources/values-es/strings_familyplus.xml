@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="familyplus_free_title">Family Plus</string>
+    <string name="familyplus_free_body">Desbloquea cambios diarios ilimitados, packs de actividades premium y mucho más.</string>
+    <string name="familyplus_view_plans_action">Ver planes</string>
+
+    <string name="familyplus_active_title">Family Plus está activo</string>
+    <string name="familyplus_manage_subscription_action">Gestionar suscripción</string>
+    <string name="familyplus_customer_center_unavailable">La gestión de la suscripción no está disponible en este momento. Inténtalo de nuevo más tarde.</string>
+    <string name="familyplus_provider_unavailable_notice">No pudimos comprobar el estado de tu suscripción. Es posible que algunas opciones no estén disponibles hasta que esto se resuelva.</string>
+
+    <string name="familyplus_renews_on">Se renueva el %1$s</string>
+    <string name="familyplus_ends_on">Finaliza el %1$s</string>
+    <string name="familyplus_lifetime_member">Tienes acceso de por vida a Family Plus</string>
+
+    <string name="familyplus_restore_action">Restaurar compras</string>
+</resources>

@@ -181,6 +181,16 @@ sealed interface RootDestination {
     data object OpenSourceLicenses : RootDestination
 
     /**
+     * The in-app language picker — carries no arguments, same reasoning as [Legal]/[About]: reads
+     * and writes [com.togetherly.core.locale.AppLocaleController] directly rather than
+     * [com.togetherly.domain.family.repository.FamilySettingsRepository], since a language choice
+     * isn't per-family state (it must be readable before a family profile necessarily exists at
+     * all — see [com.togetherly.core.locale.AppLocaleStore]'s own KDoc).
+     */
+    @Serializable
+    data object Language : RootDestination
+
+    /**
      * Application name/version/build number plus an optional debug-only environment label and
      * support link (Step 13.6) — carries no arguments, same reasoning as [Legal]. Reads
      * [com.togetherly.app.application.AppConfiguration] and

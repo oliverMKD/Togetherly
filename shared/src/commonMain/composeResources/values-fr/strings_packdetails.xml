@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="packdetails_included_quests_title">Quêtes incluses</string>
+    <string name="packdetails_choose_quest_action">Choisir une quête</string>
+    <string name="packdetails_unlock_action">Débloquer avec Family Plus</string>
+    <string name="packdetails_locked_explanation">Ce pack est inclus avec Family Plus. Débloque-le pour commencer n'importe quelle quête à l'intérieur.</string>
+</resources>

@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="journey_top_bar_title">Parcours</string>
+
+    <string name="journey_empty_title">Le parcours de ta famille commence ici.</string>
+    <string name="journey_empty_body">Termine ta première quête et elle deviendra une étoile.</string>
+    <string name="journey_empty_action">Aller à Aujourd'hui</string>
+
+    <string name="journey_missing_quest_title">Aventure familiale</string>
+
+    <string name="journey_photo_content_description">Photo de ce souvenir</string>
+    <string name="journey_voice_play_action">Lire le message vocal</string>
+    <string name="journey_voice_pause_action">Mettre en pause le message vocal</string>
+    <string name="journey_voice_playback_error">Ce message vocal n'a pas pu être lu pour le moment.</string>
+
+    <string name="journey_delete_content_description">Supprimer ce souvenir</string>
+    <string name="journey_delete_dialog_title">Supprimer ce souvenir ?</string>
+    <string name="journey_delete_dialog_body">Cela supprime la quête, sa note, ainsi que toute photo ou tout message vocal associés. Cette action est irréversible.</string>
+    <string name="journey_delete_confirm_action">Supprimer</string>
+    <string name="journey_delete_cancel_action">Annuler</string>
+
+    <string name="journey_summary_total_completions">%1$d quêtes accomplies ensemble</string>
+    <plurals name="journey_summary_active_days">
+        <item quantity="one">%1$d jour de souvenirs jusqu'à présent</item>
+        <item quantity="other">%1$d jours de souvenirs jusqu'à présent</item>
+    </plurals>
+    <string name="journey_constellation_content_description">Une constellation de %1$d étoiles, une pour chaque quête accomplie par ta famille. L'étoile entourée d'une douce lueur est ton souvenir le plus récent.</string>
+
+    <string name="journey_milestone_first_star">Ta première étoile !</string>
+    <string name="journey_milestone_three_stars">Trois étoiles dans ton ciel.</string>
+    <string name="journey_milestone_seven_stars">Sept étoiles, et ça continue.</string>
+    <string name="journey_milestone_fourteen_stars">Quatorze étoiles ensemble.</string>
+    <string name="journey_milestone_thirty_stars">Trente étoiles — quel beau parcours.</string>
+</resources>
