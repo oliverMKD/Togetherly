@@ -1,5 +1,10 @@
 # Release readiness baseline
 
+> Historical snapshot: the statuses and command results below describe commit `fe36eb5` on
+> 2026-07-29. They are retained as audit evidence, not current project status. In particular, iOS
+> reminder tests now use a fake notification-center adapter and pass as a gating task. See
+> [ios-release.md](ios-release.md) and [continuous-integration.md](continuous-integration.md).
+
 - Audit date: 2026-07-29 (Europe/Skopje)
 - Audited checkout: `fe36eb5` on `chore/step-15-production-hardening`
 - Host: Apple silicon macOS, Java 21.0.9, Xcode 26.6 / iOS Simulator SDK 26.5

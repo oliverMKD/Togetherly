@@ -1,4 +1,4 @@
-# Continuous Integration & Repository Automation (Step 14.5.4–14.5.6)
+# Continuous integration and repository automation
 
 What runs on every pull request, why it's shaped this way, and what's intentionally out of scope.
 For the full operational guide — local equivalents, required-check/branch-protection design, fork
@@ -17,18 +17,12 @@ CodeQL is **not** a workflow file in this repository — it runs via GitHub's ma
 ["default setup"](https://docs.github.com/en/code-security/code-scanning/automatically-scanning-your-code-for-vulnerabilities-and-errors/configuring-default-setup-for-code-scanning),
 enabled in repository settings. See §4.
 
-## 2. Known platform limitation: `iosSimulatorArm64Test`
+## 2. iOS simulator tests
 
-`apple-ci.yml` runs `:shared:iosSimulatorArm64Test` as its own step with `continue-on-error: true`
-and an explicit `::warning::` annotation on failure — it is never silently skipped or removed.
-
-Kotlin/Native's `iosSimulatorArm64Test` runs the compiled test binary as a bare process, not a real
-`.app` bundle. `IosReminderSchedulerTest` calls `UNUserNotificationCenter.currentNotificationCenter()`,
-which requires a genuine app-bundle identity (`NSBundle.mainBundle`) that a bare `.kexe` test binary
-never establishes, so the whole shared test process aborts with `NSInternalInconsistencyException`.
-This is a pre-existing platform/test-harness limitation, not something introduced by CI — see
-`docs/architecture.md` § Known environment limitations for the full history (including the earlier,
-now-resolved Skiko/SDK-version issue this was originally confused with).
+`apple-ci.yml` compiles and runs `:shared:iosSimulatorArm64Test` as a normal gating step.
+Notification tests inject `FakeIosNotificationCenterAdapter`, so they never access
+`UNUserNotificationCenter.currentNotificationCenter()` from the bare Kotlin/Native test process.
+Real notification delivery remains a manual app-host/device check.
 
 ## 3. Action version pinning
 

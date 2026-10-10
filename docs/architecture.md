@@ -7,6 +7,8 @@ the Room-backed local database — tables, transactions, deletion, migration and
 see [persistence.md](persistence.md). For the shared theme/component library, see
 [design-system.md](design-system.md). For navigation — library choice, the destination model,
 Bootstrap's routing logic, and how to add a destination — see [navigation.md](navigation.md). For
+supported languages, resource organization, and platform-specific runtime switching, see
+[localization.md](localization.md). For
 completion memory capture (reactions/note/photo/voice), private media storage, and Journey's
 derived stars/timeline, see [memory-flow.md](memory-flow.md), [private-media.md](private-media.md),
 [journey.md](journey.md), and the Step 10.7 audit in [privacy.md](privacy.md).
@@ -14,25 +16,30 @@ derived stars/timeline, see [memory-flow.md](memory-flow.md), [private-media.md]
 ```mermaid
 graph LR
     feature["feature/ (presentation)"] --> domain["domain/ (model, repository interfaces, use cases)"]
+    feature --> core["core/ (cross-cutting contracts)"]
+    feature --> designsystem["designsystem/"]
     app["app/ (DI composition)"] --> feature
     app --> data
     app --> content
+    app --> core
     content["content/ (bundled catalogue)"] --> domain
     data["data/ (Room, RevenueCat, telemetry providers)"] --> domain
-    designsystem["designsystem/"] --> feature
+    data --> core
     navigation["navigation/"] --> feature
+    navigation --> designsystem
 ```
 
-`domain` is the only layer every other layer depends on; it never depends back. `content` and
-`data` each implement a `domain` repository interface and are only ever resolved through it — see
-[Core conventions](#core-conventions) below for the enforcement details.
+`domain` is the center of business behavior and never depends on infrastructure or presentation.
+`core` and `designsystem` are separate cross-cutting foundations. `content` and `data` implement
+domain-facing contracts and are composed only in `app`; feature code never imports concrete
+infrastructure. See [Core conventions](#core-conventions) below for enforcement details.
 
 ## Modules
 
 - **`shared`** — everything: domain model, use cases, content pipeline, DI wiring, and the
   Compose Multiplatform UI theme. `commonMain` holds all platform-independent code;
   `androidMain`/`iosMain` hold the small `expect`/`actual` seams (coroutine dispatchers, ID
-  generation, Koin's platform module).
+  generation, locale application, media/notification services, and Koin's platform module).
 - **`androidApp`** — the Android application shell; wires `initKoin()` at startup and hosts the
   Android entry point.
 - **`iosApp`** — the Xcode project hosting the iOS entry point, consuming `shared` as a framework.
@@ -40,15 +47,9 @@ graph LR
 ## Layers (`shared/src/commonMain/kotlin/com/togetherly`)
 
 ```
-core/          Cross-cutting primitives: DataResult, AppError, AppDispatchers, AppClock,
-               IdGenerator, core.ui (UiText + the AppError → UiText mapper every
-               presentation layer uses — see below), core.media (platform-neutral
-               photo-picker/microphone-permission/app-settings launcher contracts, each
-               with an expect/actual Composable resolved only at a feature's Route
-               boundary — see memory-flow.md), and core.telemetry (Step 14.1 — provider-neutral
-               ProductAnalytics/OperationalDiagnostics contracts, the typed AnalyticsEvent
-               vocabulary, the privacy allowlist validator, NoOp/Debug implementations, and
-               TelemetryCoordinator — see telemetry.md)
+core/          Cross-cutting primitives: result/error mapping, dispatchers, time and IDs,
+               UiText, media and notification platform contracts, locale selection/application,
+               feedback, logging, and provider-neutral telemetry contracts
 domain/        Pure domain model + repository interfaces + use cases, by feature area
                (family, quest, completion, purchase, daily, saved, journey, localdata — the
                Step 13.7 local-data-deletion coordinator, see local-data-deletion.md — and
@@ -56,19 +57,14 @@ domain/        Pure domain model + repository interfaces + use cases, by feature
 content/       The quest-catalogue content boundary: model (DTOs), schema (parsing),
                validation, mapper (DTO → domain), loader, resource, repository
                (the real QuestRepository implementation)
-data/          Room-backed implementations of the domain repository interfaces, by feature area
-               (family, daily, saved, completion, journey, telemetry) plus data.local (entities,
-               DAOs, storage-key mappers, entity↔domain mappers) — see persistence.md — and
-               data.media, the app-private photo/voice storage layer (pending/committed
-               file lifecycle, image normalization, orphan cleanup) — see private-media.md
+data/          Room-backed repositories and local schema, private photo/voice storage,
+               RevenueCat purchases, and PostHog/Sentry provider adapters
 designsystem/  The shared theme + component library — see design-system.md
 navigation/    Type-safe shared navigation (destinations, Bootstrap, the Main shell) —
                see navigation.md
-feature/       Per-feature presentation: model/presentation/validation (+ navigation where a
-               feature needs its own internal step-flow logic), by feature area
-               (onboarding, today, questdetail, questmode, completion, memory, journey —
-               the latter two are completion-memory capture and the Journey stars/timeline,
-               see memory-flow.md/journey.md)
+feature/       Per-feature presentation and validation: onboarding, today, explore, saved,
+               quest/pack detail, quest mode, completion/memory, journey, family settings,
+               language, paywall/Family Plus, and debug tooling
 app/           Application composition: DI modules, app configuration/info
 ```
 
@@ -238,6 +234,10 @@ catalogue lazily on first access (first `get*`/`observe*` call), off the main di
 - A failed load doesn't poison future calls: only a successful load is cached, so the next call
   retries the whole pipeline.
 
+`AppLocaleController` is resolved by the root `App` composable before feature content is rendered.
+It reads the synchronous platform preference and applies the selected locale immediately, avoiding
+a pre-onboarding flash in the wrong language. See [localization.md](localization.md).
+
 ## Testing conventions
 
 - Fakes live in `commonTest`, next to the interface they implement, named `Fake<Interface>`.
@@ -260,28 +260,17 @@ catalogue lazily on first access (first `get*`/`observe*` call), off the main di
   database, and the two Koin-graph tests noted above. See [persistence.md](persistence.md) and
   `data/local/RoomDaoTest.kt`'s own KDoc for the confirmed root cause.
 
-## Known environment limitations
+## Toolchain notes
 
 - `linkDebugTestIosSimulatorArm64`/`compileKotlinIosSimulatorArm64`/`compileKotlinIosArm64` link
   and compile cleanly on a current toolchain (Xcode 16.4+, iOS SDK 18.5+) — an earlier Xcode 16.3
   (SDK 18.4) mismatch with Compose Multiplatform's Skiko cache, previously noted here, no longer
   reproduces once the toolchain is at or above 16.4/18.5 (confirmed both locally and in
   `apple-ci.yml`'s pinned `macos-15-arm64` runner, whose default Xcode is 16.4 for exactly this
-  reason — Step 14.5.5).
-- **`:shared:iosSimulatorArm64Test` is currently unreliable and not gated in CI** (Step 14.5.5):
-  `IosReminderSchedulerTest` crashes the whole test process — `IosReminderScheduler` calls
-  `UNUserNotificationCenter.currentNotificationCenter()`, which requires a valid
-  `NSBundle.mainBundle`/`bundleProxyForCurrentProcess`; Kotlin/Native's `iosSimulatorArm64Test`
-  runs the compiled test binary directly as a bare process, not packaged as a real `.app` bundle,
-  so that bundle identity is never established and the call throws an uncaught
-  `NSInternalInconsistencyException`, aborting the whole test process (every test in the suite
-  shares one process, so one such crash blocks all the others too, not just the offending test).
-  This is a platform/test-runner limitation, not a regression in `IosReminderScheduler` itself —
-  the same code works correctly inside a real running app. `apple-ci.yml`'s
-  "Run iOS simulator tests" step still runs (for visibility — a fixed regression would show a
-  *different* failure) but is `continue-on-error: true` so this known, pre-existing issue never
-  blocks a pull request. Compilation and linking of the test binary (a separate, earlier CI step)
-  are unaffected and still gate the build normally.
+  reason).
+- `IosReminderSchedulerTest` uses `FakeIosNotificationCenterAdapter`, so native unit tests never
+  call `UNUserNotificationCenter.currentNotificationCenter()` from a bare Kotlin/Native test
+  process. `:shared:iosSimulatorArm64Test` is therefore a normal gating CI task.
 - `Res.readBytes` (Compose Resources) cannot run under `:shared:testAndroidHostTest`: the
   generated Android resource reader calls `android.util.Log.d`, which is unmocked outside
   Robolectric (not configured in this project). Any test needing the *real* bundled resource file

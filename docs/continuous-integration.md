@@ -1,4 +1,4 @@
-# Continuous Integration — full guide (Step 14.5.7)
+# Continuous integration — full guide
 
 The complete operational reference for Togetherly's CI: what runs, why it's shaped this way, how
 to reproduce any check locally, and how to unblock a stuck pull request. For the short reference
@@ -38,9 +38,8 @@ Two jobs:
   `gradle.properties`, `settings.gradle.kts`, `build.gradle.kts`, and `apple-ci.yml` itself. Sets
   an `apple` output (`true`/`false`).
 - **`verify-apple`** (`macos-15-arm64`, pinned Xcode 16.4): `needs: gate`, `if: needs.gate.outputs.apple == 'true'`.
-  Compiles `iosArm64`/`iosSimulatorArm64`, links the simulator framework, compiles (and runs, with
-  `continue-on-error: true` — see §10) the iOS simulator test binary, and compiles the iOS host app
-  with `CODE_SIGNING_ALLOWED=NO`.
+  Compiles `iosArm64`/`iosSimulatorArm64`, links the simulator framework, compiles and runs the iOS
+  simulator test binary, and compiles the iOS host app with `CODE_SIGNING_ALLOWED=NO`.
 
 **Why a gate job instead of a workflow-level `paths:` filter**: a path-filtered workflow trigger
 means the workflow never runs at all for a change outside those paths — no check run is ever
@@ -89,7 +88,7 @@ Every CI check has a direct local command:
 ./gradlew :shared:connectedAndroidDeviceTest --tests com.togetherly.data.local.database.TogetherlyDatabaseMigrationTest
 ./gradlew :shared:compileKotlinIosSimulatorArm64 :shared:compileKotlinIosArm64   # Apple compile
 ./gradlew :shared:linkDebugFrameworkIosSimulatorArm64       # iOS simulator framework link
-./gradlew :shared:iosSimulatorArm64Test                     # iOS unit tests (see §10)
+./gradlew :shared:iosSimulatorArm64Test                     # iOS unit tests
 ./gradlew allTests                                          # everything, every target
 ```
 
@@ -152,14 +151,9 @@ defect — see the Step 14.5.5/14.5.7 history. It resolves on its own; there is 
 workflow itself.
 
 **iOS simulator tests fail inside `apple-ci.yml`.**
-Check whether it's the known `IosReminderSchedulerTest` / `UNUserNotificationCenter` crash (see
-`docs/architecture.md`'s "Known environment limitations") — that step runs with
-`continue-on-error: true` specifically because of this pre-existing platform limitation, and does
-not block the PR. Any *other* iOS test failure is a real regression and should be treated as one.
-
-`release-readiness.yml` runs the same test without `continue-on-error` after the adapter fix made
-the native unit test deterministic. If that workflow fails now, treat it as a regression rather than
-the older harness crash.
+Treat the failure as a regression. `IosReminderSchedulerTest` uses a fake notification-center
+adapter and no longer touches `UNUserNotificationCenter` from the test process. Reproduce with the
+local command in §5 and inspect `shared/build/reports/tests` when Gradle produces a report.
 
 **A required check never appears at all.**
 Confirm the job's `name:` in the workflow YAML still matches the name registered in the ruleset's

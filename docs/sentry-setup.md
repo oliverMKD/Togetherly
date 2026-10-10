@@ -215,8 +215,9 @@ documented plan for when minification is turned on, not something already runnin
 
 ### Required CI environment variables
 
-Document only — not present in any tracked file, and this project currently has no CI pipeline
-configuration (`.github/workflows` or equivalent) to wire them into:
+Document only — not present in any tracked workflow. GitHub Actions currently builds and tests
+without runtime service keys or symbol-upload credentials; a future release-upload job would wire
+these through the repository's encrypted Actions secret store:
 
 | Variable | Purpose | Scope |
 |---|---|---|

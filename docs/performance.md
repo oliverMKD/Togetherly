@@ -1,5 +1,9 @@
 # Togetherly performance audit
 
+> Historical snapshot: command results in this audit describe the 2026-07-29 checkout. The noted
+> iOS notification-test failure was later fixed by injecting `IosNotificationCenterAdapter`; see
+> [ios-release.md](ios-release.md) for the current verification status.
+
 Audited on 2026-07-29 against the production-readiness baseline in
 `docs/release-readiness.md`. This is a code-path audit with deterministic verification; it is not a
 device benchmark. Wall-clock startup, frame timing, and memory numbers require release builds on

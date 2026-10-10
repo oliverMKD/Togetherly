@@ -67,6 +67,12 @@ Every component:
   own KDoc for what "wrapping Material's `FilterChip` is worth it" looks like versus reinventing
   one from scratch.
 
+Text-bearing layouts must remain safe under translation and large font scales. Use weighted text
+inside constrained rows, `FlowRow` for metadata/action groups that may expand, multiline buttons,
+and ellipsis only for fixed-height chrome such as top and bottom navigation. Runtime photos must
+fill their clipped frame and declare an intentional `ContentScale`; private references must never
+appear in content descriptions.
+
 `TogetherlyScreen` (`layout/`) is the shared per-screen scaffold: background, safe-area/inset
 handling, an optional top bar, scrollable content, a stable bottom action area, and a maximum
 readable content width on large windows — built from `Box`/`Column`, deliberately not
